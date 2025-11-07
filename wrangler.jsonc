@@ -8,6 +8,11 @@
     "global_fetch_strictly_public"
   ],
   
+  // Build configuration - runs before deploy
+  "build": {
+    "command": "npx opennextjs-cloudflare build"
+  },
+  
   // Static assets configuration
   "assets": {
     "directory": ".open-next/assets",

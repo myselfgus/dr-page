@@ -32,11 +32,19 @@ O arquivo `wrangler.jsonc` já está configurado com:
 ### Build e Deploy
 
 \`\`\`bash
-# Build do Next.js e deploy em um comando
+# Build do Next.js e deploy em um comando (recomendado)
 npm run deploy
 \`\`\`
 
-Ou em etapas separadas:
+Ou use diretamente:
+
+\`\`\`bash
+# Deploy automático com build
+# O wrangler.jsonc está configurado para rodar o build automaticamente
+npx wrangler deploy
+\`\`\`
+
+Ou em etapas separadas (se você quiser controlar cada passo):
 
 \`\`\`bash
 # 1. Build do Next.js
@@ -45,7 +53,7 @@ npm run build
 # 2. Build do OpenNext
 npx opennextjs-cloudflare build
 
-# 3. Deploy
+# 3. Deploy (o build já foi feito)
 npx wrangler deploy
 \`\`\`
 
