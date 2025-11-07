@@ -22,10 +22,11 @@ npx wrangler login
 
 O arquivo `wrangler.jsonc` já está configurado com:
 
-- **name**: "dr-gustavo-site" (nome do seu Worker)
+- **name**: "doctor" (nome do seu Worker)
 - **compatibility_date**: "2025-11-06" (versão do runtime)
 - **nodejs_compat**: Suporte completo ao Node.js runtime
 - **ASSETS**: Configuração automática de assets estáticos
+- **build**: Comando de build automático antes do deploy
 
 ## Deploy
 
@@ -129,7 +130,7 @@ npm run deploy
 Verifique os logs:
 
 \`\`\`bash
-npx wrangler tail dr-gustavo-site
+npx wrangler tail doctor
 \`\`\`
 
 ### Assets não carregam
