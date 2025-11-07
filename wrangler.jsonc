@@ -1,0 +1,74 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "artiste-site",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-11-06",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  
+  // Static assets configuration
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  
+  // Worker self-reference for internal routing
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "artiste-site"
+    }
+  ],
+  
+  // Optional: R2 bucket for incremental cache (uncomment if needed)
+  // "r2_buckets": [
+  //   {
+  //     "binding": "NEXT_INC_CACHE_R2_BUCKET",
+  //     "bucket_name": "artiste-next-cache"
+  //   }
+  // ],
+  
+  // Optional: KV namespace for session storage (uncomment if needed)
+  // "kv_namespaces": [
+  //   {
+  //     "binding": "KV",
+  //     "id": "your-kv-namespace-id"
+  //   }
+  // ],
+  
+  // Optional: D1 database (uncomment if needed)
+  // "d1_databases": [
+  //   {
+  //     "binding": "DB",
+  //     "database_name": "artiste-db",
+  //     "database_id": "your-database-id"
+  //   }
+  // ],
+  
+  // Optional: AI binding (uncomment if needed)
+  // "ai": {
+  //   "binding": "AI"
+  // },
+  
+  // Optional: Analytics Engine (uncomment if needed)
+  // "analytics_engine_datasets": [
+  //   {
+  //     "binding": "ANALYTICS"
+  //   }
+  // ],
+  
+  // Environment variables (use wrangler secret for sensitive data)
+  "vars": {
+    "ENVIRONMENT": "production"
+  },
+  
+  // Disable metrics for better performance
+  "send_metrics": false,
+  
+  // Observability
+  "observability": {
+    "enabled": true
+  }
+}
