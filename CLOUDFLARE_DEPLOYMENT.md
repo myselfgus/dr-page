@@ -1,184 +1,139 @@
-# Deploying to Cloudflare Workers
+# Deploy para Cloudflare Workers
 
-This project is configured to deploy to Cloudflare Workers using the OpenNext Cloudflare adapter.
+Este projeto está configurado para fazer deploy como um Cloudflare Worker usando o adaptador `@opennextjs/cloudflare` e Next.js 16.
 
-## Prerequisites
+## Pré-requisitos
 
-1. **Cloudflare Account**: Sign up at [cloudflare.com](https://cloudflare.com)
-2. **Wrangler CLI**: Already installed as a dev dependency
-3. **Node.js**: Version 18 or later
+- Node.js 18+ instalado
+- Conta Cloudflare (gratuita ou paga)
+- Wrangler CLI (já incluído como devDependency)
 
-## Setup
+## Configuração Inicial
 
-### 1. Install Dependencies
+### 1. Autenticação
 
-\`\`\`bash
-npm install
-\`\`\`
-
-### 2. Authenticate with Cloudflare
+Faça login na sua conta Cloudflare:
 
 \`\`\`bash
 npx wrangler login
 \`\`\`
 
-This will open a browser window to authenticate with your Cloudflare account.
+### 2. Configuração do Worker
 
-### 3. Configure Your Worker Name (Optional)
+O arquivo `wrangler.jsonc` já está configurado com:
 
-Edit `wrangler.jsonc` and change the `name` field to your desired worker name:
+- **name**: "dr-gustavo-site" (nome do seu Worker)
+- **compatibility_date**: "2025-11-06" (versão do runtime)
+- **nodejs_compat**: Suporte completo ao Node.js runtime
+- **ASSETS**: Configuração automática de assets estáticos
 
-\`\`\`jsonc
-{
-  "name": "your-worker-name"
-}
-\`\`\`
+## Deploy
 
-## Development
-
-### Local Development with Next.js
+### Build e Deploy
 
 \`\`\`bash
-npm run dev
+# Build do Next.js e deploy em um comando
+npm run deploy
 \`\`\`
 
-This runs the standard Next.js development server with Cloudflare context enabled.
+Ou em etapas separadas:
 
-### Preview with Cloudflare Workers Runtime
+\`\`\`bash
+# 1. Build do Next.js
+npm run build
+
+# 2. Build do OpenNext
+npx opennextjs-cloudflare build
+
+# 3. Deploy
+npx wrangler deploy
+\`\`\`
+
+### Preview Local
+
+Para testar localmente antes do deploy:
 
 \`\`\`bash
 npm run preview
 \`\`\`
 
-This builds your app and runs it locally using the actual Cloudflare Workers runtime.
+Isso irá:
+1. Fazer build do Next.js
+2. Fazer build do OpenNext
+3. Iniciar um servidor local simulando o ambiente Cloudflare Workers
 
-## Deployment
+## Estrutura do Projeto
 
-### Deploy to Cloudflare Workers
+Após o build, a estrutura gerada é:
 
-\`\`\`bash
-npm run deploy
+\`\`\`
+.open-next/
+├── worker.js          # Entrypoint do Worker
+├── assets/            # Assets estáticos (imagens, CSS, JS)
+└── ...                # Outros arquivos internos
 \`\`\`
 
-This command will:
-1. Build your Next.js application
-2. Transform it for Cloudflare Workers using OpenNext
-3. Deploy to Cloudflare Workers
+## Scripts Disponíveis
 
-### Upload Only (No Deployment)
-
-\`\`\`bash
-npm run upload
-\`\`\`
-
-Uploads the worker code without deploying (useful for CI/CD pipelines).
-
-## Environment Variables
-
-### Local Development
-
-Add environment variables to `.dev.vars` (already created):
-
-\`\`\`bash
-NEXTJS_ENV=development
-YOUR_API_KEY=your-dev-key
-\`\`\`
-
-### Production
-
-Set production secrets using Wrangler:
-
-\`\`\`bash
-npx wrangler secret put YOUR_API_KEY
-\`\`\`
-
-Or use the Cloudflare dashboard: Workers & Pages → Your Worker → Settings → Variables
-
-## Optional: Advanced Configuration
-
-### Enable R2 Incremental Cache
-
-1. Create an R2 bucket:
-\`\`\`bash
-npx wrangler r2 bucket create artiste-next-cache
-\`\`\`
-
-2. Uncomment the R2 configuration in `wrangler.jsonc`:
-\`\`\`jsonc
-"r2_buckets": [
-  {
-    "binding": "NEXT_INC_CACHE_R2_BUCKET",
-    "bucket_name": "artiste-next-cache"
-  }
-]
-\`\`\`
-
-3. Uncomment the R2 cache in `open-next.config.ts`:
-\`\`\`typescript
-import r2IncrementalCache from '@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache'
-
-export default defineCloudflareConfig({
-  incrementalCache: r2IncrementalCache,
-})
-\`\`\`
-
-### Add KV, D1, or AI Bindings
-
-Uncomment the relevant sections in `wrangler.jsonc` and configure with your resource IDs.
-
-### Generate TypeScript Types for Bindings
-
-\`\`\`bash
-npm run cf-typegen
-\`\`\`
-
-This generates `cloudflare-env.d.ts` with types for your Cloudflare bindings.
-
-## Accessing Cloudflare Resources in Your Code
-
-Use the `getCloudflareContext` API:
-
-\`\`\`typescript
-import { getCloudflareContext } from '@opennextjs/cloudflare'
-
-export async function GET(request: Request) {
-  const { env, cf, ctx } = await getCloudflareContext()
-  
-  // Access bindings
-  // const value = await env.KV.get('key')
-  // const result = await env.DB.prepare('SELECT * FROM users').all()
-  
-  return Response.json({ success: true })
+\`\`\`json
+{
+  "build": "next build",
+  "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+  "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
 }
 \`\`\`
 
+## Domínio Customizado
+
+Após o primeiro deploy, você pode configurar um domínio customizado:
+
+1. Acesse o Cloudflare Dashboard
+2. Vá para Workers & Pages → seu worker
+3. Settings → Triggers → Custom Domains
+4. Adicione seu domínio
+
+## Monitoramento
+
+O projeto tem observability habilitada no `wrangler.jsonc`:
+
+\`\`\`jsonc
+"observability": {
+  "enabled": true
+}
+\`\`\`
+
+Acesse logs e métricas em:
+- Cloudflare Dashboard → Workers & Pages → seu worker → Logs
+
 ## Troubleshooting
 
-### Build Errors
+### Build falha
 
-- Ensure `compatibility_date` in `wrangler.jsonc` is set to 2024-09-23 or later
-- Verify `nodejs_compat` flag is enabled
-- Check that `@opennextjs/cloudflare` is installed
+\`\`\`bash
+# Limpe o cache e tente novamente
+rm -rf .next .open-next
+npm run build
+npm run deploy
+\`\`\`
 
-### Runtime Errors
+### Worker não inicia
 
-- Check Wrangler logs: `npx wrangler tail`
-- Verify environment variables are set correctly
-- Ensure all Node.js APIs you're using are supported by Cloudflare Workers
+Verifique os logs:
 
-## Resources
+\`\`\`bash
+npx wrangler tail dr-gustavo-site
+\`\`\`
+
+### Assets não carregam
+
+Certifique-se de que:
+- O build foi concluído com sucesso
+- A pasta `.open-next/assets` existe
+- O binding ASSETS está configurado no `wrangler.jsonc`
+
+## Recursos
 
 - [OpenNext Cloudflare Documentation](https://opennext.js.org/cloudflare)
 - [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
 - [Wrangler CLI Documentation](https://developers.cloudflare.com/workers/wrangler/)
 - [Next.js Documentation](https://nextjs.org/docs)
-
-## Migration Notes
-
-This project has been migrated from the deprecated `@cloudflare/next-on-pages` to `@opennextjs/cloudflare`, which is the recommended approach as of November 2025.
-
-Key changes:
-- Full Node.js runtime support (not just Edge runtime)
-- Better support for Next.js 15+ features
-- Improved caching and performance
-- Active maintenance and updates
