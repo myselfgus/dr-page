@@ -80,6 +80,6 @@
     "tw-animate-css": "1.3.3",
     "typescript": "^5",
     "vercel": "^39.2.9",
-    "wrangler": "^3.100.0"
+    "wrangler": "^4.46.0"
   }
 }
