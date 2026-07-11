@@ -1,0 +1,6 @@
+allowBuilds:
+  '@tailwindcss/oxide': true
+  esbuild: true
+  rclone.js: false
+  sharp: true
+  workerd: true
