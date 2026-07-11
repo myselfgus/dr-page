@@ -1,6 +1,15 @@
+packages:
+  - "."
+
 allowBuilds:
   '@tailwindcss/oxide': true
   esbuild: true
   rclone.js: false
   sharp: true
   workerd: true
+
+onlyBuiltDependencies:
+  - "@tailwindcss/oxide"
+  - esbuild
+  - sharp
+  - workerd

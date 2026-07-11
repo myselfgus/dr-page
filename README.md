@@ -1,30 +1,21 @@
-# Duplicate of code
+# Dr. Gustavo Mendes — Site
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+Site do Dr. Gustavo Mendes e Silva (Psiquiatra, CRM 218133/SP), em Next.js 16, deployado como Cloudflare Worker (`page-drgustavomendes`) via [OpenNext](https://opennext.js.org/cloudflare).
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/voither/v0-code)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/L3H37JMRthj)
+**Produção:** [https://drgustavomendes.com](https://drgustavomendes.com)
 
-## Overview
+## Desenvolvimento
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+```bash
+pnpm install
+pnpm dev          # dev server local (next dev)
+```
 
-## Deployment
+## Build e deploy
 
-Your project is live at:
+O deploy é automático via Cloudflare Workers Builds a cada push na `main`:
 
-**[https://vercel.com/voither/v0-code](https://vercel.com/voither/v0-code)**
+1. `pnpm run build` — roda `opennextjs-cloudflare build`, gerando `.open-next/worker.js`
+2. `npx wrangler deploy` — publica o worker
 
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.app/chat/L3H37JMRthj](https://v0.app/chat/L3H37JMRthj)**
-
-## How It Works
-
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Deploy manual: `pnpm run deploy`.

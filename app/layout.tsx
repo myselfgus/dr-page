@@ -89,9 +89,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/7315E396-0A53-4FF1-B286-47B174A193BD-8vnsJqfUjIj2p0FCkFmncEujiGGn9v.jpeg",
-        width: 1200,
-        height: 630,
+        url: "https://drgustavomendes.com/og-image.jpeg",
+        width: 4032,
+        height: 4032,
         alt: "Dr. Gustavo Mendes e Silva - Psiquiatra CRM 218133/SP em São José do Rio Preto",
       },
     ],
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     description:
       "Consultas de 2 horas e atendimento domiciliar. Psiquiatria humanizada em São José do Rio Preto.",
     images: [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/7315E396-0A53-4FF1-B286-47B174A193BD-8vnsJqfUjIj2p0FCkFmncEujiGGn9v.jpeg",
+      "https://drgustavomendes.com/og-image.jpeg",
     ],
     creator: "@drgustavomendes",
   },
