@@ -3,7 +3,7 @@
 export function WhatsAppFloat() {
   return (
     <a
-      href="https://wa.me/5511915398330?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+      href="https://wa.me/5511915398330?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20consulta"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-3 rounded-full shadow-lg hover:bg-[#20BA5A] transition-all hover:scale-110 group"

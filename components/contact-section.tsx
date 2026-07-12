@@ -37,7 +37,7 @@ export function ContactSection() {
           <div className="md:hidden space-y-6">
             <div className="space-y-4">
               <a
-                href="https://wa.me/5511915398330?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+                href="https://wa.me/5511915398330?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20consulta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 w-full bg-[#25D366] text-white px-6 py-4 rounded-xl hover:bg-[#20BA5A] transition-colors shadow-lg"
@@ -116,7 +116,7 @@ export function ContactSection() {
                       (11) 91539-8330
                     </a>
                     <a
-                      href="https://wa.me/5511915398330?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+                      href="https://wa.me/5511915398330?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20consulta"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-xs sm:text-sm bg-[#25D366] text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-[#20BA5A] transition-colors"

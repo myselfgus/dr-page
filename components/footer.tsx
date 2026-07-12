@@ -19,7 +19,7 @@ export function Footer() {
               className="inline-flex items-center gap-2 mt-4 text-sm text-[#00c3a5] hover:text-[#00ab91] transition-colors"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.5v-11l7 5.5-7 5.5z" />
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
               </svg>
               Perfil e avaliações na Doctoralia
             </a>
@@ -51,7 +51,7 @@ export function Footer() {
                     (11) 91539-8330
                   </a>
                   <a
-                    href="https://wa.me/5511915398330?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta"
+                    href="https://wa.me/5511915398330?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20consulta"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#25D366] hover:text-[#20BA5A] transition-colors"
