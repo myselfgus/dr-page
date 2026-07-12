@@ -46,11 +46,15 @@ export const metadata: Metadata = {
     template: "%s | Dr. Gustavo Mendes - Psiquiatra em Jundiaí",
   },
   description:
-    "Psiquiatra em Jundiaí, na Clínica Dr. Hegg. Psiquiatria humanizada e atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp ou Doctoralia.",
+    "Psiquiatra em Jundiaí, na Clínica Dr. Hegg. Cuidado humanizado para burnout, ansiedade, pânico e insônia. Atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp ou Doctoralia.",
   keywords: [
     "psiquiatra jundiaí",
     "psiquiatra clínica dr hegg",
     "consulta psiquiátrica humanizada",
+    "burnout jundiaí",
+    "esgotamento profissional",
+    "tratamento síndrome do pânico",
+    "tratamento insônia jundiaí",
     "atendimento domiciliar psiquiatra",
     "narrativas fenomenológicas",
     "psiquiatria humanizada",
@@ -344,6 +348,14 @@ export default function RootLayout({
                 acceptedAnswer: {
                   "@type": "Answer",
                   text: "Você pode agendar pelo WhatsApp (11) 91539-8330, por telefone no mesmo número, pela plataforma Doctoralia ou pelo e-mail contato@drgustavomendes.com. Respondo pessoalmente todas as mensagens.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Quais são as queixas mais comuns que você atende?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "As queixas que mais acompanho em Jundiaí são burnout e esgotamento, ansiedade, medo e pânico, insônia, desesperança e perda de sentido. Você não precisa ter certeza de um diagnóstico para buscar ajuda — o primeiro passo é conversar.",
                 },
               },
               {
