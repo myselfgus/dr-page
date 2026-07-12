@@ -21,7 +21,7 @@ export function AboutSection() {
         <div className="md:hidden space-y-6 mb-12">
           <div className="relative h-[350px]">
             <img
-              src="/images/design-mode/7315E396-0A53-4FF1-B286-47B174A193BD.jpeg"
+              src="/images/dr-gustavo-perfil.jpg"
               alt="Dr. Gustavo Mendes e Silva"
               className="w-full h-full object-cover rounded-sm"
               style={{ boxShadow: "2px 2px 1px rgba(0, 0, 0, 0.15)" }}
@@ -125,7 +125,7 @@ export function AboutSection() {
 
           <div className="relative h-[350px] md:h-[400px] lg:h-[500px]">
             <img
-              src="/images/design-mode/7315E396-0A53-4FF1-B286-47B174A193BD.jpeg"
+              src="/images/dr-gustavo-perfil.jpg"
               alt="Dr. Gustavo Mendes e Silva"
               className="w-full h-full object-cover rounded-sm"
               style={{ boxShadow: "2px 2px 1px rgba(0, 0, 0, 0.15)" }}

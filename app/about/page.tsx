@@ -26,7 +26,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl transform rotate-3" />
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-500">
                   <Image
-                    src="/images/dr-gustavo.png"
+                    src="/images/dr-gustavo-perfil.jpg"
                     alt="Dr. Gustavo Mendes e Silva"
                     width={600}
                     height={600}

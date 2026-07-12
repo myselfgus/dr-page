@@ -42,24 +42,24 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://drgustavomendes.com"),
   title: {
-    default: "Psiquiatra em São José do Rio Preto | Dr. Gustavo Mendes CRM 218133/SP",
-    template: "%s | Dr. Gustavo Mendes - Psiquiatra em São José do Rio Preto",
+    default: "Psiquiatra em Jundiaí | Dr. Gustavo Mendes CRM 218133/SP",
+    template: "%s | Dr. Gustavo Mendes - Psiquiatra em Jundiaí",
   },
   description:
-    "Psiquiatra em São José do Rio Preto. Consultas de 2 horas e atendimento domiciliar para autistas e idosos. Psiquiatria humanizada. Agende pelo WhatsApp.",
+    "Psiquiatra em Jundiaí, na Clínica Dr. Hegg. Consultas de 2 horas e atendimento domiciliar para autistas e idosos. Psiquiatria humanizada. Agende pelo WhatsApp ou Doctoralia.",
   keywords: [
-    "psiquiatra são josé do rio preto",
-    "psiquiatra rio preto",
+    "psiquiatra jundiaí",
+    "psiquiatra clínica dr hegg",
     "consulta psiquiatra 2 horas",
     "atendimento domiciliar psiquiatra",
     "narrativas fenomenológicas",
     "psiquiatria humanizada",
-    "autismo são josé rio preto",
+    "autismo jundiaí",
     "medicina canabinoide",
     "transtornos do sono",
     "dr gustavo mendes",
     "CRM 218133",
-    "psiquiatra particular rio preto",
+    "psiquiatra particular jundiaí",
     "tratamento depressão",
     "tratamento ansiedade",
     "psiquiatra autismo",
@@ -80,29 +80,29 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Psiquiatra em São José do Rio Preto | Dr. Gustavo Mendes CRM 218133/SP",
+    title: "Psiquiatra em Jundiaí | Dr. Gustavo Mendes CRM 218133/SP",
     description:
-      "Consultas de 2 horas e atendimento domiciliar para autistas e idosos. Psiquiatria humanizada em São José do Rio Preto. Agende pelo WhatsApp.",
+      "Consultas de 2 horas e atendimento domiciliar para autistas e idosos. Psiquiatria humanizada em Jundiaí, na Clínica Dr. Hegg. Agende pelo WhatsApp.",
     url: "https://drgustavomendes.com",
     siteName: "Dr. Gustavo Mendes - Psiquiatra",
     locale: "pt_BR",
     type: "website",
     images: [
       {
-        url: "https://drgustavomendes.com/og-image.jpeg",
-        width: 4032,
-        height: 4032,
-        alt: "Dr. Gustavo Mendes e Silva - Psiquiatra CRM 218133/SP em São José do Rio Preto",
+        url: "https://drgustavomendes.com/og-image.jpg",
+        width: 1024,
+        height: 1024,
+        alt: "Dr. Gustavo Mendes e Silva - Psiquiatra CRM 218133/SP em Jundiaí",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Psiquiatra em São José do Rio Preto | Dr. Gustavo Mendes",
+    title: "Psiquiatra em Jundiaí | Dr. Gustavo Mendes",
     description:
-      "Consultas de 2 horas e atendimento domiciliar. Psiquiatria humanizada em São José do Rio Preto.",
+      "Consultas de 2 horas e atendimento domiciliar. Psiquiatria humanizada em Jundiaí, na Clínica Dr. Hegg.",
     images: [
-      "https://drgustavomendes.com/og-image.jpeg",
+      "https://drgustavomendes.com/og-image.jpg",
     ],
     creator: "@drgustavomendes",
   },
@@ -116,9 +116,9 @@ export const metadata: Metadata = {
   classification: "Medical Services - Psychiatry",
   other: {
     "fb:app_id": "SEU_FACEBOOK_APP_ID",
-    "og:phone_number": "+55-17-2110-1228",
+    "og:phone_number": "+55-11-91539-8330",
     "og:email": "contato@drgustavomendes.com",
-    "og:locality": "São José do Rio Preto",
+    "og:locality": "Jundiaí",
     "og:region": "SP",
     "og:country-name": "Brasil",
   },
@@ -135,9 +135,9 @@ export default function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <meta name="geo.region" content="BR-SP" />
-        <meta name="geo.placename" content="São José do Rio Preto" />
-        <meta name="geo.position" content="-20.8197;-49.3794" />
-        <meta name="ICBM" content="-20.8197, -49.3794" />
+        <meta name="geo.placename" content="Jundiaí" />
+        <meta name="geo.position" content="-23.1996;-46.8764" />
+        <meta name="ICBM" content="-23.1996, -46.8764" />
         <meta name="format-detection" content="telephone=yes" />
         <meta name="theme-color" content="#1a1a1a" />
         <meta httpEquiv="content-language" content="pt-BR" />
@@ -196,18 +196,19 @@ export default function RootLayout({
             medicalSpecialty: ["Psychiatry", "Sleep Medicine", "Cannabinoid Medicine"],
             address: {
               "@type": "PostalAddress",
-              streetAddress: "Rua Amadeu Segundo Cherubini, 504",
-              addressLocality: "São José do Rio Preto",
+              streetAddress: "Rua Dr. Hegg, 492 - Vila Arens",
+              addressLocality: "Jundiaí",
               addressRegion: "SP",
-              postalCode: "15091-240",
+              postalCode: "13202-544",
               addressCountry: "BR",
             },
-            telephone: "+55-17-2110-1228",
+            telephone: "+55-11-91539-8330",
             url: "https://drgustavomendes.com",
+            sameAs: ["https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai"],
             priceRange: "$$",
             areaServed: {
               "@type": "City",
-              name: "São José do Rio Preto",
+              name: "Jundiaí",
             },
             availableService: [
               {
@@ -234,24 +235,24 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
             "@id": "https://drgustavomendes.com/#business",
-            name: "Dr. Gustavo Mendes e Silva - Consultório de Psiquiatria",
+            name: "Dr. Gustavo Mendes e Silva - Psiquiatra na Clínica Dr. Hegg",
             image: "https://drgustavomendes.com/og-image.jpg",
             description:
-              "Consultório de psiquiatria humanizada em São José do Rio Preto. Atendimento diferenciado com consultas de 2 horas.",
+              "Consultório de psiquiatria humanizada na Clínica Dr. Hegg, em Jundiaí. Atendimento diferenciado com consultas de 2 horas.",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "Rua Amadeu Segundo Cherubini, 504",
-              addressLocality: "São José do Rio Preto",
+              streetAddress: "Rua Dr. Hegg, 492 - Vila Arens",
+              addressLocality: "Jundiaí",
               addressRegion: "SP",
-              postalCode: "15091-240",
+              postalCode: "13202-544",
               addressCountry: "BR",
             },
             geo: {
               "@type": "GeoCoordinates",
-              latitude: "-20.8197",
-              longitude: "-49.3794",
+              latitude: "-23.1996",
+              longitude: "-46.8764",
             },
-            telephone: "+55-17-2110-1228",
+            telephone: "+55-11-91539-8330",
             url: "https://drgustavomendes.com",
             priceRange: "$$",
             openingHoursSpecification: [
@@ -277,7 +278,7 @@ export default function RootLayout({
             "@id": "https://drgustavomendes.com/#website",
             url: "https://drgustavomendes.com",
             name: "Dr. Gustavo Mendes e Silva - Psiquiatra",
-            description: "Psiquiatria humanizada em São José do Rio Preto",
+            description: "Psiquiatria humanizada em Jundiaí",
             publisher: {
               "@type": "Person",
               name: "Dr. Gustavo Mendes e Silva",
@@ -342,7 +343,7 @@ export default function RootLayout({
                 name: "Você atende em domicílio?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Sim. Ofereço atendimento domiciliar especialmente para pacientes autistas, idosos e aqueles com dificuldades de locomoção. O ambiente familiar permite uma avaliação mais completa e confortável em São José do Rio Preto e região.",
+                  text: "Sim. Ofereço atendimento domiciliar especialmente para pacientes autistas, idosos e aqueles com dificuldades de locomoção. O ambiente familiar permite uma avaliação mais completa e confortável em Jundiaí e região.",
                 },
               },
               {
@@ -350,7 +351,7 @@ export default function RootLayout({
                 name: "Como posso agendar uma consulta?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Você pode agendar pelo WhatsApp (17) 2110-1228, por telefone no mesmo número, ou pelo e-mail contato@drgustavomendes.com. Respondo pessoalmente todas as mensagens.",
+                  text: "Você pode agendar pelo WhatsApp (11) 91539-8330, por telefone no mesmo número, pela plataforma Doctoralia ou pelo e-mail contato@drgustavomendes.com. Respondo pessoalmente todas as mensagens.",
                 },
               },
               {
@@ -366,7 +367,7 @@ export default function RootLayout({
                 name: "Onde fica o consultório?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "O consultório fica na Rua Amadeu Segundo Cherubini, 504 - São José do Rio Preto/SP, CEP 15091-240. Também ofereço atendimento domiciliar na região.",
+                  text: "O consultório fica na Clínica Dr. Hegg - Rua Dr. Hegg, 492, Vila Arens, Jundiaí/SP, CEP 13202-544. Também ofereço atendimento domiciliar na região.",
                 },
               },
               {
