@@ -5,29 +5,24 @@ import { ChevronDown } from 'lucide-react'
 
 const faqs = [
   {
-    question: "Quanto tempo dura a consulta inicial?",
-    answer:
-      "Todas as minhas consultas iniciais têm 2 horas de duração. Esse tempo é essencial para conhecer verdadeiramente cada paciente, compreender sua história completa e construir um plano terapêutico adequado e personalizado.",
-  },
-  {
     question: "Você atende pelo convênio ou é particular?",
     answer:
-      "O atendimento é particular. Isso permite que eu dedique o tempo necessário para cada consulta (2 horas) e ofereça um cuidado verdadeiramente personalizado, sem as limitações impostas pelos convênios.",
-  },
-  {
-    question: "O que são narrativas fenomenológicas?",
-    answer:
-      "São documentos literários personalizados que elaboro após nossas consultas, contando sua história de forma profunda e empática. Funcionam como espelhos que refletem sua experiência vivida, suas lutas, forças e potencial de transformação.",
+      "O atendimento é particular. Isso permite que eu dedique o tempo necessário para cada consulta e ofereça um cuidado verdadeiramente personalizado, sem as limitações impostas pelos convênios.",
   },
   {
     question: "Você atende em domicílio?",
     answer:
-      "Sim. Ofereço atendimento domiciliar especialmente para pacientes autistas, idosos e aqueles com dificuldades de locomoção. O ambiente familiar permite uma avaliação mais completa e confortável em São José do Rio Preto e região.",
+      "Sim. Ofereço atendimento domiciliar especialmente para pacientes autistas, idosos e aqueles com dificuldades de locomoção. O ambiente familiar permite uma avaliação mais completa e confortável em Jundiaí e região.",
   },
   {
     question: "Como posso agendar uma consulta?",
     answer:
-      "Você pode agendar pelo WhatsApp (17) 2110-1228, por telefone no mesmo número, ou pelo e-mail contato@drgustavomendes.com. Respondo pessoalmente todas as mensagens.",
+      "Você pode agendar pelo WhatsApp (11) 91539-8330, por telefone no mesmo número, pela plataforma Doctoralia ou pelo e-mail contato@drgustavomendes.com. Respondo pessoalmente todas as mensagens.",
+  },
+  {
+    question: "Quais são as queixas mais comuns que você atende?",
+    answer:
+      "As queixas que mais acompanho em Jundiaí são burnout e esgotamento, ansiedade, medo e pânico, insônia, desesperança e perda de sentido. Você não precisa ter certeza de um diagnóstico para buscar ajuda — o primeiro passo é conversar.",
   },
   {
     question: "Qual é a sua especialização?",
@@ -37,12 +32,12 @@ const faqs = [
   {
     question: "Onde fica o consultório?",
     answer:
-      "O consultório fica na Rua Amadeu Segundo Cherubini, 504 - São José do Rio Preto/SP, CEP 15091-240. Também ofereço atendimento domiciliar na região.",
+      "O consultório fica na Clínica Dr. Hegg - Rua Dr. Hegg, 492, Vila Arens, Jundiaí/SP, CEP 13202-544. Também ofereço atendimento domiciliar na região.",
   },
   {
     question: "Qual é o diferencial do seu atendimento?",
     answer:
-      "O principal diferencial é o tempo de qualidade: consultas de 2 horas, narrativas fenomenológicas personalizadas, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
+      "O principal diferencial é o tempo de qualidade: consultas sem pressa, escuta atenta, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
   },
 ]
 
@@ -102,7 +97,7 @@ export function FAQSection() {
             <p className="text-sm md:text-base text-muted-foreground mb-4">Ainda tem dúvidas?</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://wa.me/5517211012288"
+                href="https://wa.me/5511915398330"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-sm hover:bg-primary/90 transition-colors text-sm font-medium"
@@ -110,10 +105,18 @@ export function FAQSection() {
                 Fale pelo WhatsApp
               </a>
               <a
-                href="tel:+5517211012288"
+                href="tel:+5511915398330"
                 className="inline-flex items-center justify-center px-6 py-3 border border-border rounded-sm hover:bg-muted/30 transition-colors text-sm font-medium"
               >
-                Ligar: (17) 2110-1228
+                Ligar: (11) 91539-8330
+              </a>
+              <a
+                href="https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#00c3a5] text-white rounded-sm hover:bg-[#00ab91] transition-colors text-sm font-medium"
+              >
+                Agendar pela Doctoralia
               </a>
             </div>
           </div>

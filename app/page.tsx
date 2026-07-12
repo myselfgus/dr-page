@@ -1,5 +1,6 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
+import { SymptomsSection } from "@/components/symptoms-section"
 import { WhatIsMentalHealth } from "@/components/what-is-art"
 import { AboutSection } from "@/components/about-section"
 import { ConditionsTreated } from "@/components/art-types"
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <Hero />
+      <SymptomsSection />
       <WhatIsMentalHealth />
       <AboutSection />
       <ConditionsTreated />
