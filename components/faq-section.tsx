@@ -5,14 +5,9 @@ import { ChevronDown } from 'lucide-react'
 
 const faqs = [
   {
-    question: "Quanto tempo dura a consulta inicial?",
-    answer:
-      "Todas as minhas consultas iniciais têm 2 horas de duração. Esse tempo é essencial para conhecer verdadeiramente cada paciente, compreender sua história completa e construir um plano terapêutico adequado e personalizado.",
-  },
-  {
     question: "Você atende pelo convênio ou é particular?",
     answer:
-      "O atendimento é particular. Isso permite que eu dedique o tempo necessário para cada consulta (2 horas) e ofereça um cuidado verdadeiramente personalizado, sem as limitações impostas pelos convênios.",
+      "O atendimento é particular. Isso permite que eu dedique o tempo necessário para cada consulta e ofereça um cuidado verdadeiramente personalizado, sem as limitações impostas pelos convênios.",
   },
   {
     question: "O que são narrativas fenomenológicas?",
@@ -42,7 +37,7 @@ const faqs = [
   {
     question: "Qual é o diferencial do seu atendimento?",
     answer:
-      "O principal diferencial é o tempo de qualidade: consultas de 2 horas, narrativas fenomenológicas personalizadas, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
+      "O principal diferencial é o tempo de qualidade: consultas sem pressa, narrativas fenomenológicas personalizadas, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
   },
 ]
 

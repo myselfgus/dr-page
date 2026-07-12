@@ -51,9 +51,8 @@ export function AboutSection() {
                   <strong className="font-semibold">narrativa complexa</strong> que merece ser ouvida integralmente.
                 </p>
                 <p className="text-sm leading-relaxed">
-                  Minhas consultas iniciais têm sempre <strong className="font-semibold">2 horas de duração</strong>.
-                  Não é possível conhecer verdadeiramente uma pessoa, compreender sua história e construir um plano
-                  terapêutico adequado em 30 minutos.
+                  Dedico a cada consulta <strong className="font-semibold">o tempo necessário</strong> para conhecer
+                  verdadeiramente cada pessoa, compreender sua história e construir um plano terapêutico adequado.
                 </p>
                 <p className="text-sm leading-relaxed">
                   Especializado em{" "}
@@ -100,9 +99,8 @@ export function AboutSection() {
               <strong className="font-semibold">narrativa complexa</strong> que merece ser ouvida integralmente.
             </p>
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-              Minhas consultas iniciais têm sempre <strong className="font-semibold">2 horas de duração</strong>. Não é
-              possível conhecer verdadeiramente uma pessoa, compreender sua história e construir um plano terapêutico
-              adequado em 30 minutos.
+              Dedico a cada consulta <strong className="font-semibold">o tempo necessário</strong> para conhecer
+              verdadeiramente cada pessoa, compreender sua história e construir um plano terapêutico adequado.
             </p>
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
               Especializado em{" "}

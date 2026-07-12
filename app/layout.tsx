@@ -46,11 +46,11 @@ export const metadata: Metadata = {
     template: "%s | Dr. Gustavo Mendes - Psiquiatra em Jundiaí",
   },
   description:
-    "Psiquiatra em Jundiaí, na Clínica Dr. Hegg. Consultas de 2 horas e atendimento domiciliar para autistas e idosos. Psiquiatria humanizada. Agende pelo WhatsApp ou Doctoralia.",
+    "Psiquiatra em Jundiaí, na Clínica Dr. Hegg. Psiquiatria humanizada e atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp ou Doctoralia.",
   keywords: [
     "psiquiatra jundiaí",
     "psiquiatra clínica dr hegg",
-    "consulta psiquiatra 2 horas",
+    "consulta psiquiátrica humanizada",
     "atendimento domiciliar psiquiatra",
     "narrativas fenomenológicas",
     "psiquiatria humanizada",
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Psiquiatra em Jundiaí | Dr. Gustavo Mendes CRM 218133/SP",
     description:
-      "Consultas de 2 horas e atendimento domiciliar para autistas e idosos. Psiquiatria humanizada em Jundiaí, na Clínica Dr. Hegg. Agende pelo WhatsApp.",
+      "Psiquiatria humanizada e atendimento domiciliar para autistas e idosos em Jundiaí, na Clínica Dr. Hegg. Agende pelo WhatsApp.",
     url: "https://drgustavomendes.com",
     siteName: "Dr. Gustavo Mendes - Psiquiatra",
     locale: "pt_BR",
@@ -100,7 +100,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Psiquiatra em Jundiaí | Dr. Gustavo Mendes",
     description:
-      "Consultas de 2 horas e atendimento domiciliar. Psiquiatria humanizada em Jundiaí, na Clínica Dr. Hegg.",
+      "Psiquiatria humanizada e atendimento domiciliar em Jundiaí, na Clínica Dr. Hegg.",
     images: [
       "https://drgustavomendes.com/og-image.jpg",
     ],
@@ -192,7 +192,7 @@ export default function RootLayout({
             name: "Dr. Gustavo Mendes e Silva",
             image: "https://drgustavomendes.com/og-image.jpg",
             description:
-              "Psiquiatra CRM 218133/SP. Consultas de 2 horas, atendimento domiciliar para autistas e idosos, narrativas fenomenológicas personalizadas.",
+              "Psiquiatra CRM 218133/SP. Psiquiatria humanizada, atendimento domiciliar para autistas e idosos, narrativas fenomenológicas personalizadas.",
             medicalSpecialty: ["Psychiatry", "Sleep Medicine", "Cannabinoid Medicine"],
             address: {
               "@type": "PostalAddress",
@@ -213,8 +213,8 @@ export default function RootLayout({
             availableService: [
               {
                 "@type": "MedicalProcedure",
-                name: "Consulta Psiquiátrica Estendida",
-                description: "Consultas de 2 horas para avaliação completa",
+                name: "Consulta Psiquiátrica",
+                description: "Avaliação completa e humanizada",
               },
               {
                 "@type": "MedicalProcedure",
@@ -238,7 +238,7 @@ export default function RootLayout({
             name: "Dr. Gustavo Mendes e Silva - Psiquiatra na Clínica Dr. Hegg",
             image: "https://drgustavomendes.com/og-image.jpg",
             description:
-              "Consultório de psiquiatria humanizada na Clínica Dr. Hegg, em Jundiaí. Atendimento diferenciado com consultas de 2 horas.",
+              "Consultório de psiquiatria humanizada na Clínica Dr. Hegg, em Jundiaí. Atendimento diferenciado com escuta atenta.",
             address: {
               "@type": "PostalAddress",
               streetAddress: "Rua Dr. Hegg, 492 - Vila Arens",
@@ -316,18 +316,10 @@ export default function RootLayout({
             mainEntity: [
               {
                 "@type": "Question",
-                name: "Quanto tempo dura a consulta inicial?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Todas as minhas consultas iniciais têm 2 horas de duração. Esse tempo é essencial para conhecer verdadeiramente cada paciente, compreender sua história completa e construir um plano terapêutico adequado e personalizado.",
-                },
-              },
-              {
-                "@type": "Question",
                 name: "Você atende pelo convênio ou é particular?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "O atendimento é particular. Isso permite que eu dedique o tempo necessário para cada consulta (2 horas) e ofereça um cuidado verdadeiramente personalizado, sem as limitações impostas pelos convênios.",
+                  text: "O atendimento é particular. Isso permite que eu dedique o tempo necessário para cada consulta e ofereça um cuidado verdadeiramente personalizado, sem as limitações impostas pelos convênios.",
                 },
               },
               {
@@ -375,7 +367,7 @@ export default function RootLayout({
                 name: "Qual é o diferencial do seu atendimento?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "O principal diferencial é o tempo de qualidade: consultas de 2 horas, narrativas fenomenológicas personalizadas, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
+                  text: "O principal diferencial é o tempo de qualidade: consultas sem pressa, narrativas fenomenológicas personalizadas, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
                 },
               },
             ],

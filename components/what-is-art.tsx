@@ -94,7 +94,7 @@ export function WhatIsMentalHealth() {
                   O Que Isso Exige
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-3">
-                  Eu poderia dizer que são as 2 horas de consulta, que é meu currículo, que são minhas
+                  Eu poderia dizer que é o tempo dedicado a cada consulta, que é meu currículo, que são minhas
                   especializações... mas nada disso faria sentido se a forma com a qual eu vejo o outro não fosse tão
                   diferente.
                 </p>

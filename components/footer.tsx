@@ -9,8 +9,7 @@ export function Footer() {
             <h3 className="font-serif text-2xl font-light mb-4">Dr. Gustavo Mendes e Silva</h3>
             <p className="text-sm text-muted-foreground mb-2">CRM 218133/SP</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Psiquiatria humanizada com consultas de 2 horas, atendimento domiciliar e narrativas fenomenológicas
-              personalizadas.
+              Psiquiatria humanizada com atendimento domiciliar e narrativas fenomenológicas personalizadas.
             </p>
             <a
               href="https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai"
