@@ -10,11 +10,6 @@ const faqs = [
       "O atendimento é particular. Isso permite que eu dedique o tempo necessário para cada consulta e ofereça um cuidado verdadeiramente personalizado, sem as limitações impostas pelos convênios.",
   },
   {
-    question: "O que são narrativas fenomenológicas?",
-    answer:
-      "São documentos literários personalizados que elaboro após nossas consultas, contando sua história de forma profunda e empática. Funcionam como espelhos que refletem sua experiência vivida, suas lutas, forças e potencial de transformação.",
-  },
-  {
     question: "Você atende em domicílio?",
     answer:
       "Sim. Ofereço atendimento domiciliar especialmente para pacientes autistas, idosos e aqueles com dificuldades de locomoção. O ambiente familiar permite uma avaliação mais completa e confortável em Jundiaí e região.",
@@ -42,7 +37,7 @@ const faqs = [
   {
     question: "Qual é o diferencial do seu atendimento?",
     answer:
-      "O principal diferencial é o tempo de qualidade: consultas sem pressa, narrativas fenomenológicas personalizadas, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
+      "O principal diferencial é o tempo de qualidade: consultas sem pressa, escuta atenta, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
   },
 ]
 

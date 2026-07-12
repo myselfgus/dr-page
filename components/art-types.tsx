@@ -16,8 +16,8 @@ const philosophyPrinciples = [
   {
     name: "Valorização da História do Paciente",
     description:
-      "Sua história merece ser contada e compreendida em sua totalidade. Criamos documentos que refletem sua experiência vivida de forma profunda e empática.",
-    focus: "Compreensão existencial, validação da experiência, reflexão narrativa",
+      "Sua história merece ser ouvida e compreendida em sua totalidade. O que você sente ganha sentido quando entendido dentro do seu contexto de vida.",
+    focus: "Compreensão do contexto, validação da experiência, escuta atenta",
   },
   {
     name: "Cuidado Orientado aos Valores Pessoais do Paciente",

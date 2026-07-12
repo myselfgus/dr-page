@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     "tratamento síndrome do pânico",
     "tratamento insônia jundiaí",
     "atendimento domiciliar psiquiatra",
-    "narrativas fenomenológicas",
+    "escuta atenta",
     "psiquiatria humanizada",
     "autismo jundiaí",
     "medicina canabinoide",
@@ -196,7 +196,7 @@ export default function RootLayout({
             name: "Dr. Gustavo Mendes e Silva",
             image: "https://drgustavomendes.com/og-image.jpg",
             description:
-              "Psiquiatra CRM 218133/SP. Psiquiatria humanizada, atendimento domiciliar para autistas e idosos, narrativas fenomenológicas personalizadas.",
+              "Psiquiatra CRM 218133/SP. Psiquiatria humanizada, com escuta atenta e atendimento domiciliar para autistas e idosos.",
             medicalSpecialty: ["Psychiatry", "Sleep Medicine", "Cannabinoid Medicine"],
             address: {
               "@type": "PostalAddress",
@@ -224,11 +224,6 @@ export default function RootLayout({
                 "@type": "MedicalProcedure",
                 name: "Atendimento Domiciliar",
                 description: "Atendimento em domicílio para autistas e idosos",
-              },
-              {
-                "@type": "MedicalProcedure",
-                name: "Narrativas Fenomenológicas",
-                description: "Abordagem personalizada e humanizada",
               },
             ],
           })}
@@ -328,14 +323,6 @@ export default function RootLayout({
               },
               {
                 "@type": "Question",
-                name: "O que são narrativas fenomenológicas?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "São documentos literários personalizados que elaboro após nossas consultas, contando sua história de forma profunda e empática. Funcionam como espelhos que refletem sua experiência vivida, suas lutas, forças e potencial de transformação.",
-                },
-              },
-              {
-                "@type": "Question",
                 name: "Você atende em domicílio?",
                 acceptedAnswer: {
                   "@type": "Answer",
@@ -379,7 +366,7 @@ export default function RootLayout({
                 name: "Qual é o diferencial do seu atendimento?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "O principal diferencial é o tempo de qualidade: consultas sem pressa, narrativas fenomenológicas personalizadas, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
+                  text: "O principal diferencial é o tempo de qualidade: consultas sem pressa, escuta atenta, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
                 },
               },
             ],
