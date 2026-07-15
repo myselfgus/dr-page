@@ -1,8 +1,11 @@
 import type { MetadataRoute } from "next"
-import { blogPosts } from "@/lib/blog-posts"
 
 const BASE_URL = "https://drgustavomendes.com"
 
+// NOTE: Blog posts now live in Cloudflare D1, which is NOT available during
+// `next build`. To keep the build green and avoid querying D1 at build time,
+// the sitemap only emits static routes (including the /blog index). Individual
+// post URLs are discoverable via the /blog listing and are indexed from there.
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE_URL, changeFrequency: "monthly", priority: 1 },
@@ -13,12 +16,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.8 },
   ]
 
-  const posts: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "yearly",
-    priority: 0.6,
-  }))
-
-  return [...staticPages, ...posts]
+  return staticPages
 }

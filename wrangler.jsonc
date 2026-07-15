@@ -13,6 +13,15 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+
+  // D1 database for blog posts
+  "d1_databases": [
+    {
+      "binding": "dr_blog",
+      "database_name": "dr-blog",
+      "database_id": "3435a1ad-b8f4-4652-bc7c-729071bd2cd4"
+    }
+  ],
   
   // Disable metrics for better performance
   "send_metrics": false,

@@ -3,6 +3,7 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import ReactMarkdown, { type Components } from "react-markdown"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, Clock, Calendar } from "lucide-react"
 
@@ -16,161 +17,106 @@ interface BlogPostPageProps {
   }>
 }
 
+// Maps every markdown element to the exact same Tailwind classes the site used
+// when articles were rendered from the old hand-rolled parser. This keeps the
+// typography, spacing and colors byte-for-byte identical while now supporting
+// full, real markdown (links, ordered lists, nested emphasis, citations, etc.).
+const markdownComponents: Components = {
+  h1: ({ children }) => (
+    <h2 className="font-serif text-3xl sm:text-4xl font-light mt-16 mb-6 pt-8 border-t border-border text-balance leading-tight">
+      {children}
+    </h2>
+  ),
+  h2: ({ children }) => (
+    <h2 className="font-serif text-3xl sm:text-4xl font-light mt-16 mb-6 pt-8 border-t border-border text-balance leading-tight">
+      {children}
+    </h2>
+  ),
+  h3: ({ children }) => (
+    <h3 className="font-serif text-2xl sm:text-3xl font-medium mt-12 mb-5 text-balance leading-snug">{children}</h3>
+  ),
+  h4: ({ children }) => (
+    <h4 className="font-serif text-xl sm:text-2xl font-medium mt-10 mb-4 text-balance leading-snug">{children}</h4>
+  ),
+  p: ({ children }) => (
+    <p className="mb-6 leading-relaxed text-base sm:text-lg text-foreground/90">{children}</p>
+  ),
+  ul: ({ children }) => <ul className="my-6 space-y-2 list-disc pl-6">{children}</ul>,
+  ol: ({ children }) => <ol className="my-6 space-y-2 list-decimal pl-6">{children}</ol>,
+  li: ({ children }) => <li className="mb-3 leading-relaxed">{children}</li>,
+  blockquote: ({ children }) => (
+    <blockquote className="border-l-4 border-muted-foreground/40 pl-6 py-4 my-8 italic text-muted-foreground bg-muted/20 rounded-r text-base sm:text-lg leading-relaxed">
+      {children}
+    </blockquote>
+  ),
+  strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
+  em: ({ children }) => <em className="italic">{children}</em>,
+  a: ({ href, children }) => (
+    <a
+      href={href}
+      className="underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground transition-colors"
+      target={href?.startsWith("http") ? "_blank" : undefined}
+      rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+    >
+      {children}
+    </a>
+  ),
+  // Horizontal rule renders the same pattern divider used before.
+  hr: () => (
+    <div className="my-16 relative">
+      <div
+        className="h-24 opacity-5"
+        style={{
+          backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px)`,
+        }}
+      />
+    </div>
+  ),
+}
+
+function Markdown({ children }: { children: string }) {
+  return <ReactMarkdown components={markdownComponents}>{children}</ReactMarkdown>
+}
+
+// Split a markdown body into sections on standalone `---` separators, matching
+// the old `content.split("---")` behavior for `section-overlay` posts.
+function splitSections(content: string): string[] {
+  return content.split(/\n[ \t]*-{3,}[ \t]*\n/)
+}
+
 function parseContent(content: string) {
-  const lines = content.split("\n")
-  const elements: React.ReactNode[] = []
-  let key = 0
-
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i]
-
-    // Skip empty lines
-    if (line.trim() === "") {
-      continue
-    }
-
-    // Horizontal rule - Adicionando pattern divider para dar respiro visual
-    if (line.trim() === "---") {
-      elements.push(
-        <div key={key++} className="my-16 relative">
-          <div
-            className="h-24 opacity-5"
-            style={{
-              backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px)`,
-            }}
-          />
-        </div>,
-      )
-      continue
-    }
-
-    // H2
-    if (line.startsWith("## ")) {
-      elements.push(
-        <h2
-          key={key++}
-          className="font-serif text-3xl sm:text-4xl font-light mt-16 mb-6 pt-8 border-t border-border text-balance leading-tight"
-        >
-          {line.replace("## ", "")}
-        </h2>,
-      )
-      continue
-    }
-
-    // H3
-    if (line.startsWith("### ")) {
-      elements.push(
-        <h3 key={key++} className="font-serif text-2xl sm:text-3xl font-medium mt-12 mb-5 text-balance leading-snug">
-          {line.replace("### ", "")}
-        </h3>,
-      )
-      continue
-    }
-
-    // H4
-    if (line.startsWith("#### ")) {
-      elements.push(
-        <h4 key={key++} className="font-serif text-xl sm:text-2xl font-medium mt-10 mb-4 text-balance leading-snug">
-          {line.replace("#### ", "")}
-        </h4>,
-      )
-      continue
-    }
-
-    // Blockquote
-    if (line.startsWith("> ")) {
-      elements.push(
-        <blockquote
-          key={key++}
-          className="border-l-4 border-muted-foreground/40 pl-6 py-4 my-8 italic text-muted-foreground bg-muted/20 rounded-r text-base sm:text-lg leading-relaxed"
-        >
-          {line.replace("> ", "")}
-        </blockquote>,
-      )
-      continue
-    }
-
-    // List items
-    if (line.startsWith("- ")) {
-      const listItems = []
-      while (i < lines.length && lines[i].startsWith("- ")) {
-        const text = lines[i].replace("- ", "")
-        // Parse bold text within list items
-        const parts = text.split("**")
-        const content = parts.map((part, idx) => (idx % 2 === 1 ? <strong key={idx}>{part}</strong> : part))
-        listItems.push(
-          <li key={key++} className="mb-3 leading-relaxed">
-            {content}
-          </li>,
-        )
-        i++
-      }
-      i-- // Adjust for the outer loop increment
-      elements.push(
-        <ul key={key++} className="my-6 space-y-2 list-disc pl-6">
-          {listItems}
-        </ul>,
-      )
-      continue
-    }
-
-    // Regular paragraph with bold and italic support
-    const parts = line.split(/(\*\*.*?\*\*|\*.*?\*)/g)
-    const content = parts.map((part, idx) => {
-      if (part.startsWith("**") && part.endsWith("**")) {
-        return (
-          <strong key={idx} className="font-semibold text-foreground">
-            {part.slice(2, -2)}
-          </strong>
-        )
-      }
-      if (part.startsWith("*") && part.endsWith("*")) {
-        return (
-          <em key={idx} className="italic">
-            {part.slice(1, -1)}
-          </em>
-        )
-      }
-      return part
-    })
-
-    elements.push(
-      <p key={key++} className="mb-6 leading-relaxed text-base sm:text-lg text-foreground/90">
-        {content}
-      </p>,
-    )
-  }
-
-  return elements
+  return <Markdown>{content}</Markdown>
 }
 
 function parseContentWithOverlay(content: string) {
-  const sections = content.split("---")
-  const elements: React.ReactNode[] = []
-  let key = 0
+  const sections = splitSections(content)
 
-  sections.forEach((section, index) => {
-    // Every other major section gets pattern overlay
+  return sections.map((section, index) => {
+    // Every other major section gets the pattern overlay.
     const hasOverlay = index % 2 === 1 && index > 0
 
     if (hasOverlay) {
-      elements.push(
-        <div key={`section-${key++}`} className="relative my-16 -mx-4 lg:-mx-8 px-4 lg:px-8 py-12">
+      return (
+        <div key={`section-${index}`} className="relative my-16 -mx-4 lg:-mx-8 px-4 lg:px-8 py-12">
           <div
             className="absolute inset-0 opacity-5"
             style={{
               backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px)`,
             }}
           />
-          <div className="relative z-10">{parseContent(section)}</div>
-        </div>,
+          <div className="relative z-10">
+            <Markdown>{section}</Markdown>
+          </div>
+        </div>
       )
-    } else {
-      elements.push(<div key={`section-${key++}`}>{parseContent(section)}</div>)
     }
-  })
 
-  return elements
+    return (
+      <div key={`section-${index}`}>
+        <Markdown>{section}</Markdown>
+      </div>
+    )
+  })
 }
 
 function BlogPostContent({ post }: { post: any }) {
