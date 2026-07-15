@@ -7,186 +7,151 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { MapPin, Phone, Mail } from "lucide-react"
+import { WhatsAppIcon, StarIcon } from "@/components/blocks/cta-button"
+import { type ContactConfig, DEFAULT_CONTACT, resolveCta } from "@/lib/site-config"
 
-export function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
+export interface ContactContent {
+  title: string
+  subtitle: string
+}
 
+export interface ContactDesign {
+  id?: string
+  variant?: "home" | "page"
+  showForm?: boolean
+  showMap?: boolean
+}
+
+export const DEFAULT_CONTENT: ContactContent = {
+  title: "Agende Sua Consulta",
+  subtitle:
+    "Dar o primeiro passo em direção a uma melhor saúde mental começa aqui. Entre em contato para agendar uma consulta ou saber mais sobre nossos serviços.",
+}
+
+export const DEFAULT_DESIGN: ContactDesign = {
+  id: "contact",
+  variant: "home",
+  showForm: true,
+  showMap: true,
+}
+
+export function ContactSection({
+  content = DEFAULT_CONTENT,
+  design = DEFAULT_DESIGN,
+  contact = DEFAULT_CONTACT,
+}: {
+  content?: ContactContent
+  design?: ContactDesign
+  contact?: ContactConfig
+}) {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
+
+  // Form nunca transmite dados de saúde (LGPD): só console.log. Prefira WhatsApp.
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log("Form submitted:", formData)
   }
 
+  const wa = resolveCta({ kind: "whatsapp", label: "Chamar no WhatsApp" }, contact)
+  const showForm = design.showForm !== false
+  const showMap = design.showMap !== false
+  const addr = contact.address
+
   return (
-    <section id="contact" className="py-16 lg:py-24">
+    <section id={design.id ?? "contact"} className="py-16 lg:py-24">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 text-balance">
-              Agende Sua Consulta
+              {content.title}
             </h2>
-            <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
-              Dar o primeiro passo em direção a uma melhor saúde mental começa aqui. Entre em contato para agendar uma
-              consulta ou saber mais sobre nossos serviços.
-            </p>
+            <p className="text-muted-foreground text-sm sm:text-base md:text-lg">{content.subtitle}</p>
           </div>
 
-          <div className="md:hidden space-y-6">
-            <div className="space-y-4">
-              <a
-                href="https://wa.me/5511915398330?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20consulta"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 w-full bg-[#25D366] text-white px-6 py-4 rounded-xl hover:bg-[#20BA5A] transition-colors shadow-lg"
-              >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                </svg>
-                <span className="font-medium text-lg">Chamar no WhatsApp</span>
-              </a>
-
-              <a
-                href="tel:+5511915398330"
-                className="flex items-center justify-center gap-3 w-full bg-foreground text-background px-6 py-4 rounded-xl hover:bg-foreground/90 transition-colors shadow-lg"
-              >
-                <Phone className="w-5 h-5" />
-                <span className="font-medium text-lg">(11) 91539-8330</span>
-              </a>
-
-              <a
-                href="https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full text-sm text-[#00c3a5] hover:text-[#00ab91] transition-colors pt-1"
-              >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                </svg>
-                Ver avaliações na Doctoralia
-              </a>
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="bg-card border border-border rounded-2xl p-6 shadow-card">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-foreground/5 rounded-xl">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-light mb-2 text-balance">
+                    Telefone / WhatsApp
+                  </h3>
+                  <a
+                    href={`tel:${contact.phoneTel}`}
+                    className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors block mb-3"
+                  >
+                    {contact.phoneDisplay}
+                  </a>
+                  <a
+                    href={wa.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm bg-[#25D366] text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-[#20BA5A] transition-colors"
+                  >
+                    <WhatsAppIcon className="w-4 h-4" />
+                    Chamar no WhatsApp
+                  </a>
+                  <a
+                    href={contact.doctoralia}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm text-[#00c3a5] hover:text-[#00ab91] transition-colors ml-0 sm:ml-3 mt-2 sm:mt-0"
+                  >
+                    <StarIcon />
+                    Ver avaliações na Doctoralia
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-[4px_2px_2px_rgba(0,0,0,0.05)]">
+            <div className="bg-card border border-border rounded-2xl p-6 shadow-card">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-foreground/5 rounded-xl">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-light mb-2 text-balance">
+                    E-mail
+                  </h3>
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors break-all"
+                  >
+                    {contact.email}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-12">
+            <div className="bg-card border border-border rounded-2xl p-6 shadow-card">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-foreground/5 rounded-xl">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg font-light mb-2 text-balance">Jundiaí</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Clínica Dr. Hegg
+                  <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-light mb-2 text-balance">
+                    {addr.locality}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    {addr.clinic}
                     <br />
-                    Rua Dr. Hegg, 492 - Vila Arens
+                    {addr.street}
                     <br />
-                    Jundiaí, SP - CEP 13202-544
+                    {addr.cityLine}
                   </p>
                 </div>
               </div>
             </div>
-
-            <div className="rounded-2xl overflow-hidden border border-border shadow-[4px_2px_2px_rgba(0,0,0,0.05)]">
-              <iframe
-                src="https://www.google.com/maps?q=Cl%C3%ADnica%20Doutor%20Hegg%2C%20Rua%20Dr.%20Hegg%2C%20492%20-%20Vila%20Arens%2C%20Jundia%C3%AD%20-%20SP%2C%2013202-544&hl=pt-BR&z=16&output=embed"
-                width="100%"
-                height="300"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Localização da Clínica"
-              />
-            </div>
           </div>
 
-          <div className="hidden md:block">
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
-              <div className="bg-card border border-border rounded-2xl p-6 shadow-[4px_2px_2px_rgba(0,0,0,0.05)]">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-foreground/5 rounded-xl">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-light mb-2 text-balance">
-                      Telefone / WhatsApp
-                    </h3>
-                    <a
-                      href="tel:+5511915398330"
-                      className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors block mb-3"
-                    >
-                      (11) 91539-8330
-                    </a>
-                    <a
-                      href="https://wa.me/5511915398330?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20consulta"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs sm:text-sm bg-[#25D366] text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-[#20BA5A] transition-colors"
-                    >
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                      </svg>
-                      Chamar no WhatsApp
-                    </a>
-                    <a
-                      href="https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs sm:text-sm text-[#00c3a5] hover:text-[#00ab91] transition-colors ml-0 sm:ml-3 mt-2 sm:mt-0"
-                    >
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                      </svg>
-                      Ver avaliações na Doctoralia
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-card border border-border rounded-2xl p-6 shadow-[4px_2px_2px_rgba(0,0,0,0.05)]">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-foreground/5 rounded-xl">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-light mb-2 text-balance">E-mail</h3>
-                    <a
-                      href="mailto:contato@drgustavomendes.com"
-                      className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors break-all"
-                    >
-                      contato@drgustavomendes.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mb-12">
-              <div className="bg-card border border-border rounded-2xl p-6 shadow-[4px_2px_2px_rgba(0,0,0,0.05)]">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-foreground/5 rounded-xl">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-light mb-2 text-balance">
-                      Jundiaí
-                    </h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                      Clínica Dr. Hegg
-                      <br />
-                      Rua Dr. Hegg, 492 - Vila Arens
-                      <br />
-                      Jundiaí, SP - CEP 13202-544
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mb-12 rounded-2xl overflow-hidden border border-border shadow-[4px_2px_2px_rgba(0,0,0,0.05)]">
+          {showMap ? (
+            <div className="mb-12 rounded-2xl overflow-hidden border border-border shadow-card">
               <iframe
-                src="https://www.google.com/maps?q=Cl%C3%ADnica%20Doutor%20Hegg%2C%20Rua%20Dr.%20Hegg%2C%20492%20-%20Vila%20Arens%2C%20Jundia%C3%AD%20-%20SP%2C%2013202-544&hl=pt-BR&z=16&output=embed"
+                src={contact.mapEmbed}
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
@@ -196,7 +161,9 @@ export function ContactSection() {
                 title="Localização da Clínica"
               />
             </div>
+          ) : null}
 
+          {showForm ? (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm mb-2">
@@ -245,7 +212,7 @@ export function ContactSection() {
                 Solicitar Consulta
               </Button>
             </form>
-          </div>
+          ) : null}
         </div>
       </div>
     </section>

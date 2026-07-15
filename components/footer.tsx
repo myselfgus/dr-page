@@ -1,25 +1,50 @@
 import { MapPin, Phone, Mail } from "lucide-react"
+import { StarIcon } from "@/components/blocks/cta-button"
+import {
+  type ContactConfig,
+  type NavConfig,
+  type BrandConfig,
+  DEFAULT_CONTACT,
+  DEFAULT_NAV,
+  DEFAULT_BRAND,
+  resolveCta,
+} from "@/lib/site-config"
 
-export function Footer() {
+// Rótulos do rodapé: sem "Blog", e "Domiciliar" vira "Atendimento domiciliar".
+function footerNav(nav: NavConfig) {
+  return nav.items
+    .filter((i) => i.href !== "/blog")
+    .map((i) => (i.href === "/domiciliar" ? { ...i, label: "Atendimento domiciliar" } : i))
+}
+
+export function Footer({
+  contact = DEFAULT_CONTACT,
+  nav = DEFAULT_NAV,
+  brand = DEFAULT_BRAND,
+}: {
+  contact?: ContactConfig
+  nav?: NavConfig
+  brand?: BrandConfig
+}) {
+  const wa = resolveCta({ kind: "whatsapp", label: "WhatsApp" }, contact)
+  const items = footerNav(nav)
+  const addr = contact.address
+
   return (
     <footer className="border-t border-border py-12 lg:py-16">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8">
           <div>
-            <h3 className="font-serif text-2xl font-light mb-4">Dr. Gustavo Mendes e Silva</h3>
-            <p className="text-sm text-muted-foreground mb-2">CRM 218133/SP</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Psiquiatria humanizada, com escuta atenta e atendimento domiciliar quando necessário.
-            </p>
+            <h3 className="font-serif text-2xl font-light mb-4">{brand.name}</h3>
+            <p className="text-sm text-muted-foreground mb-2">{brand.crm}</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">{brand.tagline}</p>
             <a
-              href="https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai"
+              href={contact.doctoralia}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 mt-4 text-sm text-[#00c3a5] hover:text-[#00ab91] transition-colors"
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-              </svg>
+              <StarIcon />
               Perfil e avaliações na Doctoralia
             </a>
           </div>
@@ -27,26 +52,13 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-medium mb-4 tracking-wide">Navegar</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>
-                <a href="/teleconsulta" className="hover:text-foreground transition-colors">
-                  Teleconsulta
-                </a>
-              </li>
-              <li>
-                <a href="/domiciliar" className="hover:text-foreground transition-colors">
-                  Atendimento domiciliar
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="hover:text-foreground transition-colors">
-                  Sobre
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="hover:text-foreground transition-colors">
-                  Contato
-                </a>
-              </li>
+              {items.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href} className="hover:text-foreground transition-colors">
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -56,11 +68,11 @@ export function Footer() {
               <li className="flex items-start gap-2">
                 <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <div className="flex flex-col gap-1">
-                  <a href="tel:+5511915398330" className="hover:text-foreground transition-colors">
-                    (11) 91539-8330
+                  <a href={`tel:${contact.phoneTel}`} className="hover:text-foreground transition-colors">
+                    {contact.phoneDisplay}
                   </a>
                   <a
-                    href="https://wa.me/5511915398330?text=Ol%C3%A1,%20gostaria%20de%20agendar%20uma%20consulta"
+                    href={wa.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#25D366] hover:text-[#20BA5A] transition-colors"
@@ -72,17 +84,17 @@ export function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
                 <span className="leading-relaxed">
-                  Clínica Dr. Hegg
+                  {addr.clinic}
                   <br />
-                  Rua Dr. Hegg, 492 - Vila Arens
+                  {addr.street}
                   <br />
-                  Jundiaí, SP - CEP 13202-544
+                  {addr.cityLine}
                 </span>
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <a href="mailto:contato@drgustavomendes.com" className="hover:text-foreground transition-colors">
-                  contato@drgustavomendes.com
+                <a href={`mailto:${contact.email}`} className="hover:text-foreground transition-colors">
+                  {contact.email}
                 </a>
               </li>
             </ul>
@@ -90,7 +102,9 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p className="mb-1">Dr. Gustavo Mendes e Silva - CRM 218133/SP</p>
+          <p className="mb-1">
+            {brand.name} - {brand.crm}
+          </p>
           <p>© {new Date().getFullYear()} Todos os direitos reservados.</p>
         </div>
       </div>
