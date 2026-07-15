@@ -23,7 +23,7 @@ const forWhom = [
   {
     icon: Users,
     title: "Crianças e adolescentes",
-    text: "O atendimento é sempre feito em dupla — cuidador e criança juntos —, acompanhando quem cuida e quem é cuidado.",
+    text: "O atendimento é sempre feito em binômio — cuidador e criança acompanhados juntos —, cuidando de quem cuida e de quem é cuidado.",
   },
   {
     icon: Home,
@@ -96,14 +96,21 @@ export default function DomiciliarPage() {
                 </ul>
 
                 <div className="border-t border-border pt-6 mb-8">
-                  <p className="text-sm text-muted-foreground mb-1">Valor do atendimento domiciliar</p>
-                  <p className="font-serif text-3xl font-light">R$ 350</p>
-                  <p className="text-sm text-muted-foreground mt-3">
-                    O atendimento de crianças e adolescentes é feito em dupla (cuidador e criança) e tem valor
-                    diferenciado, combinado pelo WhatsApp.
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">Adultos e idosos</p>
+                      <p className="font-serif text-3xl font-light">R$ 350</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">Crianças e adolescentes (binômio)</p>
+                      <p className="font-serif text-3xl font-light">R$ 450</p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-4">
+                    O atendimento de crianças e adolescentes é feito em binômio — cuidador e criança acompanhados juntos.
                   </p>
                   <p className="text-sm text-muted-foreground mt-2">
-                    Para endereços fora de Jundiaí, o deslocamento é combinado previamente.
+                    Para endereços fora de Jundiaí, o deslocamento é combinado previamente pelo WhatsApp.
                   </p>
                 </div>
 

@@ -101,7 +101,7 @@ export default function TeleconsultaPage() {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground mb-1">Retorno</p>
-                    <p className="font-serif text-3xl font-light">R$ 290</p>
+                    <p className="font-serif text-3xl font-light">R$ 250</p>
                   </div>
                 </div>
 
