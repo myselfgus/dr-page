@@ -20,6 +20,13 @@ export default function ContactPage() {
             Dê o primeiro passo em direção a uma melhor saúde mental. Entre em contato com o Dr. Gustavo Mendes e Silva
             para agendar uma consulta ou saber mais sobre os serviços psiquiátricos oferecidos.
           </p>
+          <div className="mt-8 inline-flex flex-col bg-card border border-border rounded-2xl px-6 py-4 shadow-[4px_2px_2px_rgba(0,0,0,0.05)]">
+            <span className="text-sm text-muted-foreground">Consulta particular</span>
+            <span className="font-serif text-2xl font-light">R$ 350 a R$ 500</span>
+            <span className="text-xs text-muted-foreground mt-1">
+              Teleconsulta e atendimento domiciliar também disponíveis.
+            </span>
+          </div>
         </div>
         <ContactSection />
       </div>

@@ -21,6 +21,12 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
+            <Link href="/teleconsulta" className="text-base tracking-wide hover:text-muted-foreground transition-colors">
+              Teleconsulta
+            </Link>
+            <Link href="/domiciliar" className="text-base tracking-wide hover:text-muted-foreground transition-colors">
+              Domiciliar
+            </Link>
             <Link href="/blog" className="text-base tracking-wide hover:text-muted-foreground transition-colors">
               Blog
             </Link>
@@ -42,6 +48,20 @@ export function Header() {
         {isMenuOpen && (
           <nav className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
+              <Link
+                href="/teleconsulta"
+                className="text-base tracking-wide hover:text-muted-foreground transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Teleconsulta
+              </Link>
+              <Link
+                href="/domiciliar"
+                className="text-base tracking-wide hover:text-muted-foreground transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Domiciliar
+              </Link>
               <Link
                 href="/blog"
                 className="text-base tracking-wide hover:text-muted-foreground transition-colors"

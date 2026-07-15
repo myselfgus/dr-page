@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Como posso agendar uma consulta?",
     answer:
-      "Você pode agendar pelo WhatsApp (11) 91539-8330, por telefone no mesmo número, pela plataforma Doctoralia ou pelo e-mail contato@drgustavomendes.com. Respondo pessoalmente todas as mensagens.",
+      "A forma mais rápida é pelo WhatsApp (11) 91539-8330 — respondo pessoalmente a cada mensagem. Se preferir, atendo também por telefone no mesmo número ou por e-mail em contato@drgustavomendes.com.",
   },
   {
     question: "Quais são as queixas mais comuns que você atende?",
@@ -114,9 +114,12 @@ export function FAQSection() {
                 href="https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#00c3a5] text-white rounded-sm hover:bg-[#00ab91] transition-colors text-sm font-medium"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-border rounded-sm hover:bg-muted/30 transition-colors text-sm font-medium text-[#00c3a5]"
               >
-                Agendar pela Doctoralia
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+                Ver avaliações na Doctoralia
               </a>
             </div>
           </div>
