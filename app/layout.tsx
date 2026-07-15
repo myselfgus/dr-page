@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { BackToTop } from "@/components/back-to-top"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
+import { buildDesignTokensCss } from "@/lib/design-tokens"
 import Script from "next/script"
 import { Playfair_Display, Manrope, Roboto_Mono, Inter as V0_Font_Inter, Geist_Mono as V0_Font_Geist_Mono, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
 
@@ -130,11 +131,15 @@ export const metadata: Metadata = {
   generator: 'v0.app'
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // Design como dado: CSS montado do D1 (design_tokens). Vazio em build/sem D1 →
+  // globals.css continua como fallback. Injetado no <head> DEPOIS do globals.css.
+  const designTokensCss = await buildDesignTokensCss()
+
   return (
     <html lang="pt-BR">
       <head>
@@ -146,6 +151,10 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=yes" />
         <meta name="theme-color" content="#1a1a1a" />
         <meta httpEquiv="content-language" content="pt-BR" />
+
+        {designTokensCss ? (
+          <style id="design-tokens" dangerouslySetInnerHTML={{ __html: designTokensCss }} />
+        ) : null}
 
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
@@ -187,208 +196,6 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'AW-XXXXXXXXXX');
           `}
-        </Script>
-
-        <Script id="structured-data-physician" type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Physician",
-            "@id": "https://drgustavomendes.com/#physician",
-            name: "Dr. Gustavo Mendes e Silva",
-            image: "https://drgustavomendes.com/og-image.jpg",
-            description:
-              "Psiquiatra CRM 218133/SP. Psiquiatria humanizada, com escuta atenta e atendimento domiciliar para autistas e idosos.",
-            medicalSpecialty: ["Psychiatry", "Sleep Medicine", "Cannabinoid Medicine"],
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "Rua Dr. Hegg, 492 - Vila Arens",
-              addressLocality: "Jundiaí",
-              addressRegion: "SP",
-              postalCode: "13202-544",
-              addressCountry: "BR",
-            },
-            telephone: "+55-11-91539-8330",
-            url: "https://drgustavomendes.com",
-            sameAs: ["https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai"],
-            priceRange: "$$",
-            areaServed: {
-              "@type": "City",
-              name: "Jundiaí",
-            },
-            availableService: [
-              {
-                "@type": "MedicalProcedure",
-                name: "Consulta Psiquiátrica",
-                description: "Avaliação completa e humanizada",
-              },
-              {
-                "@type": "MedicalProcedure",
-                name: "Teleconsulta Psiquiátrica",
-                description: "Consulta por vídeo, com o mesmo cuidado do atendimento presencial",
-              },
-              {
-                "@type": "MedicalProcedure",
-                name: "Atendimento Domiciliar",
-                description: "Atendimento em domicílio para autistas e idosos",
-              },
-            ],
-            availableChannel: [
-              {
-                "@type": "ServiceChannel",
-                name: "Teleconsulta",
-                serviceUrl: "https://drgustavomendes.com/teleconsulta",
-                availableLanguage: { "@type": "Language", name: "Português" },
-                serviceLocation: {
-                  "@type": "VirtualLocation",
-                  url: "https://drgustavomendes.com/teleconsulta",
-                },
-              },
-            ],
-          })}
-        </Script>
-
-        <Script id="structured-data-local-business" type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "MedicalBusiness",
-            "@id": "https://drgustavomendes.com/#business",
-            name: "Dr. Gustavo Mendes e Silva - Psiquiatra em Jundiaí",
-            image: "https://drgustavomendes.com/og-image.jpg",
-            description:
-              "Psiquiatria humanizada em Jundiaí, com escuta atenta. Consultas presenciais, teleconsulta e atendimento domiciliar.",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "Rua Dr. Hegg, 492 - Vila Arens",
-              addressLocality: "Jundiaí",
-              addressRegion: "SP",
-              postalCode: "13202-544",
-              addressCountry: "BR",
-            },
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: "-23.1996",
-              longitude: "-46.8764",
-            },
-            telephone: "+55-11-91539-8330",
-            url: "https://drgustavomendes.com",
-            priceRange: "$$",
-            openingHoursSpecification: [
-              {
-                "@type": "OpeningHoursSpecification",
-                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                opens: "08:00",
-                closes: "18:00",
-              },
-            ],
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: "5.0",
-              reviewCount: "17",
-            },
-          })}
-        </Script>
-
-        <Script id="structured-data-website" type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "@id": "https://drgustavomendes.com/#website",
-            url: "https://drgustavomendes.com",
-            name: "Dr. Gustavo Mendes e Silva - Psiquiatra",
-            description: "Psiquiatria humanizada em Jundiaí",
-            publisher: {
-              "@type": "Person",
-              name: "Dr. Gustavo Mendes e Silva",
-            },
-            potentialAction: {
-              "@type": "SearchAction",
-              target: {
-                "@type": "EntryPoint",
-                urlTemplate: "https://drgustavomendes.com/?s={search_term_string}",
-              },
-              "query-input": "required name=search_term_string",
-            },
-          })}
-        </Script>
-
-        <Script id="structured-data-breadcrumb" type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Início",
-                item: "https://drgustavomendes.com",
-              },
-            ],
-          })}
-        </Script>
-
-        <Script id="structured-data-faq" type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Você atende pelo convênio ou é particular?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "O atendimento é particular. Isso permite que eu dedique o tempo necessário para cada consulta e ofereça um cuidado verdadeiramente personalizado, sem as limitações impostas pelos convênios.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Você atende em domicílio?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Sim. Ofereço atendimento domiciliar especialmente para pacientes autistas, idosos e aqueles com dificuldades de locomoção. O ambiente familiar permite uma avaliação mais completa e confortável em Jundiaí e região.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Como posso agendar uma consulta?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "A forma mais rápida é pelo WhatsApp (11) 91539-8330 — respondo pessoalmente a cada mensagem. Se preferir, atendo também por telefone no mesmo número ou por e-mail em contato@drgustavomendes.com.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quais são as queixas mais comuns que você atende?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "As queixas que mais acompanho em Jundiaí são burnout e esgotamento, ansiedade, medo e pânico, insônia, desesperança e perda de sentido. Você não precisa ter certeza de um diagnóstico para buscar ajuda — o primeiro passo é conversar.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qual é a sua especialização?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Sou especializado em Psiquiatria, Medicina Canabinoide, Transtornos do Sono, Dependência Química, Terapia ACT e Cuidados Paliativos. CRM 218133/SP.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Onde fica o consultório?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "O consultório fica na Clínica Dr. Hegg - Rua Dr. Hegg, 492, Vila Arens, Jundiaí/SP, CEP 13202-544. Também ofereço atendimento domiciliar na região.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qual é o diferencial do seu atendimento?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "O principal diferencial é o tempo de qualidade: consultas sem pressa, escuta atenta, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
-                },
-              },
-            ],
-          })}
         </Script>
       </head>
       <body
