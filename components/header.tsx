@@ -4,8 +4,15 @@ import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { type NavConfig, type BrandConfig, DEFAULT_NAV, DEFAULT_BRAND } from "@/lib/site-config"
 
-export function Header() {
+export function Header({
+  nav = DEFAULT_NAV,
+  brand = DEFAULT_BRAND,
+}: {
+  nav?: NavConfig
+  brand?: BrandConfig
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
@@ -16,26 +23,20 @@ export function Header() {
             href="/"
             className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-wide text-balance leading-tight"
           >
-            Dr. Gustavo Mendes e Silva
+            {brand.name}
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/teleconsulta" className="text-base tracking-wide hover:text-muted-foreground transition-colors">
-              Teleconsulta
-            </Link>
-            <Link href="/domiciliar" className="text-base tracking-wide hover:text-muted-foreground transition-colors">
-              Domiciliar
-            </Link>
-            <Link href="/blog" className="text-base tracking-wide hover:text-muted-foreground transition-colors">
-              Blog
-            </Link>
-            <Link href="/about" className="text-base tracking-wide hover:text-muted-foreground transition-colors">
-              Sobre
-            </Link>
-            <Link href="/contact" className="text-base tracking-wide hover:text-muted-foreground transition-colors">
-              Contato
-            </Link>
+            {nav.items.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-base tracking-wide hover:text-muted-foreground transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
           {/* Mobile Menu Button */}
@@ -48,41 +49,16 @@ export function Header() {
         {isMenuOpen && (
           <nav className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
-              <Link
-                href="/teleconsulta"
-                className="text-base tracking-wide hover:text-muted-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Teleconsulta
-              </Link>
-              <Link
-                href="/domiciliar"
-                className="text-base tracking-wide hover:text-muted-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Domiciliar
-              </Link>
-              <Link
-                href="/blog"
-                className="text-base tracking-wide hover:text-muted-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Blog
-              </Link>
-              <Link
-                href="/about"
-                className="text-base tracking-wide hover:text-muted-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Sobre
-              </Link>
-              <Link
-                href="/contact"
-                className="text-base tracking-wide hover:text-muted-foreground transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contato
-              </Link>
+              {nav.items.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-base tracking-wide hover:text-muted-foreground transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </nav>
         )}

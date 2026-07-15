@@ -1,25 +1,18 @@
-import { Header } from "@/components/header"
-import { Hero } from "@/components/hero"
-import { SymptomsSection } from "@/components/symptoms-section"
-import { WhatIsMentalHealth } from "@/components/what-is-art"
-import { AboutSection } from "@/components/about-section"
-import { ConditionsTreated } from "@/components/art-types"
-import { FAQSection } from "@/components/faq-section"
-import { ContactSection } from "@/components/contact-section"
-import { Footer } from "@/components/footer"
+import type { Metadata } from "next"
+import { loadPage, loadPageMeta } from "@/lib/load-page"
+import { metadataFromMeta } from "@/lib/structured-data"
+import { PageView } from "@/components/blocks/PageView"
 
-export default function Home() {
-  return (
-    <main className="min-h-screen">
-      <Header />
-      <Hero />
-      <SymptomsSection />
-      <WhatIsMentalHealth />
-      <AboutSection />
-      <ConditionsTreated />
-      <FAQSection />
-      <ContactSection />
-      <Footer />
-    </main>
-  )
+// Conteúdo vem do D1 (blocks published) com fallback total nos dados semeados.
+// force-dynamic para refletir edições do CMS sem rebuild; o build (sem D1) usa o fallback.
+export const dynamic = "force-dynamic"
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { meta } = await loadPageMeta("home")
+  return metadataFromMeta("home", meta)
+}
+
+export default async function Home() {
+  const loaded = await loadPage("home")
+  return <PageView pageId="home" loaded={loaded} />
 }
