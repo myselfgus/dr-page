@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { getCloudflareContext } from "@opennextjs/cloudflare"
 import { loadPage } from "@/lib/load-page"
 import { PageView } from "@/components/blocks/PageView"
 
@@ -23,7 +24,14 @@ export default async function PreviewPage({
   const { page } = await params
   const { token } = await searchParams
 
-  const expected = process.env.PREVIEW_TOKEN
+  // Token via binding do Worker (padrão OpenNext deste projeto), com fallback a process.env.
+  let expected: string | undefined
+  try {
+    const { env } = await getCloudflareContext()
+    expected = (env as unknown as { PREVIEW_TOKEN?: string }).PREVIEW_TOKEN
+  } catch {
+    expected = process.env.PREVIEW_TOKEN
+  }
   // Sem token configurado, ou token divergente → 404 (não vaza a existência da rota).
   if (!expected || token !== expected) {
     notFound()
