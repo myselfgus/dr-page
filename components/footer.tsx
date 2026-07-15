@@ -28,6 +28,16 @@ export function Footer() {
             <h4 className="text-sm font-medium mb-4 tracking-wide">Navegar</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
+                <a href="/teleconsulta" className="hover:text-foreground transition-colors">
+                  Teleconsulta
+                </a>
+              </li>
+              <li>
+                <a href="/domiciliar" className="hover:text-foreground transition-colors">
+                  Atendimento domiciliar
+                </a>
+              </li>
+              <li>
                 <a href="/about" className="hover:text-foreground transition-colors">
                   Sobre
                 </a>

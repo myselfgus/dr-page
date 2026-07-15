@@ -60,9 +60,12 @@ export function ContactSection() {
                 href="https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 w-full bg-[#00c3a5] text-white px-6 py-4 rounded-xl hover:bg-[#00ab91] transition-colors shadow-lg"
+                className="inline-flex items-center justify-center gap-2 w-full text-sm text-[#00c3a5] hover:text-[#00ab91] transition-colors pt-1"
               >
-                <span className="font-medium text-lg">Agendar pela Doctoralia</span>
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+                Ver avaliações na Doctoralia
               </a>
             </div>
 
@@ -130,9 +133,12 @@ export function ContactSection() {
                       href="https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs sm:text-sm bg-[#00c3a5] text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-[#00ab91] transition-colors ml-0 sm:ml-2 mt-2 sm:mt-0"
+                      className="inline-flex items-center gap-2 text-xs sm:text-sm text-[#00c3a5] hover:text-[#00ab91] transition-colors ml-0 sm:ml-3 mt-2 sm:mt-0"
                     >
-                      Agendar pela Doctoralia
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                      </svg>
+                      Ver avaliações na Doctoralia
                     </a>
                   </div>
                 </div>

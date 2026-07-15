@@ -46,10 +46,11 @@ export const metadata: Metadata = {
     template: "%s | Dr. Gustavo Mendes - Psiquiatra em Jundiaí",
   },
   description:
-    "Psiquiatra em Jundiaí, na Clínica Dr. Hegg. Cuidado humanizado para burnout, ansiedade, pânico e insônia. Atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp ou Doctoralia.",
+    "Psiquiatra em Jundiaí. Cuidado humanizado para burnout, ansiedade, pânico e insônia. Consultas presenciais, teleconsulta e atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp.",
   keywords: [
     "psiquiatra jundiaí",
-    "psiquiatra clínica dr hegg",
+    "teleconsulta psiquiátrica",
+    "psiquiatra online",
     "consulta psiquiátrica humanizada",
     "burnout jundiaí",
     "esgotamento profissional",
@@ -86,7 +87,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Psiquiatra em Jundiaí | Dr. Gustavo Mendes CRM 218133/SP",
     description:
-      "Psiquiatria humanizada e atendimento domiciliar para autistas e idosos em Jundiaí, na Clínica Dr. Hegg. Agende pelo WhatsApp.",
+      "Psiquiatria humanizada em Jundiaí — consultas presenciais, teleconsulta e atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp.",
     url: "https://drgustavomendes.com",
     siteName: "Dr. Gustavo Mendes - Psiquiatra",
     locale: "pt_BR",
@@ -104,7 +105,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Psiquiatra em Jundiaí | Dr. Gustavo Mendes",
     description:
-      "Psiquiatria humanizada e atendimento domiciliar em Jundiaí, na Clínica Dr. Hegg.",
+      "Psiquiatria humanizada em Jundiaí — teleconsulta e atendimento domiciliar.",
     images: [
       "https://drgustavomendes.com/og-image.jpg",
     ],
@@ -222,8 +223,25 @@ export default function RootLayout({
               },
               {
                 "@type": "MedicalProcedure",
+                name: "Teleconsulta Psiquiátrica",
+                description: "Consulta por vídeo, com o mesmo cuidado do atendimento presencial",
+              },
+              {
+                "@type": "MedicalProcedure",
                 name: "Atendimento Domiciliar",
                 description: "Atendimento em domicílio para autistas e idosos",
+              },
+            ],
+            availableChannel: [
+              {
+                "@type": "ServiceChannel",
+                name: "Teleconsulta",
+                serviceUrl: "https://drgustavomendes.com/teleconsulta",
+                availableLanguage: { "@type": "Language", name: "Português" },
+                serviceLocation: {
+                  "@type": "VirtualLocation",
+                  url: "https://drgustavomendes.com/teleconsulta",
+                },
               },
             ],
           })}
@@ -234,10 +252,10 @@ export default function RootLayout({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
             "@id": "https://drgustavomendes.com/#business",
-            name: "Dr. Gustavo Mendes e Silva - Psiquiatra na Clínica Dr. Hegg",
+            name: "Dr. Gustavo Mendes e Silva - Psiquiatra em Jundiaí",
             image: "https://drgustavomendes.com/og-image.jpg",
             description:
-              "Consultório de psiquiatria humanizada na Clínica Dr. Hegg, em Jundiaí. Atendimento diferenciado com escuta atenta.",
+              "Psiquiatria humanizada em Jundiaí, com escuta atenta. Consultas presenciais, teleconsulta e atendimento domiciliar.",
             address: {
               "@type": "PostalAddress",
               streetAddress: "Rua Dr. Hegg, 492 - Vila Arens",
@@ -265,7 +283,7 @@ export default function RootLayout({
             aggregateRating: {
               "@type": "AggregateRating",
               ratingValue: "5.0",
-              reviewCount: "50",
+              reviewCount: "17",
             },
           })}
         </Script>
@@ -334,7 +352,7 @@ export default function RootLayout({
                 name: "Como posso agendar uma consulta?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Você pode agendar pelo WhatsApp (11) 91539-8330, por telefone no mesmo número, pela plataforma Doctoralia ou pelo e-mail contato@drgustavomendes.com. Respondo pessoalmente todas as mensagens.",
+                  text: "A forma mais rápida é pelo WhatsApp (11) 91539-8330 — respondo pessoalmente a cada mensagem. Se preferir, atendo também por telefone no mesmo número ou por e-mail em contato@drgustavomendes.com.",
                 },
               },
               {

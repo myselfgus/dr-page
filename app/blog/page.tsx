@@ -15,8 +15,10 @@ export const metadata: Metadata = {
   },
 }
 
-export default function BlogPage() {
-  const posts = getBlogPosts()
+export const dynamic = "force-dynamic"
+
+export default async function BlogPage() {
+  const posts = await getBlogPosts()
 
   return (
     <main className="min-h-screen pt-20">
