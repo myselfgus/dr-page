@@ -61,16 +61,14 @@ const markdownComponents: Components = {
       {children}
     </a>
   ),
-  // Horizontal rule renders the same pattern divider used before.
+  // Horizontal rule: semantic <hr> keeping the same pattern divider look.
   hr: () => (
-    <div className="my-16 relative">
-      <div
-        className="h-24 opacity-5"
-        style={{
-          backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px)`,
-        }}
-      />
-    </div>
+    <hr
+      className="my-16 h-24 opacity-5 border-none"
+      style={{
+        backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, currentColor 10px, currentColor 11px)`,
+      }}
+    />
   ),
 }
 

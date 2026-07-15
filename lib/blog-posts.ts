@@ -57,9 +57,15 @@ function mapRow(row: PostRow): BlogPost {
 }
 
 // Access the D1 binding (`dr_blog`) through the OpenNext Cloudflare context.
-async function getDb() {
+async function getDb(): Promise<D1Database> {
   const { env } = await getCloudflareContext()
-  return (env as unknown as { dr_blog: D1Database }).dr_blog
+  const db = (env as unknown as { dr_blog?: D1Database }).dr_blog
+  if (!db) {
+    throw new Error(
+      "Binding do D1 'dr_blog' não está definido. Verifique a configuração em wrangler.jsonc e no ambiente.",
+    )
+  }
+  return db
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
