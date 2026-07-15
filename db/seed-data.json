@@ -1,0 +1,259 @@
+{
+  "site_config": {
+    "contact": {
+      "phoneDisplay": "(11) 91539-8330",
+      "phoneTel": "+5511915398330",
+      "whatsappNumber": "5511915398330",
+      "whatsappDefaultText": "Olá, gostaria de agendar uma consulta",
+      "email": "contato@drgustavomendes.com",
+      "doctoralia": "https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai",
+      "crm": "CRM 218133/SP",
+      "address": {
+        "clinic": "Clínica Dr. Hegg",
+        "street": "Rua Dr. Hegg, 492 - Vila Arens",
+        "cityLine": "Jundiaí, SP - CEP 13202-544",
+        "locality": "Jundiaí",
+        "region": "SP",
+        "postalCode": "13202-544",
+        "country": "BR",
+        "lat": "-23.1996",
+        "lng": "-46.8764"
+      },
+      "mapEmbed": "https://www.google.com/maps?q=Cl%C3%ADnica%20Doutor%20Hegg%2C%20Rua%20Dr.%20Hegg%2C%20492%20-%20Vila%20Arens%2C%20Jundia%C3%AD%20-%20SP%2C%2013202-544&hl=pt-BR&z=16&output=embed",
+      "reviewCount": "17",
+      "ratingValue": "5.0"
+    },
+    "nav": {
+      "items": [
+        { "label": "Teleconsulta", "href": "/teleconsulta" },
+        { "label": "Domiciliar", "href": "/domiciliar" },
+        { "label": "Blog", "href": "/blog" },
+        { "label": "Sobre", "href": "/about" },
+        { "label": "Contato", "href": "/contact" }
+      ]
+    },
+    "brand": {
+      "name": "Dr. Gustavo Mendes e Silva",
+      "crm": "CRM 218133/SP",
+      "tagline": "Psiquiatria humanizada, com escuta atenta e atendimento domiciliar quando necessário."
+    }
+  },
+  "design_tokens": [
+    { "key": "background", "value": "oklch(0.99 0 0)", "category": "color", "scope": "root", "label": "Fundo", "editable": 1, "sort_order": 1 },
+    { "key": "foreground", "value": "oklch(0.15 0 0)", "category": "color", "scope": "root", "label": "Texto", "editable": 1, "sort_order": 2 },
+    { "key": "card", "value": "oklch(1 0 0)", "category": "color", "scope": "root", "label": "Card", "editable": 1, "sort_order": 3 },
+    { "key": "card-foreground", "value": "oklch(0.15 0 0)", "category": "color", "scope": "root", "label": "Texto do card", "editable": 1, "sort_order": 4 },
+    { "key": "popover", "value": "oklch(1 0 0)", "category": "color", "scope": "root", "label": "Popover", "editable": 0, "sort_order": 5 },
+    { "key": "popover-foreground", "value": "oklch(0.15 0 0)", "category": "color", "scope": "root", "label": "Texto do popover", "editable": 0, "sort_order": 6 },
+    { "key": "primary", "value": "oklch(0.15 0 0)", "category": "color", "scope": "root", "label": "Primária", "editable": 1, "sort_order": 7 },
+    { "key": "primary-foreground", "value": "oklch(0.99 0 0)", "category": "color", "scope": "root", "label": "Texto primário", "editable": 1, "sort_order": 8 },
+    { "key": "secondary", "value": "oklch(0.95 0 0)", "category": "color", "scope": "root", "label": "Secundária", "editable": 1, "sort_order": 9 },
+    { "key": "secondary-foreground", "value": "oklch(0.15 0 0)", "category": "color", "scope": "root", "label": "Texto secundário", "editable": 0, "sort_order": 10 },
+    { "key": "muted", "value": "oklch(0.92 0 0)", "category": "color", "scope": "root", "label": "Suave", "editable": 1, "sort_order": 11 },
+    { "key": "muted-foreground", "value": "oklch(0.5 0 0)", "category": "color", "scope": "root", "label": "Texto suave", "editable": 1, "sort_order": 12 },
+    { "key": "accent", "value": "oklch(0.88 0 0)", "category": "color", "scope": "root", "label": "Acento", "editable": 1, "sort_order": 13 },
+    { "key": "accent-foreground", "value": "oklch(0.15 0 0)", "category": "color", "scope": "root", "label": "Texto do acento", "editable": 0, "sort_order": 14 },
+    { "key": "destructive", "value": "oklch(0.577 0.245 27.325)", "category": "color", "scope": "root", "label": "Destrutiva", "editable": 0, "sort_order": 15 },
+    { "key": "destructive-foreground", "value": "oklch(0.985 0 0)", "category": "color", "scope": "root", "label": "Texto destrutivo", "editable": 0, "sort_order": 16 },
+    { "key": "border", "value": "oklch(0.88 0 0)", "category": "color", "scope": "root", "label": "Borda", "editable": 1, "sort_order": 17 },
+    { "key": "input", "value": "oklch(0.88 0 0)", "category": "color", "scope": "root", "label": "Input", "editable": 0, "sort_order": 18 },
+    { "key": "ring", "value": "oklch(0.15 0 0)", "category": "color", "scope": "root", "label": "Foco", "editable": 0, "sort_order": 19 },
+    { "key": "radius", "value": "0rem", "category": "radius", "scope": "root", "label": "Raio de borda", "editable": 1, "sort_order": 20 },
+    { "key": "shadow-card", "value": "4px 2px 2px rgba(0, 0, 0, 0.05)", "category": "shadow", "scope": "root", "label": "Sombra do card", "editable": 1, "sort_order": 21 },
+    { "key": "background", "value": "oklch(0.1 0 0)", "category": "color", "scope": "dark", "label": "Fundo", "editable": 1, "sort_order": 1 },
+    { "key": "foreground", "value": "oklch(0.98 0 0)", "category": "color", "scope": "dark", "label": "Texto", "editable": 1, "sort_order": 2 },
+    { "key": "card", "value": "oklch(0.12 0 0)", "category": "color", "scope": "dark", "label": "Card", "editable": 1, "sort_order": 3 },
+    { "key": "card-foreground", "value": "oklch(0.98 0 0)", "category": "color", "scope": "dark", "label": "Texto do card", "editable": 1, "sort_order": 4 },
+    { "key": "popover", "value": "oklch(0.12 0 0)", "category": "color", "scope": "dark", "label": "Popover", "editable": 0, "sort_order": 5 },
+    { "key": "popover-foreground", "value": "oklch(0.98 0 0)", "category": "color", "scope": "dark", "label": "Texto do popover", "editable": 0, "sort_order": 6 },
+    { "key": "primary", "value": "oklch(0.98 0 0)", "category": "color", "scope": "dark", "label": "Primária", "editable": 1, "sort_order": 7 },
+    { "key": "primary-foreground", "value": "oklch(0.1 0 0)", "category": "color", "scope": "dark", "label": "Texto primário", "editable": 1, "sort_order": 8 },
+    { "key": "secondary", "value": "oklch(0.2 0 0)", "category": "color", "scope": "dark", "label": "Secundária", "editable": 1, "sort_order": 9 },
+    { "key": "secondary-foreground", "value": "oklch(0.98 0 0)", "category": "color", "scope": "dark", "label": "Texto secundário", "editable": 0, "sort_order": 10 },
+    { "key": "muted", "value": "oklch(0.2 0 0)", "category": "color", "scope": "dark", "label": "Suave", "editable": 1, "sort_order": 11 },
+    { "key": "muted-foreground", "value": "oklch(0.6 0 0)", "category": "color", "scope": "dark", "label": "Texto suave", "editable": 1, "sort_order": 12 },
+    { "key": "accent", "value": "oklch(0.25 0 0)", "category": "color", "scope": "dark", "label": "Acento", "editable": 1, "sort_order": 13 },
+    { "key": "accent-foreground", "value": "oklch(0.98 0 0)", "category": "color", "scope": "dark", "label": "Texto do acento", "editable": 0, "sort_order": 14 },
+    { "key": "destructive", "value": "oklch(0.396 0.141 25.723)", "category": "color", "scope": "dark", "label": "Destrutiva", "editable": 0, "sort_order": 15 },
+    { "key": "destructive-foreground", "value": "oklch(0.985 0 0)", "category": "color", "scope": "dark", "label": "Texto destrutivo", "editable": 0, "sort_order": 16 },
+    { "key": "border", "value": "oklch(0.25 0 0)", "category": "color", "scope": "dark", "label": "Borda", "editable": 1, "sort_order": 17 },
+    { "key": "input", "value": "oklch(0.25 0 0)", "category": "color", "scope": "dark", "label": "Input", "editable": 0, "sort_order": 18 },
+    { "key": "ring", "value": "oklch(0.98 0 0)", "category": "color", "scope": "dark", "label": "Foco", "editable": 0, "sort_order": 19 }
+  ],
+  "pages": [
+    { "id": "home", "path": "/", "status": "published", "renders_header": 1, "renders_footer": 1, "back_button": 0, "sort": 1 },
+    { "id": "about", "path": "/about", "status": "published", "renders_header": 0, "renders_footer": 0, "back_button": 1, "sort": 2 },
+    { "id": "teleconsulta", "path": "/teleconsulta", "status": "published", "renders_header": 0, "renders_footer": 0, "back_button": 1, "sort": 3 },
+    { "id": "domiciliar", "path": "/domiciliar", "status": "published", "renders_header": 0, "renders_footer": 0, "back_button": 1, "sort": 4 },
+    { "id": "contact", "path": "/contact", "status": "published", "renders_header": 0, "renders_footer": 0, "back_button": 1, "sort": 5 }
+  ],
+  "page_meta": [
+    {
+      "page_id": "home",
+      "title": "Psiquiatra em Jundiaí | Dr. Gustavo Mendes CRM 218133/SP",
+      "description": "Psiquiatra em Jundiaí. Cuidado humanizado para burnout, ansiedade, pânico e insônia. Consultas presenciais, teleconsulta e atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp.",
+      "canonical": "https://drgustavomendes.com",
+      "keywords": ["psiquiatra jundiaí", "teleconsulta psiquiátrica", "psiquiatra online", "consulta psiquiátrica humanizada", "burnout jundiaí", "esgotamento profissional", "tratamento síndrome do pânico", "tratamento insônia jundiaí", "atendimento domiciliar psiquiatra", "escuta atenta", "psiquiatria humanizada", "autismo jundiaí", "medicina canabinoide", "transtornos do sono", "dr gustavo mendes", "CRM 218133", "psiquiatra particular jundiaí", "tratamento depressão", "tratamento ansiedade", "psiquiatra autismo", "psiquiatra idosos"],
+      "og_json": { "title": "Psiquiatra em Jundiaí | Dr. Gustavo Mendes CRM 218133/SP", "description": "Psiquiatria humanizada em Jundiaí — consultas presenciais, teleconsulta e atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp.", "image": "https://drgustavomendes.com/og-image.jpg", "type": "website" },
+      "jsonld_types": ["Physician", "MedicalBusiness", "WebSite", "BreadcrumbList", "FAQPage"]
+    },
+    {
+      "page_id": "about",
+      "title": "Sobre o Dr. Gustavo Mendes",
+      "description": "Conheça a trajetória do Dr. Gustavo Mendes e Silva, psiquiatra (CRM 218133/SP) em Jundiaí: psiquiatria clínica, medicina canabinoide, transtornos do sono, gestão e tecnologia em saúde.",
+      "canonical": "https://drgustavomendes.com/about",
+      "keywords": ["dr gustavo mendes", "psiquiatra jundiaí", "CRM 218133", "medicina canabinoide", "gestão em saúde"],
+      "og_json": { "title": "Sobre o Dr. Gustavo Mendes", "description": "Trajetória do Dr. Gustavo Mendes e Silva, psiquiatra em Jundiaí (CRM 218133/SP).", "image": "https://drgustavomendes.com/og-image.jpg", "type": "profile" },
+      "jsonld_types": ["Physician", "BreadcrumbList"]
+    },
+    {
+      "page_id": "teleconsulta",
+      "title": "Teleconsulta Psiquiátrica",
+      "description": "Teleconsulta psiquiátrica por vídeo com Dr. Gustavo Mendes e Silva (CRM 218133/SP). O mesmo cuidado humanizado do atendimento presencial, de onde você estiver. Agende pelo WhatsApp.",
+      "canonical": "https://drgustavomendes.com/teleconsulta",
+      "keywords": ["teleconsulta psiquiátrica", "psiquiatra online", "consulta psiquiátrica por vídeo", "psiquiatra jundiaí"],
+      "og_json": { "title": "Teleconsulta Psiquiátrica", "description": "Atendimento psiquiátrico por vídeo com o mesmo cuidado do presencial. Agende pelo WhatsApp.", "image": "https://drgustavomendes.com/og-image.jpg", "type": "website" },
+      "jsonld_types": ["Physician", "MedicalBusiness", "BreadcrumbList"]
+    },
+    {
+      "page_id": "domiciliar",
+      "title": "Atendimento Domiciliar em Psiquiatria",
+      "description": "Atendimento psiquiátrico domiciliar em Jundiaí e região para idosos, crianças e adolescentes, e pessoas com dificuldade de locomoção. Cuidado humanizado no conforto de casa. Agende pelo WhatsApp.",
+      "canonical": "https://drgustavomendes.com/domiciliar",
+      "keywords": ["atendimento domiciliar psiquiatra", "psiquiatra domiciliar jundiaí", "psiquiatra idosos", "psiquiatra autismo"],
+      "og_json": { "title": "Atendimento Domiciliar em Psiquiatria", "description": "Cuidado psiquiátrico domiciliar em Jundiaí e região. Agende pelo WhatsApp.", "image": "https://drgustavomendes.com/og-image.jpg", "type": "website" },
+      "jsonld_types": ["Physician", "MedicalBusiness", "BreadcrumbList"]
+    },
+    {
+      "page_id": "contact",
+      "title": "Agende uma Consulta",
+      "description": "Agende uma consulta com o Dr. Gustavo Mendes e Silva, psiquiatra em Jundiaí (CRM 218133/SP). Consultas presenciais, teleconsulta e atendimento domiciliar. Contato por WhatsApp, telefone ou e-mail.",
+      "canonical": "https://drgustavomendes.com/contact",
+      "keywords": ["agendar consulta psiquiatra", "psiquiatra jundiaí", "contato psiquiatra", "consulta particular psiquiatria"],
+      "og_json": { "title": "Agende uma Consulta", "description": "Fale com o Dr. Gustavo Mendes e Silva, psiquiatra em Jundiaí. WhatsApp, telefone ou e-mail.", "image": "https://drgustavomendes.com/og-image.jpg", "type": "website" },
+      "jsonld_types": ["MedicalBusiness", "BreadcrumbList"]
+    }
+  ],
+  "blocks": [
+    {
+      "id": "home-hero", "page_id": "home", "sort": 1, "type": "hero", "status": "published",
+      "content": { "titleLines": ["E se for", "possível viver", "de outro modo?"], "leadHtml": ["<strong>Psiquiatria verdadeiramente humanizada</strong> que vai além do diagnóstico.", "Afinal, você não precisa de mais diagnósticos prontos, <strong>você precisa se entender de verdade.</strong>"] },
+      "design": { "variant": "home", "showAnimatedBackground": true }
+    },
+    {
+      "id": "home-symptoms", "page_id": "home", "sort": 2, "type": "symptoms", "status": "published",
+      "content": { "eyebrow": "Talvez você chegue até aqui sentindo", "chips": ["Burnout", "Esgotamento", "Ansiedade", "Medo", "Pânico", "Insônia", "Desesperança", "Perda de sentido"], "paras": ["São as queixas que mais acompanho no consultório em Jundiaí. Cada uma delas tem contexto, história — e caminho de cuidado.", "<strong>Você não precisa ter certeza de um diagnóstico</strong> — nem esperar piorar — para conversar."], "cta": { "kind": "whatsapp", "label": "Conversar pelo WhatsApp" } },
+      "design": { "id": "queixas", "align": "center", "showCta": true }
+    },
+    {
+      "id": "home-care-steps", "page_id": "home", "sort": 3, "type": "care-steps", "status": "published",
+      "content": { "eyebrow": "Como é o cuidado", "title": "Do primeiro contato à sua alta", "intro": "Não trato sintomas indefinidamente. Cada etapa tem um propósito — e o destino é sempre o mesmo: um momento em que você não precise mais de mim.", "steps": [{ "title": "Você chega", "body": "Sem pressa e sem julgamento. A primeira conversa é para entender o que te trouxe até aqui — não para te encaixar num diagnóstico pronto." }, { "title": "A gente entende junto", "body": "Olho para além dos sintomas: sua história, seu trabalho, suas relações, seu sono, seu corpo. O que você sente faz sentido dentro do seu contexto." }, { "title": "Um plano claro", "body": "Definimos objetivos concretos e o papel de cada passo — inclusive quando a medicação ajuda, como e por quanto tempo. Sem caixa-preta." }, { "title": "Você caminha sozinho", "body": "O objetivo nunca é te manter em tratamento para sempre. É devolver sua autonomia — para que você não precise mais de mim." }], "quote": { "text": "Conheça todas as teorias, domine todas as técnicas, mas ao tocar uma alma humana seja apenas outra alma humana.", "author": "Carl Gustav Jung — também médico psiquiatra" } },
+      "design": { "background": "muted", "showConnectorLine": true, "showQuote": true }
+    },
+    {
+      "id": "home-about", "page_id": "home", "sort": 4, "type": "about", "status": "published",
+      "content": { "title": "Sobre o Dr. Gustavo", "subtitle": "CRM 218133/SP", "image": "/images/dr-gustavo-perfil.jpg", "imageAlt": "Dr. Gustavo Mendes e Silva", "ctaPrimary": { "kind": "internal", "label": "Ver currículo completo", "href": "/about" }, "formacaoTitle": "Formação e Experiência", "formacaoParas": ["Acredito que o cuidado psiquiátrico exige <strong>tempo, escuta atenta</strong> e uma compreensão profunda das circunstâncias únicas de cada paciente. Cada pessoa traz consigo uma <strong>história complexa</strong> que merece ser ouvida integralmente.", "Dedico a cada consulta <strong>o tempo necessário</strong> para conhecer verdadeiramente cada pessoa, compreender sua história e construir um plano terapêutico adequado.", "Especializado em <strong>Psiquiatria, Medicina Canabinoide, Transtornos do Sono, Dependência Química, Terapia ACT e Cuidados Paliativos</strong>, ofereço uma abordagem abrangente e integrada ao cuidado em saúde mental."], "diferenciaisTitle": "Diferenciais", "diferenciaisParas": ["Meu compromisso é olhar para você por inteiro — não apenas o sintoma, mas o contexto que o cerca: <strong>trabalho, sono, relações, história</strong>. E com um objetivo claro desde o começo: <strong>devolver sua autonomia</strong>. Não quero te manter em tratamento para sempre.", "Para <strong>pacientes autistas, idosos</strong> e aqueles com dificuldades de locomoção, ofereço <strong>atendimento domiciliar</strong>. O ambiente familiar permite uma avaliação mais completa e confortável, garantindo que o cuidado chegue a quem realmente precisa."] },
+      "design": { "variant": "home", "collapsibleOnMobile": false }
+    },
+    {
+      "id": "home-principles", "page_id": "home", "sort": 5, "type": "principles", "status": "published",
+      "content": { "title": "Filosofia do Tratamento", "subtitle": "Princípios que guiam minha prática clínica e o cuidado oferecido a cada paciente", "items": [{ "name": "Abordagem Centrada na Pessoa", "description": "Cada indivíduo é único, com sua própria história, contexto e necessidades. O tratamento é construído em torno de você, não de um protocolo rígido.", "focus": "Escuta ativa, respeito à autonomia, colaboração no tratamento" }, { "name": "Tempo de Qualidade", "description": "Consultas sem anotações, com atenção plena à sua presença. Estar verdadeiramente presente, sem distrações, permite uma conexão genuína e compreensão profunda.", "focus": "Presença total, escuta sem interrupções, atenção plena ao paciente" }, { "name": "Valorização da História do Paciente", "description": "Sua história merece ser ouvida e compreendida em sua totalidade. O que você sente ganha sentido quando entendido dentro do seu contexto de vida.", "focus": "Compreensão do contexto, validação da experiência, escuta atenta" }, { "name": "Cuidado Orientado aos Valores Pessoais do Paciente", "description": "O tratamento respeita e se alinha aos seus valores, crenças e objetivos de vida. Não há uma única forma certa de viver ou de se cuidar.", "focus": "Respeito aos valores individuais, alinhamento com objetivos pessoais, cuidado personalizado" }, { "name": "Contexto, Relações e Subjetividade", "description": "Ninguém pode ser visto isoladamente nem tratado assim. Olhamos para toda a rede ao redor: família, trabalho, comunidade, cultura. O contexto molda quem somos.", "focus": "Visão sistêmica, compreensão relacional, cuidado contextualizado" }, { "name": "Medicamentos como Auxiliares, com Prazo de Retirada", "description": "Medicamentos são ferramentas temporárias para estabilização, não soluções permanentes. O objetivo é sempre a redução gradual e segura quando apropriado.", "focus": "Uso criterioso de medicamentos, plano de retirada, busca por autonomia" }, { "name": "Autonomia e Empoderamento", "description": "O objetivo é fortalecer sua capacidade de compreender e lidar com seus desafios, não criar dependência do tratamento.", "focus": "Desenvolvimento de recursos internos, autodeterminação, crescimento pessoal" }, { "name": "Tratamento com Prazos e Metas Claros", "description": "Estabelecemos objetivos concretos e prazos realistas. Você sabe onde está, para onde vai e o que esperar em cada etapa do tratamento.", "focus": "Objetivos definidos, cronograma claro, expectativas realistas" }, { "name": "Ética, Transparência e Educação em Saúde", "description": "Comunicação clara sobre diagnósticos, opções de tratamento, benefícios e limitações. Você tem o direito de compreender plenamente seu cuidado e aprender sobre sua saúde.", "focus": "Consentimento informado, honestidade, educação do paciente, respeito à dignidade" }] },
+      "design": { "columns": 3, "numbered": true, "showFocus": true, "background": "muted" }
+    },
+    {
+      "id": "home-faq", "page_id": "home", "sort": 6, "type": "faq", "status": "published",
+      "content": { "title": "Perguntas Frequentes", "subtitle": "Tire suas dúvidas sobre consultas, atendimento e abordagem terapêutica", "items": [{ "question": "Você atende pelo convênio ou é particular?", "answer": "O atendimento é particular. Isso permite que eu dedique o tempo necessário para cada consulta e ofereça um cuidado verdadeiramente personalizado, sem as limitações impostas pelos convênios." }, { "question": "Você atende em domicílio?", "answer": "Sim. Ofereço atendimento domiciliar especialmente para pacientes autistas, idosos e aqueles com dificuldades de locomoção. O ambiente familiar permite uma avaliação mais completa e confortável em Jundiaí e região." }, { "question": "Como posso agendar uma consulta?", "answer": "A forma mais rápida é pelo WhatsApp (11) 91539-8330 — respondo pessoalmente a cada mensagem. Se preferir, atendo também por telefone no mesmo número ou por e-mail em contato@drgustavomendes.com." }, { "question": "Quais são as queixas mais comuns que você atende?", "answer": "As queixas que mais acompanho em Jundiaí são burnout e esgotamento, ansiedade, medo e pânico, insônia, desesperança e perda de sentido. Você não precisa ter certeza de um diagnóstico para buscar ajuda — o primeiro passo é conversar." }, { "question": "Qual é a sua especialização?", "answer": "Sou especializado em Psiquiatria, Medicina Canabinoide, Transtornos do Sono, Dependência Química, Terapia ACT e Cuidados Paliativos. CRM 218133/SP." }, { "question": "Onde fica o consultório?", "answer": "O consultório fica na Clínica Dr. Hegg - Rua Dr. Hegg, 492, Vila Arens, Jundiaí/SP, CEP 13202-544. Também ofereço atendimento domiciliar na região." }, { "question": "Qual é o diferencial do seu atendimento?", "answer": "O principal diferencial é o tempo de qualidade: consultas sem pressa, escuta atenta, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto." }], "closer": { "text": "Ainda tem dúvidas?", "ctas": [{ "kind": "whatsapp", "label": "Fale pelo WhatsApp" }, { "kind": "phone", "label": "Ligar: (11) 91539-8330" }, { "kind": "doctoralia", "label": "Ver avaliações na Doctoralia" }] } },
+      "design": { "id": "faq", "accordion": true }
+    },
+    {
+      "id": "home-contact", "page_id": "home", "sort": 7, "type": "contact", "status": "published",
+      "content": { "title": "Agende Sua Consulta", "subtitle": "Dar o primeiro passo em direção a uma melhor saúde mental começa aqui. Entre em contato para agendar uma consulta ou saber mais sobre nossos serviços." },
+      "design": { "id": "contact", "variant": "home", "showForm": true, "showMap": true }
+    },
+    {
+      "id": "about-hero", "page_id": "about", "sort": 1, "type": "hero", "status": "published",
+      "content": { "titleLines": ["Dr. Gustavo Mendes e Silva"], "subtitle": "CRM: 218133/SP", "lead": "Médico Psiquiatra com expertise em Gestão em Saúde, Tecnologia e Dados aplicados à Medicina", "image": "/images/dr-gustavo-perfil.jpg", "imageAlt": "Dr. Gustavo Mendes e Silva", "badges": ["Psiquiatria Clínica", "Gestão em Saúde", "Health Tech", "Medicina Canabinoide"] },
+      "design": { "variant": "subpage-split", "showImage": true }
+    },
+    {
+      "id": "about-sobre", "page_id": "about", "sort": 2, "type": "richtext", "status": "published",
+      "content": { "heading": "Sobre Mim", "iconName": "Heart", "paras": ["Sou médico psiquiatra com uma trajetória que une a prática clínica à gestão estratégica em saúde. Minha atuação é pautada pela medicina baseada em evidências, com foco em oferecer cuidado integral e humanizado aos meus pacientes.", "Tenho experiência diversificada em múltiplos contextos de saúde mental, incluindo CAPS (adulto, infantojuvenil e álcool/drogas), hospital psiquiátrico e atendimento de emergências psiquiátricas. Minha formação inclui especializações em psicofarmacologia avançada, medicina canabinoide e transtornos do sono, permitindo uma abordagem integrativa e atualizada no tratamento.", "Paralelamente à prática clínica, desenvolvi expertise em gestão de programas de saúde, análise de indicadores assistenciais e implementação de protocolos baseados em evidências. Minha formação em Health Tech e análise de dados me permite combinar conhecimento clínico com tecnologias emergentes para aprimorar processos decisórios e promover melhores resultados em saúde."] },
+      "design": { "variant": "card" }
+    },
+    {
+      "id": "about-areas", "page_id": "about", "sort": 3, "type": "richtext", "status": "published",
+      "content": { "heading": "Áreas de Atuação", "iconName": "Brain", "cards": [{ "title": "Psiquiatria Clínica", "items": ["Psiquiatria do adulto e infantojuvenil", "Tratamento de dependência química", "Emergências psiquiátricas e manejo de crises", "Transtornos do sono", "Medicina canabinoide aplicada à psiquiatria", "Terapia Cognitivo-Comportamental (TCC)"] }, { "title": "Gestão e Tecnologia em Saúde", "items": ["Análise de indicadores assistenciais", "Controle de sinistralidade e custo-efetividade", "Implementação de protocolos clínicos", "Inteligência artificial aplicada à saúde", "Análise preditiva e preventiva em saúde", "Auditoria e avaliação de qualidade"] }] },
+      "design": { "variant": "card-grid", "columns": 2 }
+    },
+    {
+      "id": "about-experiencia", "page_id": "about", "sort": 4, "type": "richtext", "status": "published",
+      "content": { "heading": "Experiência Profissional", "iconName": "Briefcase", "cards": [{ "title": "Atuação em Saúde Mental", "paras": ["Atuo em diversos contextos de atenção à saúde mental, com experiência em CAPS (Centro de Atenção Psicossocial) para diferentes públicos: adultos, crianças e adolescentes, e pessoas com dependência química. Essa vivência me permite compreender as necessidades específicas de cada população e oferecer tratamento personalizado.", "Tenho experiência em atendimento de emergências psiquiátricas, manejo de crises e internação hospitalar, sempre priorizando a estabilização do quadro agudo e a articulação com a rede de cuidados para continuidade do tratamento."] }, { "title": "Gestão e Interlocução de Rede", "paras": ["Atuei como Médico Interlocutor de Rede, desenvolvendo e monitorando indicadores assistenciais para análise de resultados e impacto na sinistralidade. Essa experiência me proporcionou visão estratégica sobre otimização de processos, implementação de protocolos baseados em evidências e coordenação de programas de educação continuada.", "Trabalho com análise técnica de dados em saúde, identificando oportunidades de melhoria e desenvolvendo estratégias preventivas que promovam melhores resultados assistenciais e maior eficiência na utilização de recursos."] }] },
+      "design": { "variant": "card-stack" }
+    },
+    {
+      "id": "about-formacao", "page_id": "about", "sort": 5, "type": "richtext", "status": "published",
+      "content": { "heading": "Formação Acadêmica", "iconName": "GraduationCap", "cards": [{ "title": "Graduação", "titleSize": "sm", "groups": [{ "text": "<strong>Medicina</strong> - Faculdade Estadual de Medicina de Marília (FAMEMA)", "sub": "Nota 5 no ENADE" }] }, { "title": "Pós-Graduação e MBAs", "titleSize": "sm", "groups": [{ "text": "<strong>MBA em Health Tech</strong> - FIAP (cursando)", "sub": "Tecnologias emergentes aplicadas à saúde e inteligência artificial" }, { "text": "<strong>MBA em Gestão, Inovação e Serviços em Saúde</strong> - PUC-RS", "sub": "Gestão estratégica e inovação em serviços de saúde" }, { "text": "<strong>Especialização em Tecnologia e Dados em Saúde</strong> - PUC-PR", "sub": "Data science e aplicação de tecnologias para decisões clínicas" }, { "text": "<strong>Programa Avançado em Cuidados Paliativos</strong>", "sub": "MJHS Institute for Innovation in Palliative Care" }] }, { "title": "Especializações em Psiquiatria", "titleSize": "sm", "groups": [{ "text": "<strong>Especialização em Psiquiatria</strong> - FGMED (492 horas)", "sub": "Psicofarmacologia avançada e tratamento de transtornos mentais" }, { "text": "<strong>Especialização em Psiquiatria</strong> - Sanar/Cetrus (432 horas)", "sub": "Semiologia psiquiátrica e raciocínio clínico em saúde mental" }, { "text": "<strong>Clinical Cannabinoid Medicine Specialist</strong> - Society of Cannabis Clinicians (SCC)", "sub": "Certificação internacional em cannabis medicinal" }, { "text": "<strong>Medicina Canabinoide</strong> - EEPHCFMUSP", "sub": "Sistema endocanabinoide e aplicações clínicas" }] }] },
+      "design": { "variant": "card-stack" }
+    },
+    {
+      "id": "about-formacao-complementar", "page_id": "about", "sort": 6, "type": "richtext", "status": "published",
+      "content": { "heading": "Formação Complementar", "iconName": "Award", "cards": [{ "groupColumns": 2, "groups": [{ "text": "AI in Healthcare - Stanford University", "sub": "Inteligência artificial no diagnóstico e apoio à decisão clínica", "emphasize": true }, { "text": "Medical Neuroscience - Duke University", "sub": "Neuroanatomia funcional e correlatos neurobiológicos", "emphasize": true }, { "text": "Dependência Química - Artmed360 (180h)", "sub": "Mecanismos neurobiológicos e estratégias de tratamento", "emphasize": true }, { "text": "Transtornos do Sono - CENBRAP", "sub": "Diagnóstico e tratamento de distúrbios do sono", "emphasize": true }, { "text": "Terapia de Aceitação e Compromisso (ACT) - IBAC", "sub": "Técnicas de terapia cognitivo-comportamental de terceira geração", "emphasize": true }, { "text": "Autismo, Psicanálise e Conexões - PUC Minas", "sub": "Abordagens contemporâneas no tratamento do TEA", "emphasize": true }, { "text": "Aplicações Psiquiátricas dos Canabinoides - TMCI Global", "sub": "Uso terapêutico em transtornos psiquiátricos", "emphasize": true }, { "text": "Transtorno do Espectro Autista - Instituto Neuroconexão", "sub": "Aperfeiçoamento em TEA", "emphasize": true }] }] },
+      "design": { "variant": "card-stack" }
+    },
+    {
+      "id": "about-competencias", "page_id": "about", "sort": 7, "type": "richtext", "status": "published",
+      "content": { "heading": "Competências", "cards": [{ "title": "Gestão em Saúde", "titleSize": "sm", "items": ["Indicadores assistenciais", "Controle de sinistralidade", "Auditoria em saúde", "Protocolos clínicos", "Medicina baseada em evidências"] }, { "title": "Tecnologia em Saúde", "titleSize": "sm", "items": ["Análise preditiva", "Inteligência artificial", "Data science", "Apoio à decisão clínica", "Projetos estratégicos"] }, { "title": "Prática Clínica", "titleSize": "sm", "items": ["Psicofarmacologia", "Manejo de crises", "Cannabis medicinal", "Medicina do sono", "Equipe multidisciplinar"] }] },
+      "design": { "variant": "card-grid", "columns": 3 }
+    },
+    {
+      "id": "about-idiomas", "page_id": "about", "sort": 8, "type": "richtext", "status": "published",
+      "content": { "cards": [{ "title": "Idiomas", "titleIcon": "Globe", "groups": [{ "text": "<strong>Inglês:</strong> Fluente (TOEFL iBT 108/120)" }, { "text": "<strong>Espanhol:</strong> Intermediário" }, { "text": "<strong>Francês:</strong> Básico" }] }, { "title": "Afiliações e Experiência Internacional", "titleIcon": "Users", "items": ["Representante Brasileiro na 56ª Assembleia Geral da OMS/OPAS", "Membro da International AIDS Society (2020-2023)", "Membro da Society of Cannabis Clinicians (SCC)"] }] },
+      "design": { "variant": "card-grid", "columns": 2 }
+    },
+    {
+      "id": "teleconsulta-hero", "page_id": "teleconsulta", "sort": 1, "type": "hero", "status": "published",
+      "content": { "eyebrow": "Teleconsulta", "titleLines": ["Atendimento psiquiátrico por vídeo"], "lead": "A distância não precisa ser um obstáculo para cuidar da saúde mental. Na teleconsulta você tem a mesma escuta atenta e sem pressa do atendimento no consultório, por vídeo, de onde estiver." },
+      "design": { "variant": "subpage" }
+    },
+    {
+      "id": "teleconsulta-feature-cards", "page_id": "teleconsulta", "sort": 2, "type": "feature-cards", "status": "published",
+      "content": { "items": [{ "iconName": "MapPin", "title": "De onde você estiver", "text": "Atendimento por vídeo para quem mora longe, viaja ou prefere a comodidade de casa." }, { "iconName": "Clock", "title": "Sem deslocamento", "text": "Sem trânsito e sem sala de espera — mais tempo para o que importa, o cuidado." }, { "iconName": "ShieldCheck", "title": "Sigilo e segurança", "text": "A consulta segue o mesmo sigilo médico do atendimento presencial, em ambiente reservado." }] },
+      "design": { "columns": 3 }
+    },
+    {
+      "id": "teleconsulta-pricing-cta", "page_id": "teleconsulta", "sort": 3, "type": "pricing-cta", "status": "published",
+      "content": { "heading": "Valores", "iconName": "Video", "note": "Após o agendamento, você recebe o link da videochamada pelo WhatsApp.", "prices": [{ "label": "Primeira consulta", "value": "R$ 350" }, { "label": "Retorno", "value": "R$ 250" }], "cta": { "kind": "whatsapp", "label": "Agendar pelo WhatsApp", "text": "Olá, gostaria de agendar uma teleconsulta" } },
+      "design": { "variant": "prices-only" }
+    },
+    {
+      "id": "domiciliar-hero", "page_id": "domiciliar", "sort": 1, "type": "hero", "status": "published",
+      "content": { "eyebrow": "Atendimento Domiciliar", "titleLines": ["O cuidado psiquiátrico vai até você"], "lead": "Nem sempre sair de casa é possível — ou o melhor caminho. Ofereço atendimento psiquiátrico domiciliar em Jundiaí e região, com a mesma escuta atenta e sem pressa do atendimento no consultório, no ambiente onde a pessoa se sente mais segura." },
+      "design": { "variant": "subpage" }
+    },
+    {
+      "id": "domiciliar-feature-cards", "page_id": "domiciliar", "sort": 2, "type": "feature-cards", "status": "published",
+      "content": { "items": [{ "iconName": "Heart", "title": "Idosos", "text": "Evita o desgaste do deslocamento e permite avaliar o contexto real em que a pessoa vive." }, { "iconName": "Users", "title": "Crianças e adolescentes", "text": "O atendimento é sempre feito em binômio — cuidador e criança acompanhados juntos —, cuidando de quem cuida e de quem é cuidado." }, { "iconName": "Home", "title": "Dificuldade de locomoção", "text": "Para quem tem mobilidade reduzida, é autista ou está acamado, o cuidado vai até onde a pessoa está." }] },
+      "design": { "columns": 3 }
+    },
+    {
+      "id": "domiciliar-pricing-cta", "page_id": "domiciliar", "sort": 3, "type": "pricing-cta", "status": "published",
+      "content": { "heading": "Como funciona", "steps": [{ "iconName": "MapPin", "text": "Atendimento em Jundiaí e região. Combinamos endereço, dia e horário diretamente." }, { "iconName": "Heart", "text": "Avaliação psiquiátrica completa, com tempo para ouvir a pessoa e a família." }], "prices": [{ "label": "Adultos e idosos", "value": "R$ 350" }, { "label": "Crianças e adolescentes (binômio)", "value": "R$ 450" }], "footnotes": ["O atendimento de crianças e adolescentes é feito em binômio — cuidador e criança acompanhados juntos.", "Para endereços fora de Jundiaí, o deslocamento é combinado previamente pelo WhatsApp."], "cta": { "kind": "whatsapp", "label": "Agendar pelo WhatsApp", "text": "Olá, gostaria de agendar um atendimento domiciliar" } },
+      "design": { "variant": "how-it-works", "showSteps": true }
+    },
+    {
+      "id": "contact-hero", "page_id": "contact", "sort": 1, "type": "hero", "status": "published",
+      "content": { "titleLines": ["Agende uma Consulta"], "lead": "Dê o primeiro passo em direção a uma melhor saúde mental. Entre em contato com o Dr. Gustavo Mendes e Silva para agendar uma consulta ou saber mais sobre os serviços psiquiátricos oferecidos." },
+      "design": { "variant": "subpage-plain" }
+    },
+    {
+      "id": "contact-price-badge", "page_id": "contact", "sort": 2, "type": "price-badge", "status": "published",
+      "content": { "label": "Consulta particular", "value": "R$ 350 a R$ 500", "note": "Teleconsulta e atendimento domiciliar também disponíveis." },
+      "design": { "variant": "inline-card" }
+    },
+    {
+      "id": "contact-contact", "page_id": "contact", "sort": 3, "type": "contact", "status": "published",
+      "content": { "title": "Agende Sua Consulta", "subtitle": "Dar o primeiro passo em direção a uma melhor saúde mental começa aqui. Entre em contato para agendar uma consulta ou saber mais sobre nossos serviços." },
+      "design": { "id": "contact", "variant": "page", "showForm": true, "showMap": true }
+    }
+  ]
+}
