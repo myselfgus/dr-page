@@ -132,9 +132,12 @@ export function BlockList({
 }) {
   return (
     <>
-      {blocks.map((block) => (
-        <BlockRenderer key={block.id} block={block} contact={contact} />
-      ))}
+      {blocks
+        // `toggleVisibility` (admin) grava design.hidden === true → não renderiza no site.
+        .filter((block) => !(block.design as { hidden?: boolean } | undefined)?.hidden)
+        .map((block) => (
+          <BlockRenderer key={block.id} block={block} contact={contact} />
+        ))}
     </>
   )
 }
