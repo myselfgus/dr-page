@@ -24,7 +24,7 @@ export interface AboutDesign {
 export const DEFAULT_CONTENT: AboutContent = {
   title: "Sobre o Dr. Gustavo",
   subtitle: "CRM 218133/SP",
-  image: "/images/dr-gustavo-perfil.jpg",
+  image: "/images/dr-gustavo-cinza.jpg",
   imageAlt: "Dr. Gustavo Mendes e Silva",
   ctaPrimary: { kind: "internal", label: "Ver currículo completo", href: "/about" },
   formacaoTitle: "Formação e Experiência",

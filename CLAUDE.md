@@ -41,7 +41,7 @@ There are **no tests**. `pnpm exec next build --webpack` is the real correctness
 - **`middleware.ts`** sets security headers on all non-asset routes. Global floating UI (`WhatsAppFloat`, `BackToTop`) is mounted once in `app/layout.tsx`.
 
 ### CTA policy (important — the business hinges on this)
-- **WhatsApp is the primary booking CTA everywhere** (`wa.me/5511915398330`, green `#25D366`), with a `?text=` prefilled per page/context for attribution.
+- **WhatsApp is the primary booking CTA everywhere** (`wa.me/5511987065632`, green `#25D366`), with a `?text=` prefilled per page/context for attribution.
 - **Doctoralia is social proof only** — link labeled "Ver avaliações na Doctoralia" (star icon, `text-[#00c3a5]`, never a filled button). The one legitimate spot is the footer profile link. Do not reintroduce "Agendar pela Doctoralia" booking buttons.
 
 ### SEO / structured data — the most delicate part

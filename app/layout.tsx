@@ -110,7 +110,7 @@ export const metadata: Metadata = {
     images: [
       "https://drgustavomendes.com/og-image.jpg",
     ],
-    creator: "@drgustavomendes",
+    creator: "@drgustavomendesesilva",
   },
   verification: {
     google: "seu-codigo-google-search-console",
@@ -122,7 +122,7 @@ export const metadata: Metadata = {
   classification: "Medical Services - Psychiatry",
   other: {
     "fb:app_id": "SEU_FACEBOOK_APP_ID",
-    "og:phone_number": "+55-11-91539-8330",
+    "og:phone_number": "+55-11-98706-5632",
     "og:email": "contato@drgustavomendes.com",
     "og:locality": "Jundiaí",
     "og:region": "SP",

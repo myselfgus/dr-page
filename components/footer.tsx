@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail } from "lucide-react"
+import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react"
 import { StarIcon } from "@/components/blocks/cta-button"
 import {
   type ContactConfig,
@@ -47,6 +47,30 @@ export function Footer({
               <StarIcon />
               Perfil e avaliações na Doctoralia
             </a>
+            <div className="flex items-center gap-4 mt-4 text-sm text-muted-foreground">
+              {contact.instagram ? (
+                <a
+                  href={contact.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:text-foreground transition-colors"
+                >
+                  <Instagram className="w-4 h-4" />
+                  @drgustavomendesesilva
+                </a>
+              ) : null}
+              {contact.facebook ? (
+                <a
+                  href={contact.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="inline-flex items-center hover:text-foreground transition-colors"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+              ) : null}
+            </div>
           </div>
 
           <div>

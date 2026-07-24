@@ -11,6 +11,8 @@ export interface ContactConfig {
   whatsappDefaultText: string
   email: string
   doctoralia: string
+  instagram?: string
+  facebook?: string
   crm: string
   address: {
     clinic: string
@@ -39,12 +41,14 @@ export interface BrandConfig {
 }
 
 export const DEFAULT_CONTACT: ContactConfig = {
-  phoneDisplay: "(11) 91539-8330",
-  phoneTel: "+5511915398330",
-  whatsappNumber: "5511915398330",
+  phoneDisplay: "(11) 98706-5632",
+  phoneTel: "+5511987065632",
+  whatsappNumber: "5511987065632",
   whatsappDefaultText: "Olá, gostaria de agendar uma consulta",
   email: "contato@drgustavomendes.com",
   doctoralia: "https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai",
+  instagram: "https://www.instagram.com/drgustavomendesesilva",
+  facebook: "https://www.facebook.com/drgustavomendesesilva",
   crm: "CRM 218133/SP",
   address: {
     clinic: "Clínica Dr. Hegg",

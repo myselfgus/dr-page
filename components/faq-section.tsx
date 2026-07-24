@@ -39,7 +39,7 @@ export const DEFAULT_CONTENT: FaqContent = {
     {
       question: "Como posso agendar uma consulta?",
       answer:
-        "A forma mais rápida é pelo WhatsApp (11) 91539-8330 — respondo pessoalmente a cada mensagem. Se preferir, atendo também por telefone no mesmo número ou por e-mail em contato@drgustavomendes.com.",
+        "A forma mais rápida é pelo WhatsApp (11) 98706-5632 — respondo pessoalmente a cada mensagem. Se preferir, atendo também por telefone no mesmo número ou por e-mail em contato@drgustavomendes.com.",
     },
     {
       question: "Quais são as queixas mais comuns que você atende?",
@@ -66,7 +66,7 @@ export const DEFAULT_CONTENT: FaqContent = {
     text: "Ainda tem dúvidas?",
     ctas: [
       { kind: "whatsapp", label: "Fale pelo WhatsApp" },
-      { kind: "phone", label: "Ligar: (11) 91539-8330" },
+      { kind: "phone", label: "Ligar: (11) 98706-5632" },
       { kind: "doctoralia", label: "Ver avaliações na Doctoralia" },
     ],
   },

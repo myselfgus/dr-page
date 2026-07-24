@@ -44,7 +44,7 @@ function buildPhysician(contact: ContactConfig) {
     address: postalAddress(contact),
     telephone: contact.phoneTel,
     url: BASE_URL,
-    sameAs: [contact.doctoralia],
+    sameAs: [contact.doctoralia, contact.instagram, contact.facebook].filter(Boolean),
     priceRange: "$$",
     areaServed: { "@type": "City", name: contact.address.locality },
     availableService: [

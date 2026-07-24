@@ -39,7 +39,7 @@ avaliações `text-[#00c3a5]` com ícone estrela, "Ver avaliações na Doctorali
 `design_json` não deve ter opção que transforme doctoralia em botão de agendamento.
 
 ## site_config (singletons — fonte única de contato/nav/brand)
-- `contact`: `{ phoneDisplay:"(11) 91539-8330", phoneTel:"+5511915398330", whatsappNumber:"5511915398330",
+- `contact`: `{ phoneDisplay:"(11) 98706-5632", phoneTel:"+5511987065632", whatsappNumber:"5511987065632",
   whatsappDefaultText:"Olá, gostaria de agendar uma consulta", email:"contato@drgustavomendes.com",
   doctoralia:"https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai", crm:"CRM 218133/SP",
   address:{clinic,street,cityLine,locality:"Jundiaí",region:"SP",postalCode:"13202-544",country:"BR",lat:"-23.1996",lng:"-46.8764"},
