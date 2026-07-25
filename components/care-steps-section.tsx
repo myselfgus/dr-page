@@ -41,7 +41,7 @@ export const DEFAULT_CONTENT: CareStepsContent = {
     },
     {
       title: "Um plano claro",
-      body: "Definimos objetivos concretos e o papel de cada passo — inclusive quando a medicação ajuda, como e por quanto tempo. Sem caixa-preta.",
+      body: "Definimos objetivos concretos e o papel de cada passo — inclusive quando a medicação ajuda, como e por quanto tempo. Nada fica no escuro.",
     },
     {
       title: "Você caminha sozinho",

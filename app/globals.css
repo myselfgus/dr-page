@@ -297,6 +297,62 @@
   transform-origin: top center;
 }
 
+/* Filosofia — bento assimétrico (desktop)
+   a a a a a a a a b b b b
+   c c c c d d d d d d d d
+   e e e e e e f f f f f f
+*/
+.principles-bento {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .principles-bento {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .principles-bento {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "a a a a a a a a b b b b"
+      "c c c c d d d d d d d d"
+      "e e e e e e f f f f f f";
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .principles-bento__a {
+    grid-area: a;
+  }
+  .principles-bento__b {
+    grid-area: b;
+  }
+  .principles-bento__c {
+    grid-area: c;
+  }
+  .principles-bento__d {
+    grid-area: d;
+  }
+  .principles-bento__e {
+    grid-area: e;
+  }
+  .principles-bento__f {
+    grid-area: f;
+  }
+
+  /* Portrait cells stretch full row height next to wide cards */
+  .principles-bento__b,
+  .principles-bento__c {
+    min-height: 100%;
+  }
+}
+
 @keyframes breathe {
   0%,
   100% {

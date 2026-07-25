@@ -80,7 +80,7 @@ export const DEFAULT_CONTENT: PrinciplesContent = {
       imageAlt: "Ilustração: autonomia",
     },
     {
-      name: "Metas claras, sem caixa-preta",
+      name: "Metas claras, tudo explicado",
       description:
         "Você sabe onde está, para onde vamos e o que esperar em cada etapa. Objetivos concretos, prazos realistas e explicação didática de cada escolha.",
       focus: "Transparência · cronograma · expectativas honestas",
@@ -105,11 +105,158 @@ export const DEFAULT_DESIGN: PrinciplesDesign = {
   background: "muted",
 }
 
-function revealForIndex(index: number): "left" | "right" | "scale" | "item" {
-  const col = index % 3
-  if (col === 0) return "left"
-  if (col === 2) return "right"
-  return index % 2 === 0 ? "scale" : "item"
+/** Desktop bento areas a–f (see .principles-bento in globals.css). */
+const BENTO_AREAS = ["a", "b", "c", "d", "e", "f"] as const
+
+type CardLayout = "wide-left" | "wide-right" | "portrait" | "split"
+
+const BENTO_LAYOUT: CardLayout[] = [
+  "wide-left",
+  "portrait",
+  "portrait",
+  "wide-right",
+  "split",
+  "split",
+]
+
+function NumberBadge({ n }: { n: number }) {
+  return (
+    <span className="inline-flex font-mono text-[11px] tracking-[0.2em] text-foreground/70 bg-background/85 backdrop-blur-sm border border-border/60 rounded-full px-3 py-1">
+      {String(n).padStart(2, "0")}
+    </span>
+  )
+}
+
+function PrincipleMedia({
+  src,
+  alt,
+  driftAlt,
+  className,
+  sizes,
+  badge,
+}: {
+  src: string
+  alt: string
+  driftAlt?: boolean
+  className?: string
+  sizes: string
+  badge?: number
+}) {
+  return (
+    <div className={`principle-media relative overflow-hidden bg-muted/40 ${className ?? ""}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className={`object-cover ${driftAlt ? "img-drift-alt" : "img-drift"}`}
+        sizes={sizes}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-card/55 via-transparent to-transparent" />
+      {badge != null ? (
+        <span className="absolute top-3.5 left-3.5 z-[1]">
+          <NumberBadge n={badge} />
+        </span>
+      ) : null}
+    </div>
+  )
+}
+
+function FocusLine({ text, show }: { text: string; show: boolean }) {
+  if (!show) return null
+  return (
+    <p className="mt-auto pt-3 border-t border-border/70 text-[11px] sm:text-xs text-foreground/65 leading-relaxed tracking-wide">
+      {text}
+    </p>
+  )
+}
+
+function PrincipleCard({
+  principle,
+  number,
+  image,
+  layout,
+  showFocus,
+  numbered,
+}: {
+  principle: PrincipleItem
+  number: number
+  image: string
+  layout: CardLayout
+  showFocus: boolean
+  numbered: boolean
+}) {
+  const title = (
+    <h3 className="font-serif text-xl sm:text-2xl font-light mb-2.5 text-balance leading-snug">
+      {principle.name}
+    </h3>
+  )
+  const body = (
+    <p className="text-sm sm:text-[0.95rem] text-muted-foreground leading-relaxed mb-4 flex-1">
+      {principle.description}
+    </p>
+  )
+  const focus = <FocusLine text={principle.focus} show={showFocus} />
+
+  if (layout === "wide-left" || layout === "wide-right") {
+    const imageEnd = layout === "wide-right"
+    return (
+      <article className="h-full min-h-[260px] lg:min-h-[300px] overflow-hidden rounded-2xl border border-border bg-card shadow-card grid md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+        <PrincipleMedia
+          src={image}
+          alt={principle.imageAlt ?? principle.name}
+          driftAlt={number % 2 === 0}
+          className={`aspect-[16/11] md:aspect-auto md:min-h-full ${imageEnd ? "md:order-2" : ""}`}
+          sizes="(max-width: 768px) 100vw, 42vw"
+          badge={numbered ? number : undefined}
+        />
+        <div
+          className={`flex flex-col justify-center p-6 sm:p-7 lg:p-8 ${imageEnd ? "md:order-1" : ""}`}
+        >
+          {title}
+          {body}
+          {focus}
+        </div>
+      </article>
+    )
+  }
+
+  if (layout === "portrait") {
+    return (
+      <article className="h-full flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card min-h-[300px] lg:min-h-full">
+        <PrincipleMedia
+          src={image}
+          alt={principle.imageAlt ?? principle.name}
+          driftAlt={number % 2 === 1}
+          className="aspect-[5/4] lg:flex-[1.05] lg:aspect-auto lg:min-h-[180px] shrink-0"
+          sizes="(max-width: 1024px) 100vw, 28vw"
+          badge={numbered ? number : undefined}
+        />
+        <div className="flex flex-col flex-1 p-5 sm:p-6 lg:flex-none">
+          {title}
+          {body}
+          {focus}
+        </div>
+      </article>
+    )
+  }
+
+  return (
+    <article className="h-full flex flex-col sm:flex-row lg:flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card min-h-[240px]">
+      <PrincipleMedia
+        src={image}
+        alt={principle.imageAlt ?? principle.name}
+        driftAlt={number % 2 === 0}
+        className="aspect-[16/10] sm:w-[40%] sm:aspect-auto sm:min-h-[200px] lg:w-auto lg:aspect-[16/10] lg:min-h-0 shrink-0"
+        sizes="(max-width: 640px) 100vw, 40vw"
+        badge={numbered ? number : undefined}
+      />
+      <div className="flex flex-col flex-1 p-5 sm:p-6">
+        {title}
+        {body}
+        {focus}
+      </div>
+    </article>
+  )
 }
 
 export function ConditionsTreated({
@@ -121,7 +268,7 @@ export function ConditionsTreated({
 }) {
   const numbered = design.numbered !== false
   const showFocus = design.showFocus !== false
-  const rest = content.items.slice(1)
+  const [featured, ...rest] = content.items
 
   return (
     <section className="py-16 lg:py-28 bg-muted/30 border-t border-border overflow-hidden">
@@ -141,36 +288,34 @@ export function ConditionsTreated({
             </div>
           </Reveal>
 
-          {/* Featured first principle — calm full-width band, no hover motion */}
-          {content.items[0] ? (
-            <Reveal variant="scale" className="mb-6 lg:mb-8">
-              <article className="grid lg:grid-cols-2 gap-0 overflow-hidden rounded-2xl border border-border bg-card shadow-card">
-                <div className="principle-media relative aspect-[5/4] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[300px] overflow-hidden bg-muted/40">
+          {featured ? (
+            <Reveal variant="scale" className="mb-5 md:mb-6 lg:mb-7">
+              <article className="grid lg:grid-cols-12 gap-0 overflow-hidden rounded-2xl border border-border bg-card shadow-card">
+                <div className="lg:col-span-5 principle-media relative aspect-[5/4] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[340px] overflow-hidden bg-muted/40">
                   <Image
-                    src={content.items[0].image ?? DEFAULT_IMAGES[0]}
-                    alt={content.items[0].imageAlt ?? content.items[0].name}
+                    src={featured.image ?? DEFAULT_IMAGES[0]}
+                    alt={featured.imageAlt ?? featured.name}
                     fill
                     className="object-cover img-drift"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    priority={false}
+                    sizes="(max-width: 1024px) 100vw, 42vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/35 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-card/25" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/35 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-card/30" />
                 </div>
-                <div className="flex flex-col justify-center p-7 sm:p-9 lg:p-11">
+                <div className="lg:col-span-7 flex flex-col justify-center p-7 sm:p-9 lg:p-12 xl:p-14">
                   {numbered ? (
                     <p className="font-mono text-xs text-muted-foreground mb-3 tracking-[0.25em]">
                       01 — PRINCÍPIO GUIA
                     </p>
                   ) : null}
-                  <h3 className="font-serif text-2xl sm:text-3xl md:text-[2.15rem] font-light mb-4 text-balance leading-snug">
-                    {content.items[0].name}
+                  <h3 className="font-serif text-2xl sm:text-3xl md:text-[2.25rem] font-light mb-4 text-balance leading-snug max-w-xl">
+                    {featured.name}
                   </h3>
-                  <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-5">
-                    {content.items[0].description}
+                  <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-5 max-w-xl">
+                    {featured.description}
                   </p>
                   {showFocus ? (
                     <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed tracking-wide">
-                      {content.items[0].focus}
+                      {featured.focus}
                     </p>
                   ) : null}
                 </div>
@@ -178,44 +323,36 @@ export function ConditionsTreated({
             </Reveal>
           ) : null}
 
-          {/* Remaining — even grid, static cards (no lift / border flash on hover) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {/*
+            Bento assimétrico:
+            mobile  → 1 coluna
+            md      → 2 colunas
+            lg+     → áreas nomeadas (a wide + b portrait, etc.) via globals.css
+          */}
+          <div className="principles-bento">
             {rest.map((principle, i) => {
-              const index = i + 1
-              const image = principle.image ?? DEFAULT_IMAGES[index] ?? DEFAULT_IMAGES[0]
-              const variant = revealForIndex(index)
+              const area = BENTO_AREAS[i] ?? "a"
+              const layout = BENTO_LAYOUT[i] ?? "split"
+              const number = i + 2
+              const image = principle.image ?? DEFAULT_IMAGES[number - 1] ?? DEFAULT_IMAGES[0]
+              const reveal: "left" | "right" | "scale" | "item" =
+                i % 3 === 0 ? "left" : i % 3 === 1 ? "right" : "scale"
+
               return (
-                <Reveal key={principle.name} variant={variant} delay={(i % 3) * 80}>
-                  <article className="h-full flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card">
-                    <div className="principle-media relative aspect-[16/10] overflow-hidden bg-muted/50">
-                      <Image
-                        src={image}
-                        alt={principle.imageAlt ?? principle.name}
-                        fill
-                        className={`object-cover ${index % 2 === 0 ? "img-drift" : "img-drift-alt"}`}
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/15 to-transparent" />
-                      {numbered ? (
-                        <span className="absolute top-3.5 left-3.5 font-mono text-[11px] tracking-[0.2em] text-foreground/70 bg-background/85 backdrop-blur-sm border border-border/60 rounded-full px-3 py-1">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                      ) : null}
-                    </div>
-                    <div className="flex flex-col flex-1 p-5 sm:p-6 -mt-1 relative">
-                      <h3 className="font-serif text-xl sm:text-[1.35rem] font-light mb-2.5 text-balance leading-snug">
-                        {principle.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
-                        {principle.description}
-                      </p>
-                      {showFocus ? (
-                        <p className="mt-auto pt-3 border-t border-border/70 text-[11px] sm:text-xs text-foreground/65 leading-relaxed tracking-wide">
-                          {principle.focus}
-                        </p>
-                      ) : null}
-                    </div>
-                  </article>
+                <Reveal
+                  key={principle.name}
+                  variant={reveal}
+                  delay={(i % 3) * 70}
+                  className={`principles-bento__${area} h-full min-h-0`}
+                >
+                  <PrincipleCard
+                    principle={principle}
+                    number={number}
+                    image={image}
+                    layout={layout}
+                    showFocus={showFocus}
+                    numbered={numbered}
+                  />
                 </Reveal>
               )
             })}
