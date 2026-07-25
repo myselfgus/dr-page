@@ -26,24 +26,37 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
   }
 
+  const url = `https://drgustavomendes.com/blog/${post.slug}`
+  const title = `${post.title} | Dr. Gustavo Mendes`
   return {
-    title: `${post.title} - Dr. Gustavo Mendes e Silva`,
+    title: { absolute: title },
     description: post.excerpt,
     keywords: post.keywords,
     authors: [{ name: post.author }],
-    alternates: { canonical: `https://drgustavomendes.com/blog/${post.slug}` },
+    alternates: { canonical: url },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: "article",
       publishedTime: post.date,
       authors: [post.author],
-      url: `https://drgustavomendes.com/blog/${post.slug}`,
+      url,
+      siteName: "Dr. Gustavo Mendes - Psiquiatra",
+      locale: "pt_BR",
+      images: [
+        {
+          url: "https://drgustavomendes.com/og-image.jpg",
+          width: 1024,
+          height: 1024,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
+      images: ["https://drgustavomendes.com/og-image.jpg"],
     },
   }
 }

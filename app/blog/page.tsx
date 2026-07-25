@@ -6,14 +6,39 @@ import { DEFAULT_BRAND, DEFAULT_CONTACT, DEFAULT_NAV } from "@/lib/site-config"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Blog - Dr. Gustavo Mendes e Silva | Artigos sobre Psiquiatria",
+  title: { absolute: "Blog de Psiquiatria | Dr. Gustavo Mendes e Silva" },
   description:
-    "Artigos acadêmicos e insights sobre psiquiatria, fenomenologia, psicopatologia e saúde mental pelo Dr. Gustavo Mendes e Silva.",
-  keywords: ["blog psiquiatria", "artigos psiquiatria", "saúde mental", "fenomenologia", "psicopatologia"],
+    "Artigos e reflexões do Dr. Gustavo Mendes e Silva (CRM 218133/SP) sobre psiquiatria, fenomenologia, psicopatologia e saúde mental.",
+  keywords: [
+    "blog psiquiatria",
+    "artigos psiquiatria",
+    "saúde mental",
+    "fenomenologia",
+    "psicopatologia",
+    "dr gustavo mendes",
+  ],
+  alternates: { canonical: "https://drgustavomendes.com/blog" },
   openGraph: {
-    title: "Blog - Dr. Gustavo Mendes e Silva",
-    description: "Artigos acadêmicos e insights sobre psiquiatria e saúde mental",
+    title: "Blog de Psiquiatria | Dr. Gustavo Mendes e Silva",
+    description: "Artigos e reflexões sobre psiquiatria e saúde mental.",
+    url: "https://drgustavomendes.com/blog",
+    siteName: "Dr. Gustavo Mendes - Psiquiatra",
+    locale: "pt_BR",
     type: "website",
+    images: [
+      {
+        url: "https://drgustavomendes.com/og-image.jpg",
+        width: 1024,
+        height: 1024,
+        alt: "Blog — Dr. Gustavo Mendes e Silva",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog de Psiquiatria | Dr. Gustavo Mendes",
+    description: "Artigos e reflexões sobre psiquiatria e saúde mental.",
+    images: ["https://drgustavomendes.com/og-image.jpg"],
   },
 }
 

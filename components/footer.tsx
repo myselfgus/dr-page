@@ -1,5 +1,7 @@
+import Link from "next/link"
 import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react"
 import { StarIcon } from "@/components/blocks/cta-button"
+import { CONDITION_LANDINGS } from "@/lib/condition-landings"
 import {
   type ContactConfig,
   type NavConfig,
@@ -33,11 +35,14 @@ export function Footer({
   return (
     <footer className="border-t border-border py-12 lg:py-16">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-8">
           <div>
             <h3 className="font-serif text-2xl font-light mb-4">{brand.name}</h3>
             <p className="font-mono text-xs tracking-wide text-muted-foreground mb-2">{brand.crm}</p>
             <p className="text-sm text-muted-foreground leading-relaxed">{brand.tagline}</p>
+            <p className="text-sm text-muted-foreground mt-3">
+              Psiquiatra em Jundiaí — Clínica Dr. Hegg
+            </p>
             <a
               href={contact.doctoralia}
               target="_blank"
@@ -76,11 +81,29 @@ export function Footer({
           <div>
             <h4 className="text-sm font-medium mb-4 tracking-wide">Navegar</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <Link href="/" className="hover:text-foreground transition-colors">
+                  Início
+                </Link>
+              </li>
               {items.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="hover:text-foreground transition-colors">
+                  <Link href={item.href} className="hover:text-foreground transition-colors">
                     {item.label}
-                  </a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-medium mb-4 tracking-wide">Cuidados</h4>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              {CONDITION_LANDINGS.map((c) => (
+                <li key={c.path}>
+                  <Link href={c.path} className="hover:text-foreground transition-colors">
+                    {c.eyebrow}
+                  </Link>
                 </li>
               ))}
             </ul>

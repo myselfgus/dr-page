@@ -52,6 +52,9 @@ export const metadata: Metadata = {
     "Psiquiatra em Jundiaí. Cuidado humanizado para burnout, ansiedade, pânico e insônia. Consultas presenciais, teleconsulta e atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp.",
   keywords: [
     "psiquiatra jundiaí",
+    "dr gustavo mendes",
+    "dr gustavo mendes e silva",
+    "psiquiatra gustavo mendes",
     "teleconsulta psiquiátrica",
     "psiquiatra online",
     "consulta psiquiátrica humanizada",
@@ -65,17 +68,26 @@ export const metadata: Metadata = {
     "autismo jundiaí",
     "medicina canabinoide",
     "transtornos do sono",
-    "dr gustavo mendes",
     "CRM 218133",
     "psiquiatra particular jundiaí",
     "tratamento depressão",
     "tratamento ansiedade",
     "psiquiatra autismo",
     "psiquiatra idosos",
+    "clínica dr hegg jundiaí",
   ],
-  authors: [{ name: "Dr. Gustavo Mendes e Silva" }],
+  authors: [{ name: "Dr. Gustavo Mendes e Silva", url: "https://drgustavomendes.com/about" }],
   creator: "Dr. Gustavo Mendes e Silva",
   publisher: "Dr. Gustavo Mendes e Silva",
+  // Canonical NÃO fica no layout — cada página define o seu (blog herdava o da home).
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-light-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   robots: {
     index: true,
     follow: true,
@@ -110,9 +122,6 @@ export const metadata: Metadata = {
     description: "Psiquiatria humanizada em Jundiaí — teleconsulta e atendimento domiciliar.",
     images: ["https://drgustavomendes.com/og-image.jpg"],
     creator: "@drgustavomendesesilva",
-  },
-  alternates: {
-    canonical: "https://drgustavomendes.com",
   },
   category: "Healthcare",
   classification: "Medical Services - Psychiatry",

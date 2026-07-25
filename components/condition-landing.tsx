@@ -6,6 +6,7 @@ import { BackButton } from "@/components/back-button"
 import { CtaButton, StarIcon } from "@/components/blocks/cta-button"
 import { Reveal } from "@/components/reveal"
 import {
+  CONDITION_LANDINGS,
   type ConditionLanding,
 } from "@/lib/condition-landings"
 import {
@@ -128,6 +129,39 @@ export function ConditionLandingView({ landing }: { landing: ConditionLanding })
         </div>
       </section>
 
+      {/* Internal links — fortalece cluster de intenções no Google */}
+      <section className="py-12 lg:py-14 border-t border-border">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <Reveal variant="item">
+              <h2 className="font-serif text-xl sm:text-2xl font-medium mb-5 text-balance">
+                Outros caminhos de cuidado
+              </h2>
+              <ul className="flex flex-wrap gap-2.5">
+                {CONDITION_LANDINGS.filter((c) => c.slug !== landing.slug).map((c) => (
+                  <li key={c.path}>
+                    <Link
+                      href={c.path}
+                      className="inline-block text-sm px-4 py-2 rounded-full border border-border bg-card text-foreground/80 hover:bg-foreground hover:text-background hover:border-foreground transition-colors"
+                    >
+                      {c.eyebrow}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link
+                    href="/teleconsulta"
+                    className="inline-block text-sm px-4 py-2 rounded-full border border-border bg-card text-foreground/80 hover:bg-foreground hover:text-background hover:border-foreground transition-colors"
+                  >
+                    Teleconsulta
+                  </Link>
+                </li>
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 lg:py-24 border-t border-border">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
@@ -136,7 +170,8 @@ export function ConditionLandingView({ landing }: { landing: ConditionLanding })
                 Pronto para conversar?
               </h2>
               <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-                Atendimento particular em Jundiaí — presencial, teleconsulta ou domiciliar quando fizer sentido.
+                Atendimento particular com o Dr. Gustavo Mendes e Silva em Jundiaí — presencial,
+                teleconsulta ou domiciliar quando fizer sentido.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <CtaButton cta={wa} />
@@ -145,6 +180,10 @@ export function ConditionLandingView({ landing }: { landing: ConditionLanding })
               <p className="mt-8 text-sm text-muted-foreground">
                 <Link href="/" className="underline-offset-4 hover:underline">
                   Voltar ao início
+                </Link>
+                {" · "}
+                <Link href="/about" className="underline-offset-4 hover:underline">
+                  Sobre
                 </Link>
                 {" · "}
                 <Link href="/contact" className="underline-offset-4 hover:underline">
