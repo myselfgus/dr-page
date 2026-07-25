@@ -10,6 +10,8 @@ import {
   DEFAULT_NAV,
   DEFAULT_BRAND,
 } from "@/lib/site-config"
+import { InfinityMark } from "@/components/neuro/infinity-mark"
+import { NEURO_BASE } from "@/lib/neuro-portal"
 
 // WhatsApp vive só no float global (canto) — evita duplicidade com a top-bar.
 export function Header({
@@ -57,17 +59,33 @@ export function Header({
                 {item.label}
               </Link>
             ))}
+            <Link
+              href={NEURO_BASE}
+              className="inline-flex items-center justify-center rounded-full border border-border text-foreground/70 hover:text-foreground hover:border-foreground/30 transition-colors h-9 w-9"
+              aria-label="Portal Neurodivergência e TEA"
+              title="Neurodivergência e TEA"
+            >
+              <InfinityMark className="w-4 h-4" title="Portal Neurodivergência e TEA" />
+            </Link>
           </nav>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-          >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+          <div className="flex items-center gap-1 md:hidden">
+            <Link
+              href={NEURO_BASE}
+              className="inline-flex items-center justify-center rounded-full border border-border text-foreground/70 h-9 w-9"
+              aria-label="Portal Neurodivergência e TEA"
+            >
+              <InfinityMark className="w-4 h-4" title="Portal Neurodivergência e TEA" />
+            </Link>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+            >
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </div>
         </div>
 
         {isMenuOpen ? (
@@ -83,6 +101,14 @@ export function Header({
                   {item.label}
                 </Link>
               ))}
+              <Link
+                href={NEURO_BASE}
+                className="inline-flex items-center gap-2 text-base font-emphasis tracking-wide hover:text-muted-foreground transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <InfinityMark className="w-4 h-4" />
+                Neurodivergência · TEA
+              </Link>
             </div>
           </nav>
         ) : null}

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next"
 import { getBlogPosts } from "@/lib/blog-posts"
 import { CONDITION_LANDINGS } from "@/lib/condition-landings"
+import { NEURO_NAV } from "@/lib/neuro-portal"
 
 const BASE_URL = "https://drgustavomendes.com"
 
@@ -35,6 +36,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    ...NEURO_NAV.map((n) => ({
+      url: `${BASE_URL}${n.href}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.88,
+    })),
     ...CONDITION_LANDINGS.map((c) => ({
       url: `${BASE_URL}${c.path}`,
       lastModified: now,

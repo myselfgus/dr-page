@@ -2,6 +2,7 @@ import Link from "next/link"
 import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react"
 import { StarIcon } from "@/components/blocks/cta-button"
 import { CONDITION_LANDINGS } from "@/lib/condition-landings"
+import { NEURO_BASE } from "@/lib/neuro-portal"
 import {
   type ContactConfig,
   type NavConfig,
@@ -99,6 +100,11 @@ export function Footer({
           <div>
             <h4 className="text-sm font-medium mb-4 tracking-wide">Cuidados</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <Link href={NEURO_BASE} className="hover:text-foreground transition-colors">
+                  Neurodivergência · TEA
+                </Link>
+              </li>
               {CONDITION_LANDINGS.map((c) => (
                 <li key={c.path}>
                   <Link href={c.path} className="hover:text-foreground transition-colors">
