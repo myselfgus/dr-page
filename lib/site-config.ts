@@ -73,7 +73,6 @@ export const DEFAULT_NAV: NavConfig = {
     { label: "Domiciliar", href: "/domiciliar" },
     { label: "Blog", href: "/blog" },
     { label: "Sobre", href: "/about" },
-    { label: "Contato", href: "/contact" },
   ],
 }
 

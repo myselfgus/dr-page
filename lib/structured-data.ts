@@ -32,7 +32,7 @@ const PAGE_PATHS: Record<string, string> = {
   about: "/about",
   teleconsulta: "/teleconsulta",
   domiciliar: "/domiciliar",
-  contact: "/contact",
+  contact: "/#contact",
 }
 
 function postalAddress(contact: ContactConfig) {

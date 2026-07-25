@@ -6,6 +6,7 @@ import Link from "next/link"
 import ReactMarkdown, { type Components } from "react-markdown"
 import { Button } from "@/components/ui/button"
 import { Clock, Calendar } from "lucide-react"
+import { DEFAULT_CONTACT, resolveCta } from "@/lib/site-config"
 
 interface BlogPostClientProps {
   post: any
@@ -212,7 +213,22 @@ function BlogPostContent({ post }: { post: any }) {
                   <p className="font-serif text-xl font-light">{post.author}</p>
                 </div>
                 <Button asChild>
-                  <Link href="/contact">Agendar Consulta</Link>
+                  <a
+                    href={
+                      resolveCta(
+                        {
+                          kind: "whatsapp",
+                          label: "Agendar consulta",
+                          text: "Olá, gostaria de agendar uma consulta",
+                        },
+                        DEFAULT_CONTACT,
+                      ).href
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Agendar consulta
+                  </a>
                 </Button>
               </div>
             </footer>

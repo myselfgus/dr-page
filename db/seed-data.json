@@ -42,10 +42,6 @@
         {
           "label": "Sobre",
           "href": "/about"
-        },
-        {
-          "label": "Contato",
-          "href": "/contact"
         }
       ]
     },
@@ -466,9 +462,9 @@
     {
       "id": "contact",
       "path": "/contact",
-      "status": "published",
-      "renders_header": 1,
-      "renders_footer": 1,
+      "status": "unpublished",
+      "renders_header": 0,
+      "renders_footer": 0,
       "back_button": 0,
       "sort": 5
     }
@@ -1241,8 +1237,8 @@
           "Atendimento psiquiátrico por vídeo"
         ],
         "lead": "A distância não precisa ser um obstáculo para cuidar da saúde mental. Na teleconsulta você tem a mesma escuta atenta e sem pressa do atendimento no consultório, por vídeo, de onde estiver.",
-        "image": "/images/dr-gustavo-preto.jpg",
-        "imageAlt": "Dr. Gustavo Mendes e Silva, psiquiatra CRM 218133/SP"
+        "image": "/images/sections/teleconsulta.jpg",
+        "imageAlt": "Atendimento psiquiátrico por vídeo — teleconsulta"
       },
       "design": {
         "variant": "subpage-split"
@@ -1312,8 +1308,8 @@
           "O cuidado psiquiátrico vai até você"
         ],
         "lead": "Nem sempre sair de casa é possível — ou o melhor caminho. Ofereço atendimento psiquiátrico domiciliar em Jundiaí e região, com a mesma escuta atenta e sem pressa do atendimento no consultório, no ambiente onde a pessoa se sente mais segura.",
-        "image": "/images/dr-gustavo-branco.jpg",
-        "imageAlt": "Dr. Gustavo Mendes e Silva, psiquiatra CRM 218133/SP"
+        "image": "/images/sections/domiciliar.jpg",
+        "imageAlt": "Atendimento psiquiátrico no ambiente de casa"
       },
       "design": {
         "variant": "subpage-split"

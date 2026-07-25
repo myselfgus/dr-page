@@ -186,7 +186,7 @@ export function ConditionLandingView({ landing }: { landing: ConditionLanding })
                   Sobre
                 </Link>
                 {" · "}
-                <Link href="/contact" className="underline-offset-4 hover:underline">
+                <Link href="/#contact" className="underline-offset-4 hover:underline">
                   Contato
                 </Link>
               </p>

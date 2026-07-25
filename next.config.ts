@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
       { source: "/artists", destination: "/", permanent: true },
       { source: "/gallery", destination: "/", permanent: true },
       { source: "/curriculum", destination: "/about", permanent: true },
+      // Contato vive na home (#contact) — WhatsApp/telefone/mapa. Evita página redundante.
+      { source: "/contact", destination: "/#contact", permanent: true },
+      { source: "/contato", destination: "/#contact", permanent: true },
     ]
   },
 }
