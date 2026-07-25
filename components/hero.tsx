@@ -25,9 +25,12 @@ export interface HeroDesign {
   showRatingBadge?: boolean
 }
 
+/** 5 linhas no mobile (dramático); desktop reagrupa em 3. */
+const MOBILE_TITLE = ["E se for", "possível", "viver", "de outro", "modo?"] as const
+const DESKTOP_TITLE = ["E se for", "possível viver", "de outro modo?"] as const
+
 export const DEFAULT_CONTENT: HeroContent = {
-  // Quebras pensadas para mobile (título grande, legível, dramático)
-  titleLines: ["E se for", "possível", "viver", "de outro", "modo?"],
+  titleLines: [...MOBILE_TITLE],
   leadHtml: [
     "<strong>Psiquiatria verdadeiramente humanizada</strong> que vai além do diagnóstico.",
     "Afinal, você não precisa de mais diagnósticos prontos, <strong>você precisa se entender de verdade.</strong>",
@@ -49,6 +52,17 @@ const DELAYS = [
   "animation-delay-600",
 ]
 
+function isDefaultSplit(lines: string[]) {
+  return (
+    lines.length === 5 &&
+    lines[0] === "E se for" &&
+    lines[1] === "possível" &&
+    lines[2] === "viver" &&
+    lines[3] === "de outro" &&
+    lines[4] === "modo?"
+  )
+}
+
 export function Hero({
   content = DEFAULT_CONTENT,
   design = DEFAULT_DESIGN,
@@ -62,20 +76,12 @@ export function Hero({
   const ratingLabel = `${DEFAULT_CONTACT.ratingValue}`.replace(".", ",")
 
   if (variant === "home") {
-    // No desktop, reagrupa em 3 linhas se vier o split de 5 (mobile-first)
-    const lines = content.titleLines
-    const desktopLines =
-      lines.length === 5 &&
-      lines[0] === "E se for" &&
-      lines[1] === "possível" &&
-      lines[2] === "viver" &&
-      lines[3] === "de outro" &&
-      lines[4] === "modo?"
-        ? ["E se for", "possível viver", "de outro modo?"]
-        : lines
+    const raw = content.titleLines?.length ? content.titleLines : [...MOBILE_TITLE]
+    const mobileLines = isDefaultSplit(raw) || raw.length >= 5 ? raw : raw
+    const desktopLines = isDefaultSplit(raw) ? [...DESKTOP_TITLE] : raw
 
     return (
-      <section className="relative pt-28 pb-16 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32 min-h-[70vh] lg:min-h-[70vh] flex items-center overflow-hidden">
+      <section className="relative pt-28 pb-16 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32 min-h-[65vh] lg:min-h-[70vh] flex items-center overflow-hidden">
         {design.showAnimatedBackground !== false ? (
           <div className="hidden lg:block absolute inset-0 opacity-30">
             <AnimatedBackground />
@@ -84,25 +90,24 @@ export function Hero({
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            {/* Mobile: 5 linhas grandes | Desktop: 3 linhas */}
-            <h1 className="font-serif font-medium leading-[1.05] tracking-tight mb-8 lg:mb-6 text-balance">
-              {/* Mobile / tablet pequeno */}
-              <span className="sm:hidden">
-                {lines.map((line, i) => (
+            <h1 className="font-serif font-medium leading-[1.06] tracking-tight text-balance mb-7 sm:mb-8 lg:mb-6">
+              {/* Mobile: título grande em 5 linhas */}
+              <span className="block md:hidden">
+                {mobileLines.map((line, i) => (
                   <span
-                    key={`m-${i}`}
-                    className={`block text-[3.15rem] xs:text-6xl animate-fade-up ${DELAYS[i] ?? "animation-delay-600"}`}
+                    key={`m-${line}-${i}`}
+                    className={`block text-5xl leading-[1.08] animate-fade-up ${DELAYS[i] ?? "animation-delay-600"}`}
                   >
                     {line}
                   </span>
                 ))}
               </span>
-              {/* sm+ */}
-              <span className="hidden sm:block">
+              {/* Desktop: 3 linhas ainda maiores */}
+              <span className="hidden md:block">
                 {desktopLines.map((line, i) => (
                   <span
-                    key={`d-${i}`}
-                    className={`block text-6xl md:text-7xl lg:text-8xl animate-fade-up ${DELAYS[i] ?? ""}`}
+                    key={`d-${line}-${i}`}
+                    className={`block text-7xl lg:text-8xl leading-tight animate-fade-up ${DELAYS[i] ?? ""}`}
                   >
                     {line}
                   </span>
@@ -110,34 +115,34 @@ export function Hero({
               </span>
             </h1>
 
-            {/* Badge Doctoralia = subtexto principal da hero */}
+            {/* Badge Doctoralia — subtexto principal */}
             {showRating ? (
-              <div className="mb-8 sm:mb-10 animate-fade-up animation-delay-450">
+              <div className="mb-7 sm:mb-9 animate-fade-up animation-delay-450">
                 <Link
                   href="#avaliacoes"
-                  className="inline-flex flex-wrap items-center gap-2.5 sm:gap-3 rounded-full border border-border bg-card px-4 py-2.5 sm:px-5 sm:py-3 text-sm sm:text-base shadow-card hover:shadow-card-hover transition-shadow"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 shadow-card hover:shadow-card-hover transition-shadow max-w-full"
                 >
-                  <span className="inline-flex text-[#00c3a5]" aria-hidden="true">
+                  <span className="inline-flex shrink-0 text-[#00c3a5]" aria-hidden="true">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <StarIcon key={i} className="w-4 h-4 sm:w-[1.125rem] sm:h-[1.125rem]" />
+                      <StarIcon key={i} className="w-3.5 h-3.5" />
                     ))}
                   </span>
-                  <span className="font-emphasis font-semibold text-foreground tracking-tight">
+                  <span className="font-emphasis font-semibold text-foreground text-sm tabular-nums">
                     {ratingLabel}
                   </span>
-                  <span className="text-muted-foreground font-emphasis">
+                  <span className="text-muted-foreground text-sm font-emphasis whitespace-nowrap">
                     · {DEFAULT_CONTACT.reviewCount} avaliações na Doctoralia
                   </span>
                 </Link>
               </div>
             ) : null}
 
-            {/* Lead de apoio — abaixo do badge */}
+            {/* Lead de apoio */}
             <div className="text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl space-y-4 sm:space-y-5 text-muted-foreground [&_strong]:text-foreground [&_strong]:font-semibold">
               {(content.leadHtml ?? []).map((html, i) => (
                 <span
                   key={i}
-                  className={`block animate-fade-up ${i === 0 ? "animation-delay-600" : "animation-delay-600"}`}
+                  className="block animate-fade-up animation-delay-600"
                   style={i === 1 ? { animationDelay: "750ms" } : undefined}
                   dangerouslySetInnerHTML={{ __html: sanitizeInline(html) }}
                 />
