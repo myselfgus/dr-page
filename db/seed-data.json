@@ -620,13 +620,16 @@
       "content": {
         "titleLines": [
           "E se for",
-          "possível viver",
-          "de outro modo?"
+          "possível",
+          "viver",
+          "de outro",
+          "modo?"
         ],
         "leadHtml": [
           "<strong>Psiquiatria verdadeiramente humanizada</strong> que vai além do diagnóstico.",
           "Afinal, você não precisa de mais diagnósticos prontos, <strong>você precisa se entender de verdade.</strong>"
-        ]
+        ],
+        "showRatingBadge": true
       },
       "design": {
         "variant": "home",

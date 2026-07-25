@@ -26,7 +26,8 @@ export interface HeroDesign {
 }
 
 export const DEFAULT_CONTENT: HeroContent = {
-  titleLines: ["E se for", "possível viver", "de outro modo?"],
+  // Quebras pensadas para mobile (título grande, legível, dramático)
+  titleLines: ["E se for", "possível", "viver", "de outro", "modo?"],
   leadHtml: [
     "<strong>Psiquiatria verdadeiramente humanizada</strong> que vai além do diagnóstico.",
     "Afinal, você não precisa de mais diagnósticos prontos, <strong>você precisa se entender de verdade.</strong>",
@@ -40,7 +41,13 @@ export const DEFAULT_DESIGN: HeroDesign = {
   showRatingBadge: true,
 }
 
-const DELAYS = ["", "animation-delay-150", "animation-delay-300", "animation-delay-450"]
+const DELAYS = [
+  "",
+  "animation-delay-150",
+  "animation-delay-300",
+  "animation-delay-450",
+  "animation-delay-600",
+]
 
 export function Hero({
   content = DEFAULT_CONTENT,
@@ -55,8 +62,20 @@ export function Hero({
   const ratingLabel = `${DEFAULT_CONTACT.ratingValue}`.replace(".", ",")
 
   if (variant === "home") {
+    // No desktop, reagrupa em 3 linhas se vier o split de 5 (mobile-first)
+    const lines = content.titleLines
+    const desktopLines =
+      lines.length === 5 &&
+      lines[0] === "E se for" &&
+      lines[1] === "possível" &&
+      lines[2] === "viver" &&
+      lines[3] === "de outro" &&
+      lines[4] === "modo?"
+        ? ["E se for", "possível viver", "de outro modo?"]
+        : lines
+
     return (
-      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 min-h-[60vh] lg:min-h-[70vh] flex items-center overflow-hidden">
+      <section className="relative pt-28 pb-16 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32 min-h-[70vh] lg:min-h-[70vh] flex items-center overflow-hidden">
         {design.showAnimatedBackground !== false ? (
           <div className="hidden lg:block absolute inset-0 opacity-30">
             <AnimatedBackground />
@@ -65,43 +84,65 @@ export function Hero({
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            {/* Frase-assinatura em 3 linhas — tipografia estável no mobile */}
-            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium leading-tight mb-8 lg:mb-6 text-balance">
-              {content.titleLines.map((line, i) => (
-                <span key={i} className={`block animate-fade-up ${DELAYS[i] ?? ""}`}>
-                  {line}
-                </span>
-              ))}
+            {/* Mobile: 5 linhas grandes | Desktop: 3 linhas */}
+            <h1 className="font-serif font-medium leading-[1.05] tracking-tight mb-8 lg:mb-6 text-balance">
+              {/* Mobile / tablet pequeno */}
+              <span className="sm:hidden">
+                {lines.map((line, i) => (
+                  <span
+                    key={`m-${i}`}
+                    className={`block text-[3.15rem] xs:text-6xl animate-fade-up ${DELAYS[i] ?? "animation-delay-600"}`}
+                  >
+                    {line}
+                  </span>
+                ))}
+              </span>
+              {/* sm+ */}
+              <span className="hidden sm:block">
+                {desktopLines.map((line, i) => (
+                  <span
+                    key={`d-${i}`}
+                    className={`block text-6xl md:text-7xl lg:text-8xl animate-fade-up ${DELAYS[i] ?? ""}`}
+                  >
+                    {line}
+                  </span>
+                ))}
+              </span>
             </h1>
 
-            <div className="text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl space-y-4 sm:space-y-6 text-muted-foreground [&_strong]:text-foreground [&_strong]:font-semibold">
-              {(content.leadHtml ?? []).map((html, i) => (
-                <span
-                  key={i}
-                  className={`block animate-fade-up ${i === 0 ? "animation-delay-450" : "animation-delay-600"}`}
-                  dangerouslySetInnerHTML={{ __html: sanitizeInline(html) }}
-                />
-              ))}
-            </div>
-
+            {/* Badge Doctoralia = subtexto principal da hero */}
             {showRating ? (
-              <div className="mt-8 animate-fade-up animation-delay-600">
+              <div className="mb-8 sm:mb-10 animate-fade-up animation-delay-450">
                 <Link
                   href="#avaliacoes"
-                  className="inline-flex flex-wrap items-center gap-2 sm:gap-3 rounded-full border border-border bg-card/80 backdrop-blur-sm px-4 py-2 text-sm shadow-card hover:shadow-card-hover transition-shadow"
+                  className="inline-flex flex-wrap items-center gap-2.5 sm:gap-3 rounded-full border border-border bg-card px-4 py-2.5 sm:px-5 sm:py-3 text-sm sm:text-base shadow-card hover:shadow-card-hover transition-shadow"
                 >
                   <span className="inline-flex text-[#00c3a5]" aria-hidden="true">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <StarIcon key={i} className="w-3.5 h-3.5" />
+                      <StarIcon key={i} className="w-4 h-4 sm:w-[1.125rem] sm:h-[1.125rem]" />
                     ))}
                   </span>
-                  <span className="font-emphasis font-medium text-foreground">{ratingLabel}</span>
-                  <span className="text-muted-foreground">
-                    · {DEFAULT_CONTACT.reviewCount} na Doctoralia
+                  <span className="font-emphasis font-semibold text-foreground tracking-tight">
+                    {ratingLabel}
+                  </span>
+                  <span className="text-muted-foreground font-emphasis">
+                    · {DEFAULT_CONTACT.reviewCount} avaliações na Doctoralia
                   </span>
                 </Link>
               </div>
             ) : null}
+
+            {/* Lead de apoio — abaixo do badge */}
+            <div className="text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl space-y-4 sm:space-y-5 text-muted-foreground [&_strong]:text-foreground [&_strong]:font-semibold">
+              {(content.leadHtml ?? []).map((html, i) => (
+                <span
+                  key={i}
+                  className={`block animate-fade-up ${i === 0 ? "animation-delay-600" : "animation-delay-600"}`}
+                  style={i === 1 ? { animationDelay: "750ms" } : undefined}
+                  dangerouslySetInnerHTML={{ __html: sanitizeInline(html) }}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
