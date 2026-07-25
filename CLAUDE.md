@@ -86,7 +86,7 @@ Built in `lib/structured-data.ts` from site_config + blocks (not hardcoded in la
 
 ### Design system quick reference
 - Cool monochrome background (`oklch(0.99 0 0)`); cards white; soft multi-layer `shadow-card`.
-- Fonts: **DM Serif Display** (`font-serif` display) · **Urbanist** (`font-emphasis` / `<strong>`) · **Nunito Sans** (`font-sans` body).
+- Fonts: **DM Serif Display** (`font-display` — só o nome no header) · **Playfair Display** (`font-serif` headings) · **Sora** (`font-emphasis` / `<strong>`) · **Manrope** (`font-sans` body) · **Roboto Mono** (`font-mono` — micro-labels, eyebrows, CRM, números/etapas).
 - Radius base `0.75rem`; cards `rounded-2xl`; pills/CTAs `rounded-full`.
 - Reveal: `section` | `item` | `left` | `right` | `scale` | `blur`.
 - Home hero phrase stays editorial multiline: "E se for / possível viver / de outro modo?" — mobile prioritizes the H1.
