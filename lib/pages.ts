@@ -135,8 +135,9 @@ function mapPageMeta(row: PageMetaRow): PageMeta {
 }
 
 // Acessa o binding D1 (`dr_blog`) via contexto OpenNext do Cloudflare.
+// async: true é obrigatório em rotas com ISR/revalidate (não-estático no top-level).
 async function getDb(): Promise<D1Database> {
-  const { env } = await getCloudflareContext()
+  const { env } = await getCloudflareContext({ async: true })
   const db = (env as unknown as { dr_blog?: D1Database }).dr_blog
   if (!db) {
     throw new Error(

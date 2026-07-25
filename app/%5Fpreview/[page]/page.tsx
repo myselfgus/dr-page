@@ -27,7 +27,7 @@ export default async function PreviewPage({
   // Token via binding do Worker (padrão OpenNext deste projeto), com fallback a process.env.
   let expected: string | undefined
   try {
-    const { env } = await getCloudflareContext()
+    const { env } = await getCloudflareContext({ async: true })
     expected = (env as unknown as { PREVIEW_TOKEN?: string }).PREVIEW_TOKEN
   } catch {
     expected = process.env.PREVIEW_TOKEN

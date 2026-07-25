@@ -32,19 +32,18 @@ function isSafeKey(key: string): boolean {
   return typeof key === "string" && key.length > 0 && key.length <= 60 && KEY_RE.test(key)
 }
 
-async function getDb(): Promise<D1Database> {
-  const { env } = await getCloudflareContext()
-  const db = (env as unknown as { dr_blog?: D1Database }).dr_blog
-  if (!db) {
-    throw new Error(
-      "Binding do D1 'dr_blog' não está definido. Verifique a configuração em wrangler.jsonc e no ambiente.",
-    )
+async function getDb(): Promise<D1Database | null> {
+  try {
+    const { env } = await getCloudflareContext({ async: true })
+    return (env as unknown as { dr_blog?: D1Database }).dr_blog ?? null
+  } catch {
+    return null
   }
-  return db
 }
 
 export async function getDesignTokens(): Promise<DesignTokenRow[]> {
   const db = await getDb()
+  if (!db) return []
   const { results } = await db
     .prepare("SELECT key, value, category, scope FROM design_tokens ORDER BY sort_order ASC")
     .all<DesignTokenRow>()

@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://drgustavomendes.com/og-image.jpg",
-        width: 1024,
-        height: 1024,
+        width: 1200,
+        height: 630,
         alt: "Blog — Dr. Gustavo Mendes e Silva",
       },
     ],
@@ -42,7 +42,8 @@ export const metadata: Metadata = {
   },
 }
 
-export const dynamic = "force-dynamic"
+// ISR — lista de posts muda com pouca frequência
+export const revalidate = 600
 
 export default async function BlogPage() {
   const posts = await getBlogPosts()

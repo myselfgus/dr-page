@@ -4,7 +4,7 @@ import { CONDITION_LANDINGS } from "@/lib/condition-landings"
 
 const BASE_URL = "https://drgustavomendes.com"
 
-export const dynamic = "force-dynamic"
+export const revalidate = 600
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()

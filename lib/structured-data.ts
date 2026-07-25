@@ -9,6 +9,16 @@ export const BASE_URL = "https://drgustavomendes.com"
 const PHYSICIAN_IMAGE = `${BASE_URL}/images/dr-gustavo-cinza.jpg`
 const DEFAULT_OG = `${BASE_URL}/og-image.jpg`
 
+/** Open Graph wide (Facebook/LinkedIn/WhatsApp ideal). Arquivos em /public/og-*.jpg. */
+export const OG_IMAGE_SIZE = { width: 1200, height: 630 } as const
+
+/**
+ * ISR: páginas CMS revalidam a cada 10 min.
+ * Substitui force-dynamic (no-store) — melhor TTFB para crawlers e usuários,
+ * sem precisar rebuild a cada edição no admin.
+ */
+export const CMS_REVALIDATE_SECONDS = 600
+
 const PAGE_LABELS: Record<string, string> = {
   home: "Início",
   about: "Sobre",
@@ -364,8 +374,7 @@ export function metadataForCondition(landing: ConditionLanding): Metadata {
       images: [
         {
           url: ogImage,
-          width: 1024,
-          height: 1024,
+          ...OG_IMAGE_SIZE,
           alt: `${landing.eyebrow} — Dr. Gustavo Mendes, psiquiatra em Jundiaí`,
         },
       ],
@@ -436,7 +445,7 @@ export function metadataFromMeta(pageId: string, meta: PageMeta | undefined): Me
       url: canonical,
       siteName: "Dr. Gustavo Mendes - Psiquiatra",
       locale: "pt_BR",
-      images: [{ url: ogImage, width: 1024, height: 1024, alt: meta.title }],
+      images: [{ url: ogImage, ...OG_IMAGE_SIZE, alt: meta.title }],
       type: (og.type as "website" | "profile" | undefined) ?? "website",
     },
     twitter: {

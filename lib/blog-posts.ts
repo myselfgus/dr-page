@@ -57,30 +57,41 @@ function mapRow(row: PostRow): BlogPost {
 }
 
 // Access the D1 binding (`dr_blog`) through the OpenNext Cloudflare context.
-async function getDb(): Promise<D1Database> {
-  const { env } = await getCloudflareContext()
-  const db = (env as unknown as { dr_blog?: D1Database }).dr_blog
-  if (!db) {
-    throw new Error(
-      "Binding do D1 'dr_blog' não está definido. Verifique a configuração em wrangler.jsonc e no ambiente.",
-    )
+// async: true é obrigatório em rotas com ISR/revalidate.
+async function getDb(): Promise<D1Database | null> {
+  try {
+    const { env } = await getCloudflareContext({ async: true })
+    return (env as unknown as { dr_blog?: D1Database }).dr_blog ?? null
+  } catch {
+    // Build / prerender sem binding Cloudflare — caller usa fallback vazio.
+    return null
   }
-  return db
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const db = await getDb()
-  const { results } = await db
-    .prepare("SELECT * FROM posts WHERE status = 'published' ORDER BY date DESC")
-    .all<PostRow>()
-  return (results ?? []).map(mapRow)
+  try {
+    const db = await getDb()
+    if (!db) return []
+    const { results } = await db
+      .prepare("SELECT * FROM posts WHERE status = 'published' ORDER BY date DESC")
+      .all<PostRow>()
+    return (results ?? []).map(mapRow)
+  } catch {
+    // Build local / schema incompleto — lista vazia em vez de quebrar o prerender.
+    return []
+  }
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | undefined> {
-  const db = await getDb()
-  const row = await db
-    .prepare("SELECT * FROM posts WHERE slug = ?1 AND status = 'published' LIMIT 1")
-    .bind(slug)
-    .first<PostRow>()
-  return row ? mapRow(row) : undefined
+  try {
+    const db = await getDb()
+    if (!db) return undefined
+    const row = await db
+      .prepare("SELECT * FROM posts WHERE slug = ?1 AND status = 'published' LIMIT 1")
+      .bind(slug)
+      .first<PostRow>()
+    return row ? mapRow(row) : undefined
+  } catch {
+    return undefined
+  }
 }

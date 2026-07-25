@@ -8,7 +8,8 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { DEFAULT_BRAND, DEFAULT_CONTACT, DEFAULT_NAV } from "@/lib/site-config"
 
-export const dynamic = "force-dynamic"
+// ISR — artigo estável; revalida se o CMS atualizar
+export const revalidate = 600
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -46,8 +47,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       images: [
         {
           url: "https://drgustavomendes.com/og-image.jpg",
-          width: 1024,
-          height: 1024,
+          width: 1200,
+          height: 630,
           alt: post.title,
         },
       ],
