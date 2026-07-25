@@ -6,6 +6,7 @@ import {
   DEFAULT_CONTACT,
   resolveCta,
 } from "@/lib/site-config"
+import { toAuthorInitials } from "@/lib/format"
 
 export interface TestimonialItem {
   author: string
@@ -37,14 +38,14 @@ export const DEFAULT_CONTENT: TestimonialsContent = {
     "Depoimentos públicos de pacientes na Doctoralia. Textos reproduzidos com fidelidade, sem edição de sentido.",
   items: [
     {
-      author: "Monique Beatriz Mina",
+      author: "M.B.M.",
       rating: 5,
       body: "Pela primeira vez me sinto a vontade com um psiquiatra. Ele é atencioso demais, além de deixar a consulta leve, sei que posso levar meus medos até ele e que juntos ele vai me ajudar a achar o melhor caminho.",
       date: "2026-06",
       source: "Doctoralia",
     },
     {
-      author: "Renato",
+      author: "R.",
       rating: 5,
       body: "Excelente profissional. Demonstrou muita atenção, empatia e respeito durante todo o atendimento. Ouviu minhas preocupações com atenção e explicou cada ponto do tratamento de forma clara e compreensível. Super recomendo!!!",
       date: "2026-06",
@@ -58,21 +59,21 @@ export const DEFAULT_CONTENT: TestimonialsContent = {
       source: "Doctoralia",
     },
     {
-      author: "Sonia",
+      author: "S.",
       rating: 5,
       body: "Muito atencioso, procura entender o que você está sentindo, para depois receitar o medicamento",
       date: "2026-06",
       source: "Doctoralia",
     },
     {
-      author: "Julio",
+      author: "J.",
       rating: 5,
       body: "Foi bastante empático. Deu bastante atenção e mostrou-se atencioso.",
       date: "2026-06",
       source: "Doctoralia",
     },
     {
-      author: "Ector Martins",
+      author: "E.M.",
       rating: 5,
       body: "muito bom! Atencioso e didático, Recomendo a todos.",
       date: "2026-06",
@@ -205,12 +206,13 @@ export function TestimonialsSection({
 
 function TestimonialCard({ item }: { item: TestimonialItem }) {
   const rating = item.rating ?? 5
+  const initials = toAuthorInitials(item.author)
   return (
     <>
       <div className="flex items-center justify-between gap-3 mb-4">
         <Stars count={rating} />
         {item.source ? (
-          <span className="text-xs text-muted-foreground tracking-wide">{item.source}</span>
+          <span className="text-xs text-muted-foreground tracking-wide font-emphasis">{item.source}</span>
         ) : null}
       </div>
       <blockquote className="flex-1">
@@ -219,7 +221,9 @@ function TestimonialCard({ item }: { item: TestimonialItem }) {
         </p>
       </blockquote>
       <footer className="mt-5 pt-4 border-t border-border flex items-baseline justify-between gap-2">
-        <cite className="not-italic font-medium text-sm text-foreground">{item.author}</cite>
+        <cite className="not-italic font-emphasis font-medium text-sm text-foreground tracking-wide">
+          {initials}
+        </cite>
         {item.date ? <time className="text-xs text-muted-foreground">{item.date}</time> : null}
       </footer>
     </>

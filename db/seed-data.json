@@ -659,7 +659,9 @@
         "cta": {
           "kind": "whatsapp",
           "label": "Conversar pelo WhatsApp"
-        }
+        },
+        "image": "/images/sections/symptoms-clouds.jpg",
+        "imageAlt": "Ilustração abstrata de estados emocionais"
       },
       "design": {
         "id": "queixas",
@@ -698,7 +700,9 @@
         "quote": {
           "text": "Conheça todas as teorias, domine todas as técnicas, mas ao tocar uma alma humana seja apenas outra alma humana.",
           "author": "Carl Gustav Jung — também médico psiquiatra"
-        }
+        },
+        "image": "/images/sections/care-path.jpg",
+        "imageAlt": "Ilustração do caminho de cuidado"
       },
       "design": {
         "background": "muted",
@@ -1275,7 +1279,9 @@
             "title": "Sigilo e segurança",
             "text": "A consulta segue o mesmo sigilo médico do atendimento presencial, em ambiente reservado."
           }
-        ]
+        ],
+        "bannerImage": "/images/sections/teleconsulta.jpg",
+        "bannerAlt": "Ilustração de teleconsulta psiquiátrica"
       },
       "design": {
         "columns": 3
@@ -1288,19 +1294,10 @@
       "type": "pricing-cta",
       "status": "published",
       "content": {
-        "heading": "Valores",
+        "heading": "Como agendar a teleconsulta",
         "iconName": "Video",
-        "note": "Após o agendamento, você recebe o link da videochamada pelo WhatsApp.",
-        "prices": [
-          {
-            "label": "Primeira consulta",
-            "value": "R$ 350"
-          },
-          {
-            "label": "Retorno",
-            "value": "R$ 250"
-          }
-        ],
+        "note": "Mesma escuta atenta do consultório, por vídeo. Combinamos horário pelo WhatsApp.",
+        "prices": [],
         "cta": {
           "kind": "whatsapp",
           "label": "Agendar pelo WhatsApp",
@@ -1353,7 +1350,9 @@
             "title": "Dificuldade de locomoção",
             "text": "Para quem tem mobilidade reduzida, é autista ou está acamado, o cuidado vai até onde a pessoa está."
           }
-        ]
+        ],
+        "bannerImage": "/images/sections/domiciliar.jpg",
+        "bannerAlt": "Ilustração de atendimento domiciliar"
       },
       "design": {
         "columns": 3
@@ -1366,7 +1365,7 @@
       "type": "pricing-cta",
       "status": "published",
       "content": {
-        "heading": "Como funciona",
+        "heading": "Como funciona o atendimento domiciliar",
         "steps": [
           {
             "iconName": "MapPin",
@@ -1377,16 +1376,7 @@
             "text": "Avaliação psiquiátrica completa, com tempo para ouvir a pessoa e a família."
           }
         ],
-        "prices": [
-          {
-            "label": "Adultos e idosos",
-            "value": "R$ 350"
-          },
-          {
-            "label": "Crianças e adolescentes (binômio)",
-            "value": "R$ 450"
-          }
-        ],
+        "prices": [],
         "footnotes": [
           "O atendimento de crianças e adolescentes é feito em binômio — cuidador e criança acompanhados juntos.",
           "Para endereços fora de Jundiaí, o deslocamento é combinado previamente pelo WhatsApp."
@@ -1425,9 +1415,9 @@
       "type": "price-badge",
       "status": "published",
       "content": {
-        "label": "Consulta particular",
-        "value": "R$ 350 a R$ 500",
-        "note": "Teleconsulta e atendimento domiciliar também disponíveis."
+        "label": "",
+        "value": "",
+        "note": ""
       },
       "design": {
         "variant": "inline-card"
@@ -1462,14 +1452,14 @@
         "subtitle": "Depoimentos públicos de pacientes na Doctoralia. Textos reproduzidos com fidelidade, sem edição de sentido.",
         "items": [
           {
-            "author": "Monique Beatriz Mina",
+            "author": "M.B.M.",
             "rating": 5,
             "body": "Pela primeira vez me sinto a vontade com um psiquiatra. Ele é atencioso demais, além de deixar a consulta leve, sei que posso levar meus medos até ele e que juntos ele vai me ajudar a achar o melhor caminho.",
             "date": "2026-06",
             "source": "Doctoralia"
           },
           {
-            "author": "Renato",
+            "author": "R.",
             "rating": 5,
             "body": "Excelente profissional. Demonstrou muita atenção, empatia e respeito durante todo o atendimento. Ouviu minhas preocupações com atenção e explicou cada ponto do tratamento de forma clara e compreensível. Super recomendo!!!",
             "date": "2026-06",
@@ -1483,21 +1473,21 @@
             "source": "Doctoralia"
           },
           {
-            "author": "Sonia",
+            "author": "S.",
             "rating": 5,
             "body": "Muito atencioso, procura entender o que você está sentindo, para depois receitar o medicamento",
             "date": "2026-06",
             "source": "Doctoralia"
           },
           {
-            "author": "Julio",
+            "author": "J.",
             "rating": 5,
             "body": "Foi bastante empático. Deu bastante atenção e mostrou-se atencioso.",
             "date": "2026-06",
             "source": "Doctoralia"
           },
           {
-            "author": "Ector Martins",
+            "author": "E.M.",
             "rating": 5,
             "body": "muito bom! Atencioso e didático, Recomendo a todos.",
             "date": "2026-06",
@@ -1610,15 +1600,10 @@
       "status": "published",
       "content": {
         "heading": "Vamos conversar?",
-        "note": "Atendimento particular em Jundiaí — presencial, teleconsulta ou domiciliar.",
-        "prices": [
-          {
-            "label": "Consulta / teleconsulta",
-            "value": "a partir de R$ 350"
-          }
-        ],
+        "note": "Atendimento particular em Jundiaí — presencial, teleconsulta ou domiciliar. Valores e modalidade combinados pelo WhatsApp.",
+        "prices": [],
         "footnotes": [
-          "Valores e modalidade combinados conforme o tipo de atendimento. Sem promessa de resultado — plano individual."
+          "Sem promessa de resultado — plano individual, no seu tempo."
         ],
         "cta": {
           "kind": "whatsapp",

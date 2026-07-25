@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -13,6 +14,14 @@ import {
   resolveCta,
 } from "@/lib/site-config"
 
+const LANDING_IMAGES: Record<string, string> = {
+  ansiedade: "/images/principles/01-pessoa.jpg",
+  burnout: "/images/principles/02-tempo.jpg",
+  insonia: "/images/principles/08-metas.jpg",
+  panico: "/images/principles/05-contexto.jpg",
+  "medicina-canabinoide": "/images/principles/06-medicamentos.jpg",
+}
+
 export function ConditionLandingView({ landing }: { landing: ConditionLanding }) {
   const wa = resolveCta(
     { kind: "whatsapp", label: landing.waLabel, text: landing.waText },
@@ -26,19 +35,20 @@ export function ConditionLandingView({ landing }: { landing: ConditionLanding })
     { kind: "internal", label: "Saiba mais sobre teleconsulta", href: "/teleconsulta" },
     DEFAULT_CONTACT,
   )
+  const heroImage = LANDING_IMAGES[landing.slug] ?? "/images/principles/01-pessoa.jpg"
 
   return (
     <main className="min-h-screen bg-background">
-      <Header nav={DEFAULT_NAV} brand={DEFAULT_BRAND} contact={DEFAULT_CONTACT} />
+      <Header nav={DEFAULT_NAV} brand={DEFAULT_BRAND} />
 
       <section className="pt-28 lg:pt-36 pb-12 lg:pb-16">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <Reveal variant="item">
-              <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4">
+          <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <Reveal variant="left">
+              <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4 font-emphasis">
                 {landing.eyebrow} · Jundiaí
               </p>
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light mb-6 text-balance">
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal mb-6 text-balance">
                 {landing.h1}
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
@@ -53,6 +63,18 @@ export function ConditionLandingView({ landing }: { landing: ConditionLanding })
                 {DEFAULT_CONTACT.ratingValue} · {DEFAULT_CONTACT.reviewCount} avaliações na Doctoralia
               </p>
             </Reveal>
+            <Reveal variant="right">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-card bg-muted/30">
+                <Image
+                  src={heroImage}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -64,8 +86,8 @@ export function ConditionLandingView({ landing }: { landing: ConditionLanding })
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-3xl mx-auto">
-              <Reveal variant="item">
-                <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 text-balance">
+              <Reveal variant={i % 2 === 0 ? "left" : "right"}>
+                <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-normal mb-6 text-balance">
                   {section.heading}
                 </h2>
                 <div className="space-y-4">

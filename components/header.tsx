@@ -4,29 +4,24 @@ import { useEffect, useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { CtaButton, WhatsAppIcon } from "@/components/blocks/cta-button"
 import {
   type NavConfig,
   type BrandConfig,
-  type ContactConfig,
   DEFAULT_NAV,
   DEFAULT_BRAND,
-  DEFAULT_CONTACT,
-  resolveCta,
 } from "@/lib/site-config"
 
+// WhatsApp vive só no float global (canto) — evita duplicidade com a top-bar.
 export function Header({
   nav = DEFAULT_NAV,
   brand = DEFAULT_BRAND,
-  contact = DEFAULT_CONTACT,
 }: {
   nav?: NavConfig
   brand?: BrandConfig
-  contact?: ContactConfig
+  contact?: unknown
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const wa = resolveCta({ kind: "whatsapp", label: "WhatsApp" }, contact)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -47,7 +42,7 @@ export function Header({
         <div className="flex items-center justify-between h-16 lg:h-20 gap-4">
           <Link
             href="/"
-            className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light tracking-wide text-balance leading-tight min-w-0"
+            className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-wide text-balance leading-tight min-w-0"
           >
             {brand.name}
           </Link>
@@ -57,28 +52,22 @@ export function Header({
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm lg:text-base tracking-wide hover:text-muted-foreground transition-colors"
+                className="text-sm lg:text-base font-emphasis tracking-wide hover:text-muted-foreground transition-colors"
               >
                 {item.label}
               </Link>
             ))}
-            <CtaButton cta={wa} className="!px-4 !py-2 !text-sm" />
           </nav>
 
-          <div className="flex items-center gap-2 md:hidden">
-            <a
-              href={wa.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-[#25D366] text-white p-2.5 hover:bg-[#20BA5A] transition-colors"
-              aria-label="Falar no WhatsApp"
-            >
-              <WhatsAppIcon className="w-4 h-4" />
-            </a>
-            <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
         </div>
 
         {isMenuOpen ? (
@@ -88,13 +77,12 @@ export function Header({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-base tracking-wide hover:text-muted-foreground transition-colors"
+                  className="text-base font-emphasis tracking-wide hover:text-muted-foreground transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-              <CtaButton cta={wa} className="w-full" />
             </div>
           </nav>
         ) : null}

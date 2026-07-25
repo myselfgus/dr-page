@@ -85,10 +85,14 @@ Built in `lib/structured-data.ts` from site_config + blocks (not hardcoded in la
 - Analytics: only add real Pixel/Ads/GSC IDs — **no placeholder scripts**.
 
 ### Design system quick reference
-- Background Cloud Dancer `#F0EEE9`; cards white; soft multi-layer `shadow-card`.
+- Cool monochrome background (`oklch(0.99 0 0)`); cards white; soft multi-layer `shadow-card`.
+- Fonts: **DM Serif Display** (`font-serif` display) · **Urbanist** (`font-emphasis` / `<strong>`) · **Nunito Sans** (`font-sans` body).
 - Radius base `0.75rem`; cards `rounded-2xl`; pills/CTAs `rounded-full`.
-- Reveal: `variant="section"` (opacity) on blocks; `variant="item"` (lift) on children.
-- Home hero phrase stays editorial multiline: "E se for / possível viver / de outro modo?".
+- Reveal: `section` | `item` | `left` | `right` | `scale` | `blur`.
+- Home hero phrase stays editorial multiline: "E se for / possível viver / de outro modo?" — mobile prioritizes the H1.
+- **WhatsApp only via floating button** (not in header) to avoid double CTAs.
+- **No public prices** — PricingCta/PriceBadge never show monetary values; combine via WhatsApp.
+- Testimonials authors shown as **initials only**.
 
 ## Constraints
 - No forms collecting clinical/health data (LGPD art. 11). Contact via WhatsApp/phone/e-mail.

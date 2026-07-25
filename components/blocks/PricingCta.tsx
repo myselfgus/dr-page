@@ -17,7 +17,8 @@ export interface PricingCtaContent {
   iconName?: string
   note?: string
   steps?: PricingStep[]
-  prices: PriceItem[]
+  /** Prices intentionally omitted from public UI (CFM / product decision). */
+  prices?: PriceItem[]
   footnotes?: string[]
   cta: CtaRef
 }
@@ -25,19 +26,8 @@ export interface PricingCtaContent {
 export interface PricingCtaDesign {
   variant?: "prices-only" | "how-it-works"
   showSteps?: boolean
-}
-
-function Prices({ prices }: { prices: PriceItem[] }) {
-  return (
-    <div className="grid sm:grid-cols-2 gap-6">
-      {prices.map((p, i) => (
-        <div key={i}>
-          <p className="text-sm text-muted-foreground mb-1">{p.label}</p>
-          <p className="font-serif text-3xl font-light">{p.value}</p>
-        </div>
-      ))}
-    </div>
-  )
+  /** Never show monetary values on the public site. */
+  showPrices?: boolean
 }
 
 export function PricingCta({
@@ -52,57 +42,60 @@ export function PricingCta({
   const variant = design.variant ?? "prices-only"
   const showSteps = design.showSteps ?? variant === "how-it-works"
   const cta = resolveCta(content.cta, contact)
+  // Product decision: valores de consulta não são exibidos no site.
+  const showPrices = false
 
   return (
-    <div className="container mx-auto px-4 lg:px-8">
+    <div className="container mx-auto px-4 lg:px-8 py-8 lg:py-12">
       <div className="max-w-3xl mx-auto">
         <div className="bg-card border border-border rounded-2xl p-8 lg:p-10 shadow-card">
-          {variant === "prices-only" ? (
-            <>
-              <div className="flex items-start gap-4 mb-6">
-                {content.iconName ? (
-                  <div className="p-3 bg-foreground/5 rounded-xl">
-                    <Icon name={content.iconName} className="w-5 h-5" />
-                  </div>
-                ) : null}
-                <div>
-                  <h2 className="font-serif text-2xl lg:text-3xl font-light text-balance">
-                    {content.heading}
-                  </h2>
-                  {content.note ? (
-                    <p className="text-sm text-muted-foreground mt-1">{content.note}</p>
-                  ) : null}
-                </div>
+          <div className="flex items-start gap-4 mb-6">
+            {content.iconName ? (
+              <div className="p-3 bg-foreground/5 rounded-xl">
+                <Icon name={content.iconName} className="w-5 h-5" />
               </div>
-              <div className="border-t border-border pt-6 mb-8">
-                <Prices prices={content.prices} />
-              </div>
-            </>
-          ) : (
-            <>
-              <h2 className="font-serif text-2xl lg:text-3xl font-light mb-6 text-balance">
+            ) : null}
+            <div>
+              <h2 className="font-serif text-2xl lg:text-3xl font-normal text-balance">
                 {content.heading}
               </h2>
-              {showSteps && content.steps && content.steps.length > 0 ? (
-                <ul className="space-y-4 text-muted-foreground leading-relaxed mb-8">
-                  {content.steps.map((s, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <Icon name={s.iconName} className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                      <span>{s.text}</span>
-                    </li>
-                  ))}
-                </ul>
+              {content.note ? (
+                <p className="text-sm text-muted-foreground mt-1">{content.note}</p>
               ) : null}
-              <div className="border-t border-border pt-6 mb-8">
-                <Prices prices={content.prices} />
-                {(content.footnotes ?? []).map((f, i) => (
-                  <p key={i} className={`text-sm text-muted-foreground ${i === 0 ? "mt-4" : "mt-2"}`}>
-                    {f}
-                  </p>
-                ))}
-              </div>
-            </>
-          )}
+            </div>
+          </div>
+
+          {showSteps && content.steps && content.steps.length > 0 ? (
+            <ul className="space-y-4 text-muted-foreground leading-relaxed mb-8 border-t border-border pt-6">
+              {content.steps.map((s, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <Icon name={s.iconName} className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                  <span>{s.text}</span>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          {!showPrices && (content.footnotes ?? []).length > 0 ? (
+            <div className="mb-8 border-t border-border pt-6 space-y-2">
+              {(content.footnotes ?? []).map((f, i) => (
+                <p key={i} className="text-sm text-muted-foreground">
+                  {f}
+                </p>
+              ))}
+            </div>
+          ) : null}
+
+          {showPrices && content.prices && content.prices.length > 0 ? (
+            <div className="border-t border-border pt-6 mb-8 grid sm:grid-cols-2 gap-6">
+              {content.prices.map((p, i) => (
+                <div key={i}>
+                  <p className="text-sm text-muted-foreground mb-1">{p.label}</p>
+                  <p className="font-serif text-3xl font-normal">{p.value}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
 
           <CtaButton cta={cta} variant="whatsapp-block" />
         </div>

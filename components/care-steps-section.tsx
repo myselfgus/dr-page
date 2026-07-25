@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 import { Reveal } from "@/components/reveal"
 
 export interface CareStep {
@@ -14,6 +15,8 @@ export interface CareStepsContent {
   intro: string
   steps: CareStep[]
   quote?: { text: string; author: string }
+  image?: string
+  imageAlt?: string
 }
 
 export interface CareStepsDesign {
@@ -49,6 +52,8 @@ export const DEFAULT_CONTENT: CareStepsContent = {
     text: "Conheça todas as teorias, domine todas as técnicas, mas ao tocar uma alma humana seja apenas outra alma humana.",
     author: "Carl Gustav Jung — também médico psiquiatra",
   },
+  image: "/images/sections/care-path.jpg",
+  imageAlt: "Ilustração do caminho de cuidado em etapas",
 }
 
 export const DEFAULT_DESIGN: CareStepsDesign = {
@@ -98,16 +103,30 @@ export function WhatIsMentalHealth({
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <Reveal variant="blur">
-            <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4 text-center">
+            <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4 text-center font-emphasis">
               {content.eyebrow}
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-balance mb-6 text-center">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-balance mb-6 text-center">
               {content.title}
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed text-center mb-16 md:mb-24 max-w-2xl mx-auto text-pretty">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed text-center mb-10 md:mb-12 max-w-2xl mx-auto text-pretty">
               {content.intro}
             </p>
           </Reveal>
+
+          {(content.image ?? DEFAULT_CONTENT.image) ? (
+            <Reveal variant="scale" className="mb-14 md:mb-20">
+              <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-border shadow-card bg-card">
+                <Image
+                  src={content.image ?? DEFAULT_CONTENT.image!}
+                  alt={content.imageAlt ?? DEFAULT_CONTENT.imageAlt ?? ""}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                />
+              </div>
+            </Reveal>
+          ) : null}
 
           <div ref={lineRef} className="relative">
             {showLine ? (

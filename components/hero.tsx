@@ -14,7 +14,6 @@ export interface HeroContent {
   image?: string
   imageAlt?: string
   badges?: string[]
-  /** When true (home default), shows Doctoralia rating strip → #avaliacoes */
   showRatingBadge?: boolean
 }
 
@@ -57,7 +56,7 @@ export function Hero({
 
   if (variant === "home") {
     return (
-      <section className="relative pt-32 pb-24 lg:pt-40 lg:pb-32 min-h-[60vh] lg:min-h-[70vh] flex items-center overflow-hidden">
+      <section className="relative pt-28 pb-16 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32 min-h-[88svh] sm:min-h-[75vh] lg:min-h-[70vh] flex items-center overflow-hidden">
         {design.showAnimatedBackground !== false ? (
           <div className="hidden lg:block absolute inset-0 opacity-30">
             <AnimatedBackground />
@@ -66,38 +65,44 @@ export function Hero({
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            {/* Frase-assinatura da home — manter estilo editorial em linhas */}
-            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium leading-tight mb-8 lg:mb-6 text-balance">
+            {/* Frase-assinatura — protagonista no mobile */}
+            <h1 className="font-serif text-[2.75rem] leading-[1.08] sm:text-6xl sm:leading-tight md:text-7xl lg:text-8xl font-normal mb-6 sm:mb-8 lg:mb-6 text-balance">
               {content.titleLines.map((line, i) => (
                 <span key={i} className={`block animate-fade-up ${DELAYS[i] ?? ""}`}>
                   {line}
                 </span>
               ))}
             </h1>
-            <div className="text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl space-y-4 sm:space-y-6 text-muted-foreground [&_strong]:text-foreground [&_strong]:font-medium [&_strong]:font-semibold">
+
+            {/* Lead mais contido no mobile para não competir com a frase */}
+            <div className="text-sm sm:text-base md:text-xl leading-relaxed max-w-2xl space-y-3 sm:space-y-6 text-muted-foreground [&_strong]:text-foreground">
               {(content.leadHtml ?? []).map((html, i) => (
                 <span
                   key={i}
-                  className={`block animate-fade-up ${i === 0 ? "animation-delay-450" : "animation-delay-600"}`}
+                  className={`block animate-fade-up ${
+                    i === 0
+                      ? "animation-delay-450"
+                      : "animation-delay-600 hidden sm:block"
+                  }`}
                   dangerouslySetInnerHTML={{ __html: sanitizeInline(html) }}
                 />
               ))}
             </div>
 
             {showRating ? (
-              <div className="mt-8 animate-fade-up animation-delay-600">
+              <div className="mt-8 sm:mt-10 animate-fade-up animation-delay-600">
                 <Link
                   href="#avaliacoes"
-                  className="inline-flex flex-wrap items-center gap-2 sm:gap-3 rounded-full border border-border bg-card/80 backdrop-blur-sm px-4 py-2 text-sm shadow-card hover:shadow-card-hover transition-shadow"
+                  className="inline-flex flex-wrap items-center gap-2 sm:gap-3 rounded-full border border-border bg-card/80 backdrop-blur-sm px-3.5 py-2 sm:px-4 text-xs sm:text-sm shadow-card hover:shadow-card-hover transition-shadow"
                 >
                   <span className="inline-flex text-[#00c3a5]" aria-hidden="true">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <StarIcon key={i} className="w-3.5 h-3.5" />
+                      <StarIcon key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     ))}
                   </span>
-                  <span className="font-medium text-foreground">{ratingLabel}</span>
+                  <span className="font-emphasis font-medium text-foreground">{ratingLabel}</span>
                   <span className="text-muted-foreground">
-                    · {DEFAULT_CONTACT.reviewCount} avaliações na Doctoralia
+                    · {DEFAULT_CONTACT.reviewCount} na Doctoralia
                   </span>
                 </Link>
               </div>
@@ -111,10 +116,10 @@ export function Hero({
   if (variant === "subpage-split") {
     const showImage = design.showImage !== false && content.image
     return (
-      <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+      <section className="relative pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
         <div className="container mx-auto px-4 lg:px-8 relative">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-7xl mx-auto">
             {showImage ? (
               <div className="order-1 lg:order-2 animate-in fade-in slide-in-from-right-8 duration-1000">
                 <div className="relative aspect-square max-w-md mx-auto lg:max-w-none">
@@ -133,14 +138,14 @@ export function Hero({
               </div>
             ) : null}
             <div className="order-2 lg:order-1 animate-in fade-in slide-in-from-left-8 duration-1000">
-              <h1 className="font-serif text-4xl lg:text-6xl font-light mb-4 text-balance">
+              <h1 className="font-serif text-4xl lg:text-6xl font-normal mb-4 text-balance">
                 {content.titleLines.join(" ")}
               </h1>
               {content.subtitle ? (
-                <p className="text-lg text-muted-foreground mb-6">{content.subtitle}</p>
+                <p className="text-lg text-muted-foreground mb-6 font-emphasis">{content.subtitle}</p>
               ) : null}
               {content.lead ? (
-                <p className="text-xl lg:text-2xl text-foreground/90 leading-relaxed mb-8 text-pretty">
+                <p className="text-lg lg:text-2xl text-foreground/90 leading-relaxed mb-8 text-pretty">
                   {content.lead}
                 </p>
               ) : null}
@@ -149,7 +154,7 @@ export function Hero({
                   {content.badges.map((b, i) => (
                     <div
                       key={i}
-                      className="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20"
+                      className="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-emphasis font-medium border border-primary/20"
                     >
                       {b}
                     </div>
@@ -168,7 +173,7 @@ export function Hero({
       <section className="pt-28 lg:pt-32 pb-4">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mb-12 lg:mb-16">
-            <h1 className="font-serif text-4xl lg:text-6xl font-light mb-6">
+            <h1 className="font-serif text-4xl lg:text-6xl font-normal mb-6">
               {content.titleLines.join(" ")}
             </h1>
             {content.lead ? (
@@ -181,15 +186,15 @@ export function Hero({
   }
 
   return (
-    <section className="pt-32 pb-16 lg:pt-40 lg:pb-24">
+    <section className="pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-40 lg:pb-24">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-3xl mx-auto">
           {content.eyebrow ? (
-            <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">
+            <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4 font-emphasis">
               {content.eyebrow}
             </p>
           ) : null}
-          <h1 className="font-serif text-4xl lg:text-6xl font-light mb-6 text-balance">
+          <h1 className="font-serif text-4xl lg:text-6xl font-normal mb-6 text-balance">
             {content.titleLines.join(" ")}
           </h1>
           {content.lead ? (

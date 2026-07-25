@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import type { ContactConfig } from "@/lib/site-config"
 import type { PageBlock, PageMeta } from "@/lib/pages"
+import { toAuthorInitials } from "@/lib/format"
 
 const BASE_URL = "https://drgustavomendes.com"
 
@@ -73,7 +74,7 @@ function buildPhysician(contact: ContactConfig, blocks: PageBlock[] = []) {
       ? {
           review: reviews.map((r) => ({
             "@type": "Review",
-            author: { "@type": "Person", name: r.author },
+            author: { "@type": "Person", name: toAuthorInitials(r.author) },
             reviewRating: {
               "@type": "Rating",
               ratingValue: String(r.rating ?? 5),
