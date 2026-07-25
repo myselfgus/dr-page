@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // Leftover art-template routes from the v0 gallery — never reintroduce content.
+  async redirects() {
+    return [
+      { source: "/artists", destination: "/", permanent: true },
+      { source: "/gallery", destination: "/", permanent: true },
+      { source: "/curriculum", destination: "/about", permanent: true },
+    ]
+  },
 }
 
 export default nextConfig

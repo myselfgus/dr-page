@@ -15,24 +15,24 @@ export function BackToTop() {
       }
     }
 
-    window.addEventListener("scroll", toggleVisibility)
+    window.addEventListener("scroll", toggleVisibility, { passive: true })
     return () => window.removeEventListener("scroll", toggleVisibility)
   }, [])
 
   const scrollToTop = () => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: reduce ? "auto" : "smooth",
     })
   }
 
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-20 right-6 z-40 rounded-full bg-neutral-900/80 backdrop-blur-xl p-2.5 text-white border border-white/10 transition-all duration-300 hover:bg-neutral-800/90 hover:scale-110 ${
+      className={`fixed bottom-20 right-6 z-40 rounded-full bg-foreground/85 backdrop-blur-xl p-2.5 text-background border border-border/20 shadow-lg transition-all duration-300 hover:bg-foreground hover:scale-110 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
       }`}
-      style={{ boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.3)" }}
       aria-label="Voltar ao topo"
     >
       <ArrowUp className="h-4 w-4" />

@@ -2,14 +2,19 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react"
 
+export type RevealVariant = "section" | "item"
+
 export function Reveal({
   children,
   delay = 0,
   className = "",
+  variant = "section",
 }: {
   children: ReactNode
   delay?: number
   className?: string
+  /** section = opacity only (avoids double-lift with nested item reveals); item = opacity + translateY */
+  variant?: RevealVariant
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
@@ -30,17 +35,19 @@ export function Reveal({
           observer.disconnect()
         }
       },
-      { threshold: 0.15 },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
     )
 
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
 
+  const base = variant === "item" ? "reveal reveal-lift" : "reveal"
+
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? "reveal-visible" : ""} ${className}`}
+      className={`${base} ${visible ? "reveal-visible" : ""} ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

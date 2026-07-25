@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/reveal"
+import { CtaButton } from "@/components/blocks/cta-button"
 import { sanitizeInline } from "@/lib/sanitize"
 import { type CtaRef, type ContactConfig, DEFAULT_CONTACT, resolveCta } from "@/lib/site-config"
 
@@ -54,7 +55,7 @@ export function SymptomsSection({
     <section id={design.id ?? "queixas"} className="py-16 lg:py-24 border-t border-border">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <Reveal>
+          <Reveal variant="item">
             <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground mb-6">
               {content.eyebrow}
             </p>
@@ -62,7 +63,7 @@ export function SymptomsSection({
 
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
             {content.chips.map((symptom, index) => (
-              <Reveal key={symptom} delay={index * 80}>
+              <Reveal key={symptom} variant="item" delay={index * 80}>
                 <span className="inline-block font-serif text-lg sm:text-xl md:text-2xl font-light px-5 py-2.5 border border-border rounded-full text-foreground/80 hover:text-background hover:bg-foreground hover:border-foreground transition-colors duration-300 cursor-default">
                   {symptom}
                 </span>
@@ -70,7 +71,7 @@ export function SymptomsSection({
             ))}
           </div>
 
-          <Reveal delay={200}>
+          <Reveal variant="item" delay={200}>
             {content.paras.map((p, i) => (
               <p
                 key={i}
@@ -83,15 +84,8 @@ export function SymptomsSection({
           </Reveal>
 
           {design.showCta !== false ? (
-            <Reveal delay={300}>
-              <a
-                href={cta.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-3 bg-foreground text-background rounded-full hover:bg-foreground/90 transition-all hover:scale-[1.02] text-sm sm:text-base font-medium"
-              >
-                {cta.label}
-              </a>
+            <Reveal variant="item" delay={300}>
+              <CtaButton cta={cta} className="px-8" />
             </Reveal>
           ) : null}
         </div>

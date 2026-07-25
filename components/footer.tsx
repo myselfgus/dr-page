@@ -10,11 +10,11 @@ import {
   resolveCta,
 } from "@/lib/site-config"
 
-// Rótulos do rodapé: sem "Blog", e "Domiciliar" vira "Atendimento domiciliar".
+// Rótulos do rodapé: "Domiciliar" vira "Atendimento domiciliar".
 function footerNav(nav: NavConfig) {
-  return nav.items
-    .filter((i) => i.href !== "/blog")
-    .map((i) => (i.href === "/domiciliar" ? { ...i, label: "Atendimento domiciliar" } : i))
+  return nav.items.map((i) =>
+    i.href === "/domiciliar" ? { ...i, label: "Atendimento domiciliar" } : i,
+  )
 }
 
 export function Footer({

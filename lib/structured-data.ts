@@ -122,14 +122,6 @@ function buildWebSite() {
     name: "Dr. Gustavo Mendes e Silva - Psiquiatra",
     description: "Psiquiatria humanizada em Jundiaí",
     publisher: { "@type": "Person", name: "Dr. Gustavo Mendes e Silva" },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${BASE_URL}/?s={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
   }
 }
 

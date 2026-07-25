@@ -55,7 +55,8 @@ export function Hero({
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            <h1 className="font-serif text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-8xl font-medium leading-tight mb-8 lg:mb-6 text-balance">
+            {/* Frase-assinatura da home — manter estilo editorial em linhas */}
+            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-medium leading-tight mb-8 lg:mb-6 text-balance">
               {content.titleLines.map((line, i) => (
                 <span key={i} className={`block animate-fade-up ${DELAYS[i] ?? ""}`}>
                   {line}

@@ -98,43 +98,45 @@ export function ConditionsTreated({
   const showFocus = design.showFocus !== false
 
   return (
-    <section className="py-24 px-6 bg-muted/30">
-      <div className="max-w-7xl mx-auto">
-        <Reveal>
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 text-balance">
-              {content.title}
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-              {content.subtitle}
-            </p>
-          </div>
-        </Reveal>
+    <section className="py-16 lg:py-24 bg-muted/30 border-t border-border">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <Reveal variant="item">
+            <div className="text-center mb-12 lg:mb-16">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 text-balance">
+                {content.title}
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
+                {content.subtitle}
+              </p>
+            </div>
+          </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {content.items.map((principle, index) => (
-            <Reveal key={principle.name} delay={(index % 3) * 100}>
-              <div className="group h-full bg-card border border-border p-6 md:p-8 transition-all duration-300 hover:border-foreground/40 hover:-translate-y-1">
-                {numbered ? (
-                  <p className="font-mono text-xs text-muted-foreground mb-4 tracking-widest">
-                    {String(index + 1).padStart(2, "0")}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {content.items.map((principle, index) => (
+              <Reveal key={principle.name} variant="item" delay={(index % 3) * 100}>
+                <div className="group h-full bg-card border border-border rounded-2xl p-6 md:p-8 shadow-card transition-all duration-300 hover:border-foreground/40 hover:-translate-y-1 hover:shadow-card-hover">
+                  {numbered ? (
+                    <p className="font-mono text-xs text-muted-foreground mb-4 tracking-widest">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                  ) : null}
+                  <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-light mb-3 text-balance">
+                    {principle.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm md:text-base text-muted-foreground mb-4 leading-relaxed">
+                    {principle.description}
                   </p>
-                ) : null}
-                <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-light mb-3 text-balance">
-                  {principle.name}
-                </h3>
-                <p className="text-xs sm:text-sm md:text-base text-muted-foreground mb-4 leading-relaxed">
-                  {principle.description}
-                </p>
-                {showFocus ? (
-                  <div className="pt-4 border-t border-border hidden md:block transition-colors group-hover:border-foreground/20">
-                    <p className="text-xs md:text-sm font-medium mb-1">Foco:</p>
-                    <p className="text-xs md:text-sm text-muted-foreground">{principle.focus}</p>
-                  </div>
-                ) : null}
-              </div>
-            </Reveal>
-          ))}
+                  {showFocus ? (
+                    <div className="pt-4 border-t border-border hidden md:block transition-colors group-hover:border-foreground/20">
+                      <p className="text-xs md:text-sm font-medium mb-1">Foco:</p>
+                      <p className="text-xs md:text-sm text-muted-foreground">{principle.focus}</p>
+                    </div>
+                  ) : null}
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

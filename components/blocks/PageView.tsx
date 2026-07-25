@@ -25,7 +25,7 @@ export function PageView({ pageId, loaded }: { pageId: string; loaded: LoadedPag
   return (
     <main className={showBack ? "min-h-screen bg-background" : "min-h-screen"}>
       <StructuredData items={jsonld} />
-      {showHeader ? <Header nav={nav} brand={brand} /> : null}
+      {showHeader ? <Header nav={nav} brand={brand} contact={contact} /> : null}
       {showBack ? <BackButton /> : null}
       <BlockList blocks={blocks} contact={contact} />
       {showFooter ? <Footer contact={contact} nav={nav} brand={brand} /> : null}

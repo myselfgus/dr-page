@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
-import { StarIcon } from "@/components/blocks/cta-button"
+import { CtaButton } from "@/components/blocks/cta-button"
 import { type CtaRef, type ContactConfig, DEFAULT_CONTACT, resolveCta } from "@/lib/site-config"
 
 export interface FaqItem {
@@ -79,40 +79,10 @@ export const DEFAULT_DESIGN: FaqDesign = {
 
 function CloserCta({ cta, contact }: { cta: CtaRef; contact: ContactConfig }) {
   const resolved = resolveCta(cta, contact)
-  const target = resolved.external ? { target: "_blank", rel: "noopener noreferrer" as const } : {}
-
-  if (resolved.kind === "doctoralia") {
-    return (
-      <a
-        href={resolved.href}
-        {...target}
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-border rounded-sm hover:bg-muted/30 transition-colors text-sm font-medium text-[#00c3a5]"
-      >
-        <StarIcon />
-        {resolved.label}
-      </a>
-    )
+  if (resolved.kind === "whatsapp" || resolved.kind === "doctoralia") {
+    return <CtaButton cta={resolved} />
   }
-  if (resolved.kind === "whatsapp") {
-    return (
-      <a
-        href={resolved.href}
-        {...target}
-        className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground rounded-sm hover:bg-primary/90 transition-colors text-sm font-medium"
-      >
-        {resolved.label}
-      </a>
-    )
-  }
-  return (
-    <a
-      href={resolved.href}
-      {...target}
-      className="inline-flex items-center justify-center px-6 py-3 border border-border rounded-sm hover:bg-muted/30 transition-colors text-sm font-medium"
-    >
-      {resolved.label}
-    </a>
-  )
+  return <CtaButton cta={resolved} variant="outline" />
 }
 
 export function FAQSection({
@@ -147,8 +117,7 @@ export function FAQSection({
             {content.items.map((faq, index) => (
               <div
                 key={index}
-                className="border border-border rounded-sm overflow-hidden"
-                style={{ boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.08)" }}
+                className="border border-border rounded-xl overflow-hidden bg-card shadow-card"
               >
                 <button
                   onClick={() => toggleFAQ(index)}

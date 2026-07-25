@@ -33,6 +33,11 @@ import {
 } from "@/components/blocks/FeatureCards"
 import { PricingCta, type PricingCtaContent, type PricingCtaDesign } from "@/components/blocks/PricingCta"
 import { PriceBadge, type PriceBadgeContent, type PriceBadgeDesign } from "@/components/blocks/PriceBadge"
+import {
+  TestimonialsSection,
+  type TestimonialsContent,
+  type TestimonialsDesign,
+} from "@/components/testimonials-section"
 
 function renderBlock(block: PageBlock, contact: ContactConfig) {
   const content = block.content as unknown
@@ -106,6 +111,14 @@ function renderBlock(block: PageBlock, contact: ContactConfig) {
       return (
         <PriceBadge content={content as PriceBadgeContent} design={design as PriceBadgeDesign} />
       )
+    case "testimonials":
+      return (
+        <TestimonialsSection
+          content={content as TestimonialsContent}
+          design={design as TestimonialsDesign}
+          contact={contact}
+        />
+      )
     default:
       return null
   }
@@ -120,7 +133,8 @@ export function BlockRenderer({
 }) {
   const rendered = renderBlock(block, contact)
   if (!rendered) return null
-  return <Reveal>{rendered}</Reveal>
+  // section variant = opacity only — nested item Reveals own the lift animation
+  return <Reveal variant="section">{rendered}</Reveal>
 }
 
 export function BlockList({

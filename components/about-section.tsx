@@ -97,16 +97,12 @@ export function AboutSection({
             <img
               src={content.image}
               alt={content.imageAlt}
-              className="w-full h-full object-cover rounded-sm"
-              style={{ boxShadow: "2px 2px 1px rgba(0, 0, 0, 0.15)" }}
+              className="w-full h-full object-cover rounded-2xl shadow-card"
             />
           </div>
         </div>
 
-        <div
-          className="bg-muted/30 rounded-sm p-8 lg:p-12"
-          style={{ boxShadow: "1px 2px 1px rgba(0, 0, 0, 0.08)" }}
-        >
+        <div className="bg-card border border-border rounded-2xl p-8 lg:p-12 shadow-card">
           <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-light mb-6 text-center text-balance">
             {content.diferenciaisTitle}
           </h3>

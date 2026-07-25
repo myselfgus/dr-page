@@ -3,40 +3,54 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ---------------------------------------------------------------------------
+   Design system — Cloud Dancer atmosphere + soft elevation
+   Pantone-inspired warm off-white (#F0EEE9) as page background; pure white cards.
+   Tokens below are the CSS fallback; D1 design_tokens can override via
+   <style id="design-tokens"> injected after this file.
+   --------------------------------------------------------------------------- */
+
 :root {
-  --background: oklch(0.99 0 0);
-  --foreground: oklch(0.15 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0 0);
-  --primary: oklch(0.15 0 0);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.95 0 0);
-  --secondary-foreground: oklch(0.15 0 0);
-  --muted: oklch(0.92 0 0);
-  --muted-foreground: oklch(0.5 0 0);
-  --accent: oklch(0.88 0 0);
-  --accent-foreground: oklch(0.15 0 0);
+  /* Cloud Dancer family */
+  --background: #f0eee9;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #1a1a1a;
+  --primary-foreground: #f0eee9;
+  --secondary: #e8e6e1;
+  --secondary-foreground: #1a1a1a;
+  --muted: #e8e6e1;
+  --muted-foreground: #6b6b6b;
+  --accent: #dddad4;
+  --accent-foreground: #1a1a1a;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.88 0 0);
-  --input: oklch(0.88 0 0);
-  --ring: oklch(0.15 0 0);
+  --border: #dddad4;
+  --input: #dddad4;
+  --ring: #1a1a1a;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Base radius — positive scale (sm/md/lg/xl derived below) */
+  --radius: 0.75rem;
+  --sidebar: #f5f3ee;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #1a1a1a;
+  --sidebar-primary-foreground: #f0eee9;
+  --sidebar-accent: #e8e6e1;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #dddad4;
+  --sidebar-ring: #6b6b6b;
+  /* Brand (fixed third-party hues — not themed) */
+  --brand-whatsapp: #25d366;
+  --brand-whatsapp-hover: #20ba5a;
+  --brand-doctoralia: #00c3a5;
+  --brand-doctoralia-hover: #00ab91;
 }
 
 .dark {
@@ -74,11 +88,9 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-/* Updated to use CSS variables from layout.tsx instead of hardcoded fonts */
 @theme inline {
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
-  /* Removendo variável de subtítulo - agora usaremos font-serif para tudo */
   --font-mono: var(--font-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -104,10 +116,12 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  /* Positive radius scale — no negative calc */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -116,15 +130,15 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  /* Custom shadow definitions - strong but thin with minimal blur and perspective */
-  --shadow-xs: 1px 1px 1px rgba(0, 0, 0, 0.1);
-  --shadow-sm: 1px 1px 1px rgba(0, 0, 0, 0.12);
-  --shadow-md: 1px 2px 1px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 2px 2px 2px rgba(0, 0, 0, 0.2);
-  --shadow-xl: 2px 3px 2px rgba(0, 0, 0, 0.25);
-  --shadow-2xl: 3px 4px 2px rgba(0, 0, 0, 0.3);
-  /* Sombra padrão dos cards (tokenizada — sobrescrita pelo <style id="design-tokens">). */
-  --shadow-card: 4px 2px 2px rgba(0, 0, 0, 0.05);
+  /* Soft elevation (healthcare-calm, not hard offset) */
+  --shadow-xs: 0 1px 2px rgba(26, 26, 26, 0.04);
+  --shadow-sm: 0 1px 2px rgba(26, 26, 26, 0.05), 0 2px 6px rgba(26, 26, 26, 0.04);
+  --shadow-md: 0 2px 4px rgba(26, 26, 26, 0.05), 0 6px 16px rgba(26, 26, 26, 0.06);
+  --shadow-lg: 0 4px 8px rgba(26, 26, 26, 0.05), 0 12px 28px rgba(26, 26, 26, 0.08);
+  --shadow-xl: 0 8px 16px rgba(26, 26, 26, 0.06), 0 20px 40px rgba(26, 26, 26, 0.1);
+  --shadow-2xl: 0 12px 24px rgba(26, 26, 26, 0.08), 0 28px 56px rgba(26, 26, 26, 0.12);
+  --shadow-card: 0 1px 2px rgba(26, 26, 26, 0.04), 0 8px 24px rgba(26, 26, 26, 0.06);
+  --shadow-card-hover: 0 4px 8px rgba(26, 26, 26, 0.05), 0 12px 32px rgba(26, 26, 26, 0.08);
 }
 
 @layer base {
@@ -133,17 +147,6 @@
   }
   body {
     @apply bg-background text-foreground;
-  }
-}
-
-/* Added iridescent animation for user messages */
-@keyframes iridescent {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
   }
 }
 
@@ -176,9 +179,13 @@
   animation-delay: 600ms;
 }
 
-/* Scroll reveal (driven by the Reveal component) */
+/* Scroll reveal — section (opacity only) vs item (opacity + lift) */
 .reveal {
   opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.reveal-lift {
   transform: translateY(16px);
   transition:
     opacity 0.7s ease,
@@ -208,12 +215,18 @@
   transform-origin: center;
 }
 
+/* Card hover elevation utility */
+.shadow-card-hover:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
   .animate-breathe {
     animation: none;
   }
-  .reveal {
+  .reveal,
+  .reveal-lift {
     opacity: 1;
     transform: none;
     transition: none;

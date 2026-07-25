@@ -137,8 +137,24 @@ export async function loadPage(
       getSiteConfig<BrandConfig>("brand").catch(() => undefined),
     ])
 
-    if (dbPage) page = dbPage
-    if (dbBlocks && dbBlocks.length > 0) blocks = dbBlocks
+    // Prefer D1, but keep seed flags when D1 page row is older (e.g. missing global chrome).
+    if (dbPage) {
+      const seedPage = fallbackPage(id)
+      page = {
+        ...dbPage,
+        // Seed is source of truth for chrome flags after design-system rollout.
+        rendersHeader: seedPage?.rendersHeader ?? dbPage.rendersHeader,
+        rendersFooter: seedPage?.rendersFooter ?? dbPage.rendersFooter,
+        backButton: seedPage?.backButton ?? dbPage.backButton,
+      }
+    }
+    if (dbBlocks && dbBlocks.length > 0) {
+      // Merge seed-only blocks (e.g. new testimonials) without wiping D1 edits.
+      const seedBlocks = fallbackBlocks(id)
+      const dbIds = new Set(dbBlocks.map((b) => b.id))
+      const missing = seedBlocks.filter((b) => !dbIds.has(b.id))
+      blocks = [...dbBlocks, ...missing].sort((a, b) => a.sort - b.sort)
+    }
     if (dbMeta) meta = dbMeta
     if (dbContact) contact = dbContact
     if (dbNav) nav = dbNav

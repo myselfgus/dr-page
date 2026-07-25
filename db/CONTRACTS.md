@@ -18,10 +18,10 @@ Determinísticos: `blocks.id = "{page_id}-{type}"` (ex.: `home-hero`, `home-faq`
 | id | path | header | footer | back_button |
 |---|---|---|---|---|
 | home | / | 1 | 1 | 0 |
-| about | /about | 0 | 0 | 1 |
-| teleconsulta | /teleconsulta | 0 | 0 | 1 |
-| domiciliar | /domiciliar | 0 | 0 | 1 |
-| contact | /contact | 0 | 0 | 1 |
+| about | /about | 1 | 1 | 0 |
+| teleconsulta | /teleconsulta | 1 | 1 | 0 |
+| domiciliar | /domiciliar | 1 | 1 | 0 |
+| contact | /contact | 1 | 1 | 0 |
 
 ## CtaRef (objeto reutilizável dentro de content_json — nunca hardcode número/URL no bloco)
 ```
@@ -44,7 +44,7 @@ avaliações `text-[#00c3a5]` com ícone estrela, "Ver avaliações na Doctorali
   doctoralia:"https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai", crm:"CRM 218133/SP",
   address:{clinic,street,cityLine,locality:"Jundiaí",region:"SP",postalCode:"13202-544",country:"BR",lat:"-23.1996",lng:"-46.8764"},
   mapEmbed:"<iframe src do Google Maps atual>", reviewCount:"17", ratingValue:"5.0" }`
-- `nav`: `{ items:[{label,href}] }` (Teleconsulta, Domiciliar, Blog, Sobre, Contato). Footer usa label "Atendimento domiciliar" e não tem Blog.
+- `nav`: `{ items:[{label,href}] }` (Teleconsulta, Domiciliar, Blog, Sobre, Contato). Footer usa label "Atendimento domiciliar" e inclui Blog.
 - `brand`: `{ name:"Dr. Gustavo Mendes e Silva", crm:"CRM 218133/SP", tagline:"Psiquiatria humanizada, com escuta atenta e atendimento domiciliar quando necessário." }`
 
 Valores EXATOS (textos, preços, URLs) devem ser extraídos dos componentes/páginas atuais do dr-page —
@@ -62,11 +62,12 @@ o conteúdo renderizado hoje é a fonte. Não inventar nem parafrasear.
 - **feature-cards** → novo `FeatureCards`. content `{ items:[{iconName,title,text}] }`; design `{ columns:3 }`. (teleconsulta/domiciliar)
 - **pricing-cta** → novo `PricingCta`. content `{ heading, iconName?, note?, steps?:[{iconName,text}], prices:[{label,value}], footnotes?:string[], cta:CtaRef }`; design `{ variant:"prices-only"|"how-it-works", showSteps }`.
 - **price-badge** → novo `PriceBadge`. content `{ label, value, note }`; design `{ variant:"inline-card" }`. (/contact)
+- **testimonials** → `testimonials-section.tsx`. content `{ eyebrow?, title, subtitle?, items:[{author,rating?,body,date?,source?}], sourceCta:CtaRef }`; design `{ id:"avaliacoes", layout:"grid"|"snap-row", columns:3, showAggregate:bool }`. Depoimentos **curados** da Doctoralia (nunca scrape ao vivo); CTA Doctoralia = link de avaliações, nunca booking. Aggregate herda `site_config.contact.ratingValue/reviewCount`.
 
 Ícones (`iconName`) resolvidos via `lucide-react`: MapPin, Clock, ShieldCheck, Video, Heart, Users, Home, Brain, Briefcase, GraduationCap, Award, Globe, Sparkles. `richtext` de texto puro em `<strong>` é permitido (marcação leve inline), sanitizado.
 
 ## Ordem dos blocos por página (sort)
-- home: hero, symptoms, care-steps, about, principles, faq, contact
+- home: hero, symptoms, care-steps, about, testimonials, principles, faq, contact
 - about: hero(subpage-split, badges), + 7 blocos richtext (Sobre Mim, Áreas de Atuação, Experiência, Formação Acadêmica, Formação Complementar, Competências, Idiomas/Afiliações)
 - teleconsulta: hero(subpage), feature-cards, pricing-cta(prices-only)
 - domiciliar: hero(subpage), feature-cards, pricing-cta(how-it-works)
