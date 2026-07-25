@@ -89,14 +89,14 @@ export function Hero({
         ) : null}
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
-            <h1 className="font-serif font-medium leading-[1.06] tracking-tight text-balance mb-7 sm:mb-8 lg:mb-6">
+          <div className="max-w-4xl flex flex-col">
+            <h1 className="order-1 font-serif font-medium leading-[1.06] tracking-tight text-balance mb-10 sm:mb-8 lg:mb-6">
               {/* Mobile: título grande em 5 linhas */}
               <span className="block md:hidden">
                 {mobileLines.map((line, i) => (
                   <span
                     key={`m-${line}-${i}`}
-                    className={`block text-5xl leading-[1.08] animate-fade-up ${DELAYS[i] ?? "animation-delay-600"}`}
+                    className={`block text-[5rem] leading-[1.14] animate-fade-up ${DELAYS[i] ?? "animation-delay-600"}`}
                   >
                     {line}
                   </span>
@@ -117,7 +117,7 @@ export function Hero({
 
             {/* Badge Doctoralia — subtexto principal */}
             {showRating ? (
-              <div className="mb-7 sm:mb-9 animate-fade-up animation-delay-450">
+              <div className="order-2 mb-12 sm:mb-9 animate-fade-up animation-delay-450">
                 <Link
                   href="#avaliacoes"
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 shadow-card hover:shadow-card-hover transition-shadow max-w-full"
@@ -138,7 +138,7 @@ export function Hero({
             ) : null}
 
             {/* Lead de apoio */}
-            <div className="text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl space-y-4 sm:space-y-5 text-muted-foreground [&_strong]:text-foreground [&_strong]:font-semibold">
+            <div className="order-3 text-lg sm:text-lg md:text-xl leading-relaxed max-w-2xl space-y-6 sm:space-y-5 text-muted-foreground [&_strong]:text-foreground [&_strong]:font-semibold">
               {(content.leadHtml ?? []).map((html, i) => (
                 <span
                   key={i}
