@@ -5,7 +5,14 @@ import "./globals.css"
 import { BackToTop } from "@/components/back-to-top"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { buildDesignTokensCss } from "@/lib/design-tokens"
-import { Playfair_Display, Urbanist, Nunito_Sans, Roboto_Mono } from "next/font/google"
+import { Playfair_Display, DM_Serif_Display, Sora, Manrope, Roboto_Mono } from "next/font/google"
+
+// Brand · apenas o nome no header
+const dmSerifDisplay = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-display",
+})
 
 // Display · headings (serif) — Playfair for verification / brand continuity
 const playfair = Playfair_Display({
@@ -15,19 +22,20 @@ const playfair = Playfair_Display({
 })
 
 // Emphasis · nav, labels, strong
-const urbanist = Urbanist({
+const sora = Sora({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-emphasis",
 })
 
 // Body
-const nunitoSans = Nunito_Sans({
+const manrope = Manrope({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-sans",
 })
 
+// Mono · micro-labels, eyebrows, números (CRM, avaliações, etapas)
 const robotoMono = Roboto_Mono({
   subsets: ["latin"],
   weight: ["300", "400", "500"],
@@ -141,7 +149,7 @@ export default async function RootLayout({
         ) : null}
       </head>
       <body
-        className={`${nunitoSans.variable} ${playfair.variable} ${urbanist.variable} ${robotoMono.variable} font-sans font-normal antialiased`}
+        className={`${manrope.variable} ${playfair.variable} ${dmSerifDisplay.variable} ${sora.variable} ${robotoMono.variable} font-sans font-normal antialiased`}
       >
         {children}
         <BackToTop />

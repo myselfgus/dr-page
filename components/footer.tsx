@@ -36,7 +36,7 @@ export function Footer({
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8">
           <div>
             <h3 className="font-serif text-2xl font-light mb-4">{brand.name}</h3>
-            <p className="text-sm text-muted-foreground mb-2">{brand.crm}</p>
+            <p className="font-mono text-xs tracking-wide text-muted-foreground mb-2">{brand.crm}</p>
             <p className="text-sm text-muted-foreground leading-relaxed">{brand.tagline}</p>
             <a
               href={contact.doctoralia}

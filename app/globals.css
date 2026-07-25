@@ -87,6 +87,7 @@
 @theme inline {
   --font-sans: var(--font-sans);
   --font-serif: var(--font-serif);
+  --font-display: var(--font-display);
   --font-emphasis: var(--font-emphasis);
   --font-mono: var(--font-mono);
   --color-background: var(--background);
@@ -145,7 +146,7 @@
   body {
     @apply bg-background text-foreground;
   }
-  /* Emphasis face (Urbanist) for strong/labels when marked */
+  /* Emphasis face (Sora) for strong/labels when marked */
   strong,
   b {
     font-family: var(--font-emphasis), ui-sans-serif, system-ui, sans-serif;

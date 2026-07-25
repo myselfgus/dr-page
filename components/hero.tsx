@@ -127,7 +127,7 @@ export function Hero({
                       <StarIcon key={i} className="w-3.5 h-3.5" />
                     ))}
                   </span>
-                  <span className="font-emphasis font-semibold text-foreground text-sm tabular-nums">
+                  <span className="font-mono font-medium text-foreground text-sm tabular-nums">
                     {ratingLabel}
                   </span>
                   <span className="text-muted-foreground text-sm font-emphasis whitespace-nowrap">
@@ -231,7 +231,7 @@ export function Hero({
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-3xl mx-auto">
           {content.eyebrow ? (
-            <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4 font-emphasis">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4 font-mono">
               {content.eyebrow}
             </p>
           ) : null}

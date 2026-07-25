@@ -64,7 +64,7 @@ export function AboutSection({
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold mb-4 text-balance">
             {content.title}
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="font-mono text-xs sm:text-sm md:text-base tracking-wide text-muted-foreground max-w-2xl mx-auto">
             {content.subtitle}
           </p>
         </div>

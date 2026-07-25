@@ -42,7 +42,7 @@ export function Header({
         <div className="flex items-center justify-between h-16 lg:h-20 gap-4">
           <Link
             href="/"
-            className="font-serif text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-wide text-balance leading-tight min-w-0"
+            className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-wide text-balance leading-tight min-w-0"
           >
             {brand.name}
           </Link>
