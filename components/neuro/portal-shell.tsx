@@ -33,9 +33,7 @@ export function NeuroPortalShell({ children }: { children: ReactNode }) {
             className="flex items-center gap-2.5 min-w-0 text-[var(--np-fg)]"
             onClick={() => setOpen(false)}
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--np-border)] bg-[var(--np-panel)] shadow-sm">
-              <AutismRibbon className="w-6 h-7" title="Autismo e neurodivergência" />
-            </span>
+            <AutismRibbon className="w-7 h-8" title="Autismo e neurodivergência" />
             <span className="min-w-0">
               <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--np-muted)]">
                 Portal · TEA

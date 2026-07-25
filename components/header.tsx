@@ -61,23 +61,22 @@ export function Header({
             ))}
             <Link
               href={NEURO_BASE}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card pl-2 pr-3 h-9 text-foreground/80 hover:text-foreground hover:border-foreground/25 transition-colors"
+              className="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity"
               aria-label="Portal Autismo e neurodivergência (TEA)"
               title="Autismo e neurodivergência"
             >
-              <AutismRibbon className="w-5 h-6" title="Autismo e neurodivergência" />
-              <span className="text-xs font-emphasis tracking-wide hidden lg:inline">TEA</span>
+              <AutismRibbon className="w-6 h-7" title="Autismo e neurodivergência" />
             </Link>
           </nav>
 
-          <div className="flex items-center gap-1 md:hidden">
+          <div className="flex items-center gap-1.5 md:hidden">
             <Link
               href={NEURO_BASE}
-              className="inline-flex items-center justify-center rounded-full border border-border bg-card h-9 w-9"
+              className="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity p-0.5"
               aria-label="Portal Autismo e neurodivergência (TEA)"
               title="Autismo e neurodivergência"
             >
-              <AutismRibbon className="w-5 h-6" title="Autismo e neurodivergência" />
+              <AutismRibbon className="w-6 h-7" title="Autismo e neurodivergência" />
             </Link>
             <Button
               variant="ghost"
