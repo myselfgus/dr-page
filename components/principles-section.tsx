@@ -39,28 +39,21 @@ export const DEFAULT_CONTENT: PrinciplesContent = {
   subtitle: "Princípios que guiam minha prática clínica e o cuidado oferecido a cada paciente",
   items: [
     {
-      name: "Abordagem Centrada na Pessoa",
+      name: "Abordagem Centrada na Pessoa, com Tempo de Qualidade",
       description:
-        "Cada indivíduo é único, com sua própria história, contexto e necessidades. O tratamento é construído em torno de você, não de um protocolo rígido.",
-      focus: "Escuta ativa, respeito à autonomia, colaboração no tratamento",
+        "Cada indivíduo é único, com sua própria história, contexto e necessidades — o tratamento é construído em torno de você, não de um protocolo rígido. Consultas sem anotações, com atenção plena à sua presença, permitem uma conexão genuína e compreensão profunda.",
+      focus: "Escuta ativa, presença total, respeito à autonomia, colaboração no tratamento",
       image: DEFAULT_IMAGES[0],
       imageAlt: "Ilustração: escuta centrada na pessoa",
     },
     {
-      name: "Tempo de Qualidade",
+      name: "História, Contexto e Relações",
       description:
-        "Consultas sem anotações, com atenção plena à sua presença. Estar verdadeiramente presente, sem distrações, permite uma conexão genuína e compreensão profunda.",
-      focus: "Presença total, escuta sem interrupções, atenção plena ao paciente",
-      image: DEFAULT_IMAGES[1],
-      imageAlt: "Ilustração: tempo de qualidade na consulta",
-    },
-    {
-      name: "Valorização da História do Paciente",
-      description:
-        "Sua história merece ser ouvida e compreendida em sua totalidade. O que você sente ganha sentido quando entendido dentro do seu contexto de vida.",
-      focus: "Compreensão do contexto, validação da experiência, escuta atenta",
+        "Sua história merece ser ouvida e compreendida em sua totalidade: o que você sente ganha sentido dentro do seu contexto de vida. Ninguém pode ser visto isoladamente nem tratado assim — olhamos para toda a rede ao redor: família, trabalho, comunidade, cultura.",
+      focus:
+        "Escuta atenta, validação da experiência, visão sistêmica, cuidado contextualizado",
       image: DEFAULT_IMAGES[2],
-      imageAlt: "Ilustração: história de vida",
+      imageAlt: "Ilustração: história de vida, contexto e relações",
     },
     {
       name: "Cuidado Orientado aos Valores Pessoais do Paciente",
@@ -69,14 +62,6 @@ export const DEFAULT_CONTENT: PrinciplesContent = {
       focus: "Respeito aos valores individuais, alinhamento com objetivos pessoais, cuidado personalizado",
       image: DEFAULT_IMAGES[3],
       imageAlt: "Ilustração: valores pessoais",
-    },
-    {
-      name: "Contexto, Relações e Subjetividade",
-      description:
-        "Ninguém pode ser visto isoladamente nem tratado assim. Olhamos para toda a rede ao redor: família, trabalho, comunidade, cultura. O contexto molda quem somos.",
-      focus: "Visão sistêmica, compreensão relacional, cuidado contextualizado",
-      image: DEFAULT_IMAGES[4],
-      imageAlt: "Ilustração: rede de relações e contexto",
     },
     {
       name: "Medicamentos como Auxiliares, com Prazo de Retirada",

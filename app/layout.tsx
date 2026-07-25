@@ -5,7 +5,7 @@ import "./globals.css"
 import { BackToTop } from "@/components/back-to-top"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { buildDesignTokensCss } from "@/lib/design-tokens"
-import { Playfair_Display, DM_Serif_Display, Sora, Manrope, Roboto_Mono } from "next/font/google"
+import { Playfair_Display, DM_Serif_Display, Lato, Nunito, Roboto_Mono } from "next/font/google"
 
 // Brand · apenas o nome no header
 const dmSerifDisplay = DM_Serif_Display({
@@ -22,16 +22,16 @@ const playfair = Playfair_Display({
 })
 
 // Emphasis · nav, labels, strong
-const sora = Sora({
+const lato = Lato({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "700", "900"],
   variable: "--font-emphasis",
 })
 
-// Body
-const manrope = Manrope({
+// Body · Nunito em peso leve (thin/light)
+const nunito = Nunito({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["200", "300", "400", "600", "700"],
   variable: "--font-sans",
 })
 
@@ -149,7 +149,7 @@ export default async function RootLayout({
         ) : null}
       </head>
       <body
-        className={`${manrope.variable} ${playfair.variable} ${dmSerifDisplay.variable} ${sora.variable} ${robotoMono.variable} font-sans font-normal antialiased`}
+        className={`${nunito.variable} ${playfair.variable} ${dmSerifDisplay.variable} ${lato.variable} ${robotoMono.variable} font-sans font-light antialiased`}
       >
         {children}
         <BackToTop />

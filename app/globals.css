@@ -146,7 +146,7 @@
   body {
     @apply bg-background text-foreground;
   }
-  /* Emphasis face (Sora) for strong/labels when marked */
+  /* Emphasis face (Lato) for strong/labels when marked */
   strong,
   b {
     font-family: var(--font-emphasis), ui-sans-serif, system-ui, sans-serif;
