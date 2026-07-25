@@ -54,22 +54,29 @@ export default async function BlogPage() {
 
       <div className="container mx-auto px-4 lg:px-8 pt-28 lg:pt-32 pb-12 lg:pb-20">
         <div className="max-w-7xl mx-auto mb-16 lg:mb-24">
-          <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-light mb-6 leading-[0.95]">
-            Artigos e Reflexões
+          <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4 font-emphasis">
+            Escritos
+          </p>
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light mb-6 leading-[0.95] text-balance">
+            Artigos e reflexões
           </h1>
-          <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-            Explorações acadêmicas sobre psiquiatria, fenomenologia e a complexidade da experiência humana.
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl">
+            Textos do Dr. Gustavo Mendes e Silva sobre psiquiatria, fenomenologia e a complexidade da
+            experiência humana — sem pressa de simplificar o que é complexo.
           </p>
         </div>
 
         {posts.length === 0 ? (
           <p className="text-muted-foreground max-w-xl">Em breve, novos artigos por aqui.</p>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto mb-20 lg:mb-32">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto mb-20 lg:mb-32">
             {posts.map((post) => (
-              <article key={post.slug} className="group flex flex-col">
+              <article
+                key={post.slug}
+                className="flex flex-col h-full rounded-2xl border border-border bg-card p-6 shadow-card"
+              >
                 <Link href={`/blog/${post.slug}`} className="flex flex-col h-full space-y-4">
-                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-3 text-xs sm:text-sm text-muted-foreground font-mono tracking-wide">
                     <time dateTime={post.date}>
                       {new Date(post.date).toLocaleDateString("pt-BR", {
                         day: "2-digit",
@@ -77,34 +84,41 @@ export default async function BlogPage() {
                         year: "numeric",
                       })}
                     </time>
-                    <span>•</span>
+                    <span aria-hidden="true">·</span>
                     <span>{post.readTime}</span>
                   </div>
 
                   <div className="flex-1 space-y-3">
-                    <h2 className="font-serif text-2xl lg:text-3xl font-light group-hover:text-muted-foreground transition-colors leading-tight">
+                    <h2 className="font-serif text-2xl lg:text-[1.65rem] font-light leading-snug text-balance">
                       {post.title}
                     </h2>
                     {post.subtitle ? (
-                      <p className="font-serif text-lg lg:text-xl text-muted-foreground font-light line-clamp-2">
+                      <p className="text-base text-muted-foreground font-light line-clamp-2">
                         {post.subtitle}
                       </p>
                     ) : null}
-                    <p className="text-base text-muted-foreground leading-relaxed line-clamp-3">{post.excerpt}</p>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed line-clamp-3">
+                      {post.excerpt}
+                    </p>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {post.keywords.slice(0, 3).map((keyword) => (
-                      <span key={keyword} className="text-xs px-3 py-1 rounded-full bg-muted text-muted-foreground">
-                        {keyword}
-                      </span>
-                    ))}
-                  </div>
+                  {post.keywords.length > 0 ? (
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {post.keywords.slice(0, 3).map((keyword) => (
+                        <span
+                          key={keyword}
+                          className="text-xs px-3 py-1 rounded-full border border-border text-muted-foreground"
+                        >
+                          {keyword}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
 
-                  <div className="text-sm font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-2 pt-2">
+                  <span className="text-sm font-emphasis text-foreground/80 inline-flex items-center gap-2 pt-2 border-t border-border/80 mt-auto">
                     Ler artigo
-                    <span>→</span>
-                  </div>
+                    <span aria-hidden="true">→</span>
+                  </span>
                 </Link>
               </article>
             ))}

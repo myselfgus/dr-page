@@ -162,19 +162,16 @@ export function Hero({
         <div className="container mx-auto px-4 lg:px-8 relative">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-7xl mx-auto">
             {showImage ? (
-              <div className="order-1 lg:order-2 animate-in fade-in slide-in-from-right-8 duration-1000">
-                <div className="relative aspect-square max-w-md mx-auto lg:max-w-none">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl transform rotate-3" />
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-500">
-                    <Image
-                      src={content.image as string}
-                      alt={content.imageAlt ?? ""}
-                      width={600}
-                      height={600}
-                      className="object-cover w-full h-full img-drift"
-                      priority
-                    />
-                  </div>
+              <div className="order-1 lg:order-2">
+                <div className="relative aspect-[4/5] sm:aspect-square max-w-md mx-auto lg:max-w-none overflow-hidden rounded-2xl border border-border bg-muted/30 shadow-card">
+                  <Image
+                    src={content.image as string}
+                    alt={content.imageAlt ?? ""}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
                 </div>
               </div>
             ) : null}
