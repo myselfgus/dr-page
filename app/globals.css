@@ -297,13 +297,6 @@
   transform-origin: top center;
 }
 
-/* Soft hover boost on principle cards (desktop) */
-@media (hover: hover) and (pointer: fine) {
-  .group:hover .principle-media img {
-    animation-duration: 14s;
-  }
-}
-
 @keyframes breathe {
   0%,
   100% {

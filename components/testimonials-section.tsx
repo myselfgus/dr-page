@@ -1,3 +1,6 @@
+"use client"
+
+import { useCallback, useEffect, useRef, useState } from "react"
 import { Reveal } from "@/components/reveal"
 import { CtaButton, StarIcon } from "@/components/blocks/cta-button"
 import {
@@ -88,7 +91,7 @@ export const DEFAULT_CONTENT: TestimonialsContent = {
 
 export const DEFAULT_DESIGN: TestimonialsDesign = {
   id: "avaliacoes",
-  layout: "snap-row", // mobile snap + grid from md up
+  layout: "snap-row", // mobile carousel + grid from md up
   columns: 3,
   showAggregate: true,
 }
@@ -119,6 +122,43 @@ export function TestimonialsSection({
     : resolveCta({ kind: "doctoralia", label: "Ver todas as avaliações na Doctoralia" }, contact)
 
   const ratingLabel = `${contact.ratingValue}`.replace(".", ",")
+  const isSnap = layout === "snap-row"
+
+  const scrollerRef = useRef<HTMLDivElement>(null)
+  const [active, setActive] = useState(0)
+
+  const syncActive = useCallback(() => {
+    const el = scrollerRef.current
+    if (!el || el.children.length === 0) return
+    const first = el.children[0] as HTMLElement
+    const gap = 16
+    const step = first.offsetWidth + gap
+    if (step <= 0) return
+    const idx = Math.round(el.scrollLeft / step)
+    setActive(Math.max(0, Math.min(content.items.length - 1, idx)))
+  }, [content.items.length])
+
+  useEffect(() => {
+    if (!isSnap) return
+    const el = scrollerRef.current
+    if (!el) return
+    syncActive()
+    el.addEventListener("scroll", syncActive, { passive: true })
+    window.addEventListener("resize", syncActive)
+    return () => {
+      el.removeEventListener("scroll", syncActive)
+      window.removeEventListener("resize", syncActive)
+    }
+  }, [isSnap, syncActive])
+
+  const scrollToIndex = (index: number) => {
+    const el = scrollerRef.current
+    if (!el || el.children.length === 0) return
+    const card = el.children[index] as HTMLElement | undefined
+    if (!card) return
+    const left = card.offsetLeft - (el.firstElementChild as HTMLElement).offsetLeft
+    el.scrollTo({ left, behavior: "smooth" })
+  }
 
   return (
     <section
@@ -167,25 +207,33 @@ export function TestimonialsSection({
           ) : null}
         </div>
 
-        {/* snap-row on mobile; grid from md. layout "grid" skips horizontal snap. */}
+        {/* Mobile: horizontal carousel with peek of next card + dots.
+            md+: static grid so all reviews stay visible. */}
         <div
+          ref={scrollerRef}
           className={
-            layout === "snap-row"
-              ? "flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:pb-0 max-w-7xl md:mx-auto"
+            isSnap
+              ? "flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 scroll-px-4 md:mx-0 md:px-0 md:scroll-px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:pb-0 max-w-7xl md:mx-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
               : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto"
           }
+          role={isSnap ? "region" : undefined}
+          aria-label={isSnap ? "Carrossel de depoimentos" : undefined}
+          tabIndex={isSnap ? 0 : undefined}
         >
           {content.items.map((item, index) => (
             <Reveal
               key={`${item.author}-${index}`}
               variant={index % 3 === 0 ? "left" : index % 3 === 2 ? "right" : "scale"}
               delay={(index % 3) * 90}
+              className={
+                isSnap
+                  ? "snap-start shrink-0 w-[min(78vw,19.5rem)] sm:w-[min(70vw,22rem)] md:w-auto md:max-w-none md:shrink"
+                  : undefined
+              }
             >
               <article
-                className={`h-full bg-card border border-border rounded-2xl p-6 shadow-card transition-shadow hover:shadow-card-hover flex flex-col ${
-                  layout === "snap-row"
-                    ? "snap-center shrink-0 w-[85vw] max-w-sm md:w-auto md:max-w-none"
-                    : ""
+                className={`h-full bg-card border border-border rounded-2xl p-6 shadow-card flex flex-col ${
+                  isSnap ? "min-h-[220px]" : ""
                 }`}
               >
                 <TestimonialCard item={item} />
@@ -193,6 +241,30 @@ export function TestimonialsSection({
             </Reveal>
           ))}
         </div>
+
+        {isSnap && content.items.length > 1 ? (
+          <div
+            className="mt-5 flex items-center justify-center gap-2 md:hidden"
+            role="tablist"
+            aria-label="Navegar depoimentos"
+          >
+            {content.items.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                role="tab"
+                aria-selected={active === i}
+                aria-label={`Depoimento ${i + 1} de ${content.items.length}`}
+                onClick={() => scrollToIndex(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  active === i
+                    ? "w-6 bg-foreground/70"
+                    : "w-1.5 bg-foreground/25"
+                }`}
+              />
+            ))}
+          </div>
+        ) : null}
 
         <Reveal variant="item" delay={200}>
           <div className="mt-10 lg:mt-12 text-center">

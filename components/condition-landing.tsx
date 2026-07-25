@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { BackButton } from "@/components/back-button"
 import { CtaButton, StarIcon } from "@/components/blocks/cta-button"
 import { Reveal } from "@/components/reveal"
 import {
@@ -40,13 +41,14 @@ export function ConditionLandingView({ landing }: { landing: ConditionLanding })
   return (
     <main className="min-h-screen bg-background">
       <Header nav={DEFAULT_NAV} brand={DEFAULT_BRAND} />
+      <BackButton />
 
       <section className="pt-28 lg:pt-36 pb-12 lg:pb-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <Reveal variant="left">
               <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4 font-emphasis">
-                {landing.eyebrow} · Jundiaí
+                {landing.eyebrow}
               </p>
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal mb-6 text-balance">
                 {landing.h1}

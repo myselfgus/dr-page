@@ -36,62 +36,62 @@ const DEFAULT_IMAGES = [
 
 export const DEFAULT_CONTENT: PrinciplesContent = {
   title: "Filosofia do Tratamento",
-  subtitle: "Princípios que guiam minha prática clínica e o cuidado oferecido a cada paciente",
+  subtitle:
+    "O que os pacientes mais reconhecem no consultório — presença, clareza e respeito — é o que sustenta cada escolha clínica.",
   items: [
     {
-      name: "Abordagem Centrada na Pessoa, com Tempo de Qualidade",
+      name: "Presença de verdade, sem pressa",
       description:
-        "Cada indivíduo é único, com sua própria história, contexto e necessidades — o tratamento é construído em torno de você, não de um protocolo rígido. Consultas sem anotações, com atenção plena à sua presença, permitem uma conexão genuína e compreensão profunda.",
-      focus: "Escuta ativa, presença total, respeito à autonomia, colaboração no tratamento",
+        "A consulta é um espaço para você se sentir à vontade. Atenção plena à sua presença — sem anotações correndo na tela — para que medo, dúvida e história caibam na conversa.",
+      focus: "Escuta ativa · tempo de qualidade · consulta leve",
       image: DEFAULT_IMAGES[0],
       imageAlt: "Ilustração: escuta centrada na pessoa",
     },
     {
-      name: "História, Contexto e Relações",
+      name: "História, contexto e relações",
       description:
-        "Sua história merece ser ouvida e compreendida em sua totalidade: o que você sente ganha sentido dentro do seu contexto de vida. Ninguém pode ser visto isoladamente nem tratado assim — olhamos para toda a rede ao redor: família, trabalho, comunidade, cultura.",
-      focus:
-        "Escuta atenta, validação da experiência, visão sistêmica, cuidado contextualizado",
+        "O que você sente ganha sentido dentro da sua vida inteira. Olhamos para família, trabalho, sono e rede ao redor — ninguém é tratado como um sintoma isolado.",
+      focus: "Validação · visão sistêmica · cuidado contextualizado",
       image: DEFAULT_IMAGES[2],
       imageAlt: "Ilustração: história de vida, contexto e relações",
     },
     {
-      name: "Cuidado Orientado aos Valores Pessoais do Paciente",
+      name: "Alinhado aos seus valores",
       description:
-        "O tratamento respeita e se alinha aos seus valores, crenças e objetivos de vida. Não há uma única forma certa de viver ou de se cuidar.",
-      focus: "Respeito aos valores individuais, alinhamento com objetivos pessoais, cuidado personalizado",
+        "O cuidado se molda ao que importa para você — crenças, prioridades e o modo de vida que faz sentido. Não existe uma única forma certa de se cuidar.",
+      focus: "Respeito individual · objetivos pessoais · personalização",
       image: DEFAULT_IMAGES[3],
       imageAlt: "Ilustração: valores pessoais",
     },
     {
-      name: "Medicamentos como Auxiliares, com Prazo de Retirada",
+      name: "Entender antes de medicar",
       description:
-        "Medicamentos são ferramentas temporárias para estabilização, não soluções permanentes. O objetivo é sempre a redução gradual e segura quando apropriado.",
-      focus: "Uso criterioso de medicamentos, plano de retirada, busca por autonomia",
+        "Medicamento, quando entra, é ferramenta com critério e horizonte — não o primeiro nem o único passo. O objetivo é estabilizar com clareza e, quando apropriado, reduzir com segurança.",
+      focus: "Uso criterioso · plano de retirada · autonomia",
       image: DEFAULT_IMAGES[5],
       imageAlt: "Ilustração: medicamentos como apoio temporário",
     },
     {
-      name: "Autonomia e Empoderamento",
+      name: "Autonomia, não dependência",
       description:
-        "O objetivo é fortalecer sua capacidade de compreender e lidar com seus desafios, não criar dependência do tratamento.",
-      focus: "Desenvolvimento de recursos internos, autodeterminação, crescimento pessoal",
+        "O destino do tratamento é você caminhar sozinho. Fortalecemos recursos internos e compreensão — para que, no tempo certo, você não precise mais de mim.",
+      focus: "Empoderamento · autodeterminação · alta como meta",
       image: DEFAULT_IMAGES[6],
       imageAlt: "Ilustração: autonomia",
     },
     {
-      name: "Tratamento com Prazos e Metas Claros",
+      name: "Metas claras, sem caixa-preta",
       description:
-        "Estabelecemos objetivos concretos e prazos realistas. Você sabe onde está, para onde vai e o que esperar em cada etapa do tratamento.",
-      focus: "Objetivos definidos, cronograma claro, expectativas realistas",
+        "Você sabe onde está, para onde vamos e o que esperar em cada etapa. Objetivos concretos, prazos realistas e explicação didática de cada escolha.",
+      focus: "Transparência · cronograma · expectativas honestas",
       image: DEFAULT_IMAGES[7],
       imageAlt: "Ilustração: metas e etapas",
     },
     {
-      name: "Ética, Transparência e Educação em Saúde",
+      name: "Ética e educação em saúde",
       description:
-        "Comunicação clara sobre diagnósticos, opções de tratamento, benefícios e limitações. Você tem o direito de compreender plenamente seu cuidado e aprender sobre sua saúde.",
-      focus: "Consentimento informado, honestidade, educação do paciente, respeito à dignidade",
+        "Diagnósticos, opções e limites são ditos com clareza. Você tem o direito de compreender o próprio cuidado — e de decidir junto, com informação de verdade.",
+      focus: "Consentimento · honestidade · dignidade",
       image: DEFAULT_IMAGES[8],
       imageAlt: "Ilustração: ética e transparência",
     },
@@ -121,13 +121,14 @@ export function ConditionsTreated({
 }) {
   const numbered = design.numbered !== false
   const showFocus = design.showFocus !== false
+  const rest = content.items.slice(1)
 
   return (
     <section className="py-16 lg:py-28 bg-muted/30 border-t border-border overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <Reveal variant="blur">
-            <div className="text-center mb-12 lg:mb-20 max-w-3xl mx-auto">
+            <div className="text-center mb-12 lg:mb-16 max-w-3xl mx-auto">
               <p className="text-xs sm:text-sm tracking-[0.22em] uppercase text-muted-foreground mb-4">
                 Como eu cuido
               </p>
@@ -140,11 +141,11 @@ export function ConditionsTreated({
             </div>
           </Reveal>
 
-          {/* Featured first principle — full width band */}
+          {/* Featured first principle — calm full-width band, no hover motion */}
           {content.items[0] ? (
-            <Reveal variant="scale" className="mb-8 lg:mb-10">
-              <article className="group grid lg:grid-cols-2 gap-0 overflow-hidden rounded-2xl border border-border bg-card shadow-card hover:shadow-card-hover transition-shadow duration-500">
-                <div className="principle-media relative aspect-[4/3] lg:aspect-auto lg:min-h-[320px] overflow-hidden bg-muted/40">
+            <Reveal variant="scale" className="mb-6 lg:mb-8">
+              <article className="grid lg:grid-cols-2 gap-0 overflow-hidden rounded-2xl border border-border bg-card shadow-card">
+                <div className="principle-media relative aspect-[5/4] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[300px] overflow-hidden bg-muted/40">
                   <Image
                     src={content.items[0].image ?? DEFAULT_IMAGES[0]}
                     alt={content.items[0].imageAlt ?? content.items[0].name}
@@ -153,75 +154,65 @@ export function ConditionsTreated({
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority={false}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-card/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/35 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-card/25" />
                 </div>
-                <div className="flex flex-col justify-center p-8 md:p-10 lg:p-12">
+                <div className="flex flex-col justify-center p-7 sm:p-9 lg:p-11">
                   {numbered ? (
-                    <p className="font-mono text-xs text-muted-foreground mb-4 tracking-[0.25em]">
+                    <p className="font-mono text-xs text-muted-foreground mb-3 tracking-[0.25em]">
                       01 — PRINCÍPIO GUIA
                     </p>
                   ) : null}
-                  <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-light mb-4 text-balance">
+                  <h3 className="font-serif text-2xl sm:text-3xl md:text-[2.15rem] font-light mb-4 text-balance leading-snug">
                     {content.items[0].name}
                   </h3>
-                  <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
+                  <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed mb-5">
                     {content.items[0].description}
                   </p>
                   {showFocus ? (
-                    <div className="pt-5 border-t border-border">
-                      <p className="text-xs font-medium tracking-wide uppercase text-muted-foreground mb-2">
-                        Foco
-                      </p>
-                      <p className="text-sm md:text-base text-foreground/80 leading-relaxed">
-                        {content.items[0].focus}
-                      </p>
-                    </div>
+                    <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed tracking-wide">
+                      {content.items[0].focus}
+                    </p>
                   ) : null}
                 </div>
               </article>
             </Reveal>
           ) : null}
 
-          {/* Remaining principles — rich visual grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
-            {content.items.slice(1).map((principle, i) => {
+          {/* Remaining — even grid, static cards (no lift / border flash on hover) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {rest.map((principle, i) => {
               const index = i + 1
               const image = principle.image ?? DEFAULT_IMAGES[index] ?? DEFAULT_IMAGES[0]
               const variant = revealForIndex(index)
               return (
-                <Reveal key={principle.name} variant={variant} delay={(i % 3) * 90}>
-                  <article className="group h-full flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card transition-all duration-500 hover:-translate-y-1.5 hover:shadow-card-hover hover:border-foreground/25">
+                <Reveal key={principle.name} variant={variant} delay={(i % 3) * 80}>
+                  <article className="h-full flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-card">
                     <div className="principle-media relative aspect-[16/10] overflow-hidden bg-muted/50">
                       <Image
                         src={image}
                         alt={principle.imageAlt ?? principle.name}
                         fill
                         className={`object-cover ${index % 2 === 0 ? "img-drift" : "img-drift-alt"}`}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-90" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-card/15 to-transparent" />
                       {numbered ? (
-                        <span className="absolute top-4 left-4 font-mono text-[11px] tracking-[0.2em] text-foreground/70 bg-background/80 backdrop-blur-sm border border-border/60 rounded-full px-3 py-1">
+                        <span className="absolute top-3.5 left-3.5 font-mono text-[11px] tracking-[0.2em] text-foreground/70 bg-background/85 backdrop-blur-sm border border-border/60 rounded-full px-3 py-1">
                           {String(index + 1).padStart(2, "0")}
                         </span>
                       ) : null}
                     </div>
-                    <div className="flex flex-col flex-1 p-6 md:p-7 -mt-2 relative">
-                      <h3 className="font-serif text-xl sm:text-2xl font-light mb-3 text-balance leading-snug">
+                    <div className="flex flex-col flex-1 p-5 sm:p-6 -mt-1 relative">
+                      <h3 className="font-serif text-xl sm:text-[1.35rem] font-light mb-2.5 text-balance leading-snug">
                         {principle.name}
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                         {principle.description}
                       </p>
                       {showFocus ? (
-                        <div className="mt-auto pt-4 border-t border-border/80">
-                          <p className="text-[11px] font-medium tracking-[0.14em] uppercase text-muted-foreground mb-1.5">
-                            Foco
-                          </p>
-                          <p className="text-xs sm:text-sm text-foreground/75 leading-relaxed">
-                            {principle.focus}
-                          </p>
-                        </div>
+                        <p className="mt-auto pt-3 border-t border-border/70 text-[11px] sm:text-xs text-foreground/65 leading-relaxed tracking-wide">
+                          {principle.focus}
+                        </p>
                       ) : null}
                     </div>
                   </article>

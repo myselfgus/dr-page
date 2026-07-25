@@ -44,7 +44,7 @@ export const DEFAULT_CONTENT: FaqContent = {
     {
       question: "Quais são as queixas mais comuns que você atende?",
       answer:
-        "As queixas que mais acompanho em Jundiaí são burnout e esgotamento, ansiedade, medo e pânico, insônia, desesperança e perda de sentido. Você não precisa ter certeza de um diagnóstico para buscar ajuda — o primeiro passo é conversar.",
+        "Costumo acompanhar burnout e esgotamento, ansiedade, medo e pânico, insônia, desesperança e perda de sentido — sempre olhando o contexto de cada pessoa. Você não precisa ter certeza de um diagnóstico para conversar; o primeiro passo é ser ouvido com tempo e clareza.",
     },
     {
       question: "Qual é a sua especialização?",

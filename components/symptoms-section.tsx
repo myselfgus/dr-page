@@ -47,8 +47,8 @@ export const DEFAULT_CONTENT: SymptomsContent = {
     "Perda de sentido",
   ],
   paras: [
-    "São as queixas que mais acompanho no consultório em Jundiaí. Cada uma delas tem contexto, história — e caminho de cuidado.",
-    "<strong>Você não precisa ter certeza de um diagnóstico</strong> — nem esperar piorar — para conversar.",
+    "O que você sente tem história — e merece ser ouvido com tempo, sem pressa de rotular. Cada um desses estados tem contexto e um caminho possível de cuidado.",
+    "<strong>Você não precisa ter o nome certo do que sente</strong> — nem esperar piorar — para conversar.",
   ],
   cta: { kind: "whatsapp", label: "Conversar pelo WhatsApp" },
   image: "/images/sections/symptoms-clouds.jpg",
