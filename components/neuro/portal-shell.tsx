@@ -34,7 +34,7 @@ export function NeuroPortalShell({ children }: { children: ReactNode }) {
             onClick={() => setOpen(false)}
           >
             <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--np-border)] bg-[var(--np-panel)] shadow-sm">
-              <AutismRibbon className="w-5 h-6" title="Autismo e neurodivergência" />
+              <AutismRibbon className="w-6 h-7" title="Autismo e neurodivergência" />
             </span>
             <span className="min-w-0">
               <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--np-muted)]">

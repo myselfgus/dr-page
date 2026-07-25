@@ -65,7 +65,7 @@ export function Header({
               aria-label="Portal Autismo e neurodivergência (TEA)"
               title="Autismo e neurodivergência"
             >
-              <AutismRibbon className="w-4 h-5" title="Autismo e neurodivergência" />
+              <AutismRibbon className="w-5 h-6" title="Autismo e neurodivergência" />
               <span className="text-xs font-emphasis tracking-wide hidden lg:inline">TEA</span>
             </Link>
           </nav>
@@ -77,7 +77,7 @@ export function Header({
               aria-label="Portal Autismo e neurodivergência (TEA)"
               title="Autismo e neurodivergência"
             >
-              <AutismRibbon className="w-4 h-5" title="Autismo e neurodivergência" />
+              <AutismRibbon className="w-5 h-6" title="Autismo e neurodivergência" />
             </Link>
             <Button
               variant="ghost"
@@ -108,7 +108,7 @@ export function Header({
                 className="inline-flex items-center gap-2.5 text-base font-emphasis tracking-wide hover:text-muted-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <AutismRibbon className="w-4 h-5" title="Autismo" />
+                <AutismRibbon className="w-5 h-6" title="Autismo" />
                 Autismo · neurodivergência
               </Link>
             </div>
