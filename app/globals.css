@@ -355,23 +355,24 @@
 
 /* ---------------------------------------------------------------------------
    Portal Neurodivergência — design system isolado (.neuro-portal)
-   Ink + accent índigo (∞), tipografia densa, nav lateral. Não herda o tom
-   editorial quente do site principal.
+   SEMPRE light (nunca dark). Azul TEA suave + tipografia densa + nav lateral.
+   Distinto do site principal sem inverter para tema escuro.
    --------------------------------------------------------------------------- */
 .neuro-portal {
-  --np-bg: #0e1116;
-  --np-fg: #e8eaef;
-  --np-muted: #9aa3b2;
-  --np-border: #252a33;
-  --np-panel: #161b22;
-  --np-accent: #7eb6ff;
-  --np-accent-hover: #a8ceff;
+  --np-bg: #f7f8fa;
+  --np-fg: #1a1d24;
+  --np-muted: #5c6570;
+  --np-border: #e2e6ec;
+  --np-panel: #ffffff;
+  --np-accent: #3b6fd4;
+  --np-accent-hover: #2f5bb0;
+  --np-accent-soft: #e8f0fc;
   font-family: var(--font-sans), system-ui, sans-serif;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 .neuro-portal ::selection {
-  background: color-mix(in oklab, var(--np-accent) 35%, transparent);
+  background: color-mix(in oklab, var(--np-accent) 28%, transparent);
   color: var(--np-fg);
 }
 

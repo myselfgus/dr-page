@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { InfinityMark } from "@/components/neuro/infinity-mark"
+import { AutismRibbon } from "@/components/neuro/autism-ribbon"
 import { NEURO_NAV, type NeuroPage } from "@/lib/neuro-portal"
 import { DEFAULT_CONTACT, resolveCta } from "@/lib/site-config"
 
@@ -26,7 +26,7 @@ export function NeuroPortalPageView({ page }: { page: NeuroPage }) {
             href={wa.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-full bg-[var(--np-accent)] px-6 py-3 text-sm font-medium text-[var(--np-bg)] hover:bg-[var(--np-accent-hover)] transition-colors"
+            className="inline-flex items-center justify-center rounded-full bg-[var(--np-accent)] px-6 py-3 text-sm font-medium text-white hover:bg-[var(--np-accent-hover)] transition-colors"
           >
             {page.waLabel}
           </a>
@@ -72,9 +72,11 @@ export function NeuroPortalPageView({ page }: { page: NeuroPage }) {
         className="mt-16 lg:mt-24 max-w-2xl border-t border-[var(--np-border)] pt-10"
         aria-label="Outras páginas do portal"
       >
-        <div className="flex items-center gap-2 mb-5 text-[var(--np-accent)]">
-          <InfinityMark className="w-4 h-4" />
-          <p className="font-mono text-[10px] uppercase tracking-[0.22em]">Continuar no portal</p>
+        <div className="flex items-center gap-2 mb-5">
+          <AutismRibbon className="w-3.5 h-4" title="Autismo" />
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--np-muted)]">
+            Continuar no portal
+          </p>
         </div>
         <ul className="grid sm:grid-cols-2 gap-3">
           {others.map((item) => (
@@ -103,7 +105,7 @@ export function NeuroPortalPageView({ page }: { page: NeuroPage }) {
           href={wa.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center rounded-full bg-[var(--np-accent)] px-6 py-3 text-sm font-medium text-[var(--np-bg)] hover:bg-[var(--np-accent-hover)] transition-colors"
+          className="inline-flex items-center justify-center rounded-full bg-[var(--np-accent)] px-6 py-3 text-sm font-medium text-white hover:bg-[var(--np-accent-hover)] transition-colors"
         >
           {page.waLabel}
         </a>

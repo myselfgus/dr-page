@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState, type ReactNode } from "react"
 import { Menu, X, ArrowUpRight } from "lucide-react"
-import { InfinityMark } from "@/components/neuro/infinity-mark"
+import { AutismRibbon } from "@/components/neuro/autism-ribbon"
 import { NEURO_BASE, NEURO_NAV } from "@/lib/neuro-portal"
 import { DEFAULT_CONTACT, resolveCta } from "@/lib/site-config"
 
@@ -33,15 +33,15 @@ export function NeuroPortalShell({ children }: { children: ReactNode }) {
             className="flex items-center gap-2.5 min-w-0 text-[var(--np-fg)]"
             onClick={() => setOpen(false)}
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--np-accent)]/40 text-[var(--np-accent)]">
-              <InfinityMark className="w-5 h-5" />
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--np-border)] bg-[var(--np-panel)] shadow-sm">
+              <AutismRibbon className="w-5 h-6" title="Autismo e neurodivergência" />
             </span>
             <span className="min-w-0">
               <span className="block font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--np-muted)]">
-                Portal
+                Portal · TEA
               </span>
               <span className="block truncate text-sm sm:text-base font-medium tracking-tight">
-                Neurodivergência
+                Autismo e neurodivergência
               </span>
             </span>
           </Link>
@@ -51,7 +51,7 @@ export function NeuroPortalShell({ children }: { children: ReactNode }) {
               href={wa.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center rounded-full bg-[var(--np-accent)] px-3.5 py-1.5 text-xs font-medium text-[var(--np-bg)] hover:bg-[var(--np-accent-hover)] transition-colors"
+              className="hidden sm:inline-flex items-center rounded-full bg-[var(--np-accent)] px-3.5 py-1.5 text-xs font-medium text-white hover:bg-[var(--np-accent-hover)] transition-colors"
             >
               WhatsApp
             </a>
@@ -154,7 +154,7 @@ export function NeuroPortalShell({ children }: { children: ReactNode }) {
                 href={wa.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center rounded-full bg-[var(--np-accent)] px-4 py-2.5 text-sm font-medium text-[var(--np-bg)] hover:bg-[var(--np-accent-hover)] transition-colors"
+                className="inline-flex w-full items-center justify-center rounded-full bg-[var(--np-accent)] px-4 py-2.5 text-sm font-medium text-white hover:bg-[var(--np-accent-hover)] transition-colors"
               >
                 WhatsApp
               </a>
@@ -173,9 +173,11 @@ export function NeuroPortalShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-[var(--np-border)] mt-auto">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
           <div>
-            <div className="flex items-center gap-2 text-[var(--np-accent)] mb-2">
-              <InfinityMark className="w-5 h-5" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em]">Portal fechado · site aberto</span>
+            <div className="flex items-center gap-2 mb-2">
+              <AutismRibbon className="w-4 h-5" title="Autismo" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--np-muted)]">
+                Portal TEA · site principal
+              </span>
             </div>
             <p className="text-sm text-[var(--np-muted)] max-w-md leading-relaxed">
               Este espaço faz parte do consultório do Dr. Gustavo Mendes e Silva. Atendimento particular

@@ -102,7 +102,7 @@ export function Footer({
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link href={NEURO_BASE} className="hover:text-foreground transition-colors">
-                  Neurodivergência · TEA
+                  Autismo · neurodivergência
                 </Link>
               </li>
               {CONDITION_LANDINGS.map((c) => (
