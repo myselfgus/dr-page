@@ -5,22 +5,7 @@ import "./globals.css"
 import { BackToTop } from "@/components/back-to-top"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { buildDesignTokensCss } from "@/lib/design-tokens"
-import Script from "next/script"
-import { Playfair_Display, Manrope, Roboto_Mono, Inter as V0_Font_Inter, Geist_Mono as V0_Font_Geist_Mono, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
-
-// Initialize fonts
-const _inter = V0_Font_Inter({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-})
-const _geistMono = V0_Font_Geist_Mono({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-})
-const _sourceSerif_4 = V0_Font_Source_Serif_4({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
-})
+import { Playfair_Display, Manrope, Roboto_Mono } from "next/font/google"
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -105,15 +90,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Psiquiatra em Jundiaí | Dr. Gustavo Mendes",
-    description:
-      "Psiquiatria humanizada em Jundiaí — teleconsulta e atendimento domiciliar.",
-    images: [
-      "https://drgustavomendes.com/og-image.jpg",
-    ],
+    description: "Psiquiatria humanizada em Jundiaí — teleconsulta e atendimento domiciliar.",
+    images: ["https://drgustavomendes.com/og-image.jpg"],
     creator: "@drgustavomendesesilva",
-  },
-  verification: {
-    google: "seu-codigo-google-search-console",
   },
   alternates: {
     canonical: "https://drgustavomendes.com",
@@ -121,14 +100,12 @@ export const metadata: Metadata = {
   category: "Healthcare",
   classification: "Medical Services - Psychiatry",
   other: {
-    "fb:app_id": "SEU_FACEBOOK_APP_ID",
     "og:phone_number": "+55-11-98706-5632",
     "og:email": "contato@drgustavomendes.com",
     "og:locality": "Jundiaí",
     "og:region": "SP",
     "og:country-name": "Brasil",
   },
-  generator: 'v0.app'
 }
 
 export default async function RootLayout({
@@ -136,8 +113,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  // Design como dado: CSS montado do D1 (design_tokens). Vazio em build/sem D1 →
-  // globals.css continua como fallback. Injetado no <head> DEPOIS do globals.css.
   const designTokensCss = await buildDesignTokensCss()
 
   return (
@@ -155,48 +130,6 @@ export default async function RootLayout({
         {designTokensCss ? (
           <style id="design-tokens" dangerouslySetInnerHTML={{ __html: designTokensCss }} />
         ) : null}
-
-        <Script id="meta-pixel" strategy="afterInteractive">
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', 'SEU_PIXEL_ID_AQUI');
-            fbq('track', 'PageView');
-            fbq('track', 'ViewContent', {
-              content_name: 'Homepage',
-              content_category: 'Psiquiatria'
-            });
-          `}
-        </Script>
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
-
-        <Script
-          id="google-ads"
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"
-        />
-        <Script id="google-ads-config" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-XXXXXXXXXX');
-          `}
-        </Script>
       </head>
       <body
         className={`${manrope.variable} ${playfair.variable} ${robotoMono.variable} font-sans font-light antialiased`}

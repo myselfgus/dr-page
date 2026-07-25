@@ -1,11 +1,18 @@
+import Link from "next/link"
 import { Reveal } from "@/components/reveal"
 import { CtaButton } from "@/components/blocks/cta-button"
 import { sanitizeInline } from "@/lib/sanitize"
 import { type CtaRef, type ContactConfig, DEFAULT_CONTACT, resolveCta } from "@/lib/site-config"
 
+export interface SymptomChip {
+  label: string
+  href?: string
+}
+
 export interface SymptomsContent {
   eyebrow: string
-  chips: string[]
+  /** string[] still supported; prefer {label, href?} for landings */
+  chips: (string | SymptomChip)[]
   paras: string[]
   cta: CtaRef
 }
@@ -14,6 +21,15 @@ export interface SymptomsDesign {
   id?: string
   align?: "center"
   showCta?: boolean
+}
+
+const CHIP_HREFS: Record<string, string> = {
+  Burnout: "/burnout",
+  Esgotamento: "/burnout",
+  Ansiedade: "/ansiedade",
+  Medo: "/panico",
+  Pânico: "/panico",
+  Insônia: "/insonia",
 }
 
 export const DEFAULT_CONTENT: SymptomsContent = {
@@ -41,6 +57,16 @@ export const DEFAULT_DESIGN: SymptomsDesign = {
   showCta: true,
 }
 
+function normalizeChip(chip: string | SymptomChip): SymptomChip {
+  if (typeof chip === "string") {
+    return { label: chip, href: CHIP_HREFS[chip] }
+  }
+  return { label: chip.label, href: chip.href ?? CHIP_HREFS[chip.label] }
+}
+
+const chipClass =
+  "inline-block font-serif text-lg sm:text-xl md:text-2xl font-light px-5 py-2.5 border border-border rounded-full text-foreground/80 hover:text-background hover:bg-foreground hover:border-foreground transition-colors duration-300"
+
 export function SymptomsSection({
   content = DEFAULT_CONTENT,
   design = DEFAULT_DESIGN,
@@ -62,13 +88,20 @@ export function SymptomsSection({
           </Reveal>
 
           <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
-            {content.chips.map((symptom, index) => (
-              <Reveal key={symptom} variant="item" delay={index * 80}>
-                <span className="inline-block font-serif text-lg sm:text-xl md:text-2xl font-light px-5 py-2.5 border border-border rounded-full text-foreground/80 hover:text-background hover:bg-foreground hover:border-foreground transition-colors duration-300 cursor-default">
-                  {symptom}
-                </span>
-              </Reveal>
-            ))}
+            {content.chips.map((raw, index) => {
+              const chip = normalizeChip(raw)
+              return (
+                <Reveal key={chip.label} variant="item" delay={index * 80}>
+                  {chip.href ? (
+                    <Link href={chip.href} className={chipClass}>
+                      {chip.label}
+                    </Link>
+                  ) : (
+                    <span className={`${chipClass} cursor-default`}>{chip.label}</span>
+                  )}
+                </Reveal>
+              )
+            })}
           </div>
 
           <Reveal variant="item" delay={200}>

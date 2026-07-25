@@ -87,7 +87,7 @@ export const DEFAULT_CONTENT: TestimonialsContent = {
 
 export const DEFAULT_DESIGN: TestimonialsDesign = {
   id: "avaliacoes",
-  layout: "grid",
+  layout: "snap-row", // mobile snap + grid from md up
   columns: 3,
   showAggregate: true,
 }
@@ -166,27 +166,28 @@ export function TestimonialsSection({
           ) : null}
         </div>
 
-        {layout === "snap-row" ? (
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible md:pb-0">
-            {content.items.map((item, index) => (
-              <Reveal key={`${item.author}-${index}`} variant="item" delay={(index % 3) * 80}>
-                <article className="snap-center shrink-0 w-[85vw] max-w-sm md:w-auto md:max-w-none h-full bg-card border border-border rounded-2xl p-6 shadow-card flex flex-col">
-                  <TestimonialCard item={item} />
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
-            {content.items.map((item, index) => (
-              <Reveal key={`${item.author}-${index}`} variant="item" delay={(index % 3) * 80}>
-                <article className="h-full bg-card border border-border rounded-2xl p-6 shadow-card transition-shadow hover:shadow-card-hover flex flex-col">
-                  <TestimonialCard item={item} />
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        )}
+        {/* snap-row on mobile; grid from md. layout "grid" skips horizontal snap. */}
+        <div
+          className={
+            layout === "snap-row"
+              ? "flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:pb-0 max-w-7xl md:mx-auto"
+              : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto"
+          }
+        >
+          {content.items.map((item, index) => (
+            <Reveal key={`${item.author}-${index}`} variant="item" delay={(index % 3) * 80}>
+              <article
+                className={`h-full bg-card border border-border rounded-2xl p-6 shadow-card transition-shadow hover:shadow-card-hover flex flex-col ${
+                  layout === "snap-row"
+                    ? "snap-center shrink-0 w-[85vw] max-w-sm md:w-auto md:max-w-none"
+                    : ""
+                }`}
+              >
+                <TestimonialCard item={item} />
+              </article>
+            </Reveal>
+          ))}
+        </div>
 
         <Reveal variant="item" delay={200}>
           <div className="mt-10 lg:mt-12 text-center">

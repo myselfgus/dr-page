@@ -4,53 +4,93 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Marketing/lead-capture site for **Dr. Gustavo Mendes e Silva** (psychiatrist, CRM 218133/SP), based at **Clínica Dr. Hegg, Jundiaí/SP**. Next.js 16 (App Router, React 19), deployed as a **Cloudflare Worker** (`page-drgustavomendes`) via **OpenNext**. Production: https://drgustavomendes.com. It is a static-content marketing site — there is no backend or database. Conversion happens through outbound links: **WhatsApp is the primary CTA**; phone and e-mail are secondary; **Doctoralia is social-proof only ("Ver avaliações"), never the booking CTA** (see the CTA policy below).
+Marketing/lead-capture site for **Dr. Gustavo Mendes e Silva** (psychiatrist, CRM 218133/SP), based at **Clínica Dr. Hegg, Jundiaí/SP**. Next.js 16 (App Router, React 19), deployed as a **Cloudflare Worker** (`page-drgustavomendes`) via **OpenNext**. Production: https://drgustavomendes.com.
+
+Conversion is outbound only: **WhatsApp is the primary CTA**; phone and e-mail are secondary; **Doctoralia is social-proof only** ("Ver avaliações"), never the booking CTA.
+
+Content is **CMS-block driven** via D1 `dr_blog` with full fallback in `db/seed-data.json`. There is no form backend for clinical data.
 
 ## Commands
 
 ```bash
 pnpm install
-pnpm dev            # local dev (next dev); OpenNext Cloudflare context is initialized in next.config.ts
-pnpm lint           # eslint
-pnpm run build      # opennextjs-cloudflare build → produces .open-next/worker.js
-pnpm exec next build --webpack   # faster inner build to sanity-check compilation
-pnpm run deploy     # build + opennextjs-cloudflare deploy (manual deploy)
-pnpm cf-typegen     # regenerate cloudflare-env.d.ts from wrangler bindings
+pnpm dev            # local Next.js (preferred for day-to-day)
+pnpm lint
+pnpm run build      # opennextjs-cloudflare build → .open-next/worker.js
+pnpm exec next build --webpack   # faster compile check
+pnpm run deploy     # build + deploy (manual)
+pnpm cf-typegen
 ```
 
-There are **no tests**. `pnpm exec next build --webpack` is the real correctness gate — run it after changes.
+**No tests.** `pnpm exec next build --webpack` is the correctness gate.
 
-### Build gotchas (do not "fix" these without cause)
-- The build **must** use webpack, not Turbopack: `open-next.config.ts` overrides `buildCommand` to `next build --webpack` because OpenNext cannot consume Turbopack chunks.
-- `next.config.ts` sets `typescript.ignoreBuildErrors: true` and `images.unoptimized: true`. Type errors will **not** fail the build — lint/typecheck yourself.
+### Build / local worker gotchas
+- OpenNext **must** use webpack (`next build --webpack`), not Turbopack.
+- `wrangler dev` serves **`.open-next/`**, not live source. Stale `.open-next` can show old Rio Preto content. Always `rm -rf .open-next && pnpm run build` before wrangler.
+- Prefer `pnpm dev` for UI/content work.
+- `typescript.ignoreBuildErrors: true` and `images.unoptimized: true` — typecheck yourself.
 
-## Deploy — read before pushing
+## Deploy
 
-- Deploy is **Git-connected via Cloudflare Workers Builds**. Config in `wrangler.jsonc` (not `.toml`); worker `page-drgustavomendes`; custom domains `drgustavomendes.com` + `www`; assets bind as `ASSETS`.
-- **`main` is the live production branch and the source of truth.** The live site is built from `main`.
-- ⚠️ **`main`'s history diverged from an older lineage.** There was a stale `feat/domain-sitemap` branch carrying pre-Jundiaí "Rio Preto" content that must **never** be merged into `main` — it would regress the live site. If you see Rio Preto / address "Rua Amadeu Segundo Cherubini" / phone (17) 2110-1228 anywhere, that's the stale lineage, not current.
-- `CLOUDFLARE_DEPLOYMENT.md` is older and partly stale — trust `package.json`, `wrangler.jsonc`, and `README.md` over it.
+- Git-connected **Cloudflare Workers Builds**; config in `wrangler.jsonc`; worker `page-drgustavomendes`; domains `drgustavomendes.com` + `www`.
+- **`main` is production.** Never merge the stale `feat/domain-sitemap` Rio Preto lineage (Amadeu Segundo Cherubini / (17) 2110-1228).
 
 ## Architecture
 
-- **Repurposed v0 template.** This began as a v0.app art-gallery template converted into a psychiatry site. **Component filenames still carry art-template names** while their content is medical: `what-is-art.tsx` exports `WhatIsMentalHealth`, `art-types.tsx` exports `ConditionsTreated`, plus unused `featured-artists.tsx`, `artwork-grid.tsx`, `art-spaces.tsx`. **Don't trust filenames — read the export.** Leftover routes `/artists`, `/gallery`, `/curriculum` still exist but are intentionally excluded from `app/sitemap.ts`.
-- **Homepage is composed in `app/page.tsx`** from section components (Header → Hero → SymptomsSection → WhatIsMentalHealth → AboutSection → ConditionsTreated → FAQSection → ContactSection → Footer). Editing homepage content = editing those section files, not `page.tsx`.
-- **Subpage convention:** service/content pages (`/about`, `/contact`, `/teleconsulta`, `/domiciliar`) render `<main>` + a fixed "Voltar para Início" button and their own sections. They do **not** render the global `Header`/`Footer` (those are homepage-only). New subpages should export a `metadata` object for SEO (the title `template` in `layout.tsx` appends the site suffix).
-- **Blog is file-based, no CMS.** All posts are a typed `BlogPost[]` array in `lib/blog-posts.ts`. `app/blog/[slug]/page.tsx` and `app/sitemap.ts` both read from it. Adding a post = adding an object to that array.
-- **UI:** shadcn/ui ("new-york", see `components.json`) in `components/ui/` — only button/card/input/textarea are vendored. Tailwind v4 (CSS config in `app/globals.css`). `Reveal` (`components/reveal.tsx`) is the scroll-in animation wrapper used across sections. Card idiom: `bg-card border border-border rounded-2xl` + the `shadow-[4px_2px_2px_rgba(0,0,0,0.05)]` shadow. Import aliases: `@/components`, `@/lib`, `@/components/ui`.
-- **`middleware.ts`** sets security headers on all non-asset routes. Global floating UI (`WhatsAppFloat`, `BackToTop`) is mounted once in `app/layout.tsx`.
+### CMS blocks (source of truth for marketing pages)
+- Loader: `lib/load-page.ts` (D1 + seed merge for missing block ids; chrome flags from seed).
+- Shell: `components/blocks/PageView.tsx` (Header/Footer per page flags).
+- Switch: `components/blocks/BlockRenderer.tsx`.
+- Contract: `db/CONTRACTS.md`. Seed: `db/seed-data.json`.
+- Design tokens: `lib/design-tokens.ts` → `<style id="design-tokens">` after `app/globals.css`. Fallback palette is **Cloud Dancer** (`#F0EEE9`) in globals.
 
-### CTA policy (important — the business hinges on this)
-- **WhatsApp is the primary booking CTA everywhere** (`wa.me/5511987065632`, green `#25D366`), with a `?text=` prefilled per page/context for attribution.
-- **Doctoralia is social proof only** — link labeled "Ver avaliações na Doctoralia" (star icon, `text-[#00c3a5]`, never a filled button). The one legitimate spot is the footer profile link. Do not reintroduce "Agendar pela Doctoralia" booking buttons.
+### Homepage block order
+`hero` → `symptoms` → `care-steps` → `about` → `testimonials` → `principles` → `faq` → `contact`
 
-### SEO / structured data — the most delicate part
-`app/layout.tsx` `<head>` carries all SEO surface: `metadata` (title/description/keywords/OG/Twitter), geo `<meta>` tags, analytics scripts (Meta Pixel + Google Ads — **still placeholders**: `SEU_PIXEL_ID_AQUI`, `AW-XXXXXXXXXX`, `seu-codigo-google-search-console`), and **five JSON-LD blocks** (`Physician`, `MedicalBusiness`, `WebSite`, `BreadcrumbList`, `FAQPage`).
+### Component map (filenames = role)
+| type | file |
+|---|---|
+| hero | `components/hero.tsx` |
+| symptoms | `components/symptoms-section.tsx` |
+| care-steps | `components/care-steps-section.tsx` |
+| about | `components/about-section.tsx` |
+| testimonials | `components/testimonials-section.tsx` |
+| principles | `components/principles-section.tsx` |
+| faq | `components/faq-section.tsx` |
+| contact | `components/contact-section.tsx` |
+| feature-cards / pricing-cta / price-badge / richtext | `components/blocks/*` |
 
-- **The FAQ has two sources of truth that must be edited together:** the `faqs` array in `components/faq-section.tsx` (rendered UI) and the `FAQPage` JSON-LD `mainEntity` in `app/layout.tsx`. Change one → change the other or they desync.
-- This site ranks and converts in production. Metadata/JSON-LD changes are **surgical, not rewrites.** Geographic anchoring should keep `areaServed: Jundiaí` and use `availableChannel`/`VirtualLocation` for teleconsulta rather than over-coupling the brand to the clinic's `PostalAddress`.
+### Chrome
+Header + Footer on marketing pages (home, about, teleconsulta, domiciliar, contact) and blog. WhatsApp float + BackToTop in `app/layout.tsx`.
 
-## Constraints (business/legal — respect these)
-- **No forms collecting clinical/health data.** Health data is LGPD-sensitive (art. 11). Contact is via WhatsApp/phone/e-mail links. (Note: `ContactSection` has a legacy desktop `<form>` that only `console.log`s and never transmits — do not wire it to send health data; prefer WhatsApp.)
-- **Medical advertising is regulated in Brazil** (CFM Res. 1.974/2011): prices may be stated, but no sensationalism, no promise of results, no before/after, no price-competition framing. Review any new copy under this lens.
-- Do not change the `PAGE_DRGUSTAVOMENDES` binding referenced by another internal service that consumes this Worker.
+### Intention landings (SEO)
+Static routes from `lib/condition-landings.ts` + `components/condition-landing.tsx`:
+`/ansiedade`, `/burnout`, `/insonia`, `/panico`, `/medicina-canabinoide`.
+In sitemap. Symptoms chips link to the matching landing when applicable.
+
+### Blog
+D1 posts via `lib/blog-posts.ts`. Article JSON-LD in `app/blog/[slug]/page.tsx`. No CMS blocks for posts.
+
+### CTA policy (non-negotiable)
+- WhatsApp = green `#25D366` primary button (`CtaButton` / `resolveCta`).
+- Doctoralia = teal `#00c3a5` text link + star, label like "Ver avaliações na Doctoralia". Never booking button.
+- Contact/nav/brand: `lib/site-config.ts` (+ D1 `site_config`).
+
+### SEO / JSON-LD
+Built in `lib/structured-data.ts` from site_config + blocks (not hardcoded in layout):
+- Home: Physician (incl. curated `review[]` from testimonials + aggregateRating), MedicalBusiness, WebSite, BreadcrumbList, FAQPage (from faq block).
+- FAQ on a page = faq block items only (single source).
+- Landings: MedicalWebPage + FAQPage + BreadcrumbList.
+- Geo: Jundiaí; teleconsulta via VirtualLocation / availableChannel.
+- Analytics: only add real Pixel/Ads/GSC IDs — **no placeholder scripts**.
+
+### Design system quick reference
+- Background Cloud Dancer `#F0EEE9`; cards white; soft multi-layer `shadow-card`.
+- Radius base `0.75rem`; cards `rounded-2xl`; pills/CTAs `rounded-full`.
+- Reveal: `variant="section"` (opacity) on blocks; `variant="item"` (lift) on children.
+- Home hero phrase stays editorial multiline: "E se for / possível viver / de outro modo?".
+
+## Constraints
+- No forms collecting clinical/health data (LGPD art. 11). Contact via WhatsApp/phone/e-mail.
+- CFM Res. 1.974/2011: no sensationalism, no promise of results, no before/after.
+- Do not change the `PAGE_DRGUSTAVOMENDES` binding used by other internal services.

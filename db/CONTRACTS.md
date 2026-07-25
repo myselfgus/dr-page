@@ -53,9 +53,9 @@ o conteúdo renderizado hoje é a fonte. Não inventar nem parafrasear.
 ## Catálogo de blocks.type  (content_json → design_json)
 - **hero** → `hero.tsx`. content `{ titleLines:string[], leadHtml?:string[], eyebrow?, subtitle?, lead?, image?, imageAlt?, badges?:string[] }`; design `{ variant:"home"|"subpage"|"subpage-split"|"subpage-plain", showAnimatedBackground?, showImage?, minHeight? }`.
 - **symptoms** → `symptoms-section.tsx`. content `{ eyebrow, chips:string[], paras:string[], cta:CtaRef }`; design `{ id:"queixas", align:"center", showCta:bool }`.
-- **care-steps** → `what-is-art.tsx` (export `WhatIsMentalHealth`). content `{ eyebrow, title, intro, steps:[{title,body}], quote:{text,author} }`; design `{ background, showConnectorLine, showQuote }`.
+- **care-steps** → `care-steps-section.tsx` (export `WhatIsMentalHealth`). content `{ eyebrow, title, intro, steps:[{title,body}], quote:{text,author} }`; design `{ background, showConnectorLine, showQuote }`.
 - **about** → `about-section.tsx`. content `{ title, subtitle, image, imageAlt, ctaPrimary:CtaRef, formacaoTitle, formacaoParas:string[], diferenciaisTitle, diferenciaisParas:string[] }`; design `{ variant:"home", collapsibleOnMobile:bool }`. Eliminar duplicação mobile/desktop lendo do mesmo content.
-- **principles** → `art-types.tsx` (export `ConditionsTreated`). content `{ title, subtitle, items:[{name,description,focus}] }`; design `{ columns:3, numbered, showFocus, background }`.
+- **principles** → `principles-section.tsx` (export `ConditionsTreated`). content `{ title, subtitle, items:[{name,description,focus}] }`; design `{ columns:3, numbered, showFocus, background }`.
 - **faq** → `faq-section.tsx`. content `{ title, subtitle, items:[{question,answer}], closer:{text,ctas:CtaRef[]} }`; design `{ id:"faq", accordion:true }`. **FONTE ÚNICA da FAQ — alimenta UI E JSON-LD.**
 - **contact** → `contact-section.tsx`. content `{ title, subtitle }` (resto vem de site_config.contact); design `{ id:"contact", variant:"home"|"page", showForm, showMap }`. Form só `console.log` (LGPD, não transmite).
 - **richtext** → novo `RichTextBlock`. content flexível `{ heading?, iconName?, paras?:string[], lists?:[{heading?,items:string[]}], columns?:[...], cards?:[...] }`; design `{ variant:"card"|"card-grid"|"card-stack"|"plain", columns:1|2|3, iconName? }`. Usado nas seções da /about.
@@ -68,10 +68,13 @@ o conteúdo renderizado hoje é a fonte. Não inventar nem parafrasear.
 
 ## Ordem dos blocos por página (sort)
 - home: hero, symptoms, care-steps, about, testimonials, principles, faq, contact
-- about: hero(subpage-split, badges), + 7 blocos richtext (Sobre Mim, Áreas de Atuação, Experiência, Formação Acadêmica, Formação Complementar, Competências, Idiomas/Afiliações)
-- teleconsulta: hero(subpage), feature-cards, pricing-cta(prices-only)
-- domiciliar: hero(subpage), feature-cards, pricing-cta(how-it-works)
+- about: hero(subpage-split, badges), + 7 blocos richtext, + pricing-cta (CTA final WhatsApp)
+- teleconsulta: hero(subpage), feature-cards, pricing-cta(prices-only), faq
+- domiciliar: hero(subpage), feature-cards, pricing-cta(how-it-works), faq
 - contact: hero(subpage-plain), price-badge, contact(page)
+
+## Landings de intenção (fora do CMS de blocos)
+Rotas estáticas em `lib/condition-landings.ts`: `/ansiedade`, `/burnout`, `/insonia`, `/panico`, `/medicina-canabinoide`. UI: `components/condition-landing.tsx`. Incluir no sitemap.
 (Conteúdo exato = extrair dos arquivos atuais.)
 
 ## page_meta (SEO por página)

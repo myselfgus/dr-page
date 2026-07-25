@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import ReactMarkdown, { type Components } from "react-markdown"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, Clock, Calendar } from "lucide-react"
+import { Clock, Calendar } from "lucide-react"
 
 interface BlogPostClientProps {
   post: any
@@ -130,14 +130,7 @@ function BlogPostContent({ post }: { post: any }) {
 
   return (
     <>
-      <Button variant="ghost" asChild className="fixed top-24 left-4 z-50 bg-background/80 backdrop-blur-sm">
-        <Link href="/blog">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Voltar
-        </Link>
-      </Button>
-
-      <main className="min-h-screen pt-20">
+      <main className="min-h-screen pt-24 lg:pt-28">
         <div className="relative h-[300px] md:h-[400px] lg:h-[500px] w-full overflow-hidden bg-background">
           <div
             className="absolute inset-0 opacity-10"

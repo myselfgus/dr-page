@@ -31,7 +31,22 @@ function postalAddress(contact: ContactConfig) {
   }
 }
 
-function buildPhysician(contact: ContactConfig) {
+interface ReviewLike {
+  author: string
+  rating?: number
+  body: string
+  date?: string
+}
+
+function extractReviews(blocks: PageBlock[]): ReviewLike[] {
+  const t = blocks.find((b) => b.type === "testimonials")
+  if (!t) return []
+  const items = (t.content as { items?: ReviewLike[] }).items
+  return Array.isArray(items) ? items : []
+}
+
+function buildPhysician(contact: ContactConfig, blocks: PageBlock[] = []) {
+  const reviews = extractReviews(blocks).slice(0, 6)
   return {
     "@context": "https://schema.org",
     "@type": "Physician",
@@ -47,6 +62,29 @@ function buildPhysician(contact: ContactConfig) {
     sameAs: [contact.doctoralia, contact.instagram, contact.facebook].filter(Boolean),
     priceRange: "$$",
     areaServed: { "@type": "City", name: contact.address.locality },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: contact.ratingValue,
+      reviewCount: contact.reviewCount,
+      bestRating: "5",
+      worstRating: "1",
+    },
+    ...(reviews.length > 0
+      ? {
+          review: reviews.map((r) => ({
+            "@type": "Review",
+            author: { "@type": "Person", name: r.author },
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: String(r.rating ?? 5),
+              bestRating: "5",
+              worstRating: "1",
+            },
+            reviewBody: r.body,
+            ...(r.date ? { datePublished: r.date.length === 7 ? `${r.date}-01` : r.date } : {}),
+          })),
+        }
+      : {}),
     availableService: [
       {
         "@type": "MedicalProcedure",
@@ -186,7 +224,7 @@ export function buildStructuredData({
   for (const t of types) {
     switch (t) {
       case "Physician":
-        out.push(buildPhysician(contact))
+        out.push(buildPhysician(contact, blocks))
         break
       case "MedicalBusiness":
         out.push(buildMedicalBusiness(contact))
@@ -207,6 +245,33 @@ export function buildStructuredData({
     }
   }
   return out
+}
+
+/** Article JSON-LD for blog posts */
+export function buildArticleJsonLd(post: {
+  title: string
+  excerpt: string
+  author: string
+  date: string
+  slug: string
+  keywords?: string[]
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    author: { "@type": "Person", name: post.author },
+    datePublished: post.date,
+    mainEntityOfPage: `${BASE_URL}/blog/${post.slug}`,
+    publisher: {
+      "@type": "Person",
+      name: "Dr. Gustavo Mendes e Silva",
+      url: BASE_URL,
+    },
+    keywords: post.keywords?.join(", "),
+    inLanguage: "pt-BR",
+  }
 }
 
 // generateMetadata por página, lendo page_meta (com fallback já resolvido em loadPageMeta).

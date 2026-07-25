@@ -37,8 +37,9 @@ export function AnimatedBackground() {
       const brightness1 = Math.sin(time) * 0.01 + 0.97
       const brightness2 = Math.sin(time + Math.PI / 2) * 0.01 + 0.98
 
-      gradient.addColorStop(0, `rgba(248, 248, 250, ${brightness1})`)
-      gradient.addColorStop(1, `rgba(252, 252, 254, ${brightness2})`)
+      // Cloud Dancer family (warm off-white)
+      gradient.addColorStop(0, `rgba(240, 238, 233, ${brightness1})`)
+      gradient.addColorStop(1, `rgba(245, 243, 238, ${brightness2})`)
 
       ctx.fillStyle = gradient
       ctx.fillRect(0, 0, width, height)

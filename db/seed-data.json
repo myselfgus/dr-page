@@ -559,7 +559,8 @@
       "jsonld_types": [
         "Physician",
         "MedicalBusiness",
-        "BreadcrumbList"
+        "BreadcrumbList",
+        "FAQPage"
       ]
     },
     {
@@ -582,7 +583,8 @@
       "jsonld_types": [
         "Physician",
         "MedicalBusiness",
-        "BreadcrumbList"
+        "BreadcrumbList",
+        "FAQPage"
       ]
     },
     {
@@ -628,7 +630,8 @@
       },
       "design": {
         "variant": "home",
-        "showAnimatedBackground": true
+        "showAnimatedBackground": true,
+        "showRatingBadge": true
       }
     },
     {
@@ -1490,9 +1493,124 @@
       },
       "design": {
         "id": "avaliacoes",
-        "layout": "grid",
+        "layout": "snap-row",
         "columns": 3,
         "showAggregate": true
+      }
+    },
+    {
+      "id": "teleconsulta-faq",
+      "page_id": "teleconsulta",
+      "sort": 4,
+      "type": "faq",
+      "status": "published",
+      "content": {
+        "title": "Dúvidas sobre teleconsulta",
+        "subtitle": "Como funciona o atendimento por vídeo",
+        "items": [
+          {
+            "question": "A teleconsulta tem a mesma qualidade do presencial?",
+            "answer": "Sim. O tempo de escuta, a avaliação e o plano de cuidado seguem o mesmo padrão do consultório. A diferença é o meio: vídeo seguro, de onde você estiver."
+          },
+          {
+            "question": "Preciso de algum aplicativo especial?",
+            "answer": "Combinamos o link e as orientações pelo WhatsApp antes do horário. Basta um celular ou computador com câmera, microfone e conexão estável."
+          },
+          {
+            "question": "Posso fazer a primeira consulta por vídeo?",
+            "answer": "Sim. Muitas pessoas iniciam por teleconsulta e, se fizer sentido, transitam para o presencial em Jundiaí depois."
+          }
+        ],
+        "closer": {
+          "text": "Quer agendar uma teleconsulta?",
+          "ctas": [
+            {
+              "kind": "whatsapp",
+              "label": "Agendar pelo WhatsApp",
+              "text": "Olá, gostaria de agendar uma teleconsulta"
+            },
+            {
+              "kind": "doctoralia",
+              "label": "Ver avaliações na Doctoralia"
+            }
+          ]
+        }
+      },
+      "design": {
+        "id": "faq",
+        "accordion": true
+      }
+    },
+    {
+      "id": "domiciliar-faq",
+      "page_id": "domiciliar",
+      "sort": 4,
+      "type": "faq",
+      "status": "published",
+      "content": {
+        "title": "Dúvidas sobre atendimento domiciliar",
+        "subtitle": "Quando o cuidado vai até você",
+        "items": [
+          {
+            "question": "Em quais regiões você atende em domicílio?",
+            "answer": "Atendo em Jundiaí e região. Para endereços mais distantes, o deslocamento é combinado previamente pelo WhatsApp."
+          },
+          {
+            "question": "Para quem o domiciliar é indicado?",
+            "answer": "Especialmente para pacientes autistas, idosos e pessoas com dificuldade de locomoção — ou quando o ambiente familiar favorece a avaliação."
+          },
+          {
+            "question": "Como funciona o atendimento de crianças e adolescentes?",
+            "answer": "É feito em binômio: cuidador e criança/adolescente acompanhados juntos, com tempo para ouvir a família e a pessoa."
+          }
+        ],
+        "closer": {
+          "text": "Quer combinar uma visita?",
+          "ctas": [
+            {
+              "kind": "whatsapp",
+              "label": "Agendar pelo WhatsApp",
+              "text": "Olá, gostaria de agendar um atendimento domiciliar"
+            },
+            {
+              "kind": "doctoralia",
+              "label": "Ver avaliações na Doctoralia"
+            }
+          ]
+        }
+      },
+      "design": {
+        "id": "faq",
+        "accordion": true
+      }
+    },
+    {
+      "id": "about-pricing-cta",
+      "page_id": "about",
+      "sort": 9,
+      "type": "pricing-cta",
+      "status": "published",
+      "content": {
+        "heading": "Vamos conversar?",
+        "note": "Atendimento particular em Jundiaí — presencial, teleconsulta ou domiciliar.",
+        "prices": [
+          {
+            "label": "Consulta / teleconsulta",
+            "value": "a partir de R$ 350"
+          }
+        ],
+        "footnotes": [
+          "Valores e modalidade combinados conforme o tipo de atendimento. Sem promessa de resultado — plano individual."
+        ],
+        "cta": {
+          "kind": "whatsapp",
+          "label": "Agendar pelo WhatsApp",
+          "text": "Olá, gostaria de agendar uma consulta"
+        }
+      },
+      "design": {
+        "variant": "prices-only",
+        "showSteps": false
       }
     }
   ]

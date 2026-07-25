@@ -12,13 +12,13 @@ import {
   WhatIsMentalHealth,
   type CareStepsContent,
   type CareStepsDesign,
-} from "@/components/what-is-art"
+} from "@/components/care-steps-section"
 import { AboutSection, type AboutContent, type AboutDesign } from "@/components/about-section"
 import {
   ConditionsTreated,
   type PrinciplesContent,
   type PrinciplesDesign,
-} from "@/components/art-types"
+} from "@/components/principles-section"
 import { FAQSection, type FaqContent, type FaqDesign } from "@/components/faq-section"
 import { ContactSection, type ContactContent, type ContactDesign } from "@/components/contact-section"
 import {

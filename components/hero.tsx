@@ -1,6 +1,9 @@
 import Image from "next/image"
+import Link from "next/link"
 import { AnimatedBackground } from "./animated-background"
+import { StarIcon } from "@/components/blocks/cta-button"
 import { sanitizeInline } from "@/lib/sanitize"
+import { DEFAULT_CONTACT } from "@/lib/site-config"
 
 export interface HeroContent {
   titleLines: string[]
@@ -11,6 +14,8 @@ export interface HeroContent {
   image?: string
   imageAlt?: string
   badges?: string[]
+  /** When true (home default), shows Doctoralia rating strip → #avaliacoes */
+  showRatingBadge?: boolean
 }
 
 export interface HeroDesign {
@@ -18,6 +23,7 @@ export interface HeroDesign {
   showAnimatedBackground?: boolean
   showImage?: boolean
   minHeight?: string
+  showRatingBadge?: boolean
 }
 
 export const DEFAULT_CONTENT: HeroContent = {
@@ -26,11 +32,13 @@ export const DEFAULT_CONTENT: HeroContent = {
     "<strong>Psiquiatria verdadeiramente humanizada</strong> que vai além do diagnóstico.",
     "Afinal, você não precisa de mais diagnósticos prontos, <strong>você precisa se entender de verdade.</strong>",
   ],
+  showRatingBadge: true,
 }
 
 export const DEFAULT_DESIGN: HeroDesign = {
   variant: "home",
   showAnimatedBackground: true,
+  showRatingBadge: true,
 }
 
 const DELAYS = ["", "animation-delay-150", "animation-delay-300", "animation-delay-450"]
@@ -43,6 +51,9 @@ export function Hero({
   design?: HeroDesign
 }) {
   const variant = design.variant ?? "home"
+  const showRating =
+    (design.showRatingBadge ?? content.showRatingBadge) !== false && variant === "home"
+  const ratingLabel = `${DEFAULT_CONTACT.ratingValue}`.replace(".", ",")
 
   if (variant === "home") {
     return (
@@ -72,6 +83,25 @@ export function Hero({
                 />
               ))}
             </div>
+
+            {showRating ? (
+              <div className="mt-8 animate-fade-up animation-delay-600">
+                <Link
+                  href="#avaliacoes"
+                  className="inline-flex flex-wrap items-center gap-2 sm:gap-3 rounded-full border border-border bg-card/80 backdrop-blur-sm px-4 py-2 text-sm shadow-card hover:shadow-card-hover transition-shadow"
+                >
+                  <span className="inline-flex text-[#00c3a5]" aria-hidden="true">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <StarIcon key={i} className="w-3.5 h-3.5" />
+                    ))}
+                  </span>
+                  <span className="font-medium text-foreground">{ratingLabel}</span>
+                  <span className="text-muted-foreground">
+                    · {DEFAULT_CONTACT.reviewCount} avaliações na Doctoralia
+                  </span>
+                </Link>
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
@@ -150,7 +180,6 @@ export function Hero({
     )
   }
 
-  // variant "subpage"
   return (
     <section className="pt-32 pb-16 lg:pt-40 lg:pb-24">
       <div className="container mx-auto px-4 lg:px-8">

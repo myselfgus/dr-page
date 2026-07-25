@@ -1,11 +1,9 @@
 import type { MetadataRoute } from "next"
 import { getBlogPosts } from "@/lib/blog-posts"
+import { CONDITION_LANDINGS } from "@/lib/condition-landings"
 
 const BASE_URL = "https://drgustavomendes.com"
 
-// Dinâmico: os posts vivem no D1 (indisponível no build). Renderizado a cada
-// request, então conseguimos consultar o D1 e incluir cada artigo no sitemap.
-// Se o D1 não estiver disponível (ex.: build), caímos nas rotas estáticas.
 export const dynamic = "force-dynamic"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -16,6 +14,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/contact`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.8 },
+    ...CONDITION_LANDINGS.map((c) => ({
+      url: `${BASE_URL}${c.path}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
   ]
 
   try {
