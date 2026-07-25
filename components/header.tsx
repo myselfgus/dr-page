@@ -24,6 +24,8 @@ export function Header({
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const items = Array.isArray(nav?.items) ? nav.items : DEFAULT_NAV.items
+  const brandName = brand?.name?.trim() || DEFAULT_BRAND.name
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -46,11 +48,11 @@ export function Header({
             href="/"
             className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-wide text-balance leading-tight min-w-0"
           >
-            {brand.name}
+            {brandName}
           </Link>
 
           <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-            {nav.items.map((item) => (
+            {items.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -92,7 +94,7 @@ export function Header({
         {isMenuOpen ? (
           <nav className="md:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
-              {nav.items.map((item) => (
+              {items.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}

@@ -19,6 +19,22 @@ export function middleware(request: NextRequest) {
   response.headers.set("X-Content-Type-Options", "nosniff")
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin")
   response.headers.set("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+
+  // HTML de páginas: evita stale-while-revalidate de ~1 ano do ISR do Next.
+  // Em deploy no Cloudflare Assets os chunks antigos somem; HTML stale
+  // apontando para hashes mortos vira "Application error" no client.
+  const accept = request.headers.get("accept") ?? ""
+  const path = request.nextUrl.pathname
+  const isDocument =
+    accept.includes("text/html") ||
+    (!path.includes(".") && !path.startsWith("/_next"))
+  if (isDocument) {
+    response.headers.set(
+      "Cache-Control",
+      "public, s-maxage=60, stale-while-revalidate=300, must-revalidate",
+    )
+  }
+
   return response
 }
 

@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { BackToTop } from "@/components/back-to-top"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
+import { ChunkErrorRecovery } from "@/components/chunk-error-recovery"
 import { buildDesignTokensCss } from "@/lib/design-tokens"
 import { Playfair_Display, DM_Serif_Display, Lato, Nunito, Roboto_Mono } from "next/font/google"
 
@@ -171,6 +172,7 @@ export default async function RootLayout({
         className={`${nunito.variable} ${playfair.variable} ${dmSerifDisplay.variable} ${lato.variable} ${robotoMono.variable} font-sans font-light antialiased`}
       >
         {children}
+        <ChunkErrorRecovery />
         <BackToTop />
         <WhatsAppFloat />
       </body>

@@ -1,8 +1,9 @@
-import Image from "next/image"
-
 /**
  * Laço de conscientização do autismo (quebra-cabeça colorido).
- * Asset em /public/images/autism-ribbon.png — reconhecível no primeiro olhar.
+ * Asset em /public/images/autism-ribbon.png.
+ *
+ * Usa <img> nativo (site já tem images.unoptimized) — evita edge cases do
+ * next/image com `fill` em ícones pequenos no header client.
  */
 export function AutismRibbon({
   className = "w-6 h-7",
@@ -12,15 +13,15 @@ export function AutismRibbon({
   title?: string
 }) {
   return (
-    <span className={`relative inline-block shrink-0 overflow-hidden ${className}`} title={title}>
-      <Image
-        src="/images/autism-ribbon.png"
-        alt={title}
-        fill
-        className="object-contain object-center"
-        sizes="48px"
-        priority={false}
-      />
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element -- ícone estático local; unoptimized
+    <img
+      src="/images/autism-ribbon.png"
+      alt={title}
+      title={title}
+      width={28}
+      height={32}
+      decoding="async"
+      className={`inline-block shrink-0 object-contain object-center ${className}`}
+    />
   )
 }

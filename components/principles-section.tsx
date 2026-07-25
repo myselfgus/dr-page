@@ -266,9 +266,12 @@ export function ConditionsTreated({
   content?: PrinciplesContent
   design?: PrinciplesDesign
 }) {
-  const numbered = design.numbered !== false
-  const showFocus = design.showFocus !== false
-  const [featured, ...rest] = content.items
+  const numbered = design?.numbered !== false
+  const showFocus = design?.showFocus !== false
+  const items = Array.isArray(content?.items) ? content.items : DEFAULT_CONTENT.items
+  const [featured, ...rest] = items
+  const title = content?.title || DEFAULT_CONTENT.title
+  const subtitle = content?.subtitle || DEFAULT_CONTENT.subtitle
 
   return (
     <section className="py-16 lg:py-28 bg-muted/30 border-t border-border overflow-hidden">
@@ -280,10 +283,10 @@ export function ConditionsTreated({
                 Como eu cuido
               </p>
               <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-5 text-balance">
-                {content.title}
+                {title}
               </h2>
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground text-pretty leading-relaxed">
-                {content.subtitle}
+                {subtitle}
               </p>
             </div>
           </Reveal>

@@ -115,13 +115,18 @@ export function TestimonialsSection({
   design?: TestimonialsDesign
   contact?: ContactConfig
 }) {
-  const showAggregate = design.showAggregate !== false
-  const layout = design.layout ?? "grid"
-  const sourceCta = content.sourceCta
+  const items = Array.isArray(content?.items) ? content.items : DEFAULT_CONTENT.items
+  const title = content?.title || DEFAULT_CONTENT.title
+  const eyebrow = content?.eyebrow ?? DEFAULT_CONTENT.eyebrow
+  const subtitle = content?.subtitle ?? DEFAULT_CONTENT.subtitle
+  const showAggregate = design?.showAggregate !== false
+  const layout = design?.layout ?? "grid"
+  const sourceCta = content?.sourceCta
     ? resolveCta(content.sourceCta, contact)
     : resolveCta({ kind: "doctoralia", label: "Ver todas as avaliações na Doctoralia" }, contact)
 
-  const ratingLabel = `${contact.ratingValue}`.replace(".", ",")
+  const ratingLabel = `${contact?.ratingValue ?? DEFAULT_CONTACT.ratingValue}`.replace(".", ",")
+  const reviewCount = contact?.reviewCount ?? DEFAULT_CONTACT.reviewCount
   const isSnap = layout === "snap-row"
 
   const scrollerRef = useRef<HTMLDivElement>(null)
@@ -135,8 +140,8 @@ export function TestimonialsSection({
     const step = first.offsetWidth + gap
     if (step <= 0) return
     const idx = Math.round(el.scrollLeft / step)
-    setActive(Math.max(0, Math.min(content.items.length - 1, idx)))
-  }, [content.items.length])
+    setActive(Math.max(0, Math.min(items.length - 1, idx)))
+  }, [items.length])
 
   useEffect(() => {
     if (!isSnap) return
@@ -169,20 +174,20 @@ export function TestimonialsSection({
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-4xl mx-auto text-center mb-10 lg:mb-14">
           <Reveal variant="blur">
-            {content.eyebrow ? (
+            {eyebrow ? (
               <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4">
-                {content.eyebrow}
+                {eyebrow}
               </p>
             ) : null}
             <h2
               id="testimonials-heading"
               className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 text-balance"
             >
-              {content.title}
+              {title}
             </h2>
-            {content.subtitle ? (
+            {subtitle ? (
               <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-                {content.subtitle}
+                {subtitle}
               </p>
             ) : null}
           </Reveal>
@@ -200,7 +205,7 @@ export function TestimonialsSection({
                   {ratingLabel}
                 </span>
                 <span className="text-sm text-muted-foreground">
-                  · {contact.reviewCount} avaliações na Doctoralia
+                  · {reviewCount} avaliações na Doctoralia
                 </span>
               </a>
             </Reveal>
@@ -220,7 +225,7 @@ export function TestimonialsSection({
           aria-label={isSnap ? "Carrossel de depoimentos" : undefined}
           tabIndex={isSnap ? 0 : undefined}
         >
-          {content.items.map((item, index) => (
+          {items.map((item, index) => (
             <Reveal
               key={`${item.author}-${index}`}
               variant={index % 3 === 0 ? "left" : index % 3 === 2 ? "right" : "scale"}
@@ -242,19 +247,19 @@ export function TestimonialsSection({
           ))}
         </div>
 
-        {isSnap && content.items.length > 1 ? (
+        {isSnap && items.length > 1 ? (
           <div
             className="mt-5 flex items-center justify-center gap-2 md:hidden"
             role="tablist"
             aria-label="Navegar depoimentos"
           >
-            {content.items.map((_, i) => (
+            {items.map((_, i) => (
               <button
                 key={i}
                 type="button"
                 role="tab"
                 aria-selected={active === i}
-                aria-label={`Depoimento ${i + 1} de ${content.items.length}`}
+                aria-label={`Depoimento ${i + 1} de ${items.length}`}
                 onClick={() => scrollToIndex(i)}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   active === i
@@ -278,7 +283,7 @@ export function TestimonialsSection({
 
 function TestimonialCard({ item }: { item: TestimonialItem }) {
   const rating = item.rating ?? 5
-  const initials = toAuthorInitials(item.author)
+  const initials = toAuthorInitials(item.author ?? "")
   return (
     <>
       <div className="flex items-center justify-between gap-3 mb-4">

@@ -100,21 +100,25 @@ export function FAQSection({
     setOpenIndex(openIndex === index ? null : index)
   }
 
+  const items = Array.isArray(content?.items) ? content.items : DEFAULT_CONTENT.items
+  const title = content?.title || DEFAULT_CONTENT.title
+  const subtitle = content?.subtitle || DEFAULT_CONTENT.subtitle
+
   return (
-    <section id={design.id ?? "faq"} className="py-16 lg:py-24 bg-background">
+    <section id={design?.id ?? "faq"} className="py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12 lg:mb-16">
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold mb-4 text-balance">
-              {content.title}
+              {title}
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-              {content.subtitle}
+              {subtitle}
             </p>
           </div>
 
           <div className="space-y-4">
-            {content.items.map((faq, index) => (
+            {items.map((faq, index) => (
               <div
                 key={index}
                 className="border border-border rounded-xl overflow-hidden bg-card shadow-card"
@@ -148,11 +152,11 @@ export function FAQSection({
             ))}
           </div>
 
-          {content.closer ? (
+          {content?.closer ? (
             <div className="mt-12 text-center">
               <p className="text-sm md:text-base text-muted-foreground mb-4">{content.closer.text}</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                {content.closer.ctas.map((cta, i) => (
+                {(content.closer.ctas ?? []).map((cta, i) => (
                   <CloserCta key={i} cta={cta} contact={contact} />
                 ))}
               </div>
