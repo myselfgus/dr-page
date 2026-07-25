@@ -97,7 +97,7 @@ export function WhatIsMentalHealth({
     <section className="py-16 md:py-24 lg:py-32 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-3xl mx-auto">
-          <Reveal variant="item">
+          <Reveal variant="blur">
             <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4 text-center">
               {content.eyebrow}
             </p>
@@ -120,7 +120,7 @@ export function WhatIsMentalHealth({
 
             <div className="space-y-12 md:space-y-16">
               {content.steps.map((step, index) => (
-                <Reveal key={step.title} variant="item" delay={index * 160}>
+                <Reveal key={step.title} variant={index % 2 === 0 ? "left" : "right"} delay={index * 140}>
                   <div className="flex gap-5 sm:gap-8 group">
                     <div className="relative shrink-0 w-8 sm:w-10 flex justify-center">
                       <span className="relative z-10 mt-0.5 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-foreground/30 bg-background text-xs sm:text-sm font-mono text-foreground/70 transition-colors duration-300 group-hover:bg-foreground group-hover:text-background group-hover:border-foreground">

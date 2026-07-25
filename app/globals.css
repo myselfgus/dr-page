@@ -4,49 +4,45 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ---------------------------------------------------------------------------
-   Design system — Cloud Dancer atmosphere + soft elevation
-   Pantone-inspired warm off-white (#F0EEE9) as page background; pure white cards.
-   Tokens below are the CSS fallback; D1 design_tokens can override via
+   Design system — cool monochrome (pre-Cloud-Dancer) + soft elevation.
+   Tokens are CSS fallback; D1 design_tokens can override via
    <style id="design-tokens"> injected after this file.
    --------------------------------------------------------------------------- */
 
 :root {
-  /* Cloud Dancer family */
-  --background: #f0eee9;
-  --foreground: #1a1a1a;
-  --card: #ffffff;
-  --card-foreground: #1a1a1a;
-  --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
-  --primary: #1a1a1a;
-  --primary-foreground: #f0eee9;
-  --secondary: #e8e6e1;
-  --secondary-foreground: #1a1a1a;
-  --muted: #e8e6e1;
-  --muted-foreground: #6b6b6b;
-  --accent: #dddad4;
-  --accent-foreground: #1a1a1a;
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.15 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.15 0 0);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0 0);
+  --secondary-foreground: oklch(0.15 0 0);
+  --muted: oklch(0.92 0 0);
+  --muted-foreground: oklch(0.5 0 0);
+  --accent: oklch(0.88 0 0);
+  --accent-foreground: oklch(0.15 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: #dddad4;
-  --input: #dddad4;
-  --ring: #1a1a1a;
+  --border: oklch(0.88 0 0);
+  --input: oklch(0.88 0 0);
+  --ring: oklch(0.15 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  /* Base radius — positive scale (sm/md/lg/xl derived below) */
   --radius: 0.75rem;
-  --sidebar: #f5f3ee;
-  --sidebar-foreground: #1a1a1a;
-  --sidebar-primary: #1a1a1a;
-  --sidebar-primary-foreground: #f0eee9;
-  --sidebar-accent: #e8e6e1;
-  --sidebar-accent-foreground: #1a1a1a;
-  --sidebar-border: #dddad4;
-  --sidebar-ring: #6b6b6b;
-  /* Brand (fixed third-party hues — not themed) */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
   --brand-whatsapp: #25d366;
   --brand-whatsapp-hover: #20ba5a;
   --brand-doctoralia: #00c3a5;
@@ -179,25 +175,64 @@
   animation-delay: 600ms;
 }
 
-/* Scroll reveal — section (opacity only) vs item (opacity + lift) */
+/* Scroll reveal variants */
 .reveal {
   opacity: 0;
-  transition: opacity 0.7s ease;
+  transition: opacity 0.75s ease;
+  will-change: opacity, transform, filter;
 }
 
 .reveal-lift {
-  transform: translateY(16px);
+  transform: translateY(28px);
   transition:
-    opacity 0.7s ease,
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-left {
+  transform: translateX(-36px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-right {
+  transform: translateX(36px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-scale {
+  transform: scale(0.94);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-blur {
+  transform: translateY(18px);
+  filter: blur(6px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal-visible {
   opacity: 1;
   transform: none;
+  filter: none;
 }
 
-/* Slow breathing animation for decorative circles */
+/* Principle card image subtle parallax on hover */
+.principle-media img {
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.group:hover .principle-media img {
+  transform: scale(1.06);
+}
+
 @keyframes breathe {
   0%,
   100% {
@@ -215,7 +250,6 @@
   transform-origin: center;
 }
 
-/* Card hover elevation utility */
 .shadow-card-hover:hover {
   box-shadow: var(--shadow-card-hover);
 }
@@ -226,9 +260,20 @@
     animation: none;
   }
   .reveal,
-  .reveal-lift {
+  .reveal-lift,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .reveal-blur {
     opacity: 1;
     transform: none;
+    filter: none;
     transition: none;
+  }
+  .principle-media img {
+    transition: none;
+  }
+  .group:hover .principle-media img {
+    transform: none;
   }
 }

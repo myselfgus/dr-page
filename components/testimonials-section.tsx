@@ -127,7 +127,7 @@ export function TestimonialsSection({
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-4xl mx-auto text-center mb-10 lg:mb-14">
-          <Reveal variant="item">
+          <Reveal variant="blur">
             {content.eyebrow ? (
               <p className="text-xs sm:text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4">
                 {content.eyebrow}
@@ -175,7 +175,11 @@ export function TestimonialsSection({
           }
         >
           {content.items.map((item, index) => (
-            <Reveal key={`${item.author}-${index}`} variant="item" delay={(index % 3) * 80}>
+            <Reveal
+              key={`${item.author}-${index}`}
+              variant={index % 3 === 0 ? "left" : index % 3 === 2 ? "right" : "scale"}
+              delay={(index % 3) * 90}
+            >
               <article
                 className={`h-full bg-card border border-border rounded-2xl p-6 shadow-card transition-shadow hover:shadow-card-hover flex flex-col ${
                   layout === "snap-row"

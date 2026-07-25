@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react"
 
-export type RevealVariant = "section" | "item"
+export type RevealVariant = "section" | "item" | "left" | "right" | "scale" | "blur"
 
 export function Reveal({
   children,
@@ -13,7 +13,13 @@ export function Reveal({
   children: ReactNode
   delay?: number
   className?: string
-  /** section = opacity only (avoids double-lift with nested item reveals); item = opacity + translateY */
+  /**
+   * section = opacity only (parent wrappers)
+   * item = lift up
+   * left / right = slide from side
+   * scale = soft zoom-in
+   * blur = fade + slight blur clear
+   */
   variant?: RevealVariant
 }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -35,19 +41,30 @@ export function Reveal({
           observer.disconnect()
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" },
     )
 
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
 
-  const base = variant === "item" ? "reveal reveal-lift" : "reveal"
+  const variantClass =
+    variant === "item"
+      ? "reveal reveal-lift"
+      : variant === "left"
+        ? "reveal reveal-left"
+        : variant === "right"
+          ? "reveal reveal-right"
+          : variant === "scale"
+            ? "reveal reveal-scale"
+            : variant === "blur"
+              ? "reveal reveal-blur"
+              : "reveal"
 
   return (
     <div
       ref={ref}
-      className={`${base} ${visible ? "reveal-visible" : ""} ${className}`}
+      className={`${variantClass} ${visible ? "reveal-visible" : ""} ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}
