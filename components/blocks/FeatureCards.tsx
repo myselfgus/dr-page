@@ -35,12 +35,12 @@ export function FeatureCards({
     <div className="container mx-auto px-4 lg:px-8 py-8 lg:py-12">
       {content.bannerImage ? (
         <Reveal variant="scale" className="mb-10 lg:mb-14 max-w-4xl mx-auto">
-          <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-2xl border border-border shadow-card bg-muted/30">
+          <div className="media-drift relative aspect-[16/9] md:aspect-[21/9] overflow-hidden rounded-2xl border border-border shadow-card bg-muted/30">
             <Image
               src={content.bannerImage}
               alt={content.bannerAlt ?? ""}
               fill
-              className="object-cover"
+              className="object-cover img-drift"
               sizes="(max-width: 1024px) 100vw, 896px"
             />
           </div>
@@ -52,12 +52,12 @@ export function FeatureCards({
           <Reveal key={i} variant={i % 3 === 0 ? "left" : i % 3 === 2 ? "right" : "item"} delay={(i % 3) * 80}>
             <div className="group h-full overflow-hidden bg-card border border-border rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-500 hover:-translate-y-1">
               {item.image ? (
-                <div className="relative aspect-[16/10] overflow-hidden bg-muted/40">
+                <div className="media-drift relative aspect-[16/10] overflow-hidden bg-muted/40">
                   <Image
                     src={item.image}
                     alt={item.imageAlt ?? item.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover img-drift"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>

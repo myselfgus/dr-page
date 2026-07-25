@@ -92,12 +92,12 @@ export function AboutSection({
             </div>
           </div>
 
-          <div className="relative h-[350px] md:h-[400px] lg:h-[500px] order-1 lg:order-2">
+          <div className="relative h-[350px] md:h-[400px] lg:h-[500px] order-1 lg:order-2 overflow-hidden rounded-2xl shadow-card media-drift">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={content.image}
               alt={content.imageAlt}
-              className="w-full h-full object-cover rounded-2xl shadow-card"
+              className="w-full h-full object-cover img-drift scale-110"
             />
           </div>
         </div>

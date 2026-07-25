@@ -164,7 +164,7 @@ export function ConditionsTreated({
                     src={content.items[0].image ?? DEFAULT_IMAGES[0]}
                     alt={content.items[0].imageAlt ?? content.items[0].name}
                     fill
-                    className="object-cover"
+                    className="object-cover img-drift"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority={false}
                   />
@@ -211,7 +211,7 @@ export function ConditionsTreated({
                         src={image}
                         alt={principle.imageAlt ?? principle.name}
                         fill
-                        className="object-cover"
+                        className={`object-cover ${index % 2 === 0 ? "img-drift" : "img-drift-alt"}`}
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-90" />

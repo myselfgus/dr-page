@@ -5,12 +5,12 @@ import "./globals.css"
 import { BackToTop } from "@/components/back-to-top"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { buildDesignTokensCss } from "@/lib/design-tokens"
-import { DM_Serif_Display, Urbanist, Nunito_Sans, Roboto_Mono } from "next/font/google"
+import { Playfair_Display, Urbanist, Nunito_Sans, Roboto_Mono } from "next/font/google"
 
-// Display · headings (serif)
-const dmSerif = DM_Serif_Display({
+// Display · headings (serif) — Playfair for verification / brand continuity
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-serif",
 })
 
@@ -141,7 +141,7 @@ export default async function RootLayout({
         ) : null}
       </head>
       <body
-        className={`${nunitoSans.variable} ${dmSerif.variable} ${urbanist.variable} ${robotoMono.variable} font-sans font-normal antialiased`}
+        className={`${nunitoSans.variable} ${playfair.variable} ${urbanist.variable} ${robotoMono.variable} font-sans font-normal antialiased`}
       >
         {children}
         <BackToTop />

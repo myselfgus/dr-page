@@ -64,12 +64,12 @@ export function ConditionLandingView({ landing }: { landing: ConditionLanding })
               </p>
             </Reveal>
             <Reveal variant="right">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-card bg-muted/30">
+              <div className="media-drift relative aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-card bg-muted/30">
                 <Image
                   src={heroImage}
                   alt=""
                   fill
-                  className="object-cover"
+                  className="object-cover img-drift"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />

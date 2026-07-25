@@ -116,12 +116,12 @@ export function WhatIsMentalHealth({
 
           {(content.image ?? DEFAULT_CONTENT.image) ? (
             <Reveal variant="scale" className="mb-14 md:mb-20">
-              <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-border shadow-card bg-card">
+              <div className="media-drift-alt relative aspect-[16/9] overflow-hidden rounded-2xl border border-border shadow-card bg-card">
                 <Image
                   src={content.image ?? DEFAULT_CONTENT.image!}
                   alt={content.imageAlt ?? DEFAULT_CONTENT.imageAlt ?? ""}
                   fill
-                  className="object-cover"
+                  className="object-cover img-drift-alt"
                   sizes="(max-width: 768px) 100vw, 768px"
                 />
               </div>

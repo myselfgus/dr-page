@@ -56,17 +56,17 @@ export function Hero({
 
   if (variant === "home") {
     return (
-      <section className="relative pt-28 pb-16 sm:pt-32 sm:pb-24 lg:pt-40 lg:pb-32 min-h-[88svh] sm:min-h-[75vh] lg:min-h-[70vh] flex items-center overflow-hidden">
+      <section className="relative flex min-h-[100svh] sm:min-h-[85vh] lg:min-h-[70vh] items-center overflow-hidden pt-[4.5rem] sm:pt-32 lg:pt-40 pb-10 sm:pb-24 lg:pb-32">
         {design.showAnimatedBackground !== false ? (
           <div className="hidden lg:block absolute inset-0 opacity-30">
             <AnimatedBackground />
           </div>
         ) : null}
 
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
-            {/* Frase-assinatura — protagonista no mobile */}
-            <h1 className="font-serif text-[2.75rem] leading-[1.08] sm:text-6xl sm:leading-tight md:text-7xl lg:text-8xl font-normal mb-6 sm:mb-8 lg:mb-6 text-balance">
+        <div className="container mx-auto px-5 sm:px-4 lg:px-8 relative z-10 w-full">
+          <div className="max-w-4xl mx-auto sm:mx-0 flex flex-col justify-center min-h-[calc(100svh-5.5rem)] sm:min-h-0">
+            {/* Frase-assinatura — ocupa a tela no mobile */}
+            <h1 className="font-serif font-medium text-balance leading-[1.05] tracking-tight text-[clamp(2.65rem,11.5vw,3.75rem)] sm:text-6xl sm:leading-tight md:text-7xl lg:text-8xl mb-0 sm:mb-8 lg:mb-6">
               {content.titleLines.map((line, i) => (
                 <span key={i} className={`block animate-fade-up ${DELAYS[i] ?? ""}`}>
                   {line}
@@ -74,39 +74,43 @@ export function Hero({
               ))}
             </h1>
 
-            {/* Lead mais contido no mobile para não competir com a frase */}
-            <div className="text-sm sm:text-base md:text-xl leading-relaxed max-w-2xl space-y-3 sm:space-y-6 text-muted-foreground [&_strong]:text-foreground">
-              {(content.leadHtml ?? []).map((html, i) => (
-                <span
-                  key={i}
-                  className={`block animate-fade-up ${
-                    i === 0
-                      ? "animation-delay-450"
-                      : "animation-delay-600 hidden sm:block"
-                  }`}
-                  dangerouslySetInnerHTML={{ __html: sanitizeInline(html) }}
-                />
-              ))}
+            {/* Lead + rating: só a partir de sm — no mobile a frase é o foco total */}
+            <div className="hidden sm:block">
+              <div className="text-base md:text-xl leading-relaxed max-w-2xl space-y-4 sm:space-y-6 text-muted-foreground [&_strong]:text-foreground mt-2">
+                {(content.leadHtml ?? []).map((html, i) => (
+                  <span
+                    key={i}
+                    className={`block animate-fade-up ${i === 0 ? "animation-delay-450" : "animation-delay-600"}`}
+                    dangerouslySetInnerHTML={{ __html: sanitizeInline(html) }}
+                  />
+                ))}
+              </div>
+
+              {showRating ? (
+                <div className="mt-8 sm:mt-10 animate-fade-up animation-delay-600">
+                  <Link
+                    href="#avaliacoes"
+                    className="inline-flex flex-wrap items-center gap-2 sm:gap-3 rounded-full border border-border bg-card/80 backdrop-blur-sm px-4 py-2 text-sm shadow-card hover:shadow-card-hover transition-shadow"
+                  >
+                    <span className="inline-flex text-[#00c3a5]" aria-hidden="true">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <StarIcon key={i} className="w-3.5 h-3.5" />
+                      ))}
+                    </span>
+                    <span className="font-emphasis font-medium text-foreground">{ratingLabel}</span>
+                    <span className="text-muted-foreground">
+                      · {DEFAULT_CONTACT.reviewCount} na Doctoralia
+                    </span>
+                  </Link>
+                </div>
+              ) : null}
             </div>
 
-            {showRating ? (
-              <div className="mt-8 sm:mt-10 animate-fade-up animation-delay-600">
-                <Link
-                  href="#avaliacoes"
-                  className="inline-flex flex-wrap items-center gap-2 sm:gap-3 rounded-full border border-border bg-card/80 backdrop-blur-sm px-3.5 py-2 sm:px-4 text-xs sm:text-sm shadow-card hover:shadow-card-hover transition-shadow"
-                >
-                  <span className="inline-flex text-[#00c3a5]" aria-hidden="true">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <StarIcon key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                    ))}
-                  </span>
-                  <span className="font-emphasis font-medium text-foreground">{ratingLabel}</span>
-                  <span className="text-muted-foreground">
-                    · {DEFAULT_CONTACT.reviewCount} na Doctoralia
-                  </span>
-                </Link>
-              </div>
-            ) : null}
+            {/* Mobile: indicador discreto de scroll no rodapé da hero */}
+            <div className="sm:hidden mt-auto pt-12 flex flex-col items-center gap-2 text-muted-foreground/70 animate-fade-up animation-delay-600">
+              <span className="text-[10px] tracking-[0.25em] uppercase font-emphasis">rolar</span>
+              <span className="block w-px h-8 bg-foreground/25 animate-scroll-hint" aria-hidden="true" />
+            </div>
           </div>
         </div>
       </section>
@@ -130,7 +134,7 @@ export function Hero({
                       alt={content.imageAlt ?? ""}
                       width={600}
                       height={600}
-                      className="object-cover w-full h-full"
+                      className="object-cover w-full h-full img-drift"
                       priority
                     />
                   </div>
@@ -138,7 +142,7 @@ export function Hero({
               </div>
             ) : null}
             <div className="order-2 lg:order-1 animate-in fade-in slide-in-from-left-8 duration-1000">
-              <h1 className="font-serif text-4xl lg:text-6xl font-normal mb-4 text-balance">
+              <h1 className="font-serif text-4xl lg:text-6xl font-medium mb-4 text-balance">
                 {content.titleLines.join(" ")}
               </h1>
               {content.subtitle ? (
@@ -173,7 +177,7 @@ export function Hero({
       <section className="pt-28 lg:pt-32 pb-4">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mb-12 lg:mb-16">
-            <h1 className="font-serif text-4xl lg:text-6xl font-normal mb-6">
+            <h1 className="font-serif text-4xl lg:text-6xl font-medium mb-6">
               {content.titleLines.join(" ")}
             </h1>
             {content.lead ? (
@@ -194,7 +198,7 @@ export function Hero({
               {content.eyebrow}
             </p>
           ) : null}
-          <h1 className="font-serif text-4xl lg:text-6xl font-normal mb-6 text-balance">
+          <h1 className="font-serif text-4xl lg:text-6xl font-medium mb-6 text-balance">
             {content.titleLines.join(" ")}
           </h1>
           {content.lead ? (

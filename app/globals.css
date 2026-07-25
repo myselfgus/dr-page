@@ -236,12 +236,71 @@
   filter: none;
 }
 
-/* Principle card image subtle parallax on hover */
-.principle-media img {
-  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+/* Slow Ken Burns / drift on editorial images — feels alive without distraction */
+@keyframes img-drift {
+  0% {
+    transform: scale(1.08) translate(0%, 0%);
+  }
+  33% {
+    transform: scale(1.14) translate(-1.6%, 1%);
+  }
+  66% {
+    transform: scale(1.12) translate(1.2%, -0.8%);
+  }
+  100% {
+    transform: scale(1.08) translate(0%, 0%);
+  }
 }
-.group:hover .principle-media img {
-  transform: scale(1.06);
+
+@keyframes img-drift-alt {
+  0% {
+    transform: scale(1.1) translate(0.5%, -0.5%);
+  }
+  50% {
+    transform: scale(1.16) translate(-1.2%, 1.2%);
+  }
+  100% {
+    transform: scale(1.1) translate(0.5%, -0.5%);
+  }
+}
+
+@keyframes scroll-hint {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scaleY(0.55);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scaleY(1);
+  }
+}
+
+.img-drift,
+.principle-media img,
+.media-drift img {
+  transform-origin: center center;
+  animation: img-drift 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.img-drift-alt,
+.media-drift-alt img {
+  transform-origin: center center;
+  animation: img-drift-alt 26s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 1.8s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+/* Soft hover boost on principle cards (desktop) */
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .principle-media img {
+    animation-duration: 14s;
+  }
 }
 
 @keyframes breathe {
@@ -267,8 +326,14 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
-  .animate-breathe {
-    animation: none;
+  .animate-breathe,
+  .animate-scroll-hint,
+  .img-drift,
+  .img-drift-alt,
+  .principle-media img,
+  .media-drift img,
+  .media-drift-alt img {
+    animation: none !important;
   }
   .reveal,
   .reveal-lift,
@@ -281,10 +346,9 @@
     filter: none;
     transition: none;
   }
-  .principle-media img {
-    transition: none;
-  }
-  .group:hover .principle-media img {
+  .principle-media img,
+  .img-drift,
+  .media-drift img {
     transform: none;
   }
 }

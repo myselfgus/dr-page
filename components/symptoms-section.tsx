@@ -89,12 +89,12 @@ export function SymptomsSection({
         <div className="max-w-4xl mx-auto text-center">
           {image ? (
             <Reveal variant="scale" className="mb-10 lg:mb-14">
-              <div className="relative mx-auto aspect-[16/9] max-w-2xl overflow-hidden rounded-2xl border border-border shadow-card bg-muted/30">
+              <div className="media-drift relative mx-auto aspect-[16/9] max-w-2xl overflow-hidden rounded-2xl border border-border shadow-card bg-muted/30">
                 <Image
                   src={image}
                   alt={content.imageAlt ?? DEFAULT_CONTENT.imageAlt ?? ""}
                   fill
-                  className="object-cover"
+                  className="object-cover img-drift"
                   sizes="(max-width: 768px) 100vw, 672px"
                 />
               </div>
