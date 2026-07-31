@@ -6,7 +6,7 @@ import type { ConditionLanding } from "@/lib/condition-landings"
 import { toAuthorInitials } from "@/lib/format"
 
 export const BASE_URL = "https://drgustavomendes.com"
-const PHYSICIAN_IMAGE = `${BASE_URL}/images/dr-gustavo-cinza.jpg`
+const PHYSICIAN_IMAGE = `${BASE_URL}/images/dr-gustavo-studio.jpg`
 const DEFAULT_OG = `${BASE_URL}/og-image.jpg`
 
 /** Open Graph wide (Facebook/LinkedIn/WhatsApp ideal). Arquivos em /public/og-*.jpg. */

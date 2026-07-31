@@ -69,7 +69,7 @@ function normalizeChip(chip: string | SymptomChip): SymptomChip {
 }
 
 const chipClass =
-  "inline-block font-serif text-lg sm:text-xl md:text-2xl font-normal px-5 py-2.5 border border-border rounded-full text-foreground/80 hover:text-background hover:bg-foreground hover:border-foreground transition-colors duration-300"
+  "glass-pill glass-pill-chip inline-block text-lg sm:text-xl md:text-2xl px-5 py-2.5 rounded-full"
 
 export function SymptomsSection({
   content = DEFAULT_CONTENT,

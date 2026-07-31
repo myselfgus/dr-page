@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { sanitizeInline } from "@/lib/sanitize"
 import { type CtaRef, type ContactConfig, DEFAULT_CONTACT, resolveCta } from "@/lib/site-config"
 
@@ -24,7 +23,7 @@ export interface AboutDesign {
 export const DEFAULT_CONTENT: AboutContent = {
   title: "Sobre o Dr. Gustavo",
   subtitle: "CRM 218133/SP",
-  image: "/images/dr-gustavo-cinza.jpg",
+  image: "/images/dr-gustavo-studio.jpg",
   imageAlt: "Dr. Gustavo Mendes e Silva",
   ctaPrimary: { kind: "internal", label: "Ver currículo completo", href: "/about" },
   formacaoTitle: "Formação e Experiência",
@@ -83,12 +82,14 @@ export function AboutSection({
             ))}
 
             <div className="pt-4">
-              <Button asChild variant="outline" className="w-full md:w-auto bg-transparent">
-                <Link href={cta.href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
-                  {cta.label}
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <Link
+                href={cta.href}
+                {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="glass-pill inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium font-emphasis"
+              >
+                {cta.label}
+                <ExternalLink className="h-4 w-4 opacity-70" />
+              </Link>
             </div>
           </div>
 
@@ -97,7 +98,7 @@ export function AboutSection({
             <img
               src={content.image}
               alt={content.imageAlt}
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-[center_18%]"
             />
           </div>
         </div>

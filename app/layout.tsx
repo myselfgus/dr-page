@@ -125,7 +125,7 @@ export const metadata: Metadata = {
         url: "https://drgustavomendes.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Dr. Gustavo Mendes e Silva - Psiquiatra CRM 218133/SP em Jundiaí",
+        alt: "Dr. Gustavo Mendes e Silva — Psiquiatra CRM 218133/SP em Jundiaí",
       },
     ],
   },
