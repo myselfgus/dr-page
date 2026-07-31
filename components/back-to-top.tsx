@@ -2,12 +2,12 @@
 
 import { useState, useEffect, useRef } from "react"
 import { ArrowUp } from "lucide-react"
-import { FLOAT, FLOAT_Z, floatBottom } from "@/lib/float-stack"
+import { FLOAT, FLOAT_INDEX, FLOAT_Z, floatBottom } from "@/lib/float-stack"
 
 type Phase = "hidden" | "fresh" | "settle"
 
 /** How long the droplet stays “present” after scroll before fading to ghost. */
-const SETTLE_MS = 2200
+const SETTLE_MS = 2600
 const SHOW_AFTER_Y = 300
 
 export function BackToTop() {
@@ -34,17 +34,15 @@ export function BackToTop() {
         return
       }
 
-      // Just became visible → liquid entrance + one-shot shimmer
       if (wasHidden.current) {
         wasHidden.current = false
         setPhase("fresh")
         setShimmer(true)
-        shimmerTimer.current = setTimeout(() => setShimmer(false), 1400)
+        shimmerTimer.current = setTimeout(() => setShimmer(false), 1800)
       } else {
         setPhase("fresh")
       }
 
-      // After idle, settle into a quieter droplet
       if (settleTimer.current) clearTimeout(settleTimer.current)
       settleTimer.current = setTimeout(() => {
         setPhase((p) => (p === "hidden" ? "hidden" : "settle"))
@@ -67,7 +65,7 @@ export function BackToTop() {
     })
   }
 
-  const bottom = floatBottom(2)
+  const bottom = floatBottom(FLOAT_INDEX.back)
   const right = FLOAT.edgePx + (FLOAT.fabPx - FLOAT.backPx) / 2
   const visible = phase !== "hidden"
 
@@ -89,7 +87,7 @@ export function BackToTop() {
       aria-label="Voltar ao topo"
       tabIndex={visible ? 0 : -1}
     >
-      <ArrowUp className="h-3.5 w-3.5 relative z-[1]" strokeWidth={1.75} />
+      <ArrowUp className="h-3.5 w-3.5 relative z-[1]" strokeWidth={2.25} />
     </button>
   )
 }

@@ -2,7 +2,7 @@
 
 import { WhatsAppIcon } from "@/components/blocks/cta-button"
 import { DEFAULT_CONTACT, resolveCta } from "@/lib/site-config"
-import { FLOAT, FLOAT_Z, floatBottom } from "@/lib/float-stack"
+import { FLOAT, FLOAT_INDEX, FLOAT_Z, floatBottom } from "@/lib/float-stack"
 
 export function WhatsAppFloat() {
   const wa = resolveCta(
@@ -10,7 +10,7 @@ export function WhatsAppFloat() {
     DEFAULT_CONTACT,
   )
 
-  const bottom = floatBottom(0)
+  const bottom = floatBottom(FLOAT_INDEX.whatsapp)
   const size = FLOAT.fabPx
 
   return (
@@ -18,7 +18,7 @@ export function WhatsAppFloat() {
       href={wa.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed z-50 flex items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all hover:bg-[#20BA5A] hover:scale-105 group"
+      className="float-fab-glass float-fab-whatsapp fixed z-50 flex items-center justify-center rounded-full group"
       style={{
         bottom: `max(${bottom}px, calc(env(safe-area-inset-bottom, 0px) + ${bottom}px))`,
         right: FLOAT.edgePx,
@@ -28,9 +28,10 @@ export function WhatsAppFloat() {
       }}
       aria-label="Falar no WhatsApp"
     >
-      <WhatsAppIcon className="w-6 h-6" />
+      <span className="float-fab-glass__shine" aria-hidden />
+      <WhatsAppIcon className="w-[22px] h-[22px] relative z-[1] drop-shadow-sm" />
 
-      <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-foreground text-background text-sm px-3 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden sm:block">
+      <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-foreground/90 backdrop-blur-md text-background text-sm px-3 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none hidden sm:block shadow-md">
         Fale conosco no WhatsApp
       </span>
     </a>

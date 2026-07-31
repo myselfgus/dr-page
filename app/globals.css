@@ -393,53 +393,145 @@
   transform-origin: center;
 }
 
-/* Back-to-top — liquid glass droplet */
-.back-to-top-drop {
-  --drop-opacity: 0.55;
+/* ---------------------------------------------------------------------------
+   Float FABs — glass treatment (WhatsApp + shared shine)
+   --------------------------------------------------------------------------- */
+.float-fab-glass {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(16px) saturate(1.45);
+  -webkit-backdrop-filter: blur(16px) saturate(1.45);
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    filter 0.25s ease,
+    background 0.25s ease;
+}
+
+.float-fab-glass__shine {
+  position: absolute;
+  inset: 12% 18% auto 18%;
+  height: 32%;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.float-fab-whatsapp {
+  color: #fff;
   background:
     radial-gradient(
-      120% 90% at 30% 18%,
-      rgba(255, 255, 255, 0.72) 0%,
-      rgba(255, 255, 255, 0.18) 38%,
-      rgba(255, 255, 255, 0.06) 70%,
-      rgba(255, 255, 255, 0.02) 100%
+      120% 90% at 28% 16%,
+      rgba(255, 255, 255, 0.42) 0%,
+      rgba(255, 255, 255, 0.08) 42%,
+      transparent 70%
+    ),
+    linear-gradient(
+      155deg,
+      rgba(55, 220, 120, 0.82) 0%,
+      rgba(37, 211, 102, 0.72) 48%,
+      rgba(22, 170, 80, 0.78) 100%
+    );
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.55),
+    inset 0 -5px 12px rgba(255, 255, 255, 0.08),
+    0 6px 18px rgba(37, 211, 102, 0.28),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.float-fab-whatsapp:hover {
+  transform: scale(1.06);
+  background:
+    radial-gradient(
+      120% 90% at 28% 16%,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.1) 42%,
+      transparent 70%
+    ),
+    linear-gradient(
+      155deg,
+      rgba(60, 230, 130, 0.9) 0%,
+      rgba(37, 211, 102, 0.82) 48%,
+      rgba(20, 165, 78, 0.88) 100%
+    );
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.65),
+    inset 0 -5px 12px rgba(255, 255, 255, 0.1),
+    0 8px 22px rgba(37, 211, 102, 0.36),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.float-fab-whatsapp:active {
+  transform: scale(0.97);
+}
+
+/* Soft glass rim on AI Search host (button itself is semi-transparent via vars) */
+.float-ai-glass-host {
+  /* no layout — the custom element positions fixed itself */
+  pointer-events: none;
+}
+
+.float-ai-glass-host chat-bubble-snippet {
+  pointer-events: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Back-to-top — liquid glass droplet (higher contrast + timed settle)
+   --------------------------------------------------------------------------- */
+.back-to-top-drop {
+  --drop-opacity: 0.7;
+  background:
+    radial-gradient(
+      130% 100% at 28% 14%,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.35) 32%,
+      rgba(255, 255, 255, 0.1) 62%,
+      rgba(255, 255, 255, 0.04) 100%
     ),
     linear-gradient(
       160deg,
-      rgba(255, 255, 255, 0.28) 0%,
-      rgba(255, 255, 255, 0.06) 55%,
-      rgba(0, 0, 0, 0.04) 100%
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.12) 50%,
+      rgba(0, 0, 0, 0.06) 100%
     );
-  color: oklch(0.28 0 0 / 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: oklch(0.18 0 0 / 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.65);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.65),
-    inset 0 -6px 12px rgba(255, 255, 255, 0.08),
-    0 4px 16px rgba(0, 0, 0, 0.06),
-    0 1px 2px rgba(0, 0, 0, 0.04);
-  backdrop-filter: blur(14px) saturate(1.35);
-  -webkit-backdrop-filter: blur(14px) saturate(1.35);
+    inset 0 1px 2px rgba(255, 255, 255, 0.85),
+    inset 0 -8px 14px rgba(255, 255, 255, 0.12),
+    0 6px 20px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(18px) saturate(1.5);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
   opacity: var(--drop-opacity);
   transition:
-    opacity 0.7s ease,
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.4s ease,
-    color 0.4s ease;
+    opacity 0.55s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .back-to-top-drop::before {
   content: "";
   position: absolute;
-  inset: 14% 22% auto 22%;
-  height: 28%;
+  inset: 12% 20% auto 20%;
+  height: 30%;
   border-radius: 999px;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.95) 0%,
     rgba(255, 255, 255, 0) 100%
   );
   pointer-events: none;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .back-to-top-drop[data-visible="true"] {
@@ -450,62 +542,85 @@
 
 .back-to-top-drop[data-visible="false"] {
   opacity: 0;
-  transform: translateY(10px) scale(0.88);
+  transform: translateY(12px) scale(0.82);
   pointer-events: none;
 }
 
-/* Freshly revealed after scroll — slightly more present, then settles */
+/* Fresh after scroll — bright droplet */
 .back-to-top-drop[data-phase="fresh"] {
-  --drop-opacity: 0.78;
-  color: oklch(0.22 0 0 / 0.62);
+  --drop-opacity: 0.95;
+  color: oklch(0.14 0 0 / 0.82);
+  border-color: rgba(255, 255, 255, 0.85);
 }
 
+/* Idle ghost — still readable but quieter */
 .back-to-top-drop[data-phase="settle"] {
-  --drop-opacity: 0.42;
-  color: oklch(0.28 0 0 / 0.4);
+  --drop-opacity: 0.55;
+  color: oklch(0.22 0 0 / 0.55);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .back-to-top-drop[data-phase="fresh"][data-shimmer="true"] {
-  animation: drop-shimmer 1.4s ease-out 1;
+  animation: drop-pop 0.55s cubic-bezier(0.22, 1, 0.36, 1) 1,
+    drop-shimmer 1.75s ease-out 0.1s 1;
 }
 
 .back-to-top-drop:hover,
 .back-to-top-drop:focus-visible {
-  --drop-opacity: 0.92 !important;
-  color: oklch(0.18 0 0 / 0.75);
+  --drop-opacity: 1 !important;
+  color: oklch(0.12 0 0 / 0.9);
+  border-color: rgba(255, 255, 255, 0.95);
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.8),
-    inset 0 -6px 14px rgba(255, 255, 255, 0.12),
-    0 6px 20px rgba(0, 0, 0, 0.08),
-    0 1px 3px rgba(0, 0, 0, 0.05);
+    inset 0 1px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -8px 16px rgba(255, 255, 255, 0.18),
+    0 8px 26px rgba(0, 0, 0, 0.12),
+    0 0 0 4px rgba(255, 255, 255, 0.35);
   outline: none;
 }
 
 .back-to-top-drop:active {
-  transform: translateY(1px) scale(0.96);
+  transform: translateY(1px) scale(0.94);
+}
+
+@keyframes drop-pop {
+  0% {
+    transform: translateY(14px) scale(0.72);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-3px) scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes drop-shimmer {
   0% {
     box-shadow:
-      inset 0 1px 1px rgba(255, 255, 255, 0.65),
-      inset 0 -6px 12px rgba(255, 255, 255, 0.08),
-      0 4px 16px rgba(0, 0, 0, 0.06),
-      0 0 0 0 rgba(255, 255, 255, 0.35);
+      inset 0 1px 2px rgba(255, 255, 255, 0.85),
+      inset 0 -8px 14px rgba(255, 255, 255, 0.12),
+      0 6px 20px rgba(0, 0, 0, 0.1),
+      0 0 0 0 rgba(26, 26, 26, 0.18);
+    filter: brightness(1);
   }
-  40% {
+  35% {
     box-shadow:
-      inset 0 1px 1px rgba(255, 255, 255, 0.85),
-      inset 0 -6px 14px rgba(255, 255, 255, 0.16),
-      0 6px 22px rgba(0, 0, 0, 0.07),
-      0 0 0 10px rgba(255, 255, 255, 0);
+      inset 0 1px 2px rgba(255, 255, 255, 1),
+      inset 0 -8px 16px rgba(255, 255, 255, 0.22),
+      0 10px 28px rgba(0, 0, 0, 0.12),
+      0 0 0 12px rgba(26, 26, 26, 0);
+    filter: brightness(1.12);
   }
   100% {
     box-shadow:
-      inset 0 1px 1px rgba(255, 255, 255, 0.65),
-      inset 0 -6px 12px rgba(255, 255, 255, 0.08),
-      0 4px 16px rgba(0, 0, 0, 0.06),
-      0 0 0 0 rgba(255, 255, 255, 0);
+      inset 0 1px 2px rgba(255, 255, 255, 0.85),
+      inset 0 -8px 14px rgba(255, 255, 255, 0.12),
+      0 6px 20px rgba(0, 0, 0, 0.1),
+      0 0 0 0 rgba(26, 26, 26, 0);
+    filter: brightness(1);
   }
 }
 
@@ -527,6 +642,9 @@
   }
   .back-to-top-drop {
     transition: opacity 0.2s ease !important;
+  }
+  .float-fab-whatsapp:hover {
+    transform: none;
   }
   .reveal,
   .reveal-lift,

@@ -1,8 +1,8 @@
 /**
  * Shared geometry for bottom-right floating actions.
- * Column (bottom → top): WhatsApp → AI Search → Back to top
+ * Column (bottom → top): AI Search → WhatsApp → Back to top
  *
- * Sizes match the WhatsApp FAB (48px). Gaps keep touch targets clear on mobile.
+ * Sizes match the FAB diameter (48px). Gaps keep touch targets clear on mobile.
  */
 
 export const FLOAT = {
@@ -16,21 +16,24 @@ export const FLOAT = {
   backPx: 40,
 } as const
 
-/** bottom offset for item index 0 = lowest (WhatsApp) */
-export function floatBottom(index: number, sizePx: number = FLOAT.fabPx): number {
-  // Each step: previous size + gap. Index 0 uses fab size for spacing above it.
+/** Stack indices (0 = lowest / closest to bottom edge) */
+export const FLOAT_INDEX = {
+  ai: 0,
+  whatsapp: 1,
+  back: 2,
+} as const
+
+/** bottom offset for item index 0 = lowest */
+export function floatBottom(index: number): number {
   let bottom = FLOAT.edgePx
   for (let i = 0; i < index; i++) {
     bottom += FLOAT.fabPx + FLOAT.gapPx
   }
-  // When this item is smaller than fab (back-to-top), keep column optically aligned
-  // by not adding extra — size only affects the control itself.
-  void sizePx
   return bottom
 }
 
 export const FLOAT_Z = {
   back: 40,
-  whatsapp: 50,
   ai: 45,
+  whatsapp: 50,
 } as const

@@ -2,11 +2,11 @@
 
 import type { CSSProperties } from "react"
 import Script from "next/script"
-import { FLOAT, FLOAT_Z, floatBottom } from "@/lib/float-stack"
+import { FLOAT, FLOAT_INDEX, FLOAT_Z, floatBottom } from "@/lib/float-stack"
 
 /**
  * Cloudflare AI Search chat bubble (RAG).
- * Same size as WhatsApp FAB; stacked directly above it in the float column.
+ * Lowest in the float column (below WhatsApp). Glass-tinted FAB.
  */
 
 const AI_SEARCH_ORIGIN =
@@ -35,25 +35,25 @@ const TRANSLATIONS = JSON.stringify({
   poweredByLinkLabel: "Cloudflare AI Search",
 })
 
-// Index 1 in the float stack (above WhatsApp)
-const bubbleBottom = floatBottom(1)
+const bubbleBottom = floatBottom(FLOAT_INDEX.ai)
 
 const BUBBLE_STYLE = {
-  "--search-snippet-primary-color": "#1a1a1a",
-  "--search-snippet-primary-hover": "#333333",
-  "--search-snippet-focus-ring": "#e8e6e1",
-  "--search-snippet-background": "#fafaf9",
-  "--search-snippet-surface": "#ffffff",
+  "--search-snippet-primary-color": "rgba(26, 26, 26, 0.52)",
+  "--search-snippet-primary-hover": "rgba(26, 26, 26, 0.72)",
+  "--search-snippet-focus-ring": "rgba(255, 255, 255, 0.55)",
+  "--search-snippet-background": "rgba(250, 250, 249, 0.92)",
+  "--search-snippet-surface": "rgba(255, 255, 255, 0.94)",
   "--search-snippet-text-color": "#1a1a1a",
   "--search-snippet-text-secondary": "#5c5c5c",
   "--search-snippet-border-radius": "1rem",
   "--search-snippet-font-family":
     "var(--font-sans), ui-sans-serif, system-ui, sans-serif",
-  // Match WhatsApp FAB size (48px) — default snippet is 60px
   "--chat-bubble-button-size": `${FLOAT.fabPx}px`,
-  "--chat-bubble-button-icon-size": "22px",
+  "--chat-bubble-button-icon-size": "20px",
+  "--chat-bubble-button-icon-color": "rgba(255, 255, 255, 0.95)",
+  "--chat-bubble-button-radius": "50%",
   "--chat-bubble-button-shadow":
-    "0 4px 14px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06)",
+    "inset 0 1px 1px rgba(255,255,255,0.35), inset 0 -4px 10px rgba(255,255,255,0.06), 0 4px 18px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.06)",
   "--chat-bubble-button-bottom": `max(${bubbleBottom}px, calc(env(safe-area-inset-bottom, 0px) + ${bubbleBottom}px))`,
   "--chat-bubble-button-right": `${FLOAT.edgePx}px`,
   "--chat-bubble-button-z-index": String(FLOAT_Z.ai),
@@ -65,13 +65,16 @@ export function AiSearchBubble() {
   return (
     <>
       <Script src={SNIPPET_SRC} type="module" strategy="lazyOnload" />
-      {/* @ts-expect-error custom element from AI Search snippet */}
-      <chat-bubble-snippet
-        api-url={`${AI_SEARCH_ORIGIN}/`}
-        theme="light"
-        translations={TRANSLATIONS}
-        style={BUBBLE_STYLE}
-      />
+      {/* Glass sheen overlay for the host — button itself is styled via CSS vars */}
+      <div className="float-ai-glass-host" aria-hidden={false}>
+        {/* @ts-expect-error custom element from AI Search snippet */}
+        <chat-bubble-snippet
+          api-url={`${AI_SEARCH_ORIGIN}/`}
+          theme="light"
+          translations={TRANSLATIONS}
+          style={BUBBLE_STYLE}
+        />
+      </div>
     </>
   )
 }
