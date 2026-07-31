@@ -12,6 +12,8 @@ export interface BlogPost {
   keywords: string[]
   scrollStyle: "scroll-reveal" | "section-overlay"
   headerImage?: string
+  series?: string
+  audioUrl?: string
 }
 
 // Shape of a row in the D1 `posts` table.
@@ -28,6 +30,8 @@ interface PostRow {
   header_image: string | null
   scroll_style: string | null
   status: string
+  series?: string | null
+  audio_url?: string | null
 }
 
 function mapRow(row: PostRow): BlogPost {
@@ -53,6 +57,8 @@ function mapRow(row: PostRow): BlogPost {
     keywords,
     scrollStyle: row.scroll_style === "scroll-reveal" ? "scroll-reveal" : "section-overlay",
     headerImage: row.header_image ?? undefined,
+    series: row.series ?? undefined,
+    audioUrl: row.audio_url || undefined,
   }
 }
 
@@ -94,4 +100,21 @@ export async function getBlogPost(slug: string): Promise<BlogPost | undefined> {
   } catch {
     return undefined
   }
+}
+
+/** Group published posts by series (for index UI). */
+export function groupPostsBySeries(posts: BlogPost[]): { series: string; posts: BlogPost[] }[] {
+  const map = new Map<string, BlogPost[]>()
+  for (const p of posts) {
+    const key = p.series?.trim() || "Outros escritos"
+    if (!map.has(key)) map.set(key, [])
+    map.get(key)!.push(p)
+  }
+  // Keep series order by earliest post date ascending within, but display series by first post
+  const groups = Array.from(map.entries()).map(([series, items]) => ({
+    series,
+    posts: [...items].sort((a, b) => a.date.localeCompare(b.date)),
+  }))
+  groups.sort((a, b) => a.posts[0]!.date.localeCompare(b.posts[0]!.date))
+  return groups
 }

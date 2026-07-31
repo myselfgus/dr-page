@@ -46,3 +46,4 @@ wrangler.toml.bak
 
 # Cloudflare
 cloudflare-env.d.ts
+scripts/_import-posts.sql
