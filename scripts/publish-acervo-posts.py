@@ -27,10 +27,9 @@ ACERVO = Path("/Users/gustavomendesesilva/Developer/dr-acervo/blog-posts")
 AUDIO_DIR = ROOT / "public" / "blog-audio"
 SQL_OUT = ROOT / "scripts" / "_import-posts.sql"
 
-# Feasible editorial calendar: ~2 posts/week, series kept contiguous.
-# Starts after existing "conceito-de-doenca-mental" (2025-11-05).
-DATE_START = date(2025, 11, 11)
-INTERVAL_DAYS = 3
+# Editorial calendar 2026: ~every 6 days from mid-March through late July.
+DATE_START = date(2026, 3, 18)
+INTERVAL_DAYS = 6
 
 AUTHOR = "Dr. Gustavo Mendes e Silva"
 VOICE_ID = "leo"  # male multilingual — clinical tone
