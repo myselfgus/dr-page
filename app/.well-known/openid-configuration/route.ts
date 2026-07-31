@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server"
-import { getProtectedResourceMetadata } from "@/lib/agent-auth"
+import { getOpenIdConfiguration } from "@/lib/agent-auth"
 
-/** RFC 9728 OAuth Protected Resource Metadata */
+/** OpenID Connect Discovery 1.0 */
 export const dynamic = "force-static"
 export const revalidate = 3600
 
 export function GET() {
-  return NextResponse.json(getProtectedResourceMetadata(), {
+  return NextResponse.json(getOpenIdConfiguration(), {
     headers: {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "public, max-age=3600, s-maxage=3600",
