@@ -2,15 +2,11 @@
 
 import type { CSSProperties } from "react"
 import Script from "next/script"
+import { FLOAT, FLOAT_Z, floatBottom } from "@/lib/float-stack"
 
 /**
- * Cloudflare AI Search chat bubble (RAG sobre o conteúdo do site).
- * Public endpoint: cba878db-5dd7-451c-9683-efe56df1f139.search.ai.cloudflare.com
- *
- * Posicionado acima do WhatsApp float para não sobrepor o CTA principal.
- * No dashboard AI Search → Public Endpoint, autorize:
- *   - https://drgustavomendes.com
- *   - http://localhost:3000 (dev)
+ * Cloudflare AI Search chat bubble (RAG).
+ * Same size as WhatsApp FAB; stacked directly above it in the float column.
  */
 
 const AI_SEARCH_ORIGIN =
@@ -39,6 +35,9 @@ const TRANSLATIONS = JSON.stringify({
   poweredByLinkLabel: "Cloudflare AI Search",
 })
 
+// Index 1 in the float stack (above WhatsApp)
+const bubbleBottom = floatBottom(1)
+
 const BUBBLE_STYLE = {
   "--search-snippet-primary-color": "#1a1a1a",
   "--search-snippet-primary-hover": "#333333",
@@ -50,9 +49,14 @@ const BUBBLE_STYLE = {
   "--search-snippet-border-radius": "1rem",
   "--search-snippet-font-family":
     "var(--font-sans), ui-sans-serif, system-ui, sans-serif",
-  // Above WhatsApp FAB (bottom-6 right-6, ~3.5rem button)
-  "--chat-bubble-button-bottom": "5.5rem",
-  "--chat-bubble-button-right": "1.5rem",
+  // Match WhatsApp FAB size (48px) — default snippet is 60px
+  "--chat-bubble-button-size": `${FLOAT.fabPx}px`,
+  "--chat-bubble-button-icon-size": "22px",
+  "--chat-bubble-button-shadow":
+    "0 4px 14px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06)",
+  "--chat-bubble-button-bottom": `max(${bubbleBottom}px, calc(env(safe-area-inset-bottom, 0px) + ${bubbleBottom}px))`,
+  "--chat-bubble-button-right": `${FLOAT.edgePx}px`,
+  "--chat-bubble-button-z-index": String(FLOAT_Z.ai),
   "--search-snippet-z-popover": "60",
   "--search-snippet-z-modal": "60",
 } as CSSProperties
