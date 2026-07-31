@@ -394,96 +394,6 @@
 }
 
 /* ---------------------------------------------------------------------------
-   Float FABs — glass treatment (WhatsApp + shared shine)
-   --------------------------------------------------------------------------- */
-.float-fab-glass {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  backdrop-filter: blur(16px) saturate(1.45);
-  -webkit-backdrop-filter: blur(16px) saturate(1.45);
-  transition:
-    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.25s ease,
-    filter 0.25s ease,
-    background 0.25s ease;
-}
-
-.float-fab-glass__shine {
-  position: absolute;
-  inset: 12% 18% auto 18%;
-  height: 32%;
-  border-radius: 999px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.75) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-.float-fab-whatsapp {
-  color: #fff;
-  /* Glass verde mais opaco — legível no mobile sobre fundos claros */
-  background:
-    radial-gradient(
-      120% 90% at 28% 16%,
-      rgba(255, 255, 255, 0.48) 0%,
-      rgba(255, 255, 255, 0.1) 40%,
-      transparent 68%
-    ),
-    linear-gradient(
-      155deg,
-      rgba(55, 220, 120, 0.94) 0%,
-      rgba(37, 211, 102, 0.9) 48%,
-      rgba(22, 170, 80, 0.92) 100%
-    );
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.6),
-    inset 0 -5px 12px rgba(255, 255, 255, 0.1),
-    0 6px 18px rgba(37, 211, 102, 0.35),
-    0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.float-fab-whatsapp:hover {
-  transform: scale(1.06);
-  background:
-    radial-gradient(
-      120% 90% at 28% 16%,
-      rgba(255, 255, 255, 0.55) 0%,
-      rgba(255, 255, 255, 0.12) 40%,
-      transparent 68%
-    ),
-    linear-gradient(
-      155deg,
-      rgba(60, 230, 130, 0.98) 0%,
-      rgba(37, 211, 102, 0.95) 48%,
-      rgba(20, 165, 78, 0.96) 100%
-    );
-  box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.7),
-    inset 0 -5px 12px rgba(255, 255, 255, 0.12),
-    0 8px 22px rgba(37, 211, 102, 0.42),
-    0 2px 8px rgba(0, 0, 0, 0.12);
-}
-
-.float-fab-whatsapp:active {
-  transform: scale(0.97);
-}
-
-/* Soft glass rim on AI Search host (button itself is semi-transparent via vars) */
-.float-ai-glass-host {
-  /* no layout — the custom element positions fixed itself */
-  pointer-events: none;
-}
-
-.float-ai-glass-host chat-bubble-snippet {
-  pointer-events: auto;
-}
-
-/* ---------------------------------------------------------------------------
    Back-to-top — liquid glass droplet (higher contrast + timed settle)
    --------------------------------------------------------------------------- */
 .back-to-top-drop {
@@ -643,9 +553,6 @@
   }
   .back-to-top-drop {
     transition: opacity 0.2s ease !important;
-  }
-  .float-fab-whatsapp:hover {
-    transform: none;
   }
   .reveal,
   .reveal-lift,
