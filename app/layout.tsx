@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { BackToTop } from "@/components/back-to-top"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
+import { AiSearchBubble } from "@/components/ai-search-bubble"
 import { ChunkErrorRecovery } from "@/components/chunk-error-recovery"
 import { WebMcpProvider } from "@/components/webmcp-provider"
 import { buildDesignTokensCss } from "@/lib/design-tokens"
@@ -183,6 +184,7 @@ export default async function RootLayout({
         <WebMcpProvider />
         <ChunkErrorRecovery />
         <BackToTop />
+        <AiSearchBubble />
         <WhatsAppFloat />
       </body>
     </html>
