@@ -45,7 +45,13 @@ function renderBlock(block: PageBlock, contact: ContactConfig) {
 
   switch (block.type) {
     case "hero":
-      return <Hero content={content as HeroContent} design={design as HeroDesign} />
+      return (
+        <Hero
+          content={content as HeroContent}
+          design={design as HeroDesign}
+          contact={contact}
+        />
+      )
     case "symptoms":
       return (
         <SymptomsSection

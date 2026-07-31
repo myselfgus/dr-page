@@ -3,7 +3,7 @@ import Link from "next/link"
 import { AnimatedBackground } from "./animated-background"
 import { StarIcon } from "@/components/blocks/cta-button"
 import { sanitizeInline } from "@/lib/sanitize"
-import { DEFAULT_CONTACT } from "@/lib/site-config"
+import { type ContactConfig, DEFAULT_CONTACT } from "@/lib/site-config"
 
 export interface HeroContent {
   titleLines: string[]
@@ -66,14 +66,17 @@ function isDefaultSplit(lines: string[]) {
 export function Hero({
   content = DEFAULT_CONTENT,
   design = DEFAULT_DESIGN,
+  contact = DEFAULT_CONTACT,
 }: {
   content?: HeroContent
   design?: HeroDesign
+  contact?: ContactConfig
 }) {
   const variant = design.variant ?? "home"
   const showRating =
     (design.showRatingBadge ?? content.showRatingBadge) !== false && variant === "home"
-  const ratingLabel = `${DEFAULT_CONTACT.ratingValue}`.replace(".", ",")
+  const ratingLabel = `${contact.ratingValue ?? DEFAULT_CONTACT.ratingValue}`.replace(".", ",")
+  const reviewCount = contact.reviewCount ?? DEFAULT_CONTACT.reviewCount
 
   if (variant === "home") {
     const raw = content.titleLines?.length ? content.titleLines : [...MOBILE_TITLE]
@@ -131,7 +134,7 @@ export function Hero({
                     {ratingLabel}
                   </span>
                   <span className="text-sm font-emphasis whitespace-nowrap opacity-80">
-                    · {DEFAULT_CONTACT.reviewCount} avaliações na Doctoralia
+                    · {reviewCount} avaliações na Doctoralia
                   </span>
                 </Link>
               </div>
