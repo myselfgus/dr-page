@@ -75,8 +75,10 @@ export function Hero({
   const variant = design.variant ?? "home"
   const showRating =
     (design.showRatingBadge ?? content.showRatingBadge) !== false && variant === "home"
-  const ratingLabel = `${contact.ratingValue ?? DEFAULT_CONTACT.ratingValue}`.replace(".", ",")
-  const reviewCount = contact.reviewCount ?? DEFAULT_CONTACT.reviewCount
+  // Nota/contagem só da D1 (contact) — sem fallback no código (muda com frequência).
+  const ratingValue = contact.ratingValue
+  const reviewCount = contact.reviewCount
+  const ratingLabel = ratingValue ? ratingValue.replace(".", ",") : null
 
   if (variant === "home") {
     const raw = content.titleLines?.length ? content.titleLines : [...MOBILE_TITLE]
@@ -118,7 +120,7 @@ export function Hero({
               </span>
             </h1>
 
-            {/* Badge Doctoralia — subtexto principal */}
+            {/* Badge Doctoralia — subtexto principal (nota/contagem só se vierem do CMS/D1) */}
             {showRating ? (
               <div className="order-2 mb-12 sm:mb-9 animate-fade-up animation-delay-450">
                 <Link
@@ -130,11 +132,15 @@ export function Hero({
                       <StarIcon key={i} className="w-3.5 h-3.5" />
                     ))}
                   </span>
-                  <span className="font-mono font-medium text-sm tabular-nums">
-                    {ratingLabel}
-                  </span>
+                  {ratingLabel ? (
+                    <span className="font-mono font-medium text-sm tabular-nums">
+                      {ratingLabel}
+                    </span>
+                  ) : null}
                   <span className="text-sm font-emphasis whitespace-nowrap opacity-80">
-                    · {reviewCount} avaliações na Doctoralia
+                    {reviewCount
+                      ? `· ${reviewCount} avaliações na Doctoralia`
+                      : "· avaliações na Doctoralia"}
                   </span>
                 </Link>
               </div>

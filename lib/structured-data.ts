@@ -105,13 +105,17 @@ function buildPhysician(contact: ContactConfig, blocks: PageBlock[] = []) {
         name: "Conselho Regional de Medicina do Estado de São Paulo",
       },
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: contact.ratingValue,
-      reviewCount: contact.reviewCount,
-      bestRating: "5",
-      worstRating: "1",
-    },
+    ...(contact.ratingValue && contact.reviewCount
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: contact.ratingValue,
+            reviewCount: contact.reviewCount,
+            bestRating: "5",
+            worstRating: "1",
+          },
+        }
+      : {}),
     ...(reviews.length > 0
       ? {
           review: reviews.map((r) => ({
@@ -198,13 +202,17 @@ function buildMedicalBusiness(contact: ContactConfig) {
         closes: "18:00",
       },
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: contact.ratingValue,
-      reviewCount: contact.reviewCount,
-      bestRating: "5",
-      worstRating: "1",
-    },
+    ...(contact.ratingValue && contact.reviewCount
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: contact.ratingValue,
+            reviewCount: contact.reviewCount,
+            bestRating: "5",
+            worstRating: "1",
+          },
+        }
+      : {}),
   }
 }
 

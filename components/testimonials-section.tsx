@@ -125,8 +125,10 @@ export function TestimonialsSection({
     ? resolveCta(content.sourceCta, contact)
     : resolveCta({ kind: "doctoralia", label: "Ver todas as avaliações na Doctoralia" }, contact)
 
-  const ratingLabel = `${contact?.ratingValue ?? DEFAULT_CONTACT.ratingValue}`.replace(".", ",")
-  const reviewCount = contact?.reviewCount ?? DEFAULT_CONTACT.reviewCount
+  // Nota/contagem só da D1 — sem fallback no código.
+  const ratingValue = contact?.ratingValue
+  const reviewCount = contact?.reviewCount
+  const ratingLabel = ratingValue ? ratingValue.replace(".", ",") : null
   const isSnap = layout === "snap-row"
 
   const scrollerRef = useRef<HTMLDivElement>(null)
@@ -201,11 +203,15 @@ export function TestimonialsSection({
                 className="mt-8 inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-4 rounded-2xl border border-border bg-card px-6 py-4 shadow-card hover:shadow-card-hover transition-shadow"
               >
                 <Stars count={5} />
-                <span className="font-serif text-2xl sm:text-3xl font-light text-foreground">
-                  {ratingLabel}
-                </span>
+                {ratingLabel ? (
+                  <span className="font-serif text-2xl sm:text-3xl font-light text-foreground">
+                    {ratingLabel}
+                  </span>
+                ) : null}
                 <span className="text-sm text-muted-foreground">
-                  · {reviewCount} avaliações na Doctoralia
+                  {reviewCount
+                    ? `· ${reviewCount} avaliações na Doctoralia`
+                    : "· avaliações na Doctoralia"}
                 </span>
               </a>
             </Reveal>

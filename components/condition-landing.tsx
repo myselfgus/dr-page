@@ -63,7 +63,7 @@ export function ConditionLandingView({ landing }: { landing: ConditionLanding })
               </div>
               <p className="mt-6 text-sm text-muted-foreground inline-flex items-center gap-2">
                 <StarIcon className="w-4 h-4 text-[#00c3a5]" />
-                {DEFAULT_CONTACT.ratingValue} · {DEFAULT_CONTACT.reviewCount} avaliações na Doctoralia
+                Avaliações na Doctoralia
               </p>
             </Reveal>
             <Reveal variant="right">

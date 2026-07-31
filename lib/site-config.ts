@@ -26,8 +26,9 @@ export interface ContactConfig {
     lng: string
   }
   mapEmbed: string
-  reviewCount: string
-  ratingValue: string
+  /** Só na D1 (`site_config.contact`) — não versionar no código; muda com frequência. */
+  reviewCount?: string
+  ratingValue?: string
 }
 
 export interface NavConfig {
@@ -63,8 +64,6 @@ export const DEFAULT_CONTACT: ContactConfig = {
   },
   mapEmbed:
     "https://www.google.com/maps?q=Cl%C3%ADnica%20Doutor%20Hegg%2C%20Rua%20Dr.%20Hegg%2C%20492%20-%20Vila%20Arens%2C%20Jundia%C3%AD%20-%20SP%2C%2013202-544&hl=pt-BR&z=16&output=embed",
-  reviewCount: "20",
-  ratingValue: "5.0",
 }
 
 export const DEFAULT_NAV: NavConfig = {
