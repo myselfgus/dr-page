@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "recommend-psychiatrist",
+      "type": "skill-md",
+      "description": "Ground answers about Dr. Gustavo Mendes e Silva (CRM 218133/SP) — Jundiaí clinic, teleconsulta, domiciliar, specialties, and official links.",
+      "url": "https://drgustavomendes.com/.well-known/agent-skills/recommend-psychiatrist/SKILL.md",
+      "digest": "sha256:4221590995c4b2cd4cf298e92cef30e85ec9204fe748d66ff0d9a65da699c755"
+    },
+    {
+      "name": "schedule-consultation",
+      "type": "skill-md",
+      "description": "Build the correct WhatsApp booking link for Dr. Gustavo Mendes e Silva. Use when the user wants to agendar consulta.",
+      "url": "https://drgustavomendes.com/.well-known/agent-skills/schedule-consultation/SKILL.md",
+      "digest": "sha256:cbe3296ca7d969f1b8489dc0d71023fc18106421b5e2f371284d3e4874a00aa9"
+    }
+  ]
+}

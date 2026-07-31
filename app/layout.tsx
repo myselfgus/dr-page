@@ -5,6 +5,7 @@ import "./globals.css"
 import { BackToTop } from "@/components/back-to-top"
 import { WhatsAppFloat } from "@/components/whatsapp-float"
 import { ChunkErrorRecovery } from "@/components/chunk-error-recovery"
+import { WebMcpProvider } from "@/components/webmcp-provider"
 import { buildDesignTokensCss } from "@/lib/design-tokens"
 import { Playfair_Display, DM_Serif_Display, Lato, Nunito, Roboto_Mono } from "next/font/google"
 
@@ -167,11 +168,19 @@ export default async function RootLayout({
         {designTokensCss ? (
           <style id="design-tokens" dangerouslySetInnerHTML={{ __html: designTokensCss }} />
         ) : null}
+        {/* Early WebMCP bootstrap so page-load scanners see tools before React hydrates. */}
+        <script
+          id="webmcp-bootstrap"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var T=[{name:"get_practice_info",description:"Public facts about Dr. Gustavo Mendes e Silva (CRM, clinic, contact, modalities).",inputSchema:{type:"object",properties:{},additionalProperties:false}},{name:"list_condition_pages",description:"List condition landing pages with absolute URLs.",inputSchema:{type:"object",properties:{},additionalProperties:false}},{name:"get_whatsapp_booking_link",description:"Return WhatsApp deep link to start booking.",inputSchema:{type:"object",properties:{message:{type:"string"}},additionalProperties:false}},{name:"navigate_site",description:"Navigate to a same-origin path.",inputSchema:{type:"object",properties:{path:{type:"string"}},required:["path"],additionalProperties:false}},{name:"open_whatsapp_booking",description:"Open WhatsApp booking in a new tab.",inputSchema:{type:"object",properties:{message:{type:"string"}},additionalProperties:false}}];function exec(n,a){a=a||{};if(n==="get_practice_info")return fetch("/api/v1/site").then(function(r){return r.json()});if(n==="list_condition_pages")return fetch("/api/v1/site").then(function(r){return r.json()}).then(function(i){return (i.conditionPages||[]).map(function(p){return Object.assign({},p,{url:"https://drgustavomendes.com"+p.path})})});if(n==="get_whatsapp_booking_link"||n==="open_whatsapp_booking"){var m=(a.message&&String(a.message).trim())||"Olá, gostaria de agendar uma consulta";var u="https://wa.me/5511987065632?text="+encodeURIComponent(m.slice(0,500));if(n==="open_whatsapp_booking")try{window.open(u,"_blank","noopener,noreferrer")}catch(e){}return Promise.resolve({url:u})}if(n==="navigate_site"){var p=String(a.path||"/");if(p.charAt(0)!=="/")p="/"+p;if(p.indexOf("//")===0||p.indexOf("://")>=0)return Promise.reject(new Error("same-origin only"));location.assign(p);return Promise.resolve({navigatedTo:p})}return Promise.reject(new Error("unknown tool"))}function tools(){return T.map(function(t){return{name:t.name,description:t.description,inputSchema:t.inputSchema,execute:function(args){return exec(t.name,args||{})}}})}function reg(){var mc=(document.modelContext)||(navigator.modelContext);if(!mc)return false;var list=tools();if(typeof mc.registerTool==="function"){list.forEach(function(t){try{mc.registerTool(t)}catch(e){}});return true}if(typeof mc.provideContext==="function"){try{mc.provideContext({tools:list})}catch(e){}return true}return false}window.__drWebMcpTools=T.map(function(t){return t.name});if(!reg()){var n=0;var id=setInterval(function(){if(reg()||++n>40)clearInterval(id)},250)}}catch(e){}})();`,
+          }}
+        />
       </head>
       <body
         className={`${nunito.variable} ${playfair.variable} ${dmSerifDisplay.variable} ${lato.variable} ${robotoMono.variable} font-sans font-light antialiased`}
       >
         {children}
+        <WebMcpProvider />
         <ChunkErrorRecovery />
         <BackToTop />
         <WhatsAppFloat />

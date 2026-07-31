@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
+import { formatLinkHeader, HOMEPAGE_LINK_HEADERS } from "@/lib/agent-discovery"
 
 const APEX = "drgustavomendes.com"
 
@@ -33,6 +34,11 @@ export function middleware(request: NextRequest) {
       "Cache-Control",
       "public, s-maxage=60, stale-while-revalidate=300, must-revalidate",
     )
+  }
+
+  // RFC 8288 Link headers for agent discovery (homepage + top-level docs).
+  if (path === "/" || path === "") {
+    response.headers.set("Link", formatLinkHeader(HOMEPAGE_LINK_HEADERS))
   }
 
   return response
