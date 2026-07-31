@@ -6,7 +6,8 @@ import { FLOAT, FLOAT_INDEX, FLOAT_Z, floatBottom } from "@/lib/float-stack"
 
 /**
  * Cloudflare AI Search chat bubble (RAG).
- * Lowest in the float column (below WhatsApp). Glass-tinted FAB.
+ * Lowest in the float column (below WhatsApp).
+ * Toggle = light glass FAB; conversation panel = solid frosted glass (not see-through).
  */
 
 const AI_SEARCH_ORIGIN =
@@ -38,43 +39,51 @@ const TRANSLATIONS = JSON.stringify({
 const bubbleBottom = floatBottom(FLOAT_INDEX.ai)
 
 const BUBBLE_STYLE = {
-  "--search-snippet-primary-color": "rgba(26, 26, 26, 0.52)",
-  "--search-snippet-primary-hover": "rgba(26, 26, 26, 0.72)",
-  "--search-snippet-focus-ring": "rgba(255, 255, 255, 0.55)",
-  "--search-snippet-background": "rgba(250, 250, 249, 0.92)",
-  "--search-snippet-surface": "rgba(255, 255, 255, 0.94)",
+  // Toggle FAB — soft glass (semi-transparent dark)
+  "--search-snippet-primary-color": "rgba(26, 26, 26, 0.58)",
+  "--search-snippet-primary-hover": "rgba(26, 26, 26, 0.78)",
+  "--search-snippet-focus-ring": "rgba(26, 26, 26, 0.12)",
+  // Conversation panel — solid frosted glass (readable, not transparent)
+  "--search-snippet-background": "#ffffff",
+  "--search-snippet-surface": "#f6f5f2",
+  "--search-snippet-hover-background": "#efeeea",
   "--search-snippet-text-color": "#1a1a1a",
-  "--search-snippet-text-secondary": "#5c5c5c",
-  "--search-snippet-border-radius": "1rem",
+  "--search-snippet-text-secondary": "#5a5a5a",
+  "--search-snippet-text-description": "#3d3d3d",
+  "--search-snippet-border-color": "rgba(0, 0, 0, 0.08)",
+  "--search-snippet-border-radius": "1.1rem",
+  "--search-snippet-shadow-lg":
+    "0 18px 50px rgba(0,0,0,0.14), 0 4px 14px rgba(0,0,0,0.06)",
   "--search-snippet-font-family":
     "var(--font-sans), ui-sans-serif, system-ui, sans-serif",
   "--chat-bubble-button-size": `${FLOAT.fabPx}px`,
   "--chat-bubble-button-icon-size": "20px",
-  "--chat-bubble-button-icon-color": "rgba(255, 255, 255, 0.95)",
+  "--chat-bubble-button-icon-color": "rgba(255, 255, 255, 0.96)",
   "--chat-bubble-button-radius": "50%",
   "--chat-bubble-button-shadow":
-    "inset 0 1px 1px rgba(255,255,255,0.35), inset 0 -4px 10px rgba(255,255,255,0.06), 0 4px 18px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.06)",
-  "--chat-bubble-button-bottom": `max(${bubbleBottom}px, calc(env(safe-area-inset-bottom, 0px) + ${bubbleBottom}px))`,
-  "--chat-bubble-button-right": `${FLOAT.edgePx}px`,
+    "inset 0 1px 1px rgba(255,255,255,0.4), inset 0 -4px 10px rgba(255,255,255,0.08), 0 4px 16px rgba(0,0,0,0.14)",
+  "--chat-bubble-window-shadow":
+    "0 20px 56px rgba(0,0,0,0.16), 0 4px 16px rgba(0,0,0,0.06)",
+  "--chat-bubble-button-bottom": `calc(${bubbleBottom}px + env(safe-area-inset-bottom, 0px))`,
+  "--chat-bubble-button-right": `calc(${FLOAT.edgePx}px + env(safe-area-inset-right, 0px))`,
+  // Keep under WhatsApp (10050)
   "--chat-bubble-button-z-index": String(FLOAT_Z.ai),
-  "--search-snippet-z-popover": "60",
-  "--search-snippet-z-modal": "60",
+  "--search-snippet-z-popover": "10040",
+  "--search-snippet-z-modal": "10040",
+  "--search-snippet-z-dropdown": "10040",
 } as CSSProperties
 
 export function AiSearchBubble() {
   return (
     <>
       <Script src={SNIPPET_SRC} type="module" strategy="lazyOnload" />
-      {/* Glass sheen overlay for the host — button itself is styled via CSS vars */}
-      <div className="float-ai-glass-host" aria-hidden={false}>
-        {/* @ts-expect-error custom element from AI Search snippet */}
-        <chat-bubble-snippet
-          api-url={`${AI_SEARCH_ORIGIN}/`}
-          theme="light"
-          translations={TRANSLATIONS}
-          style={BUBBLE_STYLE}
-        />
-      </div>
+      {/* @ts-expect-error custom element from AI Search snippet */}
+      <chat-bubble-snippet
+        api-url={`${AI_SEARCH_ORIGIN}/`}
+        theme="light"
+        translations={TRANSLATIONS}
+        style={BUBBLE_STYLE}
+      />
     </>
   )
 }

@@ -18,10 +18,11 @@ export function WhatsAppFloat() {
       href={wa.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="float-fab-glass float-fab-whatsapp fixed z-50 flex items-center justify-center rounded-full group"
+      className="float-fab-glass float-fab-whatsapp fixed flex items-center justify-center rounded-full group"
       style={{
-        bottom: `max(${bottom}px, calc(env(safe-area-inset-bottom, 0px) + ${bottom}px))`,
-        right: FLOAT.edgePx,
+        // Keep above AI Search bubble (snippet defaults to z-index 9999)
+        bottom: `calc(${bottom}px + env(safe-area-inset-bottom, 0px))`,
+        right: `calc(${FLOAT.edgePx}px + env(safe-area-inset-right, 0px))`,
         width: size,
         height: size,
         zIndex: FLOAT_Z.whatsapp,

@@ -78,8 +78,8 @@ export function BackToTop() {
       data-phase={phase === "hidden" ? "settle" : phase}
       data-shimmer={shimmer ? "true" : "false"}
       style={{
-        bottom: `max(${bottom}px, calc(env(safe-area-inset-bottom, 0px) + ${bottom}px))`,
-        right,
+        bottom: `calc(${bottom}px + env(safe-area-inset-bottom, 0px))`,
+        right: `calc(${right}px + env(safe-area-inset-right, 0px))`,
         width: FLOAT.backPx,
         height: FLOAT.backPx,
         zIndex: FLOAT_Z.back,

@@ -43,7 +43,7 @@ avaliações `text-[#00c3a5]` com ícone estrela, "Ver avaliações na Doctorali
   whatsappDefaultText:"Olá, gostaria de agendar uma consulta", email:"contato@drgustavomendes.com",
   doctoralia:"https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai", crm:"CRM 218133/SP",
   address:{clinic,street,cityLine,locality:"Jundiaí",region:"SP",postalCode:"13202-544",country:"BR",lat:"-23.1996",lng:"-46.8764"},
-  mapEmbed:"<iframe src do Google Maps atual>", reviewCount:"17", ratingValue:"5.0" }`
+  mapEmbed:"<iframe src do Google Maps atual>", reviewCount:"19", ratingValue:"5.0" }`
 - `nav`: `{ items:[{label,href}] }` (Teleconsulta, Domiciliar, Blog, Sobre, Contato). Footer usa label "Atendimento domiciliar" e inclui Blog.
 - `brand`: `{ name:"Dr. Gustavo Mendes e Silva", crm:"CRM 218133/SP", tagline:"Psiquiatria humanizada, com escuta atenta e atendimento domiciliar quando necessário." }`
 

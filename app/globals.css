@@ -426,24 +426,25 @@
 
 .float-fab-whatsapp {
   color: #fff;
+  /* Glass verde mais opaco — legível no mobile sobre fundos claros */
   background:
     radial-gradient(
       120% 90% at 28% 16%,
-      rgba(255, 255, 255, 0.42) 0%,
-      rgba(255, 255, 255, 0.08) 42%,
-      transparent 70%
+      rgba(255, 255, 255, 0.48) 0%,
+      rgba(255, 255, 255, 0.1) 40%,
+      transparent 68%
     ),
     linear-gradient(
       155deg,
-      rgba(55, 220, 120, 0.82) 0%,
-      rgba(37, 211, 102, 0.72) 48%,
-      rgba(22, 170, 80, 0.78) 100%
+      rgba(55, 220, 120, 0.94) 0%,
+      rgba(37, 211, 102, 0.9) 48%,
+      rgba(22, 170, 80, 0.92) 100%
     );
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.55),
-    inset 0 -5px 12px rgba(255, 255, 255, 0.08),
-    0 6px 18px rgba(37, 211, 102, 0.28),
-    0 2px 6px rgba(0, 0, 0, 0.08);
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -5px 12px rgba(255, 255, 255, 0.1),
+    0 6px 18px rgba(37, 211, 102, 0.35),
+    0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .float-fab-whatsapp:hover {
@@ -451,21 +452,21 @@
   background:
     radial-gradient(
       120% 90% at 28% 16%,
-      rgba(255, 255, 255, 0.5) 0%,
-      rgba(255, 255, 255, 0.1) 42%,
-      transparent 70%
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.12) 40%,
+      transparent 68%
     ),
     linear-gradient(
       155deg,
-      rgba(60, 230, 130, 0.9) 0%,
-      rgba(37, 211, 102, 0.82) 48%,
-      rgba(20, 165, 78, 0.88) 100%
+      rgba(60, 230, 130, 0.98) 0%,
+      rgba(37, 211, 102, 0.95) 48%,
+      rgba(20, 165, 78, 0.96) 100%
     );
   box-shadow:
-    inset 0 1px 1px rgba(255, 255, 255, 0.65),
-    inset 0 -5px 12px rgba(255, 255, 255, 0.1),
-    0 8px 22px rgba(37, 211, 102, 0.36),
-    0 2px 8px rgba(0, 0, 0, 0.1);
+    inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    inset 0 -5px 12px rgba(255, 255, 255, 0.12),
+    0 8px 22px rgba(37, 211, 102, 0.42),
+    0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 .float-fab-whatsapp:active {
