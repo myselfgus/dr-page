@@ -86,6 +86,14 @@ export function getPublicPracticeInfo() {
       doctoralia:
         "https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai",
     },
+    socialProof: {
+      source: "Doctoralia",
+      ratingValue: 5,
+      bestRating: 5,
+      reviewCount: 21,
+      profileUrl:
+        "https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai",
+    },
     modalities: [
       {
         id: "presencial",
