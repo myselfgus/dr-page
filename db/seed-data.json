@@ -1438,6 +1438,27 @@
         "subtitle": "Depoimentos públicos de pacientes na Doctoralia. Textos reproduzidos com fidelidade, sem edição de sentido.",
         "items": [
           {
+            "author": "S.",
+            "rating": 5,
+            "body": "Consulta excelente, foi profissional, muito atencioso e o tratamento está dando efeito",
+            "date": "2026-08-07",
+            "source": "Doctoralia"
+          },
+          {
+            "author": "J.G.L.",
+            "rating": 5,
+            "body": "Profissional muito atencioso, a consulta vai muito além de somente prescrever medicação, mas sim entender de fato as causas e o impacto real no dia a dia.",
+            "date": "2026-08-07",
+            "source": "Doctoralia"
+          },
+          {
+            "author": "J.S.",
+            "rating": 5,
+            "body": "Dr. Gustavo, com seu excelente atendimento sendo humanizado, cuidadoso e atencioso. Procura a melhor abordagem para meu diagnóstico, TPB o que para mim foi sempre muito difícil encontrar profissional que saiba conduzir uma boa abordagem. Parabéns pelo profissionalismo e cuidado.",
+            "date": "2026-08-04",
+            "source": "Doctoralia"
+          },
+          {
             "author": "M.B.M.",
             "rating": 5,
             "body": "Pela primeira vez me sinto a vontade com um psiquiatra. Ele é atencioso demais, além de deixar a consulta leve, sei que posso levar meus medos até ele e que juntos ele vai me ajudar a achar o melhor caminho.",

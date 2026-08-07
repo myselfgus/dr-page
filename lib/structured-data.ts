@@ -51,6 +51,7 @@ interface ReviewLike {
   rating?: number
   body: string
   date?: string
+  source?: string
 }
 
 function extractReviews(blocks: PageBlock[]): ReviewLike[] {
@@ -129,6 +130,12 @@ function buildPhysician(contact: ContactConfig, blocks: PageBlock[] = []) {
             },
             reviewBody: r.body,
             ...(r.date ? { datePublished: r.date.length === 7 ? `${r.date}-01` : r.date } : {}),
+            ...(r.source
+              ? {
+                  publisher: { "@type": "Organization", name: r.source },
+                  url: contact.doctoralia,
+                }
+              : {}),
           })),
         }
       : {}),

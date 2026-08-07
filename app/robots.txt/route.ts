@@ -42,6 +42,26 @@ User-agent: OAI-SearchBot
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 Allow: /
 
+User-agent: OAI-AdsBot
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+
+User-agent: facebookexternalhit
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+
+User-agent: FacebookBot
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+Allow: /
+
 User-agent: ClaudeBot
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 Allow: /
