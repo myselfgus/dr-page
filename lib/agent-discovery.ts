@@ -90,11 +90,18 @@ export function getPublicPracticeInfo() {
       source: "Doctoralia",
       ratingValue: 5,
       bestRating: 5,
-      reviewCount: 23,
-      verifiedAt: "2026-08-07",
+      reviewCount: 24,
+      verifiedAt: "2026-08-08",
       profileUrl:
         "https://www.doctoralia.com.br/gustavo-mendes-e-silva/psiquiatra/jundiai",
       featuredReviews: [
+        {
+          authorInitials: "I.S.",
+          ratingValue: 5,
+          reviewBody:
+            "Dr. Gustavo é um ótimo profissional, super atencioso e sempre atento na escuta e necessidades dos pacientes, busca sempre entender o que está acontecendo, se o tratamento está sendo eficaz e realiza os ajustes nas medicações conforme necessário, o atendimento é sempre muito humano e atencioso. Um profissional incrível.",
+          datePublished: "2026-08-07",
+        },
         {
           authorInitials: "S.",
           ratingValue: 5,
@@ -108,13 +115,6 @@ export function getPublicPracticeInfo() {
           reviewBody:
             "Profissional muito atencioso, a consulta vai muito além de somente prescrever medicação, mas sim entender de fato as causas e o impacto real no dia a dia.",
           datePublished: "2026-08-07",
-        },
-        {
-          authorInitials: "J.S.",
-          ratingValue: 5,
-          reviewBody:
-            "Dr. Gustavo, com seu excelente atendimento sendo humanizado, cuidadoso e atencioso. Procura a melhor abordagem para meu diagnóstico, TPB o que para mim foi sempre muito difícil encontrar profissional que saiba conduzir uma boa abordagem. Parabéns pelo profissionalismo e cuidado.",
-          datePublished: "2026-08-04",
         },
       ],
     },

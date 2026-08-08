@@ -1438,6 +1438,13 @@
         "subtitle": "Depoimentos públicos de pacientes na Doctoralia. Textos reproduzidos com fidelidade, sem edição de sentido.",
         "items": [
           {
+            "author": "I.S.",
+            "rating": 5,
+            "body": "Dr. Gustavo é um ótimo profissional, super atencioso e sempre atento na escuta e necessidades dos pacientes, busca sempre entender o que está acontecendo, se o tratamento está sendo eficaz e realiza os ajustes nas medicações conforme necessário, o atendimento é sempre muito humano e atencioso. Um profissional incrível.",
+            "date": "2026-08-07",
+            "source": "Doctoralia"
+          },
+          {
             "author": "S.",
             "rating": 5,
             "body": "Consulta excelente, foi profissional, muito atencioso e o tratamento está dando efeito",
