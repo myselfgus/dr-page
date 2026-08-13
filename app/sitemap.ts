@@ -9,7 +9,7 @@ export const revalidate = 600
 
 // Keep <lastmod> truthful: Google uses it only when it reflects a real,
 // significant update. The homepage changed with the latest public reviews.
-const HOME_LAST_MODIFIED = new Date("2026-08-08")
+const HOME_LAST_MODIFIED = new Date("2026-08-13")
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
