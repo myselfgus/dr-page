@@ -47,3 +47,8 @@ wrangler.toml.bak
 # Cloudflare
 cloudflare-env.d.ts
 scripts/_import-posts.sql
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules

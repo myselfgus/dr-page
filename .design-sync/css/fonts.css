@@ -1,0 +1,11 @@
+/* Brand families. In the app these are self-hosted by next/font/google;
+   the design bundle loads them from the font host at runtime. */
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Lato:wght@300;400;700;900&family=Nunito:wght@200..1000&family=Roboto+Mono:wght@100..700&display=swap");
+
+:root {
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-emphasis: "Lato", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, monospace;
+}

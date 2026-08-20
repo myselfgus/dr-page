@@ -1,0 +1,50 @@
+{
+  "projectId": "3092d010-78d8-42d3-9d21-4f82c25afea0",
+  "shape": "package",
+  "pkg": "drgustavomendes-ui",
+  "globalName": "DrGustavoDS",
+  "entry": "./.design-sync/.cache/dts/index.ts",
+  "srcDir": "../../../components",
+  "tsconfig": "../../tsconfig.sync.json",
+  "cssEntry": "./styles.css",
+  "componentSrcMap": {
+    "Button": "../../../components/ui/button.tsx",
+    "Card": "../../../components/ui/card.tsx",
+    "Input": "../../../components/ui/input.tsx",
+    "Textarea": "../../../components/ui/textarea.tsx",
+    "CtaButton": "../../../components/blocks/cta-button.tsx",
+    "FeatureCards": "../../../components/blocks/FeatureCards.tsx",
+    "PricingCta": "../../../components/blocks/PricingCta.tsx",
+    "RichTextBlock": "../../../components/blocks/RichTextBlock.tsx",
+    "Reveal": "../../../components/reveal.tsx",
+    "Icon": "../../../components/blocks/icon-map.tsx",
+    "CardHeader": null,
+    "CardFooter": null,
+    "CardTitle": null,
+    "CardAction": null,
+    "CardDescription": null,
+    "CardContent": null,
+    "WhatsAppIcon": null,
+    "StarIcon": null,
+    "PriceBadge": null
+  },
+  "dtsPropsFor": {
+    "CtaButton": "  /** Already-resolved CTA (see resolveCta in the app). */\n  cta: { kind: \"whatsapp\" | \"phone\" | \"email\" | \"doctoralia\" | \"internal\"; label: string; href: string; external: boolean };\n  /** Ignored for kind=\"doctoralia\", which always renders the teal reviews link. */\n  variant?: \"primary\" | \"outline\" | \"whatsapp-block\";\n  className?: string;",
+    "FeatureCards": "  content: { items: Array<{ iconName?: string; title: string; text: string; image?: string; imageAlt?: string }>; bannerImage?: string; bannerAlt?: string };\n  design?: { columns?: 1 | 2 | 3 };",
+    "PricingCta": "  content: { heading: string; iconName?: string; note?: string; steps?: Array<{ iconName?: string; text: string }>; /** Never rendered — the component hard-codes showPrices=false. */\n  prices?: Array<{ label: string; value: string }>; footnotes?: string[]; cta: { kind: \"whatsapp\" | \"phone\" | \"email\" | \"doctoralia\" | \"internal\"; label: string; text?: string; href?: string } };\n  design?: { variant?: \"prices-only\" | \"how-it-works\"; showSteps?: boolean; showPrices?: boolean };\n  contact?: { phoneDisplay: string; phoneTel: string; whatsappNumber: string; whatsappDefaultText: string; email: string; doctoralia: string; instagram?: string; facebook?: string; crm: string; address: { clinic: string; street: string; cityLine: string; locality: string; region: string; postalCode: string; country: string; lat: string; lng: string }; mapEmbed: string; reviewCount?: string; ratingValue?: string };",
+    "RichTextBlock": "  content: { heading?: string; iconName?: string; intro?: string; paras?: string[]; cards?: Array<{ title?: string; titleIcon?: string; titleSize?: \"sm\" | \"base\" | \"xl\"; paras?: string[]; items?: string[]; groups?: Array<{ text: string; sub?: string; emphasize?: boolean }>; groupColumns?: 1 | 2 }> };\n  design?: { variant?: \"card\" | \"card-grid\" | \"card-stack\" | \"plain\"; columns?: 1 | 2 | 3 };"
+  },
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "RichTextBlock": {
+      "cardMode": "column"
+    },
+    "FeatureCards": {
+      "cardMode": "column"
+    },
+    "PricingCta": {
+      "cardMode": "column"
+    }
+  },
+  "docsDir": "../../docs"
+}

@@ -1,0 +1,13 @@
+@import "../../app/globals.css";
+@import "./fonts.css";
+
+@source "../../components";
+@source "../../.design-sync/previews";
+
+/* Safelist: the design agent composes its own layout with these token
+   utilities, so they must exist in the emitted CSS even when no repo file
+   happens to use them today. */
+@source inline("{bg,text,border,ring,fill,stroke,divide}-{background,foreground,card,card-foreground,popover,popover-foreground,primary,primary-foreground,secondary,secondary-foreground,muted,muted-foreground,accent,accent-foreground,destructive,destructive-foreground,border,input,ring}");
+@source inline("{rounded,rounded-t,rounded-b}-{none,sm,md,lg,xl,2xl,3xl,full}");
+@source inline("shadow-{xs,sm,md,lg,card,card-hover,none}");
+@source inline("font-{display,serif,emphasis,sans,mono}");
