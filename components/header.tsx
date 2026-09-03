@@ -51,7 +51,7 @@ export function Header({
             {brandName}
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+          <nav className="hidden xl:flex items-center gap-5">
             {items.map((item) => (
               <Link
                 key={item.href}
@@ -71,7 +71,7 @@ export function Header({
             </Link>
           </nav>
 
-          <div className="flex items-center gap-1.5 md:hidden">
+          <div className="flex items-center gap-1.5 xl:hidden">
             <Link
               href={NEURO_BASE}
               className="inline-flex items-center opacity-90 hover:opacity-100 transition-opacity p-0.5"
@@ -92,7 +92,7 @@ export function Header({
         </div>
 
         {isMenuOpen ? (
-          <nav className="md:hidden py-4 border-t border-border">
+          <nav className="xl:hidden py-4 border-t border-border">
             <div className="flex flex-col gap-4">
               {items.map((item) => (
                 <Link

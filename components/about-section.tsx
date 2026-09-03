@@ -30,12 +30,12 @@ export const DEFAULT_CONTENT: AboutContent = {
   formacaoParas: [
     "Acredito que o cuidado psiquiátrico exige <strong>tempo, escuta atenta</strong> e uma compreensão profunda das circunstâncias únicas de cada paciente. Cada pessoa traz consigo uma <strong>história complexa</strong> que merece ser ouvida integralmente.",
     "Dedico a cada consulta <strong>o tempo necessário</strong> para conhecer verdadeiramente cada pessoa, compreender sua história e construir um plano terapêutico adequado.",
-    "Especializado em <strong>Psiquiatria, Medicina Canabinoide, Transtornos do Sono, Dependência Química, Terapia ACT e Cuidados Paliativos</strong>, ofereço uma abordagem abrangente e integrada ao cuidado em saúde mental.",
+    "Minha prática inclui <strong>Psiquiatria, TDAH em adultos, Medicina Canabinoide, Transtornos do Sono, Dependência Química, Terapia ACT e Cuidados Paliativos</strong>, em uma abordagem integrada ao cuidado em saúde mental.",
   ],
   diferenciaisTitle: "Diferenciais",
   diferenciaisParas: [
     "Meu compromisso é olhar para você por inteiro — não apenas o sintoma, mas o contexto que o cerca: <strong>trabalho, sono, relações, história</strong>. E com um objetivo claro desde o começo: <strong>devolver sua autonomia</strong>. Não quero te manter em tratamento para sempre.",
-    "Para <strong>pacientes autistas, idosos</strong> e aqueles com dificuldades de locomoção, ofereço <strong>atendimento domiciliar</strong>. O ambiente familiar permite uma avaliação mais completa e confortável, garantindo que o cuidado chegue a quem realmente precisa.",
+    "Quando indicado, o plano pode integrar <strong>manejo medicamentoso e acompanhamento psicoterapêutico</strong>, com objetivos claros, reavaliação e decisões compartilhadas.",
   ],
 }
 

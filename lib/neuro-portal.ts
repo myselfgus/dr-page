@@ -42,7 +42,7 @@ export const NEURO_PAGES: Record<string, NeuroPage> = {
     path: NEURO_BASE,
     title: "Neurodivergência e TEA | Dr. Gustavo Mendes",
     description:
-      "Espaço do Dr. Gustavo Mendes e Silva — psiquiatra e autista — sobre TEA, neurodivergência e cuidado sem pressa. Jundiaí, teleconsulta e domiciliar.",
+      "Espaço do Dr. Gustavo Mendes e Silva — psiquiatra e autista — sobre TEA, neurodivergência e cuidado sem pressa. Jundiaí e teleconsulta.",
     eyebrow: "Portal · Neurodivergência",
     h1: "Um espaço para quem pensa, sente e processa o mundo de outro modo",
     lead:
@@ -61,7 +61,7 @@ export const NEURO_PAGES: Record<string, NeuroPage> = {
         heading: "Adultos, famílias e quem cuida",
         paras: [
           "Adultos que suspeitam de TEA ou já têm diagnóstico e querem um acompanhamento que entenda máscara, burnout autista, ansiedade e sono.",
-          "Famílias e cuidadores que precisam de escuta real — inclusive em domicílio, quando sair de casa não é o melhor caminho.",
+          "Famílias e cuidadores que precisam de escuta real e de orientação aplicável à rotina.",
           "Não prometo atalhos. Ofereço presença, clareza e um plano alinhado aos seus valores.",
         ],
       },
@@ -69,7 +69,7 @@ export const NEURO_PAGES: Record<string, NeuroPage> = {
         kicker: "Como entrar",
         heading: "Escolha o caminho que mais se parece com você",
         paras: [
-          "Nas páginas deste portal você encontra o que costumo discutir no consultório: adultos autistas, o lugar da família, e como o cuidado acontece na prática — presencial, por vídeo ou em casa.",
+          "Nas páginas deste portal você encontra o que costumo discutir no consultório: adultos autistas, o lugar da família e como o cuidado acontece na prática — presencialmente ou por vídeo.",
           "Quando fizer sentido conversar, o WhatsApp continua sendo a porta. Sem formulário clínico, sem pressa de rotular.",
         ],
       },
@@ -106,10 +106,10 @@ export const NEURO_PAGES: Record<string, NeuroPage> = {
       },
       {
         kicker: "Modalidades",
-        heading: "Presencial, teleconsulta ou domiciliar",
+        heading: "Presencial ou por teleconsulta",
         paras: [
-          "Quem prefere o ambiente controlado de casa pode se beneficiar da teleconsulta ou do atendimento domiciliar — especialmente quando deslocamento, salas de espera ou luz/ruído pesam demais.",
-          "Combinamos o formato pelo WhatsApp, com transparência sobre o que cabe em cada modalidade.",
+          "Quem prefere um ambiente controlado pode se beneficiar da teleconsulta — especialmente quando deslocamento, salas de espera ou luz e ruído pesam demais.",
+          "O atendimento também pode ser presencial em Jundiaí. Combinamos o formato pelo WhatsApp, com transparência sobre o que cabe em cada modalidade.",
         ],
       },
     ],
@@ -121,7 +121,7 @@ export const NEURO_PAGES: Record<string, NeuroPage> = {
     path: `${NEURO_BASE}/familias`,
     title: "Famílias e cuidadores | Portal Neurodivergência",
     description:
-      "Cuidado psiquiátrico que inclui a família e o cuidador: crianças, adolescentes e adultos com TEA. Atendimento em binômio e domiciliar quando fizer sentido.",
+      "Cuidado psiquiátrico que inclui a família e o cuidador: crianças, adolescentes e adultos com TEA, presencialmente em Jundiaí ou por teleconsulta.",
     eyebrow: "02 · Famílias",
     h1: "Cuidar de quem cuida também é parte do tratamento",
     lead:
@@ -132,7 +132,7 @@ export const NEURO_PAGES: Record<string, NeuroPage> = {
         heading: "Atendimento em binômio",
         paras: [
           "Com crianças e adolescentes, o cuidado é feito em binômio: cuidador e jovem acompanhados juntos. Assim entendemos o sistema inteiro — e cuidamos de quem cuida, não só de quem “é o paciente”.",
-          "O ambiente familiar, quando possível, permite ver o contexto real: sensores, rotinas, o que acalma e o que sobrecarrega.",
+          "A rotina familiar entra na avaliação: sensibilidades, organização do dia, o que acalma e o que sobrecarrega.",
         ],
       },
       {
@@ -144,11 +144,11 @@ export const NEURO_PAGES: Record<string, NeuroPage> = {
         ],
       },
       {
-        kicker: "Domiciliar",
-        heading: "Quando ir até vocês faz mais sentido",
+        kicker: "Formato",
+        heading: "Um cuidado que considera a rotina da família",
         paras: [
-          "Para autistas, idosos ou pessoas com dificuldade de locomoção, o atendimento domiciliar em Jundiaí e região pode ser o caminho mais humano.",
-          "Combinamos endereço, dia e o que esperar da visita — sempre pelo WhatsApp, com tempo para dúvidas antes.",
+          "O atendimento pode acontecer presencialmente em Jundiaí ou por teleconsulta. Em ambos os formatos, família, escola, trabalho e ambiente entram na conversa quando são relevantes.",
+          "Combinamos o formato e o que esperar da consulta pelo WhatsApp, com tempo para dúvidas antes.",
         ],
       },
     ],
@@ -160,7 +160,7 @@ export const NEURO_PAGES: Record<string, NeuroPage> = {
     path: `${NEURO_BASE}/cuidado`,
     title: "Como cuido | Portal Neurodivergência",
     description:
-      "Como o Dr. Gustavo Mendes conduz o cuidado em neurodivergência e TEA: presença, clareza, metas e autonomia. Presencial, teleconsulta e domiciliar.",
+      "Como o Dr. Gustavo Mendes conduz o cuidado em neurodivergência e TEA: presença, clareza, metas e autonomia. Presencial em Jundiaí ou por teleconsulta.",
     eyebrow: "03 · Cuidado",
     h1: "Presença, clareza e um plano que você entende",
     lead:
@@ -176,10 +176,10 @@ export const NEURO_PAGES: Record<string, NeuroPage> = {
       },
       {
         kicker: "Formatos",
-        heading: "Três portas, o mesmo compromisso",
+        heading: "Duas formas, o mesmo compromisso",
         paras: [
-          "Presencial na Clínica Dr. Hegg, em Jundiaí. Teleconsulta por vídeo, com o mesmo tempo de escuta. Domiciliar quando o deslocamento ou o ambiente clínico pesam demais.",
-          "Valores e modalidade combinamos pelo WhatsApp — sem preço público genérico, porque o arranjo precisa caber no seu contexto.",
+          "Atendimento presencial em Jundiaí ou teleconsulta por vídeo, com o mesmo tempo de escuta. A escolha considera conforto, rotina e o que favorece uma conversa de qualidade.",
+          "O atendimento é particular e forneço documentação para solicitação de reembolso ao convênio, conforme as regras do plano.",
         ],
       },
       {

@@ -11,27 +11,31 @@
       "facebook": "https://www.facebook.com/drgustavomendesesilva",
       "crm": "CRM 218133/SP",
       "address": {
-        "clinic": "Clínica Dr. Hegg",
-        "street": "Rua Dr. Hegg, 492 - Vila Arens",
-        "cityLine": "Jundiaí, SP - CEP 13202-544",
+        "clinic": "Atendimento presencial",
+        "street": "",
+        "cityLine": "Jundiaí, SP",
         "locality": "Jundiaí",
         "region": "SP",
-        "postalCode": "13202-544",
+        "postalCode": "",
         "country": "BR",
-        "lat": "-23.1996",
-        "lng": "-46.8764"
+        "lat": "",
+        "lng": ""
       },
-      "mapEmbed": "https://www.google.com/maps?q=Cl%C3%ADnica%20Doutor%20Hegg%2C%20Rua%20Dr.%20Hegg%2C%20492%20-%20Vila%20Arens%2C%20Jundia%C3%AD%20-%20SP%2C%2013202-544&hl=pt-BR&z=16&output=embed"
+      "mapEmbed": "https://www.google.com/maps?q=Jundia%C3%AD%2C%20SP&hl=pt-BR&z=12&output=embed"
     },
     "nav": {
       "items": [
         {
-          "label": "Teleconsulta",
-          "href": "/teleconsulta"
+          "label": "TDAH em adultos",
+          "href": "/tdah-adultos"
         },
         {
-          "label": "Domiciliar",
-          "href": "/domiciliar"
+          "label": "Medicina canabinoide",
+          "href": "/medicina-canabinoide"
+        },
+        {
+          "label": "Teleconsulta",
+          "href": "/teleconsulta"
         },
         {
           "label": "Blog",
@@ -46,7 +50,7 @@
     "brand": {
       "name": "Dr. Gustavo Mendes e Silva",
       "crm": "CRM 218133/SP",
-      "tagline": "Psiquiatria humanizada, com escuta atenta e atendimento domiciliar quando necessário."
+      "tagline": "Psiquiatria com escuta atenta, acompanhamento individualizado e tempo de qualidade."
     }
   },
   "design_tokens": [
@@ -471,7 +475,7 @@
     {
       "page_id": "home",
       "title": "Psiquiatra em Jundiaí | Dr. Gustavo Mendes CRM 218133/SP",
-      "description": "Psiquiatra em Jundiaí. Cuidado humanizado para burnout, ansiedade, pânico e insônia. Consultas presenciais, teleconsulta e atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp.",
+      "description": "Psiquiatra em Jundiaí. Atendimento particular para ansiedade, burnout, insônia, TDAH em adultos e medicina canabinoide, presencial ou por teleconsulta.",
       "canonical": "https://drgustavomendes.com",
       "keywords": [
         "psiquiatra jundiaí",
@@ -485,23 +489,23 @@
         "esgotamento profissional",
         "tratamento síndrome do pânico",
         "tratamento insônia jundiaí",
-        "atendimento domiciliar psiquiatra",
         "escuta atenta",
         "psiquiatria humanizada",
         "autismo jundiaí",
         "medicina canabinoide",
+        "tdah em adultos",
+        "acompanhamento psicoterapêutico",
+        "reembolso consulta psiquiatra",
         "transtornos do sono",
         "CRM 218133",
         "psiquiatra particular jundiaí",
         "tratamento depressão",
         "tratamento ansiedade",
-        "psiquiatra autismo",
-        "psiquiatra idosos",
-        "clínica dr hegg jundiaí"
+        "psiquiatra autismo"
       ],
       "og_json": {
         "title": "Psiquiatra em Jundiaí | Dr. Gustavo Mendes CRM 218133/SP",
-        "description": "Psiquiatria humanizada em Jundiaí — consultas presenciais, teleconsulta e atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp.",
+        "description": "Atendimento psiquiátrico particular em Jundiaí para TDAH em adultos, medicina canabinoide, ansiedade, burnout e insônia.",
         "image": "https://drgustavomendes.com/og-image.jpg",
         "type": "website"
       },
@@ -587,7 +591,7 @@
     {
       "page_id": "contact",
       "title": "Agende uma Consulta",
-      "description": "Agende uma consulta com o Dr. Gustavo Mendes e Silva, psiquiatra em Jundiaí (CRM 218133/SP). Consultas presenciais, teleconsulta e atendimento domiciliar. Contato por WhatsApp, telefone ou e-mail.",
+      "description": "Agende atendimento particular com o Dr. Gustavo Mendes e Silva, psiquiatra em Jundiaí (CRM 218133/SP), presencial ou por teleconsulta.",
       "canonical": "https://drgustavomendes.com/contact",
       "keywords": [
         "agendar consulta psiquiatra",
@@ -649,6 +653,7 @@
           "Medo",
           "Pânico",
           "Insônia",
+          "Dificuldade de foco",
           "Desesperança",
           "Perda de sentido"
         ],
@@ -730,12 +735,12 @@
         "formacaoParas": [
           "Acredito que o cuidado psiquiátrico exige <strong>tempo, escuta atenta</strong> e uma compreensão profunda das circunstâncias únicas de cada paciente. Cada pessoa traz consigo uma <strong>história complexa</strong> que merece ser ouvida integralmente.",
           "Dedico a cada consulta <strong>o tempo necessário</strong> para conhecer verdadeiramente cada pessoa, compreender sua história e construir um plano terapêutico adequado.",
-          "Especializado em <strong>Psiquiatria, Medicina Canabinoide, Transtornos do Sono, Dependência Química, Terapia ACT e Cuidados Paliativos</strong>, ofereço uma abordagem abrangente e integrada ao cuidado em saúde mental."
+          "Minha prática inclui <strong>Psiquiatria, TDAH em adultos, Medicina Canabinoide, Transtornos do Sono, Dependência Química, Terapia ACT e Cuidados Paliativos</strong>, em uma abordagem integrada ao cuidado em saúde mental."
         ],
         "diferenciaisTitle": "Diferenciais",
         "diferenciaisParas": [
           "Meu compromisso é olhar para você por inteiro — não apenas o sintoma, mas o contexto que o cerca: <strong>trabalho, sono, relações, história</strong>. E com um objetivo claro desde o começo: <strong>devolver sua autonomia</strong>. Não quero te manter em tratamento para sempre.",
-          "Para <strong>pacientes autistas, idosos</strong> e aqueles com dificuldades de locomoção, ofereço <strong>atendimento domiciliar</strong>. O ambiente familiar permite uma avaliação mais completa e confortável, garantindo que o cuidado chegue a quem realmente precisa."
+          "Quando indicado, o plano pode integrar <strong>manejo medicamentoso e acompanhamento psicoterapêutico</strong>, com objetivos claros, reavaliação e decisões compartilhadas."
         ]
       },
       "design": {
@@ -822,12 +827,12 @@
         "subtitle": "Tire suas dúvidas sobre consultas, atendimento e abordagem terapêutica",
         "items": [
           {
-            "question": "Você atende pelo convênio ou é particular?",
-            "answer": "O atendimento é particular. Isso permite que eu dedique o tempo necessário para cada consulta e ofereça um cuidado verdadeiramente personalizado, sem as limitações impostas pelos convênios."
+            "question": "Como funciona o atendimento particular e o reembolso?",
+            "answer": "O atendimento é particular. Forneço recibo e, quando necessário, a documentação do atendimento para que você possa solicitar reembolso ao seu convênio, conforme as regras do seu plano."
           },
           {
-            "question": "Você atende em domicílio?",
-            "answer": "Sim. Ofereço atendimento domiciliar especialmente para pacientes autistas, idosos e aqueles com dificuldades de locomoção. O ambiente familiar permite uma avaliação mais completa e confortável em Jundiaí e região."
+            "question": "Você também faz acompanhamento psicoterapêutico?",
+            "answer": "Sim. Quando faz sentido para o caso, o acompanhamento pode integrar avaliação psiquiátrica, manejo medicamentoso e acompanhamento psicoterapêutico ao longo das consultas."
           },
           {
             "question": "Como posso agendar uma consulta?",
@@ -835,19 +840,19 @@
           },
           {
             "question": "Quais são as queixas mais comuns que você atende?",
-            "answer": "Costumo acompanhar burnout e esgotamento, ansiedade, medo e pânico, insônia, desesperança e perda de sentido — sempre olhando o contexto de cada pessoa. Você não precisa ter certeza de um diagnóstico para conversar; o primeiro passo é ser ouvido com tempo e clareza."
+            "answer": "Costumo acompanhar TDAH em adultos, ansiedade, burnout e esgotamento, medo e pânico, insônia, neurodivergência e casos em que vale avaliar medicina canabinoide — sempre considerando o contexto de cada pessoa."
           },
           {
             "question": "Qual é a sua especialização?",
-            "answer": "Sou especializado em Psiquiatria, Medicina Canabinoide, Transtornos do Sono, Dependência Química, Terapia ACT e Cuidados Paliativos. CRM 218133/SP."
+            "answer": "Minha prática reúne Psiquiatria, TDAH em adultos, Medicina Canabinoide, Transtornos do Sono, Dependência Química, Terapia ACT e Cuidados Paliativos. CRM 218133/SP."
           },
           {
             "question": "Onde fica o consultório?",
-            "answer": "O consultório fica na Clínica Dr. Hegg - Rua Dr. Hegg, 492, Vila Arens, Jundiaí/SP, CEP 13202-544. Também ofereço atendimento domiciliar na região."
+            "answer": "O atendimento presencial acontece em Jundiaí/SP. A localização completa é informada diretamente durante o agendamento pelo WhatsApp."
           },
           {
             "question": "Qual é o diferencial do seu atendimento?",
-            "answer": "O principal diferencial é o tempo de qualidade: consultas sem pressa, escuta atenta, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto."
+            "answer": "Tempo de qualidade, escuta atenta e um plano que pode integrar psiquiatria e acompanhamento psicoterapêutico. As escolhas são explicadas com clareza e o objetivo é fortalecer sua autonomia."
           }
         ],
         "closer": {
@@ -881,12 +886,12 @@
       "status": "published",
       "content": {
         "title": "Agende Sua Consulta",
-        "subtitle": "Dar o primeiro passo em direção a uma melhor saúde mental começa aqui. Entre em contato para agendar uma consulta ou saber mais sobre nossos serviços."
+        "subtitle": "Atendimento particular em Jundiaí ou por teleconsulta. Receba informações sobre horários, acompanhamento e documentação para reembolso pelo WhatsApp."
       },
       "design": {
         "id": "contact",
         "variant": "home",
-        "showForm": true,
+        "showForm": false,
         "showMap": true
       }
     },
@@ -1614,7 +1619,7 @@
       "status": "published",
       "content": {
         "heading": "Vamos conversar?",
-        "note": "Atendimento particular em Jundiaí — presencial, teleconsulta ou domiciliar. Valores e modalidade combinados pelo WhatsApp.",
+        "note": "Atendimento particular em Jundiaí, presencial ou por teleconsulta. Forneço documentação para solicitação de reembolso conforme as regras do plano.",
         "prices": [],
         "footnotes": [
           "Sem promessa de resultado — plano individual, no seu tempo."

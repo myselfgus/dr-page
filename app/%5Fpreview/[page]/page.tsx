@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-const VALID_PAGES = new Set(["home", "about", "teleconsulta", "domiciliar", "contact"])
+const VALID_PAGES = new Set(["home", "about", "teleconsulta", "contact"])
 
 export default async function PreviewPage({
   params,

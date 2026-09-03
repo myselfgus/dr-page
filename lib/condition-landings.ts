@@ -58,7 +58,7 @@ export const CONDITION_LANDINGS: ConditionLanding[] = [
       {
         question: "Atende ansiedade por teleconsulta?",
         answer:
-          "Sim. A teleconsulta permite o mesmo cuidado por vídeo, de onde você estiver. Também atendo presencialmente na Clínica Dr. Hegg, em Jundiaí.",
+          "Sim. A teleconsulta permite o mesmo cuidado por vídeo, de onde você estiver. Também atendo presencialmente em Jundiaí.",
       },
     ],
     waText: "Olá, gostaria de conversar sobre ansiedade",
@@ -179,9 +179,9 @@ export const CONDITION_LANDINGS: ConditionLanding[] = [
         ],
       },
       {
-        heading: "Presencial, teleconsulta ou domiciliar",
+        heading: "Presencial ou por teleconsulta",
         paras: [
-          "Você pode ser atendido na Clínica Dr. Hegg (Jundiaí), por vídeo ou, em situações específicas, em domicílio na região.",
+          "Você pode ser atendido presencialmente em Jundiaí ou por teleconsulta, com o mesmo tempo de escuta e um plano de acompanhamento individualizado.",
         ],
       },
     ],
@@ -201,6 +201,66 @@ export const CONDITION_LANDINGS: ConditionLanding[] = [
     waLabel: "Conversar sobre pânico no WhatsApp",
   },
   {
+    slug: "tdah-adultos",
+    path: "/tdah-adultos",
+    title: "TDAH em Adultos em Jundiaí | Avaliação Psiquiátrica",
+    description:
+      "Avaliação e acompanhamento particular de TDAH em adultos em Jundiaí e por teleconsulta. História clínica, diagnóstico diferencial e plano individualizado.",
+    keywords: [
+      "tdah em adultos",
+      "psiquiatra tdah jundiaí",
+      "avaliação tdah adulto",
+      "tratamento tdah adulto",
+      "teleconsulta tdah",
+    ],
+    eyebrow: "TDAH em adultos",
+    h1: "Entender o padrão antes de chamar tudo de desatenção",
+    lead:
+      "Dificuldade de foco, procrastinação, impulsividade e desorganização podem atravessar estudo, trabalho e relações. A avaliação do TDAH em adultos precisa reconstruir essa história com cuidado e diferenciar o que também pode vir de ansiedade, sono ruim, humor ou sobrecarga.",
+    sections: [
+      {
+        heading: "O que entra na avaliação",
+        paras: [
+          "Investigamos como atenção, organização, gestão do tempo, impulsividade e regulação emocional aparecem hoje e ao longo da vida. Quando útil, relatos escolares, informações de familiares e avaliações anteriores ajudam a completar o contexto.",
+          "Questionários podem apoiar a conversa, mas não fecham diagnóstico sozinhos. O raciocínio clínico considera intensidade, duração, prejuízo real e outras explicações possíveis para os sintomas.",
+        ],
+      },
+      {
+        heading: "Diagnóstico diferencial sem pressa",
+        paras: [
+          "Ansiedade, depressão, burnout, privação de sono, uso de substâncias e outras condições podem se parecer com TDAH ou coexistir com ele. Separar essas camadas evita um tratamento genérico e torna as escolhas mais seguras.",
+          "O diagnóstico, quando confirmado, serve para organizar o cuidado e ampliar a compreensão sobre si — não para reduzir a pessoa a um rótulo.",
+        ],
+      },
+      {
+        heading: "Como pode ser o acompanhamento",
+        paras: [
+          "O plano pode combinar educação sobre o funcionamento atencional, ajustes de rotina, estratégias práticas e acompanhamento psicoterapêutico. Medicamentos, quando indicados, entram com objetivos definidos e reavaliação de resposta e efeitos adversos.",
+          "O atendimento é particular, presencial em Jundiaí ou por teleconsulta. Forneço a documentação necessária para solicitação de reembolso ao convênio, conforme as regras de cada plano.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "É possível descobrir TDAH somente na vida adulta?",
+        answer:
+          "Sim. Algumas pessoas compensam as dificuldades por muitos anos e só procuram avaliação quando as demandas aumentam. Ainda assim, é importante investigar sinais desde fases anteriores da vida e considerar diagnósticos diferenciais.",
+      },
+      {
+        question: "Todo tratamento de TDAH usa medicação?",
+        answer:
+          "Não. A indicação depende do quadro, do impacto funcional, das condições associadas e das preferências da pessoa. Estratégias de rotina e acompanhamento psicoterapêutico também podem fazer parte do plano.",
+      },
+      {
+        question: "A avaliação pode ser feita por teleconsulta?",
+        answer:
+          "Sim. A avaliação pode acontecer por teleconsulta ou presencialmente em Jundiaí. Em ambos os formatos, o diagnóstico depende de uma história clínica cuidadosa, não de um teste isolado.",
+      },
+    ],
+    waText: "Olá, gostaria de conversar sobre avaliação de TDAH em adultos",
+    waLabel: "Conversar sobre TDAH no WhatsApp",
+  },
+  {
     slug: "medicina-canabinoide",
     path: "/medicina-canabinoide",
     title: "Medicina Canabinoide em Jundiaí | Dr. Gustavo Mendes",
@@ -218,15 +278,24 @@ export const CONDITION_LANDINGS: ConditionLanding[] = [
       "A medicina canabinoide pode ser uma ferramenta em contextos específicos. O ponto de partida é sempre uma avaliação clínica completa — benefícios, limites, riscos e alternativas — com linguagem clara e sem sensacionalismo.",
     sections: [
       {
-        heading: "Para quem faz sentido discutir",
+        heading: "Quando vale considerar essa conversa",
         paras: [
-          "Pessoas que já investigaram outras opções, têm quadro crônico ou buscam compreender se há indicação real. Não é “solução mágica” nem substituto automático de outros tratamentos.",
+          "A conversa pode fazer sentido quando há uma questão clínica bem definida, tratamentos anteriores precisam ser revistos ou a pessoa deseja compreender se os canabinoides têm lugar real no seu plano de cuidado.",
+          "Não existe indicação automática por diagnóstico nem garantia de prescrição. A decisão depende da qualidade das evidências para aquele contexto, dos tratamentos já tentados e da relação entre possíveis benefícios e riscos.",
         ],
       },
       {
-        heading: "Como conduzo a conversa",
+        heading: "CBD, THC, interações e segurança",
         paras: [
-          "Explico evidências e incertezas com honestidade, alinhamos expectativas e, se houver indicação, seguimos com acompanhamento e reavaliação. Autonomia e consentimento informado são centrais.",
+          "Canabidiol (CBD) e tetrahidrocanabinol (THC) têm perfis diferentes. Histórico pessoal e familiar, outros medicamentos, trabalho, direção de veículos e vulnerabilidade a efeitos psíquicos entram na avaliação.",
+          "Também discutimos procedência, composição e concentração do produto, possíveis interações, efeitos adversos, custos e aspectos regulatórios. Informação clara faz parte do consentimento e da segurança.",
+        ],
+      },
+      {
+        heading: "Acompanhamento além da prescrição",
+        paras: [
+          "Quando há indicação, definimos objetivos observáveis e acompanhamos resposta, tolerabilidade e necessidade de ajustes. Se a estratégia não trouxer benefício suficiente ou gerar efeitos indesejados, o plano é revisto.",
+          "A medicina canabinoide não substitui automaticamente psicoterapia, hábitos de vida ou tratamentos convencionais. Ela pode integrar um cuidado mais amplo, sempre com reavaliação clínica.",
         ],
       },
     ],
@@ -240,6 +309,16 @@ export const CONDITION_LANDINGS: ConditionLanding[] = [
         question: "Isso substitui o acompanhamento psiquiátrico?",
         answer:
           "Não. Quando indicada, a abordagem canabinoide integra o plano de cuidado — não o substitui. O foco continua sendo a sua saúde mental e autonomia.",
+      },
+      {
+        question: "Qual é a diferença entre CBD e THC?",
+        answer:
+          "São canabinoides com perfis e efeitos diferentes. A proporção entre eles, a dose e a formulação dependem do objetivo clínico e dos riscos individuais; por isso não há uma orientação única para todas as pessoas.",
+      },
+      {
+        question: "A primeira consulta garante uma prescrição?",
+        answer:
+          "Não. A consulta é uma avaliação médica. A prescrição só é considerada quando houver indicação clínica, segurança e concordância sobre objetivos e acompanhamento.",
       },
     ],
     waText: "Olá, gostaria de conversar sobre medicina canabinoide",

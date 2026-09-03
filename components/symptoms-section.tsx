@@ -32,6 +32,7 @@ const CHIP_HREFS: Record<string, string> = {
   Medo: "/panico",
   Pânico: "/panico",
   Insônia: "/insonia",
+  "Dificuldade de foco": "/tdah-adultos",
 }
 
 export const DEFAULT_CONTENT: SymptomsContent = {
@@ -43,6 +44,7 @@ export const DEFAULT_CONTENT: SymptomsContent = {
     "Medo",
     "Pânico",
     "Insônia",
+    "Dificuldade de foco",
     "Desesperança",
     "Perda de sentido",
   ],

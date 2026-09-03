@@ -64,16 +64,13 @@ export function getPublicPracticeInfo() {
     crm: "CRM 218133/SP",
     specialty: "Psiquiatria",
     tagline:
-      "Psiquiatria humanizada, com escuta atenta e atendimento domiciliar quando necessário.",
+      "Psiquiatria com escuta atenta, acompanhamento individualizado e tempo de qualidade.",
     website: SITE_ORIGIN,
     clinic: {
-      name: "Clínica Dr. Hegg",
-      street: "Rua Dr. Hegg, 492 - Vila Arens",
+      name: "Atendimento presencial particular",
       city: "Jundiaí",
       region: "SP",
-      postalCode: "13202-544",
       country: "BR",
-      geo: { lat: -23.1996, lng: -46.8764 },
     },
     contact: {
       phoneDisplay: "(11) 98706-5632",
@@ -121,8 +118,8 @@ export function getPublicPracticeInfo() {
     modalities: [
       {
         id: "presencial",
-        name: "Consulta presencial",
-        description: "Atendimento na Clínica Dr. Hegg, Jundiaí/SP.",
+        name: "Consulta particular presencial",
+        description: "Atendimento presencial em Jundiaí/SP.",
       },
       {
         id: "teleconsulta",
@@ -132,11 +129,10 @@ export function getPublicPracticeInfo() {
         path: "/teleconsulta",
       },
       {
-        id: "domiciliar",
-        name: "Atendimento domiciliar",
+        id: "psicoterapeutico",
+        name: "Acompanhamento psicoterapêutico",
         description:
-          "Visita em domicílio em Jundiaí e região (idosos, autistas e limitação de mobilidade).",
-        path: "/domiciliar",
+          "Acompanhamento psicoterapêutico integrado ao plano de cuidado quando indicado.",
       },
     ],
     conditionPages: [
@@ -144,13 +140,14 @@ export function getPublicPracticeInfo() {
       { path: "/burnout", title: "Burnout e esgotamento" },
       { path: "/insonia", title: "Insônia e sono" },
       { path: "/panico", title: "Pânico" },
+      { path: "/tdah-adultos", title: "TDAH em adultos" },
       { path: "/medicina-canabinoide", title: "Medicina canabinoide" },
       { path: "/neurodivergencia", title: "Neurodivergência (TDAH/Autismo)" },
     ],
     booking: {
       primaryCta: "whatsapp",
       note:
-        "Agendamento é feito por WhatsApp. Não há formulário de dados clínicos no site (LGPD art. 11). Doctoralia é apenas prova social (avaliações), não o CTA de agendamento.",
+        "Atendimento particular. Agendamento por WhatsApp, com recibo e documentação para solicitação de reembolso conforme as regras do plano. Não há formulário de dados clínicos no site (LGPD art. 11). Doctoralia é apenas prova social.",
       agendaUrl: "https://agenda.drgustavomendes.com",
       teleUrl: "https://tele.drgustavomendes.com",
     },
@@ -221,7 +218,7 @@ export function getOpenApiDocument() {
           operationId: "getSiteInfo",
           summary: "Public practice and contact facts",
           description:
-            "Non-clinical directory data: CRM, clinic address, modalities, condition landings, WhatsApp CTA. Safe for agent grounding.",
+            "Non-clinical directory data: CRM, city, modalities, condition landings, reimbursement information, and WhatsApp CTA. Safe for agent grounding.",
           tags: ["discovery"],
           responses: {
             "200": {
@@ -343,7 +340,7 @@ export const MCP_TOOLS = [
   {
     name: "get_practice_info",
     description:
-      "Return public facts about Dr. Gustavo Mendes e Silva: CRM, clinic address in Jundiaí, contact channels, and care modalities. No clinical data.",
+      "Return public facts about Dr. Gustavo Mendes e Silva: CRM, city, contact channels, and care modalities. No clinical data.",
     inputSchema: {
       type: "object",
       properties: {},
@@ -353,7 +350,7 @@ export const MCP_TOOLS = [
   {
     name: "list_condition_pages",
     description:
-      "List intention landing pages (ansiedade, burnout, insonia, panico, medicina-canabinoide, neurodivergencia) with absolute URLs.",
+      "List intention landing pages (ansiedade, burnout, insonia, panico, TDAH em adultos, medicina canabinoide, neurodivergencia) with absolute URLs.",
     inputSchema: {
       type: "object",
       properties: {},

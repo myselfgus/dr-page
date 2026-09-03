@@ -27,14 +27,14 @@ export const DEFAULT_CONTENT: FaqContent = {
   subtitle: "Tire suas dúvidas sobre consultas, atendimento e abordagem terapêutica",
   items: [
     {
-      question: "Você atende pelo convênio ou é particular?",
+      question: "Como funciona o atendimento particular e o reembolso?",
       answer:
-        "O atendimento é particular. Isso permite que eu dedique o tempo necessário para cada consulta e ofereça um cuidado verdadeiramente personalizado, sem as limitações impostas pelos convênios.",
+        "O atendimento é particular. Forneço recibo e, quando necessário, a documentação do atendimento para que você possa solicitar reembolso ao seu convênio, conforme as regras do seu plano.",
     },
     {
-      question: "Você atende em domicílio?",
+      question: "Você também faz acompanhamento psicoterapêutico?",
       answer:
-        "Sim. Ofereço atendimento domiciliar especialmente para pacientes autistas, idosos e aqueles com dificuldades de locomoção. O ambiente familiar permite uma avaliação mais completa e confortável em Jundiaí e região.",
+        "Sim. Quando faz sentido para o caso, o acompanhamento pode integrar avaliação psiquiátrica, manejo medicamentoso e acompanhamento psicoterapêutico ao longo das consultas.",
     },
     {
       question: "Como posso agendar uma consulta?",
@@ -44,22 +44,22 @@ export const DEFAULT_CONTENT: FaqContent = {
     {
       question: "Quais são as queixas mais comuns que você atende?",
       answer:
-        "Costumo acompanhar burnout e esgotamento, ansiedade, medo e pânico, insônia, desesperança e perda de sentido — sempre olhando o contexto de cada pessoa. Você não precisa ter certeza de um diagnóstico para conversar; o primeiro passo é ser ouvido com tempo e clareza.",
+        "Costumo acompanhar TDAH em adultos, ansiedade, burnout e esgotamento, medo e pânico, insônia, neurodivergência e casos em que vale avaliar medicina canabinoide — sempre considerando o contexto de cada pessoa.",
     },
     {
       question: "Qual é a sua especialização?",
       answer:
-        "Sou especializado em Psiquiatria, Medicina Canabinoide, Transtornos do Sono, Dependência Química, Terapia ACT e Cuidados Paliativos. CRM 218133/SP.",
+        "Minha prática reúne Psiquiatria, TDAH em adultos, Medicina Canabinoide, Transtornos do Sono, Dependência Química, Terapia ACT e Cuidados Paliativos. CRM 218133/SP.",
     },
     {
       question: "Onde fica o consultório?",
       answer:
-        "O consultório fica na Clínica Dr. Hegg - Rua Dr. Hegg, 492, Vila Arens, Jundiaí/SP, CEP 13202-544. Também ofereço atendimento domiciliar na região.",
+        "O atendimento presencial acontece em Jundiaí/SP. A localização completa é informada diretamente durante o agendamento pelo WhatsApp.",
     },
     {
       question: "Qual é o diferencial do seu atendimento?",
       answer:
-        "O principal diferencial é o tempo de qualidade: consultas sem pressa, escuta atenta, atendimento domiciliar quando necessário e uma abordagem verdadeiramente humanizada que vai além do diagnóstico. Meu objetivo é que você não precise mais de um psiquiatra após nosso trabalho conjunto.",
+        "Tempo de qualidade, escuta atenta e um plano que pode integrar psiquiatria e acompanhamento psicoterapêutico. As escolhas são explicadas com clareza e o objetivo é fortalecer sua autonomia.",
     },
   ],
   closer: {

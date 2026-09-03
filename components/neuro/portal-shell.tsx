@@ -179,7 +179,7 @@ export function NeuroPortalShell({ children }: { children: ReactNode }) {
             </div>
             <p className="text-sm text-[var(--np-muted)] max-w-md leading-relaxed">
               Este espaço faz parte do consultório do Dr. Gustavo Mendes e Silva. Atendimento particular
-              em Jundiaí — presencial, teleconsulta ou domiciliar.
+              em Jundiaí — presencial ou por teleconsulta.
             </p>
           </div>
           <div className="flex flex-wrap gap-4 text-sm">
@@ -187,10 +187,10 @@ export function NeuroPortalShell({ children }: { children: ReactNode }) {
               Site principal
             </Link>
             <Link
-              href="/domiciliar"
+              href="/tdah-adultos"
               className="text-[var(--np-muted)] hover:text-[var(--np-fg)] transition-colors"
             >
-              Domiciliar
+              TDAH em adultos
             </Link>
             <Link
               href="/teleconsulta"

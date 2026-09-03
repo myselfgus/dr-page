@@ -4,7 +4,7 @@ You are an agent. This service supports **agentic registration** for the public 
 
 Flow: **discover → register (anonymous) → exchange for access_token → call API → revoke when done**.
 
-Audience: agents that help patients **discover** the practice, answer factual questions about modalities (presencial / teleconsulta / domiciliar), or **start a WhatsApp booking**. This is a marketing site, not a clinical EHR. Tokens only cover `discovery:read` (the same public JSON already available without auth).
+Audience: agents that help patients **discover** the practice, answer factual questions about private in-person care in Jundiaí, teleconsultation, reimbursement documentation, or **start a WhatsApp booking**. This is a marketing site, not a clinical EHR. Tokens only cover `discovery:read` (the same public JSON already available without auth).
 
 ---
 

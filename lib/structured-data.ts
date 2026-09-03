@@ -23,7 +23,6 @@ const PAGE_LABELS: Record<string, string> = {
   home: "Início",
   about: "Sobre",
   teleconsulta: "Teleconsulta",
-  domiciliar: "Atendimento Domiciliar",
   contact: "Contato",
 }
 
@@ -31,17 +30,14 @@ const PAGE_PATHS: Record<string, string> = {
   home: "",
   about: "/about",
   teleconsulta: "/teleconsulta",
-  domiciliar: "/domiciliar",
   contact: "/#contact",
 }
 
 function postalAddress(contact: ContactConfig) {
   return {
     "@type": "PostalAddress",
-    streetAddress: contact.address.street,
     addressLocality: contact.address.locality,
     addressRegion: contact.address.region,
-    postalCode: contact.address.postalCode,
     addressCountry: contact.address.country,
   }
 }
@@ -71,7 +67,7 @@ function buildPhysician(contact: ContactConfig, blocks: PageBlock[] = []) {
     alternateName: ["Gustavo Mendes e Silva", "Dr. Gustavo Mendes", "Gustavo Mendes"],
     image: PHYSICIAN_IMAGE,
     description:
-      "Psiquiatra em Jundiaí (CRM 218133/SP). Psiquiatria humanizada, com escuta atenta, teleconsulta e atendimento domiciliar para autistas e idosos.",
+      "Psiquiatra em Jundiaí (CRM 218133/SP). Atendimento particular com escuta atenta, acompanhamento psicoterapêutico e teleconsulta.",
     medicalSpecialty: ["Psychiatry", "Sleep Medicine", "Cannabinoid Medicine"],
     knowsAbout: [
       "Psiquiatria",
@@ -80,10 +76,11 @@ function buildPhysician(contact: ContactConfig, blocks: PageBlock[] = []) {
       "Síndrome do pânico",
       "Insônia",
       "Transtornos do sono",
+      "TDAH em adultos",
       "Medicina canabinoide",
+      "Acompanhamento psicoterapêutico",
       "Terapia ACT",
       "Cuidados paliativos",
-      "Atendimento domiciliar",
       "Teleconsulta psiquiátrica",
     ],
     address: postalAddress(contact),
@@ -143,7 +140,7 @@ function buildPhysician(contact: ContactConfig, blocks: PageBlock[] = []) {
       {
         "@type": "MedicalProcedure",
         name: "Consulta Psiquiátrica",
-        description: "Avaliação completa e humanizada em Jundiaí",
+        description: "Atendimento particular, presencial em Jundiaí ou por teleconsulta",
       },
       {
         "@type": "MedicalProcedure",
@@ -152,8 +149,18 @@ function buildPhysician(contact: ContactConfig, blocks: PageBlock[] = []) {
       },
       {
         "@type": "MedicalProcedure",
-        name: "Atendimento Domiciliar",
-        description: "Atendimento em domicílio para autistas, idosos e pessoas com dificuldade de locomoção",
+        name: "Avaliação de TDAH em adultos",
+        description: "História clínica, diagnóstico diferencial e plano individualizado",
+      },
+      {
+        "@type": "MedicalProcedure",
+        name: "Avaliação em medicina canabinoide",
+        description: "Discussão de evidências, riscos, alternativas e acompanhamento clínico",
+      },
+      {
+        "@type": "MedicalProcedure",
+        name: "Acompanhamento psicoterapêutico",
+        description: "Acompanhamento integrado ao plano de cuidado psiquiátrico quando indicado",
       },
     ],
     availableChannel: [
@@ -173,7 +180,7 @@ function buildPhysician(contact: ContactConfig, blocks: PageBlock[] = []) {
 
 function buildMedicalBusiness(contact: ContactConfig) {
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    `${contact.address.clinic}, ${contact.address.street}, ${contact.address.locality} - ${contact.address.region}`,
+    `${contact.address.locality} - ${contact.address.region}`,
   )}`
   return {
     "@context": "https://schema.org",
@@ -183,13 +190,8 @@ function buildMedicalBusiness(contact: ContactConfig) {
     alternateName: "Consultório Dr. Gustavo Mendes",
     image: PHYSICIAN_IMAGE,
     description:
-      "Psiquiatria humanizada em Jundiaí, com escuta atenta. Consultas presenciais na Clínica Dr. Hegg, teleconsulta e atendimento domiciliar.",
+      "Atendimento psiquiátrico particular em Jundiaí, presencial e por teleconsulta, com documentação para solicitação de reembolso conforme o plano.",
     address: postalAddress(contact),
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: contact.address.lat,
-      longitude: contact.address.lng,
-    },
     hasMap: mapsUrl,
     telephone: contact.phoneTel,
     email: contact.email,
@@ -231,7 +233,7 @@ function buildWebSite() {
     url: BASE_URL,
     name: "Dr. Gustavo Mendes e Silva - Psiquiatra em Jundiaí",
     alternateName: "Dr. Gustavo Mendes",
-    description: "Psiquiatria humanizada em Jundiaí — presencial, teleconsulta e domiciliar",
+    description: "Psiquiatria particular em Jundiaí — presencial e por teleconsulta",
     inLanguage: "pt-BR",
     publisher: { "@id": `${BASE_URL}/#physician` },
   }
@@ -341,8 +343,8 @@ export function buildConditionJsonLd(
       },
       audience: { "@type": "PeopleAudience", audienceType: "Patient" },
       specialty: "Psychiatry",
-      lastReviewed: "2026-07-01",
-      dateModified: "2026-07-25",
+      lastReviewed: "2026-09-03",
+      dateModified: "2026-09-03",
       author: { "@id": `${BASE_URL}/#physician` },
       reviewedBy: { "@id": `${BASE_URL}/#physician` },
       mainEntity: {

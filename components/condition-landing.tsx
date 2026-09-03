@@ -21,6 +21,7 @@ const LANDING_IMAGES: Record<string, string> = {
   burnout: "/images/principles/02-tempo.jpg",
   insonia: "/images/principles/08-metas.jpg",
   panico: "/images/principles/05-contexto.jpg",
+  "tdah-adultos": "/images/principles/03-historia.jpg",
   "medicina-canabinoide": "/images/principles/06-medicamentos.jpg",
 }
 
@@ -170,8 +171,9 @@ export function ConditionLandingView({ landing }: { landing: ConditionLanding })
                 Pronto para conversar?
               </h2>
               <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-                Atendimento particular com o Dr. Gustavo Mendes e Silva em Jundiaí — presencial,
-                teleconsulta ou domiciliar quando fizer sentido.
+                Atendimento particular em Jundiaí, presencial ou por teleconsulta. Forneço a
+                documentação necessária para você solicitar reembolso ao seu convênio, conforme
+                as regras do seu plano.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <CtaButton cta={wa} />

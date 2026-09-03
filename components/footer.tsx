@@ -13,13 +13,6 @@ import {
   resolveCta,
 } from "@/lib/site-config"
 
-// Rótulos do rodapé: "Domiciliar" vira "Atendimento domiciliar".
-function footerNav(nav: NavConfig) {
-  return nav.items.map((i) =>
-    i.href === "/domiciliar" ? { ...i, label: "Atendimento domiciliar" } : i,
-  )
-}
-
 export function Footer({
   contact = DEFAULT_CONTACT,
   nav = DEFAULT_NAV,
@@ -30,7 +23,7 @@ export function Footer({
   brand?: BrandConfig
 }) {
   const wa = resolveCta({ kind: "whatsapp", label: "WhatsApp" }, contact)
-  const items = footerNav(nav)
+  const items = nav.items
   const addr = contact.address
 
   return (
@@ -42,7 +35,7 @@ export function Footer({
             <p className="font-mono text-xs tracking-wide text-muted-foreground mb-2">{brand.crm}</p>
             <p className="text-sm text-muted-foreground leading-relaxed">{brand.tagline}</p>
             <p className="text-sm text-muted-foreground mt-3">
-              Psiquiatra em Jundiaí — Clínica Dr. Hegg
+              Atendimento particular em Jundiaí/SP
             </p>
             <a
               href={contact.doctoralia}
@@ -136,13 +129,7 @@ export function Footer({
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span className="leading-relaxed">
-                  {addr.clinic}
-                  <br />
-                  {addr.street}
-                  <br />
-                  {addr.cityLine}
-                </span>
+                <span className="leading-relaxed">{addr.cityLine}</span>
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />

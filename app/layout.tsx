@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     template: "%s | Dr. Gustavo Mendes - Psiquiatra em Jundiaí",
   },
   description:
-    "Psiquiatra em Jundiaí. Cuidado humanizado para burnout, ansiedade, pânico e insônia. Consultas presenciais, teleconsulta e atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp.",
+    "Psiquiatra em Jundiaí. Atendimento particular para ansiedade, burnout, insônia, TDAH em adultos e medicina canabinoide, presencial ou por teleconsulta.",
   keywords: [
     "psiquiatra jundiaí",
     "dr gustavo mendes",
@@ -65,19 +65,19 @@ export const metadata: Metadata = {
     "esgotamento profissional",
     "tratamento síndrome do pânico",
     "tratamento insônia jundiaí",
-    "atendimento domiciliar psiquiatra",
     "escuta atenta",
     "psiquiatria humanizada",
     "autismo jundiaí",
     "medicina canabinoide",
+    "tdah em adultos",
+    "acompanhamento psicoterapêutico",
+    "reembolso consulta psiquiatra",
     "transtornos do sono",
     "CRM 218133",
     "psiquiatra particular jundiaí",
     "tratamento depressão",
     "tratamento ansiedade",
     "psiquiatra autismo",
-    "psiquiatra idosos",
-    "clínica dr hegg jundiaí",
   ],
   authors: [{ name: "Dr. Gustavo Mendes e Silva", url: "https://drgustavomendes.com/about" }],
   creator: "Dr. Gustavo Mendes e Silva",
@@ -115,7 +115,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Psiquiatra em Jundiaí | Dr. Gustavo Mendes CRM 218133/SP",
     description:
-      "Psiquiatria humanizada em Jundiaí — consultas presenciais, teleconsulta e atendimento domiciliar para autistas e idosos. Agende pelo WhatsApp.",
+      "Atendimento psiquiátrico particular em Jundiaí para TDAH em adultos, medicina canabinoide, ansiedade, burnout e insônia.",
     url: "https://drgustavomendes.com",
     siteName: "Dr. Gustavo Mendes - Psiquiatra",
     locale: "pt_BR",
@@ -132,7 +132,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Psiquiatra em Jundiaí | Dr. Gustavo Mendes",
-    description: "Psiquiatria humanizada em Jundiaí — teleconsulta e atendimento domiciliar.",
+    description: "Psiquiatria particular em Jundiaí — atendimento presencial e por teleconsulta.",
     images: ["https://drgustavomendes.com/og-image.jpg"],
     creator: "@drgustavomendesesilva",
   },
@@ -160,8 +160,6 @@ export default async function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         <meta name="geo.region" content="BR-SP" />
         <meta name="geo.placename" content="Jundiaí" />
-        <meta name="geo.position" content="-23.1996;-46.8764" />
-        <meta name="ICBM" content="-23.1996, -46.8764" />
         <meta name="format-detection" content="telephone=yes" />
         <meta name="theme-color" content="#1a1a1a" />
         <meta httpEquiv="content-language" content="pt-BR" />
@@ -173,7 +171,7 @@ export default async function RootLayout({
         <script
           id="webmcp-bootstrap"
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var T=[{name:"get_practice_info",description:"Public facts about Dr. Gustavo Mendes e Silva (CRM, clinic, contact, modalities).",inputSchema:{type:"object",properties:{},additionalProperties:false}},{name:"list_condition_pages",description:"List condition landing pages with absolute URLs.",inputSchema:{type:"object",properties:{},additionalProperties:false}},{name:"get_whatsapp_booking_link",description:"Return WhatsApp deep link to start booking.",inputSchema:{type:"object",properties:{message:{type:"string"}},additionalProperties:false}},{name:"navigate_site",description:"Navigate to a same-origin path.",inputSchema:{type:"object",properties:{path:{type:"string"}},required:["path"],additionalProperties:false}},{name:"open_whatsapp_booking",description:"Open WhatsApp booking in a new tab.",inputSchema:{type:"object",properties:{message:{type:"string"}},additionalProperties:false}}];function exec(n,a){a=a||{};if(n==="get_practice_info")return fetch("/api/v1/site").then(function(r){return r.json()});if(n==="list_condition_pages")return fetch("/api/v1/site").then(function(r){return r.json()}).then(function(i){return (i.conditionPages||[]).map(function(p){return Object.assign({},p,{url:"https://drgustavomendes.com"+p.path})})});if(n==="get_whatsapp_booking_link"||n==="open_whatsapp_booking"){var m=(a.message&&String(a.message).trim())||"Olá, gostaria de agendar uma consulta";var u="https://wa.me/5511987065632?text="+encodeURIComponent(m.slice(0,500));if(n==="open_whatsapp_booking")try{window.open(u,"_blank","noopener,noreferrer")}catch(e){}return Promise.resolve({url:u})}if(n==="navigate_site"){var p=String(a.path||"/");if(p.charAt(0)!=="/")p="/"+p;if(p.indexOf("//")===0||p.indexOf("://")>=0)return Promise.reject(new Error("same-origin only"));location.assign(p);return Promise.resolve({navigatedTo:p})}return Promise.reject(new Error("unknown tool"))}function tools(){return T.map(function(t){return{name:t.name,description:t.description,inputSchema:t.inputSchema,execute:function(args){return exec(t.name,args||{})}}})}function reg(){var mc=(document.modelContext)||(navigator.modelContext);if(!mc)return false;var list=tools();if(typeof mc.registerTool==="function"){list.forEach(function(t){try{mc.registerTool(t)}catch(e){}});return true}if(typeof mc.provideContext==="function"){try{mc.provideContext({tools:list})}catch(e){}return true}return false}window.__drWebMcpTools=T.map(function(t){return t.name});if(!reg()){var n=0;var id=setInterval(function(){if(reg()||++n>40)clearInterval(id)},250)}}catch(e){}})();`,
+            __html: `(function(){try{var T=[{name:"get_practice_info",description:"Public facts about Dr. Gustavo Mendes e Silva (CRM, city, private care, contact, modalities).",inputSchema:{type:"object",properties:{},additionalProperties:false}},{name:"list_condition_pages",description:"List condition landing pages with absolute URLs.",inputSchema:{type:"object",properties:{},additionalProperties:false}},{name:"get_whatsapp_booking_link",description:"Return WhatsApp deep link to start booking.",inputSchema:{type:"object",properties:{message:{type:"string"}},additionalProperties:false}},{name:"navigate_site",description:"Navigate to a same-origin path.",inputSchema:{type:"object",properties:{path:{type:"string"}},required:["path"],additionalProperties:false}},{name:"open_whatsapp_booking",description:"Open WhatsApp booking in a new tab.",inputSchema:{type:"object",properties:{message:{type:"string"}},additionalProperties:false}}];function exec(n,a){a=a||{};if(n==="get_practice_info")return fetch("/api/v1/site").then(function(r){return r.json()});if(n==="list_condition_pages")return fetch("/api/v1/site").then(function(r){return r.json()}).then(function(i){return (i.conditionPages||[]).map(function(p){return Object.assign({},p,{url:"https://drgustavomendes.com"+p.path})})});if(n==="get_whatsapp_booking_link"||n==="open_whatsapp_booking"){var m=(a.message&&String(a.message).trim())||"Olá, gostaria de agendar uma consulta";var u="https://wa.me/5511987065632?text="+encodeURIComponent(m.slice(0,500));if(n==="open_whatsapp_booking")try{window.open(u,"_blank","noopener,noreferrer")}catch(e){}return Promise.resolve({url:u})}if(n==="navigate_site"){var p=String(a.path||"/");if(p.charAt(0)!=="/")p="/"+p;if(p.indexOf("//")===0||p.indexOf("://")>=0)return Promise.reject(new Error("same-origin only"));location.assign(p);return Promise.resolve({navigatedTo:p})}return Promise.reject(new Error("unknown tool"))}function tools(){return T.map(function(t){return{name:t.name,description:t.description,inputSchema:t.inputSchema,execute:function(args){return exec(t.name,args||{})}}})}function reg(){var mc=(document.modelContext)||(navigator.modelContext);if(!mc)return false;var list=tools();if(typeof mc.registerTool==="function"){list.forEach(function(t){try{mc.registerTool(t)}catch(e){}});return true}if(typeof mc.provideContext==="function"){try{mc.provideContext({tools:list})}catch(e){}return true}return false}window.__drWebMcpTools=T.map(function(t){return t.name});if(!reg()){var n=0;var id=setInterval(function(){if(reg()||++n>40)clearInterval(id)},250)}}catch(e){}})();`,
           }}
         />
       </head>

@@ -52,24 +52,25 @@ export const DEFAULT_CONTACT: ContactConfig = {
   facebook: "https://www.facebook.com/drgustavomendesesilva",
   crm: "CRM 218133/SP",
   address: {
-    clinic: "Clínica Dr. Hegg",
-    street: "Rua Dr. Hegg, 492 - Vila Arens",
-    cityLine: "Jundiaí, SP - CEP 13202-544",
+    clinic: "Atendimento presencial",
+    street: "",
+    cityLine: "Jundiaí, SP",
     locality: "Jundiaí",
     region: "SP",
-    postalCode: "13202-544",
+    postalCode: "",
     country: "BR",
-    lat: "-23.1996",
-    lng: "-46.8764",
+    lat: "",
+    lng: "",
   },
   mapEmbed:
-    "https://www.google.com/maps?q=Cl%C3%ADnica%20Doutor%20Hegg%2C%20Rua%20Dr.%20Hegg%2C%20492%20-%20Vila%20Arens%2C%20Jundia%C3%AD%20-%20SP%2C%2013202-544&hl=pt-BR&z=16&output=embed",
+    "https://www.google.com/maps?q=Jundia%C3%AD%2C%20SP&hl=pt-BR&z=12&output=embed",
 }
 
 export const DEFAULT_NAV: NavConfig = {
   items: [
+    { label: "TDAH em adultos", href: "/tdah-adultos" },
+    { label: "Medicina canabinoide", href: "/medicina-canabinoide" },
     { label: "Teleconsulta", href: "/teleconsulta" },
-    { label: "Domiciliar", href: "/domiciliar" },
     { label: "Blog", href: "/blog" },
     { label: "Sobre", href: "/about" },
   ],
@@ -79,7 +80,7 @@ export const DEFAULT_BRAND: BrandConfig = {
   name: "Dr. Gustavo Mendes e Silva",
   crm: "CRM 218133/SP",
   tagline:
-    "Psiquiatria humanizada, com escuta atenta e atendimento domiciliar quando necessário.",
+    "Psiquiatria com escuta atenta, acompanhamento individualizado e tempo de qualidade.",
 }
 
 // ---------------------------------------------------------------------------

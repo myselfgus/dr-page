@@ -25,13 +25,13 @@ export interface ContactDesign {
 export const DEFAULT_CONTENT: ContactContent = {
   title: "Agende Sua Consulta",
   subtitle:
-    "Dar o primeiro passo em direção a uma melhor saúde mental começa aqui. Entre em contato para agendar uma consulta ou saber mais sobre nossos serviços.",
+    "Atendimento particular em Jundiaí ou por teleconsulta. Receba informações sobre horários, acompanhamento e documentação para reembolso pelo WhatsApp.",
 }
 
 export const DEFAULT_DESIGN: ContactDesign = {
   id: "contact",
   variant: "home",
-  showForm: true,
+  showForm: false,
   showMap: true,
 }
 
@@ -137,11 +137,7 @@ export function ContactSection({
                     {addr.locality}
                   </h3>
                   <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                    {addr.clinic}
-                    <br />
-                    {addr.street}
-                    <br />
-                    {addr.cityLine}
+                    Atendimento particular presencial em {addr.cityLine}
                   </p>
                 </div>
               </div>
@@ -158,7 +154,7 @@ export function ContactSection({
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Localização da Clínica"
+                title="Localização em Jundiaí"
               />
             </div>
           ) : null}
