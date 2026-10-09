@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import type { ContactConfig } from "@/lib/site-config"
-import { DEFAULT_CONTACT } from "@/lib/site-config"
+import { DEFAULT_CONTACT, IDENTITY_PROFILES } from "@/lib/site-config"
 import type { PageBlock, PageMeta } from "@/lib/pages"
 import type { ConditionLanding } from "@/lib/condition-landings"
 import { toAuthorInitials } from "@/lib/format"
@@ -87,7 +87,7 @@ function buildPhysician(contact: ContactConfig, blocks: PageBlock[] = []) {
     telephone: contact.phoneTel,
     email: contact.email,
     url: BASE_URL,
-    sameAs: [contact.doctoralia, contact.instagram, contact.facebook].filter(Boolean),
+    sameAs: [contact.doctoralia, ...IDENTITY_PROFILES, contact.instagram, contact.facebook].filter(Boolean),
     priceRange: "$$",
     areaServed: [
       { "@type": "City", name: contact.address.locality },
@@ -196,7 +196,7 @@ function buildMedicalBusiness(contact: ContactConfig) {
     telephone: contact.phoneTel,
     email: contact.email,
     url: BASE_URL,
-    sameAs: [contact.doctoralia, contact.instagram, contact.facebook].filter(Boolean),
+    sameAs: [contact.doctoralia, ...IDENTITY_PROFILES, contact.instagram, contact.facebook].filter(Boolean),
     priceRange: "$$",
     currenciesAccepted: "BRL",
     paymentAccepted: "Cash, Credit Card, Debit Card, PIX",
