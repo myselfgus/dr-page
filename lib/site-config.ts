@@ -66,6 +66,14 @@ export const DEFAULT_CONTACT: ContactConfig = {
     "https://www.google.com/maps?q=Jundia%C3%AD%2C%20SP&hl=pt-BR&z=12&output=embed",
 }
 
+// Perfis públicos do mesmo titular, declarados para buscadores e IAs (JSON-LD `sameAs`).
+// Ficam no código, e não em `site_config.contact`, porque identificam a pessoa e não mudam com o contato.
+// O Instagram @myselfgus é o perfil pessoal: entra como identidade, não como canal de atendimento.
+export const IDENTITY_PROFILES: string[] = [
+  "https://www.linkedin.com/in/drgustavomendes",
+  "https://www.instagram.com/myselfgus",
+]
+
 export const DEFAULT_NAV: NavConfig = {
   items: [
     { label: "TDAH em adultos", href: "/tdah-adultos" },
